@@ -28,14 +28,17 @@ export function Header() {
               width={1774}
               height={887}
               priority
-              className="h-10 lg:h-12 w-auto"
+              className="h-9 lg:h-11 w-auto"
             />
-            <span className="leading-tight hidden sm:block border-l border-border pl-3">
-              <span className="block font-[family-name:var(--font-display)] font-semibold text-[0.95rem] sm:text-base">
+            {/* Hidden between sm and xl: at those widths the doctor's name
+                competes with the nav and forces every link to wrap onto
+                three lines. The logo alone carries the branding there. */}
+            <span className="leading-tight hidden sm:block xl:block lg:hidden border-l border-border pl-3">
+              <span className="block font-[family-name:var(--font-display)] font-semibold text-[0.95rem]">
                 {site.doctor.name}
               </span>
-              <span className="block text-[0.7rem] sm:text-xs text-muted-foreground">
-                {site.doctor.title} · {site.hospital.name}
+              <span className="block text-[0.7rem] text-muted-foreground">
+                {site.doctor.title}
               </span>
             </span>
           </Link>
@@ -53,7 +56,7 @@ export function Header() {
                       href={item.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "inline-flex h-11 items-center rounded-lg px-3 text-sm font-medium transition-colors",
+                        "inline-flex h-11 items-center whitespace-nowrap rounded-lg px-2.5 xl:px-3 text-[0.8rem] xl:text-sm font-medium transition-colors",
                         active
                           ? "text-accent bg-accent/10"
                           : "text-foreground/80 hover:text-foreground hover:bg-muted"

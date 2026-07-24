@@ -127,13 +127,23 @@ export function ChatWidget() {
         aria-controls="chat-panel"
         aria-label={open ? "Close the assistant" : "Open the assistant"}
         className={cn(
-          "fixed z-50 right-4 bottom-20 lg:bottom-6 grid size-14 place-items-center rounded-full",
-          "bg-primary text-primary-foreground shadow-[var(--elev-3)]",
+          "fixed z-50 right-4 bottom-20 lg:bottom-6 flex items-center gap-2.5",
+          "rounded-full shadow-[var(--elev-3)] bg-accent text-accent-foreground",
           "transition-transform duration-[var(--dur-base)] hover:scale-105 active:scale-95",
+          open ? "size-14 justify-center" : "h-14 pl-4 pr-5",
           !open && !reduceMotion && "animate-pulse-slow"
         )}
       >
-        {open ? <X className="size-6" /> : <MessageCircle className="size-6" />}
+        {open ? (
+          <X className="size-6" />
+        ) : (
+          <>
+            <MessageCircle className="size-6 shrink-0" aria-hidden />
+            <span className="font-semibold text-sm whitespace-nowrap">
+              Ask a question
+            </span>
+          </>
+        )}
       </button>
 
       {open && (

@@ -294,7 +294,7 @@
    demanding attention. Suppressed entirely under reduced-motion below. */
 @keyframes pulse-slow {
   0%, 100% {
-    box-shadow: var(--elev-3), 0 0 0 0 oklch(0.5198 0.0936 223.13 / 45%);
+    box-shadow: var(--elev-3), 0 0 0 0 oklch(0.5198 0.0936 223.13 / 55%);
   }
   50% {
     box-shadow: var(--elev-3), 0 0 0 12px oklch(0.5198 0.0936 223.13 / 0%);
