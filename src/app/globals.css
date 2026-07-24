@@ -290,6 +290,21 @@
     radial-gradient(ellipse 70% 50% at 100% 10%, oklch(0.3397 0.078 248.5 / 32%) 0%, transparent 60%);
 }
 
+/* Chatbot launcher — a slow breathing ring that draws the eye without
+   demanding attention. Suppressed entirely under reduced-motion below. */
+@keyframes pulse-slow {
+  0%, 100% {
+    box-shadow: var(--elev-3), 0 0 0 0 oklch(0.5198 0.0936 223.13 / 45%);
+  }
+  50% {
+    box-shadow: var(--elev-3), 0 0 0 12px oklch(0.5198 0.0936 223.13 / 0%);
+  }
+}
+
+@utility animate-pulse-slow {
+  animation: pulse-slow 2.8s ease-out infinite;
+}
+
 /* --------------------------------------------------------------------------
    REDUCED MOTION — honours the 3D hero + scroll-reveal fallbacks
    -------------------------------------------------------------------------- */

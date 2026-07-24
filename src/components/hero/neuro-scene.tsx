@@ -18,17 +18,35 @@ import * as THREE from "three";
 const TEAL = new THREE.Color("#22D3EE");
 const NAVY = new THREE.Color("#1E6BA8");
 
+/**
+ * Deterministic PRNG (mulberry32).
+ *
+ * Math.random() is impure and cannot be called during render. A fixed seed
+ * also means the geometry is identical on every render and between server
+ * and client, so the visual never "reshuffles".
+ */
+function makeRandom(seed: number) {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 /** Points distributed over a brain-like lobed ellipsoid. */
 function useBrainPoints(count: number) {
   return useMemo(() => {
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
-    const scales = new Float32Array(count);
+    const random = makeRandom(0x5efa17);
 
     for (let i = 0; i < count; i++) {
       // Even distribution on a sphere, then deformed into a brain shape.
-      const u = Math.random();
-      const v = Math.random();
+      const u = random();
+      const v = random();
       const theta = 2 * Math.PI * u;
       const phi = Math.acos(2 * v - 1);
 
@@ -60,10 +78,9 @@ function useBrainPoints(count: number) {
       colors[i * 3 + 1] = c.g;
       colors[i * 3 + 2] = c.b;
 
-      scales[i] = Math.random() * 0.6 + 0.4;
     }
 
-    return { positions, colors, scales };
+    return { positions, colors };
   }, [count]);
 }
 

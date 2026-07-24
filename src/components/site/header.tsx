@@ -7,6 +7,7 @@ import { Menu, X, Phone, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site, navigation } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { track } from "@/lib/analytics";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -65,7 +66,7 @@ export function Header() {
               variant="emergency"
               size="cta"
               className="hidden sm:inline-flex"
-              render={<a href={site.contact.phoneHref} />}
+              render={<a href={site.contact.phoneHref} onClick={() => track("call_click", { source: "header" })} />}
             >
               <Phone aria-hidden />
               <span className="tnum">{site.contact.phoneDisplay}</span>

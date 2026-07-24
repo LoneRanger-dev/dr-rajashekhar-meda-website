@@ -3,6 +3,7 @@ import "./globals.css";
 import { figtree, notoSans } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/site/json-ld";
+import { Analytics } from "@/components/site/analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
@@ -42,6 +43,7 @@ export default function RootLayout({
         </a>
         {children}
         <JsonLd />
+        <Analytics />
       </body>
     </html>
   );

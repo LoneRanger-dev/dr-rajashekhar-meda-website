@@ -1,6 +1,9 @@
+"use client";
+
 import { Phone, MessageCircle, CalendarCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site, whatsappUrl } from "@/lib/site";
+import { track } from "@/lib/analytics";
 
 /**
  * Persistent bottom action bar on mobile.
@@ -18,7 +21,7 @@ export function StickyCta() {
           variant="emergency"
           size="cta"
           className="w-full"
-          render={<a href={site.contact.phoneHref} />}
+          render={<a href={site.contact.phoneHref} onClick={() => track("call_click", { source: "sticky_bar" })} />}
         >
           <Phone aria-hidden />
           Call
@@ -28,7 +31,7 @@ export function StickyCta() {
           size="cta"
           className="w-full"
           render={
-            <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" />
+            <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" onClick={() => track("whatsapp_click", { source: "sticky_bar" })} />
           }
         >
           <MessageCircle aria-hidden />

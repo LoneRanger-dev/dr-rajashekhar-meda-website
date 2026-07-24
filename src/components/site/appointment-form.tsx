@@ -5,6 +5,7 @@ import { Loader2, CheckCircle2, AlertCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { site, conditions } from "@/lib/site";
+import { track } from "@/lib/analytics";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -62,6 +63,7 @@ export function AppointmentForm() {
         body: JSON.stringify(Object.fromEntries(data)),
       });
       if (!res.ok) throw new Error("Request failed");
+      track("appointment_form_submit");
       setStatus("success");
       setMessage(
         "Thank you. Your request has been received — the clinic will call you to confirm your appointment time."
