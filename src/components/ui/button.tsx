@@ -18,6 +18,13 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        /* Teal action — secondary CTAs, "Book Appointment". AA 5.36:1 */
+        accent:
+          "bg-accent text-accent-foreground hover:bg-[color-mix(in_oklch,var(--accent),black_10%)]",
+        /* The 24/7 call button. Reserved exclusively for urgent/trauma CTAs
+           so urgency stays meaningful. White on #C2410C = AA 5.18:1 */
+        emergency:
+          "bg-emergency text-emergency-foreground shadow-[var(--elev-2)] hover:bg-emergency-hover focus-visible:ring-emergency/40",
       },
       size: {
         default:
@@ -25,7 +32,13 @@ const buttonVariants = cva(
         xs: "h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
         sm: "h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
         lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+        /* Touch-safe sizes — 44px minimum per WCAG 2.5.5 / Apple HIG.
+           Use `cta` or larger for anything a patient taps on mobile. */
+        cta: "h-11 gap-2 rounded-xl px-5 text-[0.95rem] has-data-[icon=inline-end]:pr-4 has-data-[icon=inline-start]:pl-4 [&_svg:not([class*='size-'])]:size-5",
+        "cta-lg":
+          "h-13 gap-2.5 rounded-xl px-7 text-base font-semibold has-data-[icon=inline-end]:pr-5 has-data-[icon=inline-start]:pl-5 [&_svg:not([class*='size-'])]:size-5",
         icon: "size-8",
+        "icon-touch": "size-11 rounded-xl [&_svg:not([class*='size-'])]:size-5",
         "icon-xs":
           "size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3",
         "icon-sm":
