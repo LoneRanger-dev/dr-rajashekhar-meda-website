@@ -57,12 +57,21 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  render,
+  nativeButton,
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  // When `render` swaps the element for an anchor (our call/WhatsApp CTAs),
+  // Base UI must be told it is no longer a native <button> — otherwise it
+  // warns and applies button semantics to a link. Callers can still override.
+  const resolvedNativeButton = nativeButton ?? (render === undefined)
+
   return (
     <ButtonPrimitive
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
+      render={render}
+      nativeButton={resolvedNativeButton}
       {...props}
     />
   )

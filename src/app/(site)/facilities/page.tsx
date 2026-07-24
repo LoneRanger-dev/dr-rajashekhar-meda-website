@@ -4,6 +4,7 @@ import { Ambulance, BedDouble, Brain, Clock, MapPin, Phone, ShieldCheck } from "
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, ConfirmWithClient } from "@/components/site/ui-bits";
 import { site } from "@/lib/site";
+import { notoSansTelugu } from "@/lib/fonts-telugu";
 
 export const metadata: Metadata = {
   title: "Suraksha Hospital Khammam — Emergency, Trauma & Multi-Specialty",
@@ -47,7 +48,10 @@ export default function FacilitiesPage() {
                 title={site.hospital.name}
                 lead={`${site.hospital.descriptor} — ${site.hospital.city}, ${site.hospital.state}`}
               />
-              <p lang="te" className="text-xl text-muted-foreground">
+              <p
+                lang="te"
+                className={`${notoSansTelugu.variable} text-xl text-muted-foreground`}
+              >
                 {site.hospital.nameTelugu}
               </p>
               <Button

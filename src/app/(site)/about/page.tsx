@@ -5,6 +5,7 @@ import { GraduationCap, Award, Stethoscope, Building2, ArrowRight } from "lucide
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, ConfirmWithClient } from "@/components/site/ui-bits";
 import { site, awards } from "@/lib/site";
+import { notoSansTelugu } from "@/lib/fonts-telugu";
 
 export const metadata: Metadata = {
   title: "About Dr. Gade Ramakrishna Reddy — MCh Neurosurgeon, Khammam",
@@ -72,7 +73,10 @@ export default function AboutPage() {
                 emergency trauma and planned spine surgery with the same
                 technical rigour.
               </p>
-              <p lang="te" className="text-xl text-muted-foreground">
+              <p
+                lang="te"
+                className={`${notoSansTelugu.variable} text-xl text-muted-foreground`}
+              >
                 {site.doctor.nameTelugu} — {site.doctor.titleTelugu}
               </p>
               <Button

@@ -22,7 +22,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-body);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: ui-monospace, monospace;
   --font-heading: var(--font-display);
   --font-telugu: var(--font-telugu-sans);
 

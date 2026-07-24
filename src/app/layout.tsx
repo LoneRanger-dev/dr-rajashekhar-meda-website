@@ -1,38 +1,8 @@
 import type { Metadata } from "next";
-import { Figtree, Noto_Sans, Noto_Sans_Telugu, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { figtree, notoSans } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/site/json-ld";
-
-/* Display face — confident geometric sans for headings */
-const figtree = Figtree({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-/* Body face — high-legibility humanist sans */
-const notoSans = Noto_Sans({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-/* Telugu script face — the clinic's creatives are bilingual */
-const notoSansTelugu = Noto_Sans_Telugu({
-  variable: "--font-telugu-sans",
-  subsets: ["telugu"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
@@ -61,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${notoSans.variable} ${notoSansTelugu.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${figtree.variable} ${notoSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <a

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Phone, CalendarCheck, ShieldCheck, Brain, Activity, Stethoscope } from "lucide-react";
+import { notoSansTelugu } from "@/lib/fonts-telugu";
 
 export const metadata: Metadata = {
   title: "Design System — Suraksha Neuro",
@@ -125,7 +126,7 @@ export default function DesignSystemPage() {
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Telugu / Noto Sans Telugu</p>
-              <p lang="te" className="text-2xl">
+              <p lang="te" className={`${notoSansTelugu.variable} text-2xl`}>
                 డా. గాదె రామకృష్ణారెడ్డి — న్యూరో సర్జన్
               </p>
             </div>

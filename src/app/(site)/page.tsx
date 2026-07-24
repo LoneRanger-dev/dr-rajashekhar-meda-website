@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
+import { NeuroVisual } from "@/components/hero/neuro-visual";
 import { site, conditions, whatsappUrl } from "@/lib/site";
 
 const conditionIcons = {
@@ -36,7 +37,10 @@ export default function HomePage() {
           The 3D brain/spine visual replaces the portrait side in the next
           step; this static composition is the reduced-motion fallback. */}
       <section className="brand-wash relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20 lg:py-28">
+        {/* Decorative 3D layer. Loads only on capable devices, after idle,
+            and never carries meaning — the CSS gradient is the fallback. */}
+        <NeuroVisual className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-1/2 opacity-45 dark:opacity-60" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-7">
               <span className="inline-flex items-center gap-2 rounded-full bg-emergency/10 px-4 py-2 text-sm font-semibold text-emergency">

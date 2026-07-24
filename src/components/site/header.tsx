@@ -16,11 +16,10 @@ export function Header() {
     <header className="sticky top-0 z-40 glass border-b border-border/60">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex h-16 lg:h-20 items-center justify-between gap-4">
-          <Link
-            href="/"
-            className="flex items-center gap-3 shrink-0"
-            aria-label={`${site.doctor.name} — home`}
-          >
+          {/* No aria-label here: the visible text is already a complete,
+              accurate name. An aria-label that omits part of the visible
+              text fails WCAG 2.5.3 (Label in Name). */}
+          <Link href="/" className="flex items-center gap-3 shrink-0">
             <span className="grid size-10 place-items-center rounded-xl bg-primary text-primary-foreground">
               <Activity className="size-5" aria-hidden />
             </span>
