@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Clock, ShieldAlert } from "lucide-react";
 import { site, navigation, conditions } from "@/lib/site";
 
@@ -8,6 +9,16 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-3">
+            {/* White-plated so the navy logo stays legible on the navy footer. */}
+            <span className="inline-flex rounded-xl bg-white p-3">
+              <Image
+                src="/brand/suraksha-logo.png"
+                alt="Suraksha Hospital — Brain, Spine, Neuro"
+                width={1774}
+                height={887}
+                className="h-11 w-auto"
+              />
+            </span>
             <p className="font-[family-name:var(--font-display)] text-lg font-semibold">
               {site.doctor.name}
             </p>

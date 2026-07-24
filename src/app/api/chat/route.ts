@@ -1,4 +1,4 @@
-import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "openai";
 import { NextResponse } from "next/server";
 import {
   SYSTEM_PROMPT,
@@ -9,7 +9,7 @@ import {
 } from "@/lib/chatbot/knowledge";
 
 /**
- * Chatbot reasoning endpoint.
+ * Chatbot reasoning endpoint (OpenAI).
  *
  * Safety design: the emergency and clinical-question screens run LOCALLY,
  * before any network call. If the model is slow, rate-limited, misconfigured
@@ -20,7 +20,7 @@ import {
 export const runtime = "nodejs";
 export const maxDuration = 30;
 
-const MODEL = "claude-opus-4-8";
+const MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
 const MAX_MESSAGES = 20;
 const MAX_CHARS = 1500;
 
@@ -45,7 +45,6 @@ function rateLimited(key: string): boolean {
 
   if (!entry || now > entry.resetAt) {
     HITS.set(key, { count: 1, resetAt: now + WINDOW_MS });
-    // Opportunistic cleanup so the map cannot grow without bound.
     if (HITS.size > 500) {
       for (const [k, v] of HITS) if (now > v.resetAt) HITS.delete(k);
     }
@@ -80,7 +79,6 @@ export async function POST(req: Request) {
       (m): m is ChatMessage =>
         !!m &&
         typeof m === "object" &&
-        (m as ChatMessage).role !== undefined &&
         ["user", "assistant"].includes((m as ChatMessage).role) &&
         typeof (m as ChatMessage).content === "string"
     )
@@ -112,9 +110,9 @@ export async function POST(req: Request) {
   }
 
   // The API key must never reach the browser — this route is the only caller.
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    console.error("[chat] ANTHROPIC_API_KEY is not set");
+    console.error("[chat] OPENAI_API_KEY is not set");
     return NextResponse.json(
       {
         reply:
@@ -125,36 +123,21 @@ export async function POST(req: Request) {
     );
   }
 
-  const client = new Anthropic({ apiKey });
+  const client = new OpenAI({ apiKey });
 
   try {
-    const response = await client.messages.create({
+    const completion = await client.chat.completions.create({
       model: MODEL,
       max_tokens: 400,
-      // Thinking is omitted deliberately: replies are 2-4 sentences and this
-      // runs in front of an anxious patient on a phone, so latency matters
-      // more than deliberation. The system prompt carries the reasoning.
-      output_config: { effort: "low" },
-      system: [
-        {
-          type: "text",
-          text: SYSTEM_PROMPT,
-          // The prompt is static across every request, so it caches cleanly.
-          cache_control: { type: "ephemeral" },
-        },
+      temperature: 0.3, // low — this is a factual FAQ assistant, not a creative one
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...messages.map((m) => ({ role: m.role, content: m.content })),
       ],
-      messages: messages.map((m) => ({ role: m.role, content: m.content })),
     });
 
-    if (response.stop_reason === "refusal") {
-      return NextResponse.json({ reply: CLINICAL_REPLY, intent: "clinical_redirect" });
-    }
-
-    const reply = response.content
-      .filter((block): block is Anthropic.TextBlock => block.type === "text")
-      .map((block) => block.text)
-      .join("")
-      .trim();
+    const choice = completion.choices[0];
+    const reply = choice?.message?.content?.trim() ?? "";
 
     if (!reply) {
       return NextResponse.json({ reply: CLINICAL_REPLY, intent: "clinical_redirect" });
@@ -167,9 +150,9 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ reply, intent });
   } catch (error) {
-    if (error instanceof Anthropic.RateLimitError) {
+    if (error instanceof OpenAI.RateLimitError) {
       console.warn("[chat] upstream rate limited");
-    } else if (error instanceof Anthropic.APIError) {
+    } else if (error instanceof OpenAI.APIError) {
       console.error("[chat] API error", error.status, error.message);
     } else {
       console.error("[chat] unexpected error", error);

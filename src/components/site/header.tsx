@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Phone, Activity } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site, navigation } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -21,10 +22,15 @@ export function Header() {
               accurate name. An aria-label that omits part of the visible
               text fails WCAG 2.5.3 (Label in Name). */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
-            <span className="grid size-10 place-items-center rounded-xl bg-primary text-primary-foreground">
-              <Activity className="size-5" aria-hidden />
-            </span>
-            <span className="leading-tight">
+            <Image
+              src="/brand/suraksha-logo.png"
+              alt="Suraksha Hospital — Brain, Spine, Neuro"
+              width={1774}
+              height={887}
+              priority
+              className="h-10 lg:h-12 w-auto"
+            />
+            <span className="leading-tight hidden sm:block border-l border-border pl-3">
               <span className="block font-[family-name:var(--font-display)] font-semibold text-[0.95rem] sm:text-base">
                 {site.doctor.name}
               </span>
