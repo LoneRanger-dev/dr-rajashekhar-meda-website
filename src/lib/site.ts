@@ -192,14 +192,19 @@ export const conditions: Condition[] = [
   },
 ];
 
+/**
+ * `label` is the full descriptive name (used in the footer and mobile menu).
+ * `short` is used in the desktop header — the full labels are too wide to fit
+ * alongside the logo and the phone button, and pushed the call CTA off-screen.
+ */
 export const navigation = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Dr. Reddy" },
-  { href: "/conditions", label: "Conditions & Treatments" },
-  { href: "/facilities", label: "Hospital Facilities" },
-  { href: "/reviews", label: "Patient Reviews" },
-  { href: "/blog", label: "Health Education" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "Home", short: "Home" },
+  { href: "/about", label: "About Dr. Reddy", short: "About" },
+  { href: "/conditions", label: "Conditions & Treatments", short: "Conditions" },
+  { href: "/facilities", label: "Hospital Facilities", short: "Facilities" },
+  { href: "/reviews", label: "Patient Reviews", short: "Reviews" },
+  { href: "/blog", label: "Health Education", short: "Education" },
+  { href: "/contact", label: "Contact", short: "Contact" },
 ] as const;
 
 /**

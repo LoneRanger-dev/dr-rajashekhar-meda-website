@@ -30,10 +30,10 @@ export function Header() {
               priority
               className="h-9 lg:h-11 w-auto"
             />
-            {/* Hidden between sm and xl: at those widths the doctor's name
-                competes with the nav and forces every link to wrap onto
-                three lines. The logo alone carries the branding there. */}
-            <span className="leading-tight hidden sm:block xl:block lg:hidden border-l border-border pl-3">
+            {/* Shown on small screens (no nav) and again from 2xl, where
+                there is room. In between it competes with the nav and pushes
+                the phone CTA off-screen. */}
+            <span className="leading-tight hidden sm:block lg:hidden 2xl:block border-l border-border pl-3">
               <span className="block font-[family-name:var(--font-display)] font-semibold text-[0.95rem]">
                 {site.doctor.name}
               </span>
@@ -62,7 +62,7 @@ export function Header() {
                           : "text-foreground/80 hover:text-foreground hover:bg-muted"
                       )}
                     >
-                      {item.label}
+                      {item.short}
                     </Link>
                   </li>
                 );
@@ -70,11 +70,11 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <Button
               variant="emergency"
               size="cta"
-              className="hidden sm:inline-flex"
+              className="hidden sm:inline-flex shrink-0"
               render={<a href={site.contact.phoneHref} onClick={() => track("call_click", { source: "header" })} />}
             >
               <Phone aria-hidden />
