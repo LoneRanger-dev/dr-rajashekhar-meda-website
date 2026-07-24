@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send, Phone, Loader2, AlertTriangle } from "lucide-react";
+import Image from "next/image";
+import { X, Send, Phone, Loader2, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -142,7 +143,17 @@ export function ChatWidget() {
           <X className="size-6" />
         ) : (
           <>
-            <MessageCircle className="size-6 shrink-0" aria-hidden />
+            {/* Static frame of the clinic's mascot, not the video: this button
+                is on every page, and a 2.4 MB autoplaying video here would
+                undo the LCP work. The animation plays in the panel instead. */}
+            <Image
+              src="/brand/chatbot-avatar.png"
+              alt=""
+              width={160}
+              height={160}
+              className="size-10 shrink-0 rounded-full object-cover"
+              aria-hidden
+            />
             <span className="hidden sm:inline font-semibold text-sm whitespace-nowrap">
               Ask a question
             </span>
@@ -165,11 +176,37 @@ export function ChatWidget() {
           )}
         >
           <header className="flex items-center justify-between gap-3 bg-primary text-primary-foreground p-4">
-            <div className="min-w-0">
-              <p className="font-semibold text-sm truncate">Clinic Assistant</p>
-              <p className="text-xs opacity-80 truncate">
-                {site.hospital.name}, {site.hospital.city}
-              </p>
+            <div className="flex items-center gap-3 min-w-0">
+              {/* The mascot animation. Loads only once the panel is opened,
+                  and falls back to a still frame under reduced-motion. */}
+              {reduceMotion ? (
+                <Image
+                  src="/brand/chatbot-poster.jpg"
+                  alt=""
+                  width={320}
+                  height={320}
+                  className="size-11 shrink-0 rounded-full object-cover"
+                  aria-hidden
+                />
+              ) : (
+                <video
+                  src="/brand/chatbot.mp4"
+                  poster="/brand/chatbot-poster.jpg"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="none"
+                  aria-hidden
+                  className="size-11 shrink-0 rounded-full object-cover bg-white"
+                />
+              )}
+              <div className="min-w-0">
+                <p className="font-semibold text-sm truncate">Clinic Assistant</p>
+                <p className="text-xs opacity-80 truncate">
+                  {site.hospital.name}, {site.hospital.city}
+                </p>
+              </div>
             </div>
             <button
               type="button"
