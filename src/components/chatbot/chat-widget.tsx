@@ -130,7 +130,11 @@ export function ChatWidget() {
           "fixed z-50 right-4 bottom-20 lg:bottom-6 flex items-center gap-2.5",
           "rounded-full shadow-[var(--elev-3)] bg-accent text-accent-foreground",
           "transition-transform duration-[var(--dur-base)] hover:scale-105 active:scale-95",
-          open ? "size-14 justify-center" : "h-14 pl-4 pr-5",
+          // Circle on mobile: the labelled pill is wide enough to sit on top
+          // of page content (it covered the testimonial carousel arrows).
+          open
+            ? "size-14 justify-center"
+            : "size-14 justify-center sm:size-auto sm:h-14 sm:pl-4 sm:pr-5",
           !open && !reduceMotion && "animate-pulse-slow"
         )}
       >
@@ -139,7 +143,7 @@ export function ChatWidget() {
         ) : (
           <>
             <MessageCircle className="size-6 shrink-0" aria-hidden />
-            <span className="font-semibold text-sm whitespace-nowrap">
+            <span className="hidden sm:inline font-semibold text-sm whitespace-nowrap">
               Ask a question
             </span>
           </>
