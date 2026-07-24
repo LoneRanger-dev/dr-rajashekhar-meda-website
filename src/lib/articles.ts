@@ -140,6 +140,10 @@ export const articles: Article[] = [
       "After a fall or road accident, knowing which head injury symptoms are serious matters. A practical guide to warning signs and when to seek immediate neurosurgical care in Khammam.",
     category: "Brain & Trauma",
     readingMinutes: 4,
+    image: {
+      src: "/images/creatives/brain-trauma.png",
+      alt: "Suraksha Hospital — expert care for brain and trauma: head injury assessment, emergency care and advanced neuro care",
+    },
     body: [
       {
         type: "para",
