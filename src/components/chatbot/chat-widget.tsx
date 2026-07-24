@@ -126,38 +126,40 @@ export function ChatWidget() {
         onClick={toggle}
         aria-expanded={open}
         aria-controls="chat-panel"
-        aria-label={open ? "Close the assistant" : "Open the assistant"}
+        aria-label={open ? "Close the assistant" : "Chat with the clinic assistant"}
         className={cn(
-          "fixed z-50 right-4 bottom-20 lg:bottom-6 flex items-center gap-2.5",
-          "rounded-full shadow-[var(--elev-3)] bg-accent text-accent-foreground",
-          "transition-transform duration-[var(--dur-base)] hover:scale-105 active:scale-95",
-          // Circle on mobile: the labelled pill is wide enough to sit on top
-          // of page content (it covered the testimonial carousel arrows).
+          "fixed z-50 right-4 bottom-20 lg:bottom-6 grid place-items-center rounded-full",
+          "transition-transform duration-[var(--dur-base)] hover:scale-110 active:scale-95",
+          "focus-visible:outline-3 focus-visible:outline-offset-4",
           open
-            ? "size-14 justify-center"
-            : "size-14 justify-center sm:size-auto sm:h-14 sm:pl-4 sm:pr-5",
-          !open && !reduceMotion && "animate-pulse-slow"
+            ? "size-14 bg-primary text-primary-foreground shadow-[var(--elev-3)]"
+            : "size-16 sm:size-[4.5rem]",
+          // The mascot floats on its own rather than sitting in a button box.
+          !open && !reduceMotion && "animate-float"
         )}
       >
         {open ? (
           <X className="size-6" />
         ) : (
-          <>
-            {/* Static frame of the clinic's mascot, not the video: this button
-                is on every page, and a 2.4 MB autoplaying video here would
-                undo the LCP work. The animation plays in the panel instead. */}
+          <span className="relative grid size-full place-items-center">
+            {/* Halo sits behind the mascot so the white robot stays legible
+                against light page backgrounds. */}
+            <span
+              className="absolute inset-0 rounded-full bg-white shadow-[var(--elev-3)] ring-1 ring-accent/25"
+              aria-hidden
+            />
+            {/* Still frame, not the video: this launcher is on every page and
+                a 2.4 MB autoplaying video would undo the LCP work. The
+                animation plays in the panel header once opened. */}
             <Image
               src="/brand/chatbot-avatar.png"
               alt=""
-              width={160}
-              height={160}
-              className="size-10 shrink-0 rounded-full object-cover"
+              width={256}
+              height={256}
+              className="relative size-full rounded-full object-cover"
               aria-hidden
             />
-            <span className="hidden sm:inline font-semibold text-sm whitespace-nowrap">
-              Ask a question
-            </span>
-          </>
+          </span>
         )}
       </button>
 
