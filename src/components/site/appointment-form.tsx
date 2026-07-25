@@ -85,7 +85,7 @@ export function AppointmentForm() {
         className="glass rounded-2xl p-8 text-center space-y-4"
       >
         <CheckCircle2 className="size-12 text-success mx-auto" aria-hidden />
-        <h3 className="text-2xl">Request received</h3>
+        <h3 className="type-h2">Request received</h3>
         <p className="text-muted-foreground max-w-md mx-auto">{message}</p>
         <Button
           variant="outline"
@@ -101,7 +101,7 @@ export function AppointmentForm() {
   return (
     <form onSubmit={onSubmit} noValidate className="glass rounded-2xl p-6 sm:p-8 space-y-5">
       <div className="space-y-1">
-        <h3 className="text-2xl">Request an appointment</h3>
+        <h3 className="type-h2">Request an appointment</h3>
         <p className="text-sm text-muted-foreground">
           Fill this in and the clinic will call you back to confirm a time.
           Fields marked <span aria-hidden>*</span> are required.

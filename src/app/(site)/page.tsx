@@ -49,11 +49,11 @@ export default function HomePage() {
               </span>
 
               <div className="space-y-4">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl">
+                <h1 className="type-display">
                   Khammam&apos;s trusted{" "}
                   <span className="text-accent">Brain &amp; Spine</span> specialist
                 </h1>
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl">
+                <p className="type-lead text-muted-foreground max-w-xl">
                   {site.doctor.name} — {site.doctor.credentials}. Advanced
                   minimally invasive spine surgery, endoscopic neurosurgery and
                   round-the-clock trauma care at {site.hospital.name}.
@@ -160,7 +160,7 @@ export default function HomePage() {
                   <span className="grid size-12 place-items-center rounded-xl bg-accent/10 text-accent">
                     <Icon className="size-6" aria-hidden />
                   </span>
-                  <h3 className="text-lg">{condition.short}</h3>
+                  <h3 className="type-h3">{condition.short}</h3>
                   <p className="text-sm text-muted-foreground flex-1">
                     {condition.summary}
                   </p>
@@ -241,7 +241,7 @@ export default function HomePage() {
             <div className="flex gap-4">
               <ShieldAlert className="size-10 shrink-0" aria-hidden />
               <div>
-                <h2 className="text-2xl sm:text-3xl text-emergency-foreground">
+                <h2 className="type-h2 text-emergency-foreground">
                   Head injury or sudden neurological symptoms?
                 </h2>
                 <p className="mt-2 max-w-2xl opacity-95">

@@ -66,7 +66,7 @@ export default function AboutPage() {
                 title={site.doctor.name}
                 lead={site.doctor.credentials}
               />
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="type-lead text-muted-foreground">
                 {site.doctor.title} at {site.hospital.name}, {site.hospital.city},
                 and {site.doctor.academicRole}. Dr. Reddy combines super-specialty
                 surgical training with an active teaching role — and treats
@@ -167,7 +167,7 @@ export default function AboutPage() {
               <span className="grid size-11 place-items-center rounded-xl bg-accent/10 text-accent">
                 <Stethoscope className="size-5" aria-hidden />
               </span>
-              <h3 className="text-lg">{item.title}</h3>
+              <h3 className="type-h3">{item.title}</h3>
               <p className="text-sm text-muted-foreground">{item.body}</p>
             </li>
           ))}

@@ -7,7 +7,7 @@ export function Section({
   ...props
 }: React.ComponentProps<"section">) {
   return (
-    <section className={cn("py-16 sm:py-20 lg:py-24", className)} {...props}>
+    <section className={cn("section-py", className)} {...props}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6">{children}</div>
     </section>
   );
@@ -29,27 +29,13 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "space-y-3 max-w-3xl",
+        "space-y-4 max-w-3xl",
         align === "center" && "mx-auto text-center"
       )}
     >
-      {eyebrow && (
-        <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-          {eyebrow}
-        </p>
-      )}
-      <Tag
-        className={cn(
-          Tag === "h1"
-            ? "text-4xl sm:text-5xl lg:text-6xl"
-            : "text-3xl sm:text-4xl"
-        )}
-      >
-        {title}
-      </Tag>
-      {lead && (
-        <p className="text-lg text-muted-foreground leading-relaxed">{lead}</p>
-      )}
+      {eyebrow && <p className="type-label text-accent">{eyebrow}</p>}
+      <Tag className={Tag === "h1" ? "type-h1" : "type-h2"}>{title}</Tag>
+      {lead && <p className="type-lead text-muted-foreground">{lead}</p>}
     </div>
   );
 }
@@ -77,10 +63,8 @@ export function ConfirmWithClient({ children }: { children: React.ReactNode }) {
 export function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="space-y-1">
-      <p className="text-3xl sm:text-4xl font-[family-name:var(--font-display)] font-semibold text-primary dark:text-accent tnum">
-        {value}
-      </p>
-      <p className="text-sm text-muted-foreground">{label}</p>
+      <p className="type-h2 text-primary dark:text-accent tnum">{value}</p>
+      <p className="type-body text-sm text-muted-foreground">{label}</p>
     </div>
   );
 }

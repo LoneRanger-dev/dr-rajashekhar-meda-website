@@ -90,7 +90,7 @@ export default function FacilitiesPage() {
                 <Icon className="size-6" aria-hidden />
               </span>
               <div>
-                <h2 className="text-lg">{title}</h2>
+                <h2 className="type-h3">{title}</h2>
                 <p className="text-sm text-muted-foreground mt-1.5">{body}</p>
               </div>
             </li>

@@ -10,7 +10,7 @@ export default function NotFound() {
         <p className="text-sm font-semibold uppercase tracking-widest text-accent">
           404
         </p>
-        <h1 className="text-3xl sm:text-4xl">This page could not be found</h1>
+        <h1 className="type-h1">This page could not be found</h1>
         <p className="text-muted-foreground">
           The page you are looking for may have moved. If you need to reach the
           clinic, the phone number below is answered 24/7 for emergencies.

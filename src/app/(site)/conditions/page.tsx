@@ -39,7 +39,7 @@ export default function ConditionsPage() {
                   <span className="grid size-12 place-items-center rounded-xl bg-accent/10 text-accent">
                     <Icon className="size-6" aria-hidden />
                   </span>
-                  <h2 className="text-2xl">{condition.name}</h2>
+                  <h2 className="type-h2">{condition.name}</h2>
                   <p className="text-muted-foreground flex-1">{condition.summary}</p>
                   <ul className="flex flex-wrap gap-2">
                     {condition.treats.slice(0, 3).map((t) => (

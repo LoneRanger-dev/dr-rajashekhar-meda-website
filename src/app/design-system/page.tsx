@@ -51,7 +51,7 @@ function Section({ title, note, children }: { title: string; note?: string; chil
   return (
     <section className="space-y-6">
       <div className="space-y-1">
-        <h2 className="text-2xl">{title}</h2>
+        <h2 className="type-h2">{title}</h2>
         {note && <p className="text-sm text-muted-foreground max-w-2xl">{note}</p>}
       </div>
       {children}
@@ -67,7 +67,7 @@ export default function DesignSystemPage() {
           <p className="text-sm font-medium text-accent uppercase tracking-widest">
             Internal style guide
           </p>
-          <h1 className="text-4xl sm:text-5xl">Suraksha Neuro Design System</h1>
+          <h1 className="type-h1">Suraksha Neuro Design System</h1>
           <p className="text-muted-foreground max-w-2xl">
             Derived from the clinic&apos;s existing print creatives — deep clinical navy and
             cyan/teal, with the Suraksha logo plum as a sparing heritage accent. Every
@@ -110,11 +110,11 @@ export default function DesignSystemPage() {
           <div className="glass rounded-2xl p-8 space-y-5">
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Display / Figtree</p>
-              <p className="text-5xl">Brain &amp; Spine Care</p>
+              <p className="type-display">Brain &amp; Spine Care</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Heading 2</p>
-              <p className="text-3xl">Minimally Invasive Spine Surgery</p>
+              <p className="type-h2">Minimally Invasive Spine Surgery</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Body / Noto Sans</p>
@@ -126,7 +126,7 @@ export default function DesignSystemPage() {
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Telugu / Noto Sans Telugu</p>
-              <p lang="te" className={`${notoSansTelugu.variable} text-2xl`}>
+              <p lang="te" className={`${notoSansTelugu.variable} type-h3`}>
                 డా. గాదె రామకృష్ణారెడ్డి — న్యూరో సర్జన్
               </p>
             </div>

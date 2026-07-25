@@ -57,8 +57,8 @@ export function LandingPage({ config }: { config: LandingConfig }) {
                 <ShieldAlert className="size-4" aria-hidden />
                 {config.eyebrow}
               </span>
-              <h1 className="text-4xl sm:text-5xl">{config.headline}</h1>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <h1 className="type-h1">{config.headline}</h1>
+              <p className="type-lead text-muted-foreground">
                 {config.subhead}
               </p>
 
@@ -113,7 +113,7 @@ export function LandingPage({ config }: { config: LandingConfig }) {
             {config.benefits.map((b) => (
               <li key={b.title} className="glass rounded-2xl p-6 space-y-3">
                 <CheckCircle2 className="size-7 text-accent" aria-hidden />
-                <h2 className="text-lg">{b.title}</h2>
+                <h2 className="type-h3">{b.title}</h2>
                 <p className="text-sm text-muted-foreground">{b.body}</p>
               </li>
             ))}
@@ -126,7 +126,7 @@ export function LandingPage({ config }: { config: LandingConfig }) {
           <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10">
             <AppointmentForm />
             <div className="glass rounded-2xl p-7 space-y-5 h-fit">
-              <h2 className="text-xl">{site.hospital.name}</h2>
+              <h2 className="type-h3">{site.hospital.name}</h2>
               <ul className="space-y-4 text-sm">
                 <li className="flex gap-3">
                   <MapPin className="size-5 text-accent shrink-0 mt-0.5" aria-hidden />

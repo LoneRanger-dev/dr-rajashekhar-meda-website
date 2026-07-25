@@ -69,8 +69,8 @@ export default async function ArticlePage({
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl">{article.title}</h1>
-          <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+          <h1 className="type-h1">{article.title}</h1>
+          <p className="mt-5 type-lead text-muted-foreground">
             {article.description}
           </p>
         </div>
@@ -93,7 +93,7 @@ export default async function ArticlePage({
         <div className="space-y-6">
           {article.body.map((block, i) =>
             block.type === "heading" ? (
-              <h2 key={i} className="text-2xl pt-4">
+              <h2 key={i} className="type-h2 pt-4">
                 {block.text}
               </h2>
             ) : block.type === "list" ? (
@@ -120,7 +120,7 @@ export default async function ArticlePage({
         <aside className="mt-12 rounded-2xl border-2 border-emergency/40 bg-emergency/5 p-7 space-y-4">
           <div className="flex gap-3">
             <AlertTriangle className="size-6 text-emergency shrink-0" aria-hidden />
-            <h2 className="text-xl text-emergency">Seek help immediately if</h2>
+            <h2 className="type-h3 text-emergency">Seek help immediately if</h2>
           </div>
           <ul className="space-y-2.5">
             {article.seekHelp.map((item) => (
@@ -152,7 +152,7 @@ export default async function ArticlePage({
       </article>
 
       <Section className="bg-muted/60">
-        <h2 className="text-2xl mb-8">Continue reading</h2>
+        <h2 className="type-h2 mb-8">Continue reading</h2>
         <ul className="grid sm:grid-cols-2 gap-5">
           {related.map((a) => (
             <li key={a.slug}>
@@ -161,7 +161,7 @@ export default async function ArticlePage({
                 className="group glass rounded-2xl p-6 h-full flex flex-col gap-2 transition-transform duration-[var(--dur-base)] hover:-translate-y-1"
               >
                 <span className="text-xs font-semibold text-accent">{a.category}</span>
-                <h3 className="text-lg">{a.title}</h3>
+                <h3 className="type-h3">{a.title}</h3>
                 <p className="text-sm text-muted-foreground flex-1">{a.description}</p>
                 <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
                   Read article

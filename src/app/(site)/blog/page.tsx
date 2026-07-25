@@ -55,7 +55,7 @@ export default function BlogPage() {
                       <span className="tnum">{article.readingMinutes} min read</span>
                     </span>
                   </div>
-                  <h2 className="text-lg">{article.title}</h2>
+                  <h2 className="type-h3">{article.title}</h2>
                   <p className="text-sm text-muted-foreground flex-1">
                     {article.description}
                   </p>

@@ -71,7 +71,7 @@ export default async function ConditionPage({
           </nav>
 
           <div className="max-w-3xl space-y-5">
-            <h1 className="text-4xl sm:text-5xl">{condition.name}</h1>
+            <h1 className="type-h1">{condition.name}</h1>
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
               {condition.summary}
             </p>
@@ -103,7 +103,7 @@ export default async function ConditionPage({
             <span className="grid size-11 place-items-center rounded-xl bg-accent/10 text-accent">
               <Stethoscope className="size-5" aria-hidden />
             </span>
-            <h2 className="text-xl">Conditions treated</h2>
+            <h2 className="type-h3">Conditions treated</h2>
             <ul className="space-y-2.5">
               {condition.treats.map((item) => (
                 <li key={item} className="flex gap-2.5 text-sm">
@@ -121,7 +121,7 @@ export default async function ConditionPage({
             <span className="grid size-11 place-items-center rounded-xl bg-emergency/10 text-emergency">
               <AlertTriangle className="size-5" aria-hidden />
             </span>
-            <h2 className="text-xl">When to seek help</h2>
+            <h2 className="type-h3">When to seek help</h2>
             <ul className="space-y-2.5">
               {condition.whenToSeek.map((item) => (
                 <li key={item} className="flex gap-2.5 text-sm">
@@ -143,7 +143,7 @@ export default async function ConditionPage({
             <span className="grid size-11 place-items-center rounded-xl bg-primary text-primary-foreground">
               <CheckCircle2 className="size-5" aria-hidden />
             </span>
-            <h2 className="text-xl">Dr. Reddy&apos;s approach</h2>
+            <h2 className="type-h3">Dr. Reddy&apos;s approach</h2>
             <ul className="space-y-2.5">
               {condition.approach.map((item) => (
                 <li key={item} className="flex gap-2.5 text-sm">
@@ -187,7 +187,7 @@ export default async function ConditionPage({
                 href={`/conditions/${c.slug}`}
                 className="group glass rounded-2xl p-6 h-full flex flex-col gap-2 transition-transform duration-[var(--dur-base)] hover:-translate-y-1"
               >
-                <h3 className="text-lg">{c.short}</h3>
+                <h3 className="type-h3">{c.short}</h3>
                 <p className="text-sm text-muted-foreground flex-1">{c.summary}</p>
                 <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
                   Read more

@@ -61,7 +61,7 @@ export default function ContactPage() {
 
           <div className="space-y-6">
             <div className="glass rounded-2xl p-7 space-y-5">
-              <h2 className="text-xl">Clinic details</h2>
+              <h2 className="type-h3">Clinic details</h2>
               <ul className="space-y-5">
                 <li className="flex gap-4">
                   <Phone className="size-5 text-accent shrink-0 mt-0.5" aria-hidden />

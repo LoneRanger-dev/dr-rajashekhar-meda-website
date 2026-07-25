@@ -62,7 +62,7 @@ export default function ReviewsPage() {
               <span className="grid size-11 place-items-center rounded-xl bg-accent/10 text-accent">
                 <Star className="size-5" aria-hidden />
               </span>
-              <h2 className="text-xl">How to publish real reviews here</h2>
+              <h2 className="type-h3">How to publish real reviews here</h2>
               <ol className="list-decimal ml-5 space-y-2 text-sm text-muted-foreground">
                 <li>Collect 5–10 genuine patient testimonials.</li>
                 <li>

@@ -5,23 +5,75 @@ import { site } from "@/lib/site";
 import { JsonLd } from "@/components/site/json-ld";
 import { Analytics } from "@/components/site/analytics";
 
+const TITLE = `${site.doctor.name} — Brain & Spine Surgeon, Khammam`;
+const DESCRIPTION =
+  "Consultant Brain & Spine Surgeon at Suraksha Hospital, Khammam. MBBS, MS, MCh (Neurosurgery). Minimally invasive spine surgery, endoscopic neurosurgery, epilepsy care and 24/7 trauma response.";
+const OG_DESCRIPTION =
+  "MCh Neurosurgeon at Suraksha Hospital, Khammam. 24/7 trauma care, minimally invasive spine surgery and epilepsy treatment. Call 7075 447 449.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
   title: {
-    default: `${site.doctor.name} — Brain & Spine Surgeon, Khammam`,
+    default: TITLE,
     template: `%s | ${site.doctor.name}`,
   },
-  description:
-    "Consultant Brain & Spine Surgeon at Suraksha Hospital, Khammam. MBBS, MS, MCh (Neurosurgery). Minimally invasive spine surgery, endoscopic neurosurgery, epilepsy and 24/7 trauma care.",
+  description: DESCRIPTION,
+  applicationName: `${site.doctor.name} — ${site.hospital.name}`,
+  authors: [{ name: site.doctor.name }],
+  creator: site.doctor.name,
+  publisher: site.hospital.name,
+  category: "health",
+  keywords: [
+    "neurosurgeon Khammam",
+    "brain surgeon Khammam",
+    "spine surgeon Khammam",
+    "best neurosurgeon in Khammam",
+    "minimally invasive spine surgery Khammam",
+    "herniated disc treatment Khammam",
+    "epilepsy treatment Khammam",
+    "24/7 emergency neurosurgeon Khammam",
+    "Suraksha Hospital Khammam",
+    "Dr. Gade Ramakrishna Reddy",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_IN",
+    url: site.domain,
     siteName: `${site.doctor.name} — ${site.doctor.title}`,
-    title: `${site.doctor.name} — Brain & Spine Surgeon, Khammam`,
-    description:
-      "MCh Neurosurgeon at Suraksha Hospital, Khammam. 24/7 trauma care, minimally invasive spine surgery and epilepsy treatment.",
+    title: TITLE,
+    description: OG_DESCRIPTION,
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}, Khammam`,
+      },
+    ],
   },
-  robots: { index: true, follow: true },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: OG_DESCRIPTION,
+    images: ["/opengraph-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
+  formatDetection: { telephone: true, address: true, email: false },
+  // verification: { google: "..." }, // add the GSC token when the domain is verified
 };
 
 export default function RootLayout({
