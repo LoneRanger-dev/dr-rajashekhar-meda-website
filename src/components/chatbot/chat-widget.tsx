@@ -142,14 +142,15 @@ export function ChatWidget() {
           <X className="size-6" />
         ) : (
           <span className="relative grid size-full place-items-center">
-            {/* Halo sits behind the mascot so the white robot stays legible
-                against light page backgrounds. */}
+            {/* The mascot is on a dark navy backdrop, so it sits in a dark
+                ring with a teal glow — reads as premium on any page colour
+                and echoes the mascot's own glowing accents. */}
             <span
-              className="absolute inset-0 rounded-full bg-white shadow-[var(--elev-3)] ring-1 ring-accent/25"
+              className="absolute inset-0 rounded-full shadow-[0_8px_30px_oklch(0.5198_0.0936_223.13/40%)] ring-2 ring-accent/40"
               aria-hidden
             />
             {/* Still frame, not the video: this launcher is on every page and
-                a 2.4 MB autoplaying video would undo the LCP work. The
+                a 2.6 MB autoplaying video would undo the LCP work. The
                 animation plays in the panel header once opened. */}
             <Image
               src="/brand/chatbot-avatar.png"
@@ -200,8 +201,9 @@ export function ChatWidget() {
                   playsInline
                   preload="none"
                   aria-hidden
-                  // Landscape source; focus the crop on the face, not the torso.
-                  className="size-11 shrink-0 rounded-full object-cover object-[46%_22%] bg-white"
+                  // Landscape source on a dark backdrop; focus on the face and
+                  // let it blend into the navy panel header.
+                  className="size-11 shrink-0 rounded-full object-cover object-[50%_26%] ring-1 ring-white/20"
                 />
               )}
               <div className="min-w-0">
