@@ -200,7 +200,8 @@ export function ChatWidget() {
                   playsInline
                   preload="none"
                   aria-hidden
-                  className="size-11 shrink-0 rounded-full object-cover bg-white"
+                  // Landscape source; focus the crop on the face, not the torso.
+                  className="size-11 shrink-0 rounded-full object-cover object-[46%_22%] bg-white"
                 />
               )}
               <div className="min-w-0">
