@@ -39,7 +39,18 @@ export function Footer() {
             <address className="not-italic space-y-3 text-sm text-primary-foreground/85">
               <span className="flex gap-2.5">
                 <MapPin className="size-4 mt-0.5 shrink-0" aria-hidden />
-                <span>{site.hospital.addressFull}</span>
+                <span>
+                  {site.hospital.addressFull}
+                  <br />
+                  <a
+                    href={site.hospital.maps.directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-1 underline underline-offset-2 hover:text-white transition-colors"
+                  >
+                    Get directions
+                  </a>
+                </span>
               </span>
               <a
                 href={site.contact.phoneHref}

@@ -63,15 +63,15 @@ export default function FacilitiesPage() {
                 <span className="tnum">{site.contact.phoneDisplay}</span>
               </Button>
             </div>
-            <div className="glass rounded-3xl p-3">
+            <div className="glass rounded-3xl p-3 elev-3">
               <Image
-                src="/images/creatives/hospital-intro-banner.jpg"
-                alt={`${site.hospital.name} — expert brain and spine surgeries, 24/7 trauma and emergency care, advanced ICU and state-of-the-art treatment`}
-                width={1280}
-                height={716}
+                src={site.hospital.exteriorImage}
+                alt={`${site.hospital.name} building exterior on Nehru Nagar, Khammam`}
+                width={1600}
+                height={1000}
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="rounded-2xl w-full h-auto"
+                className="rounded-2xl w-full h-auto object-cover"
               />
             </div>
           </div>
@@ -98,10 +98,9 @@ export default function FacilitiesPage() {
         </ul>
         <div className="mt-8">
           <ConfirmWithClient>
-            Photographs of the hospital exterior, reception, ICU and operating
-            theatre would strengthen this page considerably — patients comparing
-            hospitals look for them. Please supply images cleared for publication
-            (no identifiable patients).
+            Interior photographs — reception, ICU and the operating theatre —
+            would strengthen this page further. Please supply images cleared for
+            publication (no identifiable patients).
           </ConfirmWithClient>
         </div>
       </Section>
@@ -137,12 +136,32 @@ export default function FacilitiesPage() {
               </li>
             </ul>
           </div>
-          <ConfirmWithClient>
-            An embedded Google Map goes here once the Google Business Profile is
-            claimed and the exact map pin is confirmed. Claiming the profile is
-            priority #1 for local SEO — it is what makes the clinic appear in
-            &ldquo;neurosurgeon near me&rdquo; searches and on Google Maps.
-          </ConfirmWithClient>
+          <div className="space-y-4">
+            <div className="glass rounded-3xl p-3 elev-2">
+              <iframe
+                title={`Map to ${site.hospital.name}, ${site.hospital.city}`}
+                src={site.hospital.maps.embedUrl}
+                className="w-full h-[300px] sm:h-[360px] rounded-2xl border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+            <Button
+              variant="secondary"
+              size="cta"
+              render={
+                <a
+                  href={site.hospital.maps.directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
+              }
+            >
+              <MapPin aria-hidden />
+              Get directions
+            </Button>
+          </div>
         </div>
       </Section>
     </>

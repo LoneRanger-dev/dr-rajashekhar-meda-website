@@ -29,11 +29,18 @@ export const site = {
     street: "Old Priyadarshini College Building, Nehru Nagar, near Karnataka Bank",
     city: "Khammam",
     state: "Telangana",
-    postalCode: "507001", // CONFIRM_WITH_CLIENT
+    postalCode: "507002",
     country: "IN",
     addressFull:
-      "Old Priyadarshini College Building, Nehru Nagar, near Karnataka Bank, Khammam, Telangana",
-    // CONFIRM_WITH_CLIENT — approximate Khammam coordinates, verify against GBP pin
+      "Old Priyadarshini College Building, Nehru Nagar, near Karnataka Bank, Khammam, Telangana 507002",
+    exteriorImage: "/images/facility/hospital-exterior.jpg",
+    // Google Maps — from the clinic's Google Business Profile pin.
+    maps: {
+      directionsUrl: "https://maps.app.goo.gl/Dnftg7odqrb4Epb79",
+      embedUrl:
+        "https://www.google.com/maps?q=Suraksha+Hospital%2C+Old+Priyadarshini+College%2C+Nehru+Nagar%2C+Khammam%2C+Telangana+507002&output=embed",
+    },
+    // CONFIRM_WITH_CLIENT — approximate coordinates; verify exact pin against GBP.
     geo: { lat: 17.2473, lng: 80.1514 },
   },
   contact: {

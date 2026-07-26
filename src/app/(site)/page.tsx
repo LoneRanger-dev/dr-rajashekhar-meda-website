@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
 import { NeuroVisual } from "@/components/hero/neuro-visual";
+import { TiltCard } from "@/components/site/tilt-card";
 import { site, conditions, whatsappUrl } from "@/lib/site";
 
 const conditionIcons = {
@@ -102,17 +103,15 @@ export default function HomePage() {
             </div>
 
             <div className="relative">
-              <div className="glass rounded-3xl p-3 elev-3">
-                <Image
-                  src="/images/doctor/dr-reddy-consulting-wide.jpg"
-                  alt={`${site.doctor.name}, ${site.doctor.title}, in consultation at ${site.hospital.name}, Khammam`}
-                  width={1600}
-                  height={1100}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="rounded-2xl w-full h-auto object-cover"
-                />
-              </div>
+              <TiltCard
+                src="/images/doctor/dr-reddy-consulting-wide.jpg"
+                alt={`${site.doctor.name}, ${site.doctor.title}, in consultation at ${site.hospital.name}, Khammam`}
+                width={1600}
+                height={1100}
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="elev-3"
+              />
               <div className="glass rounded-2xl p-4 elev-2 absolute -bottom-5 left-4 right-4 sm:left-8 sm:right-auto sm:max-w-xs">
                 <p className="text-sm font-semibold">{site.doctor.tagline}</p>
                 <p className="text-xs text-muted-foreground mt-1">
@@ -320,19 +319,54 @@ export default function HomePage() {
               >
                 Message on WhatsApp
               </Button>
+              <Button
+                variant="secondary"
+                size="cta"
+                render={
+                  <a
+                    href={site.hospital.maps.directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
+                }
+              >
+                <MapPin aria-hidden />
+                Get directions
+              </Button>
             </div>
           </div>
 
-          <div className="glass rounded-3xl p-3">
-            <Image
-              src="/images/creatives/hospital-intro-banner.jpg"
-              alt={`${site.hospital.name} — expert brain and spine surgeries, 24/7 trauma and emergency care, advanced ICU`}
-              width={1280}
-              height={716}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="rounded-2xl w-full h-auto"
-            />
-          </div>
+          {/* The hospital building — the landmark patients look for when they
+              arrive. Presented on a subtle 3D tilt plane. */}
+          <TiltCard
+            src={site.hospital.exteriorImage}
+            alt={`${site.hospital.name} building — ${site.hospital.addressFull}`}
+            width={1600}
+            height={1000}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="elev-3"
+            caption={
+              <p className="text-sm text-muted-foreground">
+                Look for the{" "}
+                <span lang="te" className="font-medium text-foreground">
+                  {site.hospital.nameTelugu}
+                </span>{" "}
+                signboard on Nehru Nagar, near Karnataka Bank.
+              </p>
+            }
+          />
+        </div>
+
+        {/* Embedded Google Map — from the clinic's Business Profile pin. */}
+        <div className="mt-12 glass rounded-3xl p-3 elev-2">
+          <iframe
+            title={`Map to ${site.hospital.name}, ${site.hospital.city}`}
+            src={site.hospital.maps.embedUrl}
+            className="w-full h-[320px] sm:h-[420px] rounded-2xl border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
         </div>
       </Section>
     </>
