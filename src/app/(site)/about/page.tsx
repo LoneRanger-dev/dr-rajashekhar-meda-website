@@ -98,15 +98,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Practice context — the hospital where Dr. GRK Reddy operates. */}
+      {/* Branded profile banner. */}
       <Section>
         <Reveal className="relative glow-halo glass rounded-3xl p-3">
           <div className="overflow-hidden rounded-2xl img-hover">
             <Image
-              src={creativeImages.hospitalBanner.src}
-              alt={`${site.hospital.name} — brain & spine surgery, 24/7 trauma and emergency care, advanced ICU`}
-              width={creativeImages.hospitalBanner.width}
-              height={creativeImages.hospitalBanner.height}
+              src={creativeImages.doctorBanner.src}
+              alt={`${site.doctor.name} — ${site.doctor.credentials}, ${site.doctor.title} at ${site.hospital.name}, Khammam. 24/7 emergency neurosurgery, minimally invasive spine surgery, epilepsy & trauma care.`}
+              width={creativeImages.doctorBanner.width}
+              height={creativeImages.doctorBanner.height}
               sizes="(max-width: 1024px) 100vw, 1152px"
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}

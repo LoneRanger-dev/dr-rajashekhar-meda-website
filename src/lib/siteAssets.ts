@@ -68,6 +68,12 @@ export const creativeImages = {
     width: 1280,
     height: 716,
   },
+  /** Branded doctor banner (also the social OpenGraph image). */
+  doctorBanner: {
+    src: "/opengraph-image.png",
+    width: 1200,
+    height: 630,
+  },
 } as const;
 
 /** Brand marks. */
