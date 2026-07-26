@@ -21,6 +21,7 @@ import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
 import { NeuroVisual } from "@/components/hero/neuro-visual";
 import { TiltCard } from "@/components/site/tilt-card";
 import { HospitalShowcase } from "@/components/site/hospital-showcase";
+import { HeroBackground } from "@/components/site/hero-background";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, conditions, whatsappUrl } from "@/lib/site";
 import { doctorImages, BLUR_DATA_URL } from "@/lib/siteAssets";
@@ -40,10 +41,13 @@ export default function HomePage() {
       {/* ── HERO ───────────────────────────────────────────────────────────
           The 3D brain/spine visual replaces the portrait side in the next
           step; this static composition is the reduced-motion fallback. */}
-      <section className="brand-wash relative overflow-hidden">
-        {/* Decorative 3D layer. Loads only on capable devices, after idle,
+      <section className="relative overflow-hidden">
+        {/* Living hospital-interior background — slow zoom + scroll parallax
+            behind a light scrim that keeps the dark copy readable. */}
+        <HeroBackground />
+        {/* Decorative particle layer. Loads only on capable devices, after idle,
             and never carries meaning — the CSS gradient is the fallback. */}
-        <NeuroVisual className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-1/2 opacity-45 dark:opacity-60" />
+        <NeuroVisual className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-1/2 opacity-30 dark:opacity-50" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <Reveal as="div" className="space-y-7" blur={false} y={16}>
