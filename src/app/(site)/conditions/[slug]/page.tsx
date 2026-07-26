@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
+import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, conditions } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -98,9 +99,9 @@ export default async function ConditionPage({
       </section>
 
       <Section>
-        <div className="grid lg:grid-cols-3 gap-6">
-          <div className="glass rounded-2xl p-7 space-y-4">
-            <span className="grid size-11 place-items-center rounded-xl bg-accent/10 text-accent">
+        <RevealGroup className="grid lg:grid-cols-3 gap-6">
+          <RevealItem className="glass lift rounded-2xl p-7 space-y-4">
+            <span className="icon-glass grid size-11 place-items-center rounded-xl text-accent">
               <Stethoscope className="size-5" aria-hidden />
             </span>
             <h2 className="type-h3">Conditions treated</h2>
@@ -115,10 +116,10 @@ export default async function ConditionPage({
                 </li>
               ))}
             </ul>
-          </div>
+          </RevealItem>
 
-          <div className="glass rounded-2xl p-7 space-y-4 border-emergency/30">
-            <span className="grid size-11 place-items-center rounded-xl bg-emergency/10 text-emergency">
+          <RevealItem className="glass lift rounded-2xl p-7 space-y-4 border-emergency/30">
+            <span className="icon-glass grid size-11 place-items-center rounded-xl text-emergency">
               <AlertTriangle className="size-5" aria-hidden />
             </span>
             <h2 className="type-h3">When to seek help</h2>
@@ -137,10 +138,10 @@ export default async function ConditionPage({
               This list is for general guidance only and is not a diagnosis. If
               symptoms are sudden or severe, treat it as an emergency and call.
             </p>
-          </div>
+          </RevealItem>
 
-          <div className="glass rounded-2xl p-7 space-y-4">
-            <span className="grid size-11 place-items-center rounded-xl bg-primary text-primary-foreground">
+          <RevealItem className="group glass lift rounded-2xl p-7 space-y-4">
+            <span className="icon-glass grid size-11 place-items-center rounded-xl text-primary dark:text-accent">
               <CheckCircle2 className="size-5" aria-hidden />
             </span>
             <h2 className="type-h3">Dr. Reddy&apos;s approach</h2>
@@ -155,8 +156,8 @@ export default async function ConditionPage({
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
+          </RevealItem>
+        </RevealGroup>
       </Section>
 
       <section className="bg-emergency text-emergency-foreground">
@@ -180,12 +181,12 @@ export default async function ConditionPage({
 
       <Section className="bg-muted/60">
         <SectionHeading eyebrow="Related" title="Other treatments" />
-        <ul className="mt-10 grid sm:grid-cols-3 gap-5">
+        <RevealGroup as="ul" className="mt-10 grid sm:grid-cols-3 gap-5">
           {others.map((c) => (
-            <li key={c.slug}>
+            <RevealItem key={c.slug} as="li">
               <Link
                 href={`/conditions/${c.slug}`}
-                className="group glass rounded-2xl p-6 h-full flex flex-col gap-2 transition-transform duration-[var(--dur-base)] hover:-translate-y-1"
+                className="group glass lift rounded-2xl p-6 h-full flex flex-col gap-2"
               >
                 <h3 className="type-h3">{c.short}</h3>
                 <p className="text-sm text-muted-foreground flex-1">{c.summary}</p>
@@ -197,9 +198,9 @@ export default async function ConditionPage({
                   />
                 </span>
               </Link>
-            </li>
+            </RevealItem>
           ))}
-        </ul>
+        </RevealGroup>
       </Section>
     </>
   );

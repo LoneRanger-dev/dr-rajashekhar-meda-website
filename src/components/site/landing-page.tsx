@@ -26,8 +26,9 @@ export function LandingPage({ config }: { config: LandingConfig }) {
   return (
     <main id="main" className="flex-1">
       {/* Minimal header — logo-less, single call action, no nav links */}
-      <header className="glass border-b border-border sticky top-0 z-40">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <header className="sticky top-0 z-40">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-3">
+          <div className="glass-strong rounded-2xl px-4 h-14 flex items-center justify-between gap-4">
           <div className="leading-tight min-w-0">
             <p className="font-[family-name:var(--font-display)] font-semibold text-sm sm:text-base truncate">
               {site.doctor.name}
@@ -46,6 +47,7 @@ export function LandingPage({ config }: { config: LandingConfig }) {
             <span className="tnum hidden sm:inline">{site.contact.phoneDisplay}</span>
             <span className="tnum sm:hidden">Call</span>
           </Button>
+          </div>
         </div>
       </header>
 
@@ -92,7 +94,7 @@ export function LandingPage({ config }: { config: LandingConfig }) {
               </ul>
             </div>
 
-            <div className="glass rounded-3xl p-3 elev-3">
+            <div className="relative glow-halo glass rounded-3xl p-3 elev-3">
               <Image
                 src={config.image.src}
                 alt={config.image.alt}
@@ -111,8 +113,10 @@ export function LandingPage({ config }: { config: LandingConfig }) {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ul className="grid sm:grid-cols-3 gap-5">
             {config.benefits.map((b) => (
-              <li key={b.title} className="glass rounded-2xl p-6 space-y-3">
-                <CheckCircle2 className="size-7 text-accent" aria-hidden />
+              <li key={b.title} className="group glass lift rounded-2xl p-6 space-y-3">
+                <span className="icon-glass grid size-11 place-items-center rounded-xl text-accent">
+                  <CheckCircle2 className="size-5" aria-hidden />
+                </span>
                 <h2 className="type-h3">{b.title}</h2>
                 <p className="text-sm text-muted-foreground">{b.body}</p>
               </li>
@@ -125,7 +129,7 @@ export function LandingPage({ config }: { config: LandingConfig }) {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10">
             <AppointmentForm />
-            <div className="glass rounded-2xl p-7 space-y-5 h-fit">
+            <div className="glass lift rounded-2xl p-7 space-y-5 h-fit">
               <h2 className="type-h3">{site.hospital.name}</h2>
               <ul className="space-y-4 text-sm">
                 <li className="flex gap-3">

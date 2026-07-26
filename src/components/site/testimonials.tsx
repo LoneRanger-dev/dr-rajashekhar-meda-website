@@ -178,7 +178,7 @@ export function Testimonials() {
           onClick={() => scrollTo(index - 1)}
           disabled={index === 0}
           aria-label="Previous testimonial"
-          className="grid size-11 place-items-center rounded-xl border border-border bg-background disabled:opacity-40"
+          className="btn-premium grid size-11 place-items-center rounded-xl glass disabled:opacity-40"
         >
           <ChevronLeft className="size-5" />
         </button>
@@ -190,7 +190,7 @@ export function Testimonials() {
           onClick={() => scrollTo(index + 1)}
           disabled={index === sampleTestimonials.length - 1}
           aria-label="Next testimonial"
-          className="grid size-11 place-items-center rounded-xl border border-border bg-background disabled:opacity-40"
+          className="btn-premium grid size-11 place-items-center rounded-xl glass disabled:opacity-40"
         >
           <ChevronRight className="size-5" />
         </button>

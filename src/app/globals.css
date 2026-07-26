@@ -498,6 +498,25 @@
   50%      { transform: translate3d(4%, -5%, 0) scale(1.1); }
 }
 
+/* Success confirmation — a gentle spring pop for the tick icon. */
+@keyframes pop-in {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@utility animate-pop {
+  animation: pop-in 0.5s var(--ease-spring) both;
+}
+
+/* Breathing glow — the chatbot launcher's blue halo pulses like a heartbeat. */
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 0 0 var(--glow-soft), var(--elev-3); }
+  50%      { box-shadow: 0 0 26px 6px var(--glow-color), var(--elev-3); }
+}
+@utility animate-breathe {
+  animation: breathe 3.5s ease-in-out infinite;
+}
+
 .ambient-bg {
   position: fixed;
   inset: 0;

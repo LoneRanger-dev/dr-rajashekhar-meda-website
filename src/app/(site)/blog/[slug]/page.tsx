@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Clock, Phone, AlertTriangle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/site/ui-bits";
+import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { articles } from "@/lib/articles";
 import { site } from "@/lib/site";
 
@@ -78,7 +79,7 @@ export default async function ArticlePage({
 
       <article className="mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-16">
         {article.image && (
-          <div className="glass rounded-2xl p-3 mb-10">
+          <div className="relative glow-halo glass rounded-2xl p-3 mb-10">
             <Image
               src={article.image.src}
               alt={article.image.alt}
@@ -153,12 +154,12 @@ export default async function ArticlePage({
 
       <Section className="bg-muted/60">
         <h2 className="type-h2 mb-8">Continue reading</h2>
-        <ul className="grid sm:grid-cols-2 gap-5">
+        <RevealGroup as="ul" className="grid sm:grid-cols-2 gap-5">
           {related.map((a) => (
-            <li key={a.slug}>
+            <RevealItem key={a.slug} as="li">
               <Link
                 href={`/blog/${a.slug}`}
-                className="group glass rounded-2xl p-6 h-full flex flex-col gap-2 transition-transform duration-[var(--dur-base)] hover:-translate-y-1"
+                className="group glass lift rounded-2xl p-6 h-full flex flex-col gap-2"
               >
                 <span className="text-xs font-semibold text-accent">{a.category}</span>
                 <h3 className="type-h3">{a.title}</h3>
@@ -171,9 +172,9 @@ export default async function ArticlePage({
                   />
                 </span>
               </Link>
-            </li>
+            </RevealItem>
           ))}
-        </ul>
+        </RevealGroup>
       </Section>
     </>
   );

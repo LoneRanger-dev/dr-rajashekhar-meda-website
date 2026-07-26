@@ -60,7 +60,7 @@ export default function ContactPage() {
           </div>
 
           <div className="space-y-6">
-            <div className="glass rounded-2xl p-7 space-y-5">
+            <div className="glass lift rounded-2xl p-7 space-y-5">
               <h2 className="type-h3">Clinic details</h2>
               <ul className="space-y-5">
                 <li className="flex gap-4">
@@ -114,12 +114,39 @@ export default function ContactPage() {
               </Button>
             </div>
 
+            <div className="relative glow-halo">
+              <div className="glass rounded-3xl p-3 elev-2 overflow-hidden">
+                <iframe
+                  title={`Map to ${site.hospital.name}, ${site.hospital.city}`}
+                  src={site.hospital.maps.embedUrl}
+                  className="w-full h-[280px] rounded-2xl border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+            <Button
+              variant="glass"
+              size="cta"
+              className="w-full"
+              render={
+                <a
+                  href={site.hospital.maps.directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
+              }
+            >
+              <MapPin aria-hidden />
+              Get directions
+            </Button>
+
             <ConfirmWithClient>
               Confirm whether{" "}
               <span className="tnum font-medium">{site.contact.phoneDisplay}</span>{" "}
               is also the WhatsApp Business number, or whether a separate line
-              should be used. An embedded Google Map will be added here once the
-              Business Profile pin is confirmed.
+              should be used.
             </ConfirmWithClient>
           </div>
         </div>

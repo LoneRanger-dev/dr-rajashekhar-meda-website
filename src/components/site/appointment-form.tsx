@@ -84,7 +84,7 @@ export function AppointmentForm() {
         aria-live="polite"
         className="glass rounded-2xl p-8 text-center space-y-4"
       >
-        <CheckCircle2 className="size-12 text-success mx-auto" aria-hidden />
+        <CheckCircle2 className="size-12 text-success mx-auto animate-pop" aria-hidden />
         <h3 className="type-h2">Request received</h3>
         <p className="text-muted-foreground max-w-md mx-auto">{message}</p>
         <Button
@@ -138,7 +138,7 @@ export function AppointmentForm() {
             id="reason"
             name="reason"
             defaultValue=""
-            className="h-11 w-full rounded-xl border border-input bg-background px-3 text-base"
+            className="h-11 w-full rounded-xl border border-input bg-[var(--glass-bg)] px-3 text-base backdrop-blur-md outline-none transition-[box-shadow,border-color] focus-visible:border-ring focus-visible:ring-4 focus-visible:ring-ring/25 focus-visible:shadow-[0_0_18px_var(--glow-soft)]"
           >
             <option value="">Select a concern (optional)</option>
             {conditions.map((c) => (
@@ -166,7 +166,7 @@ export function AppointmentForm() {
           id="notes"
           name="notes"
           rows={3}
-          className="w-full rounded-xl border border-input bg-background p-3 text-base"
+          className="w-full rounded-xl border border-input bg-[var(--glass-bg)] p-3 text-base backdrop-blur-md outline-none transition-[box-shadow,border-color] focus-visible:border-ring focus-visible:ring-4 focus-visible:ring-ring/25 focus-visible:shadow-[0_0_18px_var(--glow-soft)]"
           placeholder="Optional — please do not share detailed medical history here."
         />
         <p className="text-xs text-muted-foreground">

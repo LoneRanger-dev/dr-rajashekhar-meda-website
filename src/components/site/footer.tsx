@@ -5,7 +5,7 @@ import { site, navigation, conditions } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-border bg-primary text-primary-foreground">
+    <footer className="mt-auto border-t border-white/10 bg-gradient-to-b from-[var(--navy-800)] to-[var(--navy-950)] text-primary-foreground shadow-[inset_0_1px_0_0_var(--glow-soft)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-3">
@@ -32,7 +32,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3 rounded-2xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-md">
             <h2 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground/60">
               {site.hospital.name}
             </h2>
@@ -62,7 +62,7 @@ export function Footer() {
             </address>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3 rounded-2xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-md">
             <h2 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground/60">
               Consulting Hours
             </h2>

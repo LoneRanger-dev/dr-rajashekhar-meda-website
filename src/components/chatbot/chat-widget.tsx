@@ -146,7 +146,10 @@ export function ChatWidget() {
                 ring with a teal glow — reads as premium on any page colour
                 and echoes the mascot's own glowing accents. */}
             <span
-              className="absolute inset-0 rounded-full shadow-[0_8px_30px_oklch(0.5198_0.0936_223.13/40%)] ring-2 ring-accent/40"
+              className={cn(
+                "absolute inset-0 rounded-full ring-2 ring-accent/40 shadow-[0_8px_30px_oklch(0.5198_0.0936_223.13/40%)]",
+                !reduceMotion && "animate-breathe"
+              )}
               aria-hidden
             />
             {/* Still frame, not the video: this launcher is on every page and
@@ -173,8 +176,8 @@ export function ChatWidget() {
           aria-label="Clinic assistant"
           className={cn(
             "fixed z-50 right-2 left-2 bottom-36 sm:left-auto sm:right-4 sm:w-[26rem]",
-            "lg:bottom-24 flex flex-col rounded-2xl border border-border overflow-hidden",
-            "bg-background shadow-[var(--elev-3)] max-h-[min(32rem,70vh)]",
+            "lg:bottom-24 flex flex-col rounded-2xl overflow-hidden glass-strong",
+            "shadow-[var(--elev-3)] max-h-[min(32rem,70vh)]",
             !reduceMotion && "motion-safe:animate-in motion-safe:fade-in"
           )}
         >
@@ -284,7 +287,7 @@ export function ChatWidget() {
                     <button
                       type="button"
                       onClick={() => send(s)}
-                      className="rounded-full border border-border bg-background px-3 py-2 text-xs font-medium hover:bg-muted transition-colors"
+                      className="btn-premium rounded-full glass px-3 py-2 text-xs font-medium"
                     >
                       {s}
                     </button>
@@ -311,7 +314,7 @@ export function ChatWidget() {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about timings, location…"
               autoComplete="off"
-              className="flex-1 h-11 rounded-xl border border-input bg-background px-3 text-base"
+              className="flex-1 h-11 rounded-xl border border-input bg-[var(--glass-bg)] px-3 text-base backdrop-blur-md outline-none transition-[box-shadow,border-color] focus-visible:border-ring focus-visible:ring-4 focus-visible:ring-ring/25 focus-visible:shadow-[0_0_18px_var(--glow-soft)]"
             />
             <Button
               type="submit"

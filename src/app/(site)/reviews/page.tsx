@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Quote, Star, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
+import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { Testimonials } from "@/components/site/testimonials";
 import { testimonials } from "@/lib/site";
 
@@ -36,9 +37,9 @@ export default function ReviewsPage() {
 
       <Section>
         {hasReal ? (
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <RevealGroup as="ul" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((t) => (
-              <li key={t.name} className="glass rounded-2xl p-7 space-y-4">
+              <RevealItem key={t.name} as="li" className="glass lift rounded-2xl p-7 space-y-4">
                 <Quote className="size-7 text-accent" aria-hidden />
                 <blockquote className="text-muted-foreground">
                   &ldquo;{t.quote}&rdquo;
@@ -47,9 +48,9 @@ export default function ReviewsPage() {
                   <p className="font-semibold">{t.name}</p>
                   <p className="text-sm text-muted-foreground">{t.condition}</p>
                 </footer>
-              </li>
+              </RevealItem>
             ))}
-          </ul>
+          </RevealGroup>
         ) : (
           <Testimonials />
         )}
@@ -58,8 +59,8 @@ export default function ReviewsPage() {
       {!hasReal && (
         <Section className="bg-muted/60">
           <div className="max-w-3xl space-y-6">
-            <div className="glass rounded-2xl p-7 space-y-4">
-              <span className="grid size-11 place-items-center rounded-xl bg-accent/10 text-accent">
+            <div className="glass lift rounded-2xl p-7 space-y-4">
+              <span className="icon-glass grid size-11 place-items-center rounded-xl text-accent">
                 <Star className="size-5" aria-hidden />
               </span>
               <h2 className="type-h3">How to publish real reviews here</h2>

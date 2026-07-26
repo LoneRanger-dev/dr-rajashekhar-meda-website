@@ -15,8 +15,8 @@ import { track } from "@/lib/analytics";
  */
 export function StickyCta() {
   return (
-    <div className="lg:hidden fixed bottom-0 inset-x-0 z-30 glass border-t border-border pb-[env(safe-area-inset-bottom)]">
-      <div className="grid grid-cols-3 gap-2 p-2">
+    <div className="lg:hidden fixed bottom-0 inset-x-0 z-30 px-3 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))]">
+      <div className="glass-strong rounded-2xl grid grid-cols-3 gap-2 p-2">
         <Button
           variant="emergency"
           size="cta"

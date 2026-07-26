@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Ambulance, BedDouble, Brain, Clock, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, ConfirmWithClient } from "@/components/site/ui-bits";
+import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site } from "@/lib/site";
 import { notoSansTelugu } from "@/lib/fonts-telugu";
 
@@ -40,7 +41,7 @@ export default function FacilitiesPage() {
     <>
       <section className="brand-wash">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <Reveal className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-5">
               <SectionHeading
                 as="h1"
@@ -63,7 +64,7 @@ export default function FacilitiesPage() {
                 <span className="tnum">{site.contact.phoneDisplay}</span>
               </Button>
             </div>
-            <div className="glass rounded-3xl p-3 elev-3">
+            <div className="relative glow-halo glass rounded-3xl p-3 elev-3">
               <Image
                 src={site.hospital.exteriorImage}
                 alt={`${site.hospital.name} building exterior on Nehru Nagar, Khammam`}
@@ -74,7 +75,7 @@ export default function FacilitiesPage() {
                 className="rounded-2xl w-full h-auto object-cover"
               />
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -83,19 +84,26 @@ export default function FacilitiesPage() {
           eyebrow="What's on site"
           title="Facilities supporting neurosurgical care"
         />
-        <ul className="mt-12 grid sm:grid-cols-2 gap-5">
+        <RevealGroup as="ul" className="mt-12 grid sm:grid-cols-2 gap-5">
           {facilities.map(({ icon: Icon, title, body }) => (
-            <li key={title} className="glass rounded-2xl p-7 flex gap-5">
-              <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent">
-                <Icon className="size-6" aria-hidden />
+            <RevealItem
+              key={title}
+              as="li"
+              className="group glass lift rounded-2xl p-7 flex gap-5"
+            >
+              <span className="icon-glass grid size-12 shrink-0 place-items-center rounded-xl text-accent">
+                <Icon
+                  className="size-6 transition-transform duration-[var(--dur-base)] group-hover:scale-110"
+                  aria-hidden
+                />
               </span>
               <div>
                 <h2 className="type-h3">{title}</h2>
                 <p className="text-sm text-muted-foreground mt-1.5">{body}</p>
               </div>
-            </li>
+            </RevealItem>
           ))}
-        </ul>
+        </RevealGroup>
         <div className="mt-8">
           <ConfirmWithClient>
             Interior photographs — reception, ICU and the operating theatre —
@@ -137,18 +145,20 @@ export default function FacilitiesPage() {
             </ul>
           </div>
           <div className="space-y-4">
-            <div className="glass rounded-3xl p-3 elev-2">
-              <iframe
-                title={`Map to ${site.hospital.name}, ${site.hospital.city}`}
-                src={site.hospital.maps.embedUrl}
-                className="w-full h-[300px] sm:h-[360px] rounded-2xl border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
+            <div className="relative glow-halo">
+              <div className="glass rounded-3xl p-3 elev-2 overflow-hidden">
+                <iframe
+                  title={`Map to ${site.hospital.name}, ${site.hospital.city}`}
+                  src={site.hospital.maps.embedUrl}
+                  className="w-full h-[300px] sm:h-[360px] rounded-2xl border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
             </div>
             <Button
-              variant="secondary"
+              variant="glass"
               size="cta"
               render={
                 <a

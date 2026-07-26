@@ -4,6 +4,7 @@ import Link from "next/link";
 import { GraduationCap, Award, Stethoscope, Building2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, ConfirmWithClient } from "@/components/site/ui-bits";
+import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, awards } from "@/lib/site";
 import { notoSansTelugu } from "@/lib/fonts-telugu";
 
@@ -47,8 +48,8 @@ export default function AboutPage() {
     <>
       <section className="brand-wash">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
-          <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
-            <div className="glass rounded-3xl p-3">
+          <Reveal className="grid lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
+            <div className="relative glow-halo glass rounded-3xl p-3">
               <Image
                 src="/images/doctor/dr-reddy-portrait.jpg"
                 alt={`Portrait of ${site.doctor.name}, ${site.doctor.title}`}
@@ -88,7 +89,7 @@ export default function AboutPage() {
                 <ArrowRight aria-hidden />
               </Button>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -98,8 +99,8 @@ export default function AboutPage() {
             <SectionHeading eyebrow="Qualifications" title="Training & credentials" />
             <ul className="space-y-4">
               {qualifications.map((q) => (
-                <li key={q.degree} className="glass rounded-2xl p-5 flex gap-4">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground">
+                <li key={q.degree} className="group glass lift rounded-2xl p-5 flex gap-4">
+                  <span className="icon-glass grid size-11 shrink-0 place-items-center rounded-xl text-primary dark:text-accent">
                     <GraduationCap className="size-5" aria-hidden />
                   </span>
                   <div>
@@ -113,9 +114,9 @@ export default function AboutPage() {
 
           <div className="space-y-6">
             <SectionHeading eyebrow="Academic role" title="Teaching & authority" />
-            <div className="glass rounded-2xl p-6 space-y-4">
+            <div className="group glass lift rounded-2xl p-6 space-y-4">
               <div className="flex gap-4">
-                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent">
+                <span className="icon-glass grid size-11 shrink-0 place-items-center rounded-xl text-accent">
                   <Building2 className="size-5" aria-hidden />
                 </span>
                 <div>
@@ -137,7 +138,7 @@ export default function AboutPage() {
             {awards.length > 0 ? (
               <ul className="space-y-3">
                 {awards.map((a) => (
-                  <li key={a.title} className="glass rounded-2xl p-5 flex gap-4">
+                  <li key={a.title} className="glass lift rounded-2xl p-5 flex gap-4">
                     <Award className="size-5 text-accent shrink-0 mt-0.5" aria-hidden />
                     <span className="font-medium">{a.title}</span>
                   </li>
@@ -161,17 +162,24 @@ export default function AboutPage() {
           title="What Dr. Reddy treats"
           lead="Drawn from the practice's own clinical focus — brain and spine, emergency and planned."
         />
-        <ul className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <RevealGroup as="ul" className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {expertise.map((item) => (
-            <li key={item.title} className="glass rounded-2xl p-6 space-y-3">
-              <span className="grid size-11 place-items-center rounded-xl bg-accent/10 text-accent">
-                <Stethoscope className="size-5" aria-hidden />
+            <RevealItem
+              key={item.title}
+              as="li"
+              className="group glass lift rounded-2xl p-6 space-y-3"
+            >
+              <span className="icon-glass grid size-11 place-items-center rounded-xl text-accent">
+                <Stethoscope
+                  className="size-5 transition-transform duration-[var(--dur-base)] group-hover:scale-110"
+                  aria-hidden
+                />
               </span>
               <h3 className="type-h3">{item.title}</h3>
               <p className="text-sm text-muted-foreground">{item.body}</p>
-            </li>
+            </RevealItem>
           ))}
-        </ul>
+        </RevealGroup>
       </Section>
     </>
   );

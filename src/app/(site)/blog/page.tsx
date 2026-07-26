@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
+import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { articles } from "@/lib/articles";
 
 export const metadata: Metadata = {
@@ -26,12 +27,12 @@ export default function BlogPage() {
       </section>
 
       <Section>
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <RevealGroup as="ul" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
-            <li key={article.slug}>
+            <RevealItem key={article.slug} as="li">
               <Link
                 href={`/blog/${article.slug}`}
-                className="group glass rounded-2xl overflow-hidden h-full flex flex-col transition-transform duration-[var(--dur-base)] hover:-translate-y-1"
+                className="group glass lift rounded-2xl overflow-hidden h-full flex flex-col"
               >
                 {article.image ? (
                   <Image
@@ -68,9 +69,9 @@ export default function BlogPage() {
                   </span>
                 </div>
               </Link>
-            </li>
+            </RevealItem>
           ))}
-        </ul>
+        </RevealGroup>
       </Section>
     </>
   );

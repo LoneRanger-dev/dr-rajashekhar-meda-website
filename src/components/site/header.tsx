@@ -15,9 +15,9 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 glass border-b border-border/60">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex h-16 lg:h-20 items-center justify-between gap-4">
+    <header className="sticky top-0 z-40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-3">
+        <div className="glass-strong rounded-2xl px-3 sm:px-4 flex h-14 lg:h-16 items-center justify-between gap-4">
           {/* No aria-label here: the visible text is already a complete,
               accurate name. An aria-label that omits part of the visible
               text fails WCAG 2.5.3 (Label in Name). */}
@@ -56,10 +56,11 @@ export function Header() {
                       href={item.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "inline-flex h-11 items-center whitespace-nowrap rounded-lg px-2.5 xl:px-3 text-[0.8rem] xl:text-sm font-medium transition-colors",
+                        "relative inline-flex h-10 items-center whitespace-nowrap rounded-lg px-2.5 xl:px-3 text-[0.8rem] xl:text-sm font-medium transition-colors",
+                        "after:absolute after:bottom-1.5 after:left-3 after:right-3 after:h-[2px] after:rounded-full after:bg-accent after:shadow-[0_0_8px_var(--glow-color)] after:origin-left after:transition-transform after:duration-[var(--dur-base)] after:ease-[var(--ease-out)]",
                         active
-                          ? "text-accent bg-accent/10"
-                          : "text-foreground/80 hover:text-foreground hover:bg-muted"
+                          ? "text-accent after:scale-x-100"
+                          : "text-foreground/80 hover:text-foreground after:scale-x-0 hover:after:scale-x-100"
                       )}
                     >
                       {item.short}
@@ -87,7 +88,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
-              className="lg:hidden grid size-11 place-items-center rounded-xl border border-border bg-background"
+              className="btn-premium lg:hidden grid size-11 place-items-center rounded-xl glass"
             >
               {open ? <X className="size-5" /> : <Menu className="size-5" />}
             </button>
@@ -99,9 +100,9 @@ export function Header() {
         <nav
           id="mobile-nav"
           aria-label="Mobile"
-          className="lg:hidden border-t border-border bg-background"
+          className="lg:hidden mx-auto max-w-7xl px-4 sm:px-6 mt-2"
         >
-          <ul className="mx-auto max-w-7xl px-4 py-3 space-y-1">
+          <ul className="glass-strong rounded-2xl p-2 space-y-1">
             {navigation.map((item) => {
               const active =
                 item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
@@ -112,8 +113,10 @@ export function Header() {
                     onClick={() => setOpen(false)}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "flex h-12 items-center rounded-xl px-4 text-[0.95rem] font-medium",
-                      active ? "bg-accent/10 text-accent" : "hover:bg-muted"
+                      "flex h-12 items-center rounded-xl px-4 text-[0.95rem] font-medium transition-colors",
+                      active
+                        ? "bg-accent/10 text-accent"
+                        : "hover:bg-white/40 dark:hover:bg-white/10"
                     )}
                   >
                     {item.label}
