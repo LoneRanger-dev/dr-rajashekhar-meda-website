@@ -23,14 +23,16 @@ export function Header() {
               accurate name. An aria-label that omits part of the visible
               text fails WCAG 2.5.3 (Label in Name). */}
           <Link href="/" className="flex items-center gap-2.5 sm:gap-3 shrink-0 min-w-0">
-            <Image
-              src={brandImages.logo.src}
-              alt={`${site.hospital.name} — Brain, Spine, Neuro`}
-              width={brandImages.logo.width}
-              height={brandImages.logo.height}
-              priority
-              className="h-8 sm:h-9 lg:h-10 w-auto"
-            />
+            <span className="inline-flex rounded-xl bg-white p-1.5 shrink-0 shadow-[var(--elev-1)]">
+              <Image
+                src={brandImages.logo.src}
+                alt={`${site.hospital.name} — Brain, Spine, Neuro`}
+                width={brandImages.logo.width}
+                height={brandImages.logo.height}
+                priority
+                className="h-7 sm:h-8 lg:h-9 w-auto"
+              />
+            </span>
             {/* Shown on small screens (no nav) and again from 2xl, where
                 there is room. In between it competes with the nav and pushes
                 the phone CTA off-screen. */}
