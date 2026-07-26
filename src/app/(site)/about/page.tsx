@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, ConfirmWithClient } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, awards } from "@/lib/site";
-import { doctorImages, BLUR_DATA_URL } from "@/lib/siteAssets";
+import { doctorImages, creativeImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 import { notoSansTelugu } from "@/lib/fonts-telugu";
 
 export const metadata: Metadata = {
@@ -97,6 +97,24 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </section>
+
+      {/* Practice context — the hospital where Dr. GRK Reddy operates. */}
+      <Section>
+        <Reveal className="relative glow-halo glass rounded-3xl p-3">
+          <div className="overflow-hidden rounded-2xl img-hover">
+            <Image
+              src={creativeImages.hospitalBanner.src}
+              alt={`${site.hospital.name} — brain & spine surgery, 24/7 trauma and emergency care, advanced ICU`}
+              width={creativeImages.hospitalBanner.width}
+              height={creativeImages.hospitalBanner.height}
+              sizes="(max-width: 1024px) 100vw, 1152px"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </Reveal>
+      </Section>
 
       <Section>
         <div className="grid lg:grid-cols-2 gap-12">

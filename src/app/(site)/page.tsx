@@ -23,7 +23,7 @@ import { TiltCard } from "@/components/site/tilt-card";
 import { HospitalShowcase } from "@/components/site/hospital-showcase";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, conditions, whatsappUrl } from "@/lib/site";
-import { doctorImages, facilityImages, BLUR_DATA_URL } from "@/lib/siteAssets";
+import { doctorImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 
 const conditionIcons = {
   spine: Bone,
@@ -365,43 +365,20 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* The hospital building — the landmark patients look for when they
-              arrive. Presented on a subtle 3D tilt plane over a soft glow. */}
+          {/* Embedded Google Map — from the clinic's Business Profile pin,
+              in a rounded glass frame with a soft medical-blue glow. The
+              hospital itself is presented in the cinematic showcase above. */}
           <div className="relative glow-halo">
-            <TiltCard
-              src={facilityImages.interior.src}
-              alt={`Inside ${site.hospital.name} — reception and patient areas, Khammam`}
-              width={facilityImages.interior.width}
-              height={facilityImages.interior.height}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="elev-3"
-              blurDataURL={BLUR_DATA_URL}
-              caption={
-                <p className="text-sm text-muted-foreground">
-                  Modern, comfortable interiors — reception, consulting rooms and
-                  an advanced ICU, at the{" "}
-                  <span lang="te" className="font-medium text-foreground">
-                    {site.hospital.nameTelugu}
-                  </span>{" "}
-                  building on Nehru Nagar.
-                </p>
-              }
-            />
-          </div>
-        </div>
-
-        {/* Embedded Google Map — from the clinic's Business Profile pin,
-            in a rounded glass frame with a soft medical-blue glow. */}
-        <div className="mt-12 relative glow-halo">
-          <div className="glass elev-2 rounded-3xl p-3 overflow-hidden">
-            <iframe
-              title={`Map to ${site.hospital.name}, ${site.hospital.city}`}
-              src={site.hospital.maps.embedUrl}
-              className="w-full h-[320px] sm:h-[420px] rounded-2xl border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
+            <div className="glass elev-2 rounded-3xl p-3 overflow-hidden">
+              <iframe
+                title={`Map to ${site.hospital.name}, ${site.hospital.city}`}
+                src={site.hospital.maps.embedUrl}
+                className="w-full h-[340px] sm:h-[440px] lg:h-[520px] rounded-2xl border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
       </Section>

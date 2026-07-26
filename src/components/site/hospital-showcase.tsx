@@ -131,15 +131,15 @@ export function HospitalShowcase() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="glass-strong max-w-xl rounded-3xl p-7 sm:p-9 text-white shadow-[var(--elev-3)]"
+          className="max-w-xl rounded-3xl p-7 sm:p-9 border border-white/60 bg-white/85 backdrop-blur-xl text-slate-900 shadow-[var(--elev-3)]"
         >
-          <p className="type-label text-[clamp(0.7rem,2.5vw,0.8125rem)] text-teal-200">
+          <p className="type-label text-[clamp(0.75rem,2.5vw,0.875rem)] font-semibold tracking-[0.18em] uppercase text-accent">
             Visit us in Khammam
           </p>
-          <h2 className="mt-3 font-[family-name:var(--font-display)] font-semibold tracking-tight text-[clamp(1.75rem,1.2rem+3vw,2.75rem)] leading-[1.1]">
+          <h2 className="mt-3 font-[family-name:var(--font-display)] font-semibold tracking-tight text-[clamp(1.75rem,1.2rem+3vw,2.75rem)] leading-[1.1] text-slate-900">
             {site.hospital.name}
           </h2>
-          <p className="mt-3 text-[clamp(0.95rem,0.9rem+0.3vw,1.1rem)] text-white/85">
+          <p className="mt-3 text-[clamp(0.95rem,0.9rem+0.3vw,1.1rem)] text-slate-700">
             {site.hospital.descriptor} — a modern facility on Nehru Nagar with an
             advanced ICU and a neurosurgeon available 24/7.
           </p>
@@ -153,8 +153,8 @@ export function HospitalShowcase() {
               <span className="tnum">Call {site.contact.phoneDisplay}</span>
             </Button>
             <Button
+              variant="accent"
               size="cta"
-              className="bg-white/15 text-white hover:bg-white/25 border border-white/25 backdrop-blur-md"
               render={
                 <a
                   href={site.hospital.maps.directionsUrl}
@@ -169,7 +169,7 @@ export function HospitalShowcase() {
             <Button
               variant="ghost"
               size="cta"
-              className="text-white hover:bg-white/15"
+              className="text-accent hover:bg-accent/10"
               render={<Link href="/facilities" />}
             >
               Explore facilities
