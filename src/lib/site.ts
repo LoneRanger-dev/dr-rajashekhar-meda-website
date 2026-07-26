@@ -7,13 +7,16 @@
  * rendered with a visible marker until the clinic supplies real data.
  */
 
+import { facilityImages } from "./siteAssets";
+
 export const CONFIRM = "[CONFIRM WITH CLIENT]" as const;
 
 export const site = {
   domain: "https://drramakrishnareddy.com", // CONFIRM_WITH_CLIENT — final domain
   doctor: {
-    name: "Dr. Gade Ramakrishna Reddy",
-    nameAlt: "Dr. Ramakrishna Reddy Gade",
+    name: "Dr. GRK Reddy",
+    // Full formal name retained for structured data (alternateName) and SEO.
+    nameAlt: "Dr. Gade Ramakrishna Reddy",
     nameTelugu: "డా. గాదె రామకృష్ణారెడ్డి",
     credentials: "MBBS, MS (General Surgery), MCh (Neurosurgery)",
     title: "Consultant Brain & Spine Surgeon",
@@ -33,7 +36,7 @@ export const site = {
     country: "IN",
     addressFull:
       "Old Priyadarshini College Building, Nehru Nagar, near Karnataka Bank, Khammam, Telangana 507002",
-    exteriorImage: "/images/facility/hospital-exterior.jpg",
+    exteriorImage: facilityImages.exterior.src,
     // Google Maps — from the clinic's Google Business Profile pin.
     maps: {
       directionsUrl: "https://maps.app.goo.gl/Dnftg7odqrb4Epb79",
@@ -206,7 +209,7 @@ export const conditions: Condition[] = [
  */
 export const navigation = [
   { href: "/", label: "Home", short: "Home" },
-  { href: "/about", label: "About Dr. Reddy", short: "About" },
+  { href: "/about", label: "About Dr. GRK Reddy", short: "About" },
   { href: "/conditions", label: "Conditions & Treatments", short: "Conditions" },
   { href: "/facilities", label: "Hospital Facilities", short: "Facilities" },
   { href: "/reviews", label: "Patient Reviews", short: "Reviews" },
@@ -230,5 +233,5 @@ export const testimonials: {
 /** Awards / publications — none verified in the source material yet. */
 export const awards: { title: string; year?: string }[] = [];
 
-export const whatsappUrl = (message = "Hello, I would like to book an appointment with Dr. Reddy.") =>
+export const whatsappUrl = (message = "Hello, I would like to book an appointment with Dr. GRK Reddy.") =>
   `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(message)}`;

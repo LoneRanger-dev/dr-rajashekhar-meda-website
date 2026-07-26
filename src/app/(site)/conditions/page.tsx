@@ -8,7 +8,7 @@ import { conditions } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Conditions & Treatments — Brain, Spine & Epilepsy Care in Khammam",
   description:
-    "Brain and spine conditions treated by Dr. Gade Ramakrishna Reddy in Khammam: herniated disc, spinal stenosis, spinal deformity, head injury, brain tumours, epilepsy and minimally invasive spine surgery.",
+    "Brain and spine conditions treated by Dr. GRK Reddy in Khammam: herniated disc, spinal stenosis, spinal deformity, head injury, brain tumours, epilepsy and minimally invasive spine surgery.",
 };
 
 const icons = { spine: Bone, brain: Brain, activity: Activity, scan: Scan } as const;

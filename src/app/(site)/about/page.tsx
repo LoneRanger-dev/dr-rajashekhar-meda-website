@@ -6,12 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, ConfirmWithClient } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, awards } from "@/lib/site";
+import { doctorImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 import { notoSansTelugu } from "@/lib/fonts-telugu";
 
 export const metadata: Metadata = {
-  title: "About Dr. Gade Ramakrishna Reddy — MCh Neurosurgeon, Khammam",
+  title: "About Dr. GRK Reddy — MCh Neurosurgeon, Khammam",
   description:
-    "Dr. Gade Ramakrishna Reddy, MBBS, MS, MCh (Neurosurgery), Consultant Brain & Spine Surgeon at Suraksha Hospital, Khammam and Assistant Professor at Mamata Medical College.",
+    "Dr. GRK Reddy, MBBS, MS, MCh (Neurosurgery), Consultant Brain & Spine Surgeon at Suraksha Hospital, Khammam and Assistant Professor at Mamata Medical College.",
 };
 
 const qualifications = [
@@ -50,15 +51,19 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
           <Reveal className="grid lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
             <div className="relative glow-halo glass rounded-3xl p-3">
-              <Image
-                src="/images/doctor/dr-reddy-portrait.jpg"
-                alt={`Portrait of ${site.doctor.name}, ${site.doctor.title}`}
-                width={1067}
-                height={1600}
-                priority
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="rounded-2xl w-full h-auto object-cover"
-              />
+              <div className="overflow-hidden rounded-2xl img-hover">
+                <Image
+                  src={doctorImages.about.src}
+                  alt={`${site.doctor.name}, ${site.doctor.title}, in consultation at ${site.hospital.name}`}
+                  width={doctorImages.about.width}
+                  height={doctorImages.about.height}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
             <div className="space-y-6">
               <SectionHeading
@@ -69,7 +74,7 @@ export default function AboutPage() {
               />
               <p className="type-lead text-muted-foreground">
                 {site.doctor.title} at {site.hospital.name}, {site.hospital.city},
-                and {site.doctor.academicRole}. Dr. Reddy combines super-specialty
+                and {site.doctor.academicRole}. Dr. GRK Reddy combines super-specialty
                 surgical training with an active teaching role — and treats
                 emergency trauma and planned spine surgery with the same
                 technical rigour.
@@ -159,7 +164,7 @@ export default function AboutPage() {
       <Section className="bg-muted/60">
         <SectionHeading
           eyebrow="Areas of expertise"
-          title="What Dr. Reddy treats"
+          title="What Dr. GRK Reddy treats"
           lead="Drawn from the practice's own clinical focus — brain and spine, emergency and planned."
         />
         <RevealGroup as="ul" className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

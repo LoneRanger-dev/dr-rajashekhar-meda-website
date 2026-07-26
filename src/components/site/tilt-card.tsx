@@ -24,6 +24,7 @@ export function TiltCard({
   sizes,
   className,
   caption,
+  blurDataURL,
 }: {
   src: string;
   alt: string;
@@ -33,6 +34,7 @@ export function TiltCard({
   sizes?: string;
   className?: string;
   caption?: React.ReactNode;
+  blurDataURL?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [t, setT] = useState({ rx: 0, ry: 0, gx: 50, gy: 0, active: false });
@@ -88,6 +90,8 @@ export function TiltCard({
             height={height}
             priority={priority}
             sizes={sizes}
+            placeholder={blurDataURL ? "blur" : undefined}
+            blurDataURL={blurDataURL}
             className="w-full h-auto object-cover"
           />
           {/* Glare — follows the pointer, fades out when the card rests. */}

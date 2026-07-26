@@ -3,6 +3,7 @@ import { Phone, CheckCircle2, ShieldAlert, GraduationCap, Clock, MapPin } from "
 import { Button } from "@/components/ui/button";
 import { AppointmentForm } from "@/components/site/appointment-form";
 import { site } from "@/lib/site";
+import { BLUR_DATA_URL } from "@/lib/siteAssets";
 
 export interface LandingConfig {
   eyebrow: string;
@@ -95,15 +96,19 @@ export function LandingPage({ config }: { config: LandingConfig }) {
             </div>
 
             <div className="relative glow-halo glass rounded-3xl p-3 elev-3">
-              <Image
-                src={config.image.src}
-                alt={config.image.alt}
-                width={1600}
-                height={1100}
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="rounded-2xl w-full h-auto object-cover"
-              />
+              <div className="overflow-hidden rounded-2xl img-hover">
+                <Image
+                  src={config.image.src}
+                  alt={config.image.alt}
+                  width={1600}
+                  height={1100}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>

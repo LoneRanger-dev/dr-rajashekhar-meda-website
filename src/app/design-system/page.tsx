@@ -119,7 +119,7 @@ export default function DesignSystemPage() {
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Body / Noto Sans</p>
               <p className="max-w-prose">
-                Dr. Gade Ramakrishna Reddy is a Consultant Brain &amp; Spine Surgeon at Suraksha
+                Dr. GRK Reddy is a Consultant Brain &amp; Spine Surgeon at Suraksha
                 Hospital, Khammam, with an MCh in Neurosurgery and an academic appointment as
                 Assistant Professor at Mamata Medical College.
               </p>

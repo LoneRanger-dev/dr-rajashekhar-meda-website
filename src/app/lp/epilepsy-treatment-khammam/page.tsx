@@ -4,7 +4,7 @@ import { LandingPage, type LandingConfig } from "@/components/site/landing-page"
 export const metadata: Metadata = {
   title: "Epilepsy Treatment in Khammam — Seizure Specialist",
   description:
-    "Epilepsy and seizure treatment in Khammam by Dr. Gade Ramakrishna Reddy, MCh Neurosurgery. Diagnosis, medication management and surgical evaluation. Call 7075 447 449.",
+    "Epilepsy and seizure treatment in Khammam by Dr. GRK Reddy, MCh Neurosurgery. Diagnosis, medication management and surgical evaluation. Call 7075 447 449.",
   robots: { index: false, follow: false },
 };
 

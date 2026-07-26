@@ -32,7 +32,7 @@ export const sampleTestimonials: SampleTestimonial[] = [
     treatment: "Brain Surgery",
     rating: 5,
     quote:
-      "Dr. Gade Ramakrishna Reddy explained my condition patiently and recommended the most suitable treatment. Throughout my recovery I felt well supported by the medical team. The care at Suraksha Hospital was professional and compassionate.",
+      "Dr. GRK Reddy explained my condition patiently and recommended the most suitable treatment. Throughout my recovery I felt well supported by the medical team. The care at Suraksha Hospital was professional and compassionate.",
     recovery: "Recovered in 8 weeks",
     consultedOn: "March 2025",
     initials: "AK",

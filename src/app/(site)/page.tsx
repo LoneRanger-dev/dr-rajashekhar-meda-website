@@ -20,8 +20,10 @@ import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
 import { NeuroVisual } from "@/components/hero/neuro-visual";
 import { TiltCard } from "@/components/site/tilt-card";
+import { HospitalShowcase } from "@/components/site/hospital-showcase";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, conditions, whatsappUrl } from "@/lib/site";
+import { doctorImages, facilityImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 
 const conditionIcons = {
   spine: Bone,
@@ -82,19 +84,19 @@ export default function HomePage() {
               </div>
 
               <dl className="grid grid-cols-3 gap-3 sm:gap-4 pt-2">
-                <div className="glass lift rounded-2xl p-4">
+                <div className="glass lift rounded-2xl p-3 sm:p-4 min-w-0">
                   <dt className="sr-only">Qualification</dt>
                   <dd>
                     <Stat value="MCh" label="Neurosurgery" />
                   </dd>
                 </div>
-                <div className="glass lift rounded-2xl p-4">
+                <div className="glass lift rounded-2xl p-3 sm:p-4 min-w-0">
                   <dt className="sr-only">Emergency availability</dt>
                   <dd>
                     <Stat value="24/7" label="Trauma response" />
                   </dd>
                 </div>
-                <div className="glass lift rounded-2xl p-4">
+                <div className="glass lift rounded-2xl p-3 sm:p-4 min-w-0">
                   <dt className="sr-only">Academic role</dt>
                   <dd>
                     <Stat value="Asst. Prof." label="Mamata Medical College" />
@@ -105,10 +107,10 @@ export default function HomePage() {
 
             <div className="relative glow-halo">
               <TiltCard
-                src="/images/doctor/dr-reddy-consulting-wide.jpg"
-                alt={`${site.doctor.name}, ${site.doctor.title}, in consultation at ${site.hospital.name}, Khammam`}
-                width={1600}
-                height={1100}
+                src={doctorImages.hero.src}
+                alt={`${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}, Khammam`}
+                width={doctorImages.hero.width}
+                height={doctorImages.hero.height}
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="elev-3"
@@ -192,18 +194,21 @@ export default function HomePage() {
       <Section>
         <Reveal className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="relative glow-halo glass rounded-3xl p-3">
-            <Image
-              src="/images/doctor/dr-reddy-scrubs.jpg"
-              alt={`${site.doctor.name} in surgical scrubs at ${site.hospital.name}`}
-              width={1200}
-              height={800}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="rounded-2xl w-full h-auto object-cover"
-            />
+            <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-2xl img-hover">
+              <Image
+                src={doctorImages.consultation.src}
+                alt={`${site.doctor.name} in consultation at ${site.hospital.name}, Khammam`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
+                className="object-cover object-top"
+              />
+            </div>
           </div>
           <div className="space-y-7">
             <SectionHeading
-              eyebrow="Why patients choose Dr. Reddy"
+              eyebrow="Why patients choose Dr. GRK Reddy"
               title="Advanced technique, backed by academic authority"
               lead="Two things set this practice apart in Khammam: a neurosurgeon genuinely available around the clock, and routine use of minimally invasive techniques rather than defaulting to open surgery."
             />
@@ -237,7 +242,7 @@ export default function HomePage() {
               ))}
             </ul>
             <Button variant="glass" size="cta" render={<Link href="/about" />}>
-              Read Dr. Reddy&apos;s full profile
+              Read Dr. GRK Reddy&apos;s full profile
               <ArrowRight aria-hidden />
             </Button>
           </div>
@@ -248,7 +253,17 @@ export default function HomePage() {
       <section className="bg-emergency text-emergency-foreground">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div className="flex gap-4">
+            <div className="flex gap-4 items-center">
+              <Image
+                src={doctorImages.scrubs.src}
+                alt={`${site.doctor.name} in surgical scrubs at ${site.hospital.name}`}
+                width={doctorImages.scrubs.width}
+                height={doctorImages.scrubs.height}
+                sizes="80px"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
+                className="hidden sm:block size-20 rounded-2xl object-cover ring-2 ring-white/40 shrink-0"
+              />
               <ShieldAlert className="size-10 shrink-0" aria-hidden />
               <div>
                 <h2 className="type-h2 text-emergency-foreground">
@@ -272,6 +287,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── HOSPITAL SHOWCASE (cinematic exterior) ───────────────────────── */}
+      <HospitalShowcase />
 
       {/* ── VISIT / LOCATION ─────────────────────────────────────────────── */}
       <Section>
@@ -351,19 +369,21 @@ export default function HomePage() {
               arrive. Presented on a subtle 3D tilt plane over a soft glow. */}
           <div className="relative glow-halo">
             <TiltCard
-              src={site.hospital.exteriorImage}
-              alt={`${site.hospital.name} building — ${site.hospital.addressFull}`}
-              width={1600}
-              height={1000}
+              src={facilityImages.interior.src}
+              alt={`Inside ${site.hospital.name} — reception and patient areas, Khammam`}
+              width={facilityImages.interior.width}
+              height={facilityImages.interior.height}
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="elev-3"
+              blurDataURL={BLUR_DATA_URL}
               caption={
                 <p className="text-sm text-muted-foreground">
-                  Look for the{" "}
+                  Modern, comfortable interiors — reception, consulting rooms and
+                  an advanced ICU, at the{" "}
                   <span lang="te" className="font-medium text-foreground">
                     {site.hospital.nameTelugu}
                   </span>{" "}
-                  signboard on Nehru Nagar, near Karnataka Bank.
+                  building on Nehru Nagar.
                 </p>
               }
             />

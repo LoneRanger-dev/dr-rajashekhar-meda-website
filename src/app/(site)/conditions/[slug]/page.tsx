@@ -144,7 +144,7 @@ export default async function ConditionPage({
             <span className="icon-glass grid size-11 place-items-center rounded-xl text-primary dark:text-accent">
               <CheckCircle2 className="size-5" aria-hidden />
             </span>
-            <h2 className="type-h3">Dr. Reddy&apos;s approach</h2>
+            <h2 className="type-h3">Dr. GRK Reddy&apos;s approach</h2>
             <ul className="space-y-2.5">
               {condition.approach.map((item) => (
                 <li key={item} className="flex gap-2.5 text-sm">

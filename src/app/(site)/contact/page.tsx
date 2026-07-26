@@ -8,7 +8,7 @@ import { site, whatsappUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact & Book an Appointment — Khammam",
   description:
-    "Book an appointment with Dr. Gade Ramakrishna Reddy at Suraksha Hospital, Nehru Nagar, Khammam. Call 7075 447 449 — a neurosurgeon is available 24/7 for emergencies.",
+    "Book an appointment with Dr. GRK Reddy at Suraksha Hospital, Nehru Nagar, Khammam. Call 7075 447 449 — a neurosurgeon is available 24/7 for emergencies.",
 };
 
 export default function ContactPage() {

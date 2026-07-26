@@ -5,11 +5,12 @@ import { ArrowRight, Clock } from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { articles } from "@/lib/articles";
+import { BLUR_DATA_URL } from "@/lib/siteAssets";
 
 export const metadata: Metadata = {
   title: "Health Education — Brain, Spine & Epilepsy Guides",
   description:
-    "Plain-language patient education on brain, spine and epilepsy conditions from Dr. Gade Ramakrishna Reddy, Consultant Brain & Spine Surgeon in Khammam.",
+    "Plain-language patient education on brain, spine and epilepsy conditions from Dr. GRK Reddy, Consultant Brain & Spine Surgeon in Khammam.",
 };
 
 export default function BlogPage() {
@@ -41,6 +42,8 @@ export default function BlogPage() {
                     width={900}
                     height={600}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    placeholder="blur"
+                    blurDataURL={BLUR_DATA_URL}
                     className="w-full h-44 object-cover object-top"
                   />
                 ) : (

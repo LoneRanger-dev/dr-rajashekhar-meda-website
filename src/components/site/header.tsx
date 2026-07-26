@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site, navigation } from "@/lib/site";
+import { brandImages } from "@/lib/siteAssets";
 import { cn } from "@/lib/utils";
 import { track } from "@/lib/analytics";
 
@@ -21,23 +22,23 @@ export function Header() {
           {/* No aria-label here: the visible text is already a complete,
               accurate name. An aria-label that omits part of the visible
               text fails WCAG 2.5.3 (Label in Name). */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 shrink-0 min-w-0">
             <Image
-              src="/brand/suraksha-logo.png"
-              alt="Suraksha Hospital — Brain, Spine, Neuro"
-              width={1774}
-              height={887}
+              src={brandImages.logo.src}
+              alt={`${site.hospital.name} — Brain, Spine, Neuro`}
+              width={brandImages.logo.width}
+              height={brandImages.logo.height}
               priority
-              className="h-9 lg:h-11 w-auto"
+              className="h-8 sm:h-9 lg:h-10 w-auto"
             />
             {/* Shown on small screens (no nav) and again from 2xl, where
                 there is room. In between it competes with the nav and pushes
                 the phone CTA off-screen. */}
-            <span className="leading-tight hidden sm:block lg:hidden 2xl:block border-l border-border pl-3">
-              <span className="block font-[family-name:var(--font-display)] font-semibold text-[0.95rem]">
+            <span className="leading-tight hidden sm:block lg:hidden 2xl:block border-l border-border/70 pl-2.5 sm:pl-3 min-w-0">
+              <span className="block font-[family-name:var(--font-display)] font-semibold text-[clamp(0.85rem,0.8rem+0.3vw,0.95rem)] truncate">
                 {site.doctor.name}
               </span>
-              <span className="block text-[0.7rem] text-muted-foreground">
+              <span className="block text-[0.7rem] text-muted-foreground truncate">
                 {site.doctor.title}
               </span>
             </span>

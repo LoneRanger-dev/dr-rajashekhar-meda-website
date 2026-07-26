@@ -8,9 +8,9 @@ import { Testimonials } from "@/components/site/testimonials";
 import { testimonials } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Patient Reviews — Dr. Gade Ramakrishna Reddy, Khammam",
+  title: "Patient Reviews — Dr. GRK Reddy, Khammam",
   description:
-    "Patient experiences of brain and spine treatment with Dr. Gade Ramakrishna Reddy at Suraksha Hospital, Khammam.",
+    "Patient experiences of brain and spine treatment with Dr. GRK Reddy at Suraksha Hospital, Khammam.",
 };
 
 export default function ReviewsPage() {

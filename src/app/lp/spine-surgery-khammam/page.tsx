@@ -4,7 +4,7 @@ import { LandingPage, type LandingConfig } from "@/components/site/landing-page"
 export const metadata: Metadata = {
   title: "Spine Surgeon in Khammam — Minimally Invasive Spine Surgery",
   description:
-    "Suffering from back pain, herniated disc or spinal stenosis? Dr. Gade Ramakrishna Reddy, MCh Neurosurgery, offers minimally invasive spine surgery in Khammam. Call 7075 447 449.",
+    "Suffering from back pain, herniated disc or spinal stenosis? Dr. GRK Reddy, MCh Neurosurgery, offers minimally invasive spine surgery in Khammam. Call 7075 447 449.",
   robots: { index: false, follow: false },
 };
 

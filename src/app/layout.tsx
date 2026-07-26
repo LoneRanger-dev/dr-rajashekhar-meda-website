@@ -33,7 +33,11 @@ export const metadata: Metadata = {
     "epilepsy treatment Khammam",
     "24/7 emergency neurosurgeon Khammam",
     "Suraksha Hospital Khammam",
+    "Dr. GRK Reddy",
+    "Dr. GRK Reddy neurosurgeon",
     "Dr. Gade Ramakrishna Reddy",
+    "Consultant Neurosurgeon Khammam",
+    "Brain & Spine Specialist Khammam",
   ],
   alternates: { canonical: "/" },
   openGraph: {

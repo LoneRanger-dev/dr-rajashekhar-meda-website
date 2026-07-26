@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Section } from "@/components/site/ui-bits";
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { articles } from "@/lib/articles";
+import { BLUR_DATA_URL } from "@/lib/siteAssets";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -86,6 +87,8 @@ export default async function ArticlePage({
               width={1067}
               height={1280}
               sizes="(max-width: 768px) 100vw, 768px"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
               className="rounded-xl w-full h-auto"
             />
           </div>

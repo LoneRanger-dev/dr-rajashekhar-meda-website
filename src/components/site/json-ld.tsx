@@ -1,4 +1,5 @@
 import { site, conditions } from "@/lib/site";
+import { doctorImages } from "@/lib/siteAssets";
 
 /**
  * Physician + MedicalClinic structured data (BUILD.md Phase 3 non-negotiable).
@@ -44,7 +45,7 @@ export function JsonLd() {
         medicalSpecialty: "Neurologic",
         url: site.domain,
         telephone: `+91${site.contact.phone}`,
-        image: `${site.domain}/images/doctor/dr-reddy-portrait.jpg`,
+        image: `${site.domain}${doctorImages.portrait.src}`,
         address,
         geo: {
           "@type": "GeoCoordinates",

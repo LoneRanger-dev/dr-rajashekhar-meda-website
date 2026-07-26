@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, ConfirmWithClient } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site } from "@/lib/site";
+import { facilityImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 import { notoSansTelugu } from "@/lib/fonts-telugu";
 
 export const metadata: Metadata = {
@@ -65,15 +66,19 @@ export default function FacilitiesPage() {
               </Button>
             </div>
             <div className="relative glow-halo glass rounded-3xl p-3 elev-3">
-              <Image
-                src={site.hospital.exteriorImage}
-                alt={`${site.hospital.name} building exterior on Nehru Nagar, Khammam`}
-                width={1600}
-                height={1000}
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="rounded-2xl w-full h-auto object-cover"
-              />
+              <div className="overflow-hidden rounded-2xl img-hover">
+                <Image
+                  src={facilityImages.exterior.src}
+                  alt={`${site.hospital.name} building exterior on Nehru Nagar, Khammam`}
+                  width={facilityImages.exterior.width}
+                  height={facilityImages.exterior.height}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
           </Reveal>
         </div>
@@ -104,11 +109,25 @@ export default function FacilitiesPage() {
             </RevealItem>
           ))}
         </RevealGroup>
-        <div className="mt-8">
+        <Reveal className="mt-10 relative glow-halo glass rounded-3xl p-3">
+          <div className="overflow-hidden rounded-2xl img-hover">
+            <Image
+              src={facilityImages.interior.src}
+              alt={`Inside ${site.hospital.name} — reception and patient areas, Khammam`}
+              width={facilityImages.interior.width}
+              height={facilityImages.interior.height}
+              sizes="(max-width: 1024px) 100vw, 1152px"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </Reveal>
+        <div className="mt-6">
           <ConfirmWithClient>
-            Interior photographs — reception, ICU and the operating theatre —
-            would strengthen this page further. Please supply images cleared for
-            publication (no identifiable patients).
+            Further interior photographs — the ICU and operating theatre — would
+            strengthen this page. Please supply images cleared for publication
+            (no identifiable patients).
           </ConfirmWithClient>
         </div>
       </Section>

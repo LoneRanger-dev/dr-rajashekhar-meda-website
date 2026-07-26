@@ -224,6 +224,10 @@
     font-family: var(--font-body), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* Safety net against stray full-bleed/parallax layers. `clip` (not
+       `hidden`) does NOT create a scroll container, so position: sticky —
+       the header — keeps working. */
+    overflow-x: clip;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -515,6 +519,44 @@
 }
 @utility animate-breathe {
   animation: breathe 3.5s ease-in-out infinite;
+}
+
+/* Slow cinematic zoom — used on the hospital showcase background so a still
+   photograph feels alive. GPU transform only; paused under reduced-motion. */
+@keyframes slow-zoom {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.14); }
+}
+@utility animate-slow-zoom {
+  animation: slow-zoom 22s ease-in-out infinite alternate;
+}
+
+/* Drifting particle — tiny glowing motes that rise through the showcase. */
+@keyframes particle-rise {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(-120px) translateX(12px); opacity: 0; }
+}
+
+/* Photographic float + hover — every major image lifts and glows on hover. */
+.img-hover {
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    box-shadow var(--dur-slow) var(--ease-out);
+}
+.img-hover:hover {
+  transform: scale(1.02);
+  box-shadow: var(--elev-3), 0 0 30px var(--glow-soft);
+}
+
+/* Gentle 6px vertical float for hero portraiture. */
+@keyframes img-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@utility animate-img-float {
+  animation: img-float 5s ease-in-out infinite;
 }
 
 .ambient-bg {

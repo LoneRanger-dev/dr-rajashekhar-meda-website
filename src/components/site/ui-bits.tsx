@@ -62,9 +62,13 @@ export function ConfirmWithClient({ children }: { children: React.ReactNode }) {
 
 export function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="space-y-1">
-      <p className="type-h2 text-primary dark:text-accent tnum">{value}</p>
-      <p className="type-body text-sm text-muted-foreground">{label}</p>
+    <div className="space-y-1 min-w-0">
+      <p className="font-[family-name:var(--font-display)] font-semibold tracking-tight text-primary dark:text-accent tnum text-[clamp(1.05rem,0.9rem+2vw,1.9rem)] leading-tight break-words hyphens-auto">
+        {value}
+      </p>
+      <p className="text-[clamp(0.7rem,0.66rem+0.35vw,0.85rem)] text-muted-foreground leading-snug text-pretty break-words">
+        {label}
+      </p>
     </div>
   );
 }

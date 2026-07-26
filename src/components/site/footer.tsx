@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Clock, ShieldAlert } from "lucide-react";
 import { site, navigation, conditions } from "@/lib/site";
+import { brandImages } from "@/lib/siteAssets";
 
 export function Footer() {
   return (
@@ -12,10 +13,10 @@ export function Footer() {
             {/* White-plated so the navy logo stays legible on the navy footer. */}
             <span className="inline-flex rounded-xl bg-white p-3">
               <Image
-                src="/brand/suraksha-logo.png"
-                alt="Suraksha Hospital — Brain, Spine, Neuro"
-                width={1774}
-                height={887}
+                src={brandImages.logo.src}
+                alt={`${site.hospital.name} — Brain, Spine, Neuro`}
+                width={brandImages.logo.width}
+                height={brandImages.logo.height}
                 className="h-11 w-auto"
               />
             </span>
