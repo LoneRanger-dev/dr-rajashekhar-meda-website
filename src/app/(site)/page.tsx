@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
 import { NeuroVisual } from "@/components/hero/neuro-visual";
 import { TiltCard } from "@/components/site/tilt-card";
+import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, conditions, whatsappUrl } from "@/lib/site";
 
 const conditionIcons = {
@@ -43,7 +44,7 @@ export default function HomePage() {
         <NeuroVisual className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-1/2 opacity-45 dark:opacity-60" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-7">
+            <Reveal as="div" className="space-y-7" blur={false} y={16}>
               <span className="inline-flex items-center gap-2 rounded-full bg-emergency/10 px-4 py-2 text-sm font-semibold text-emergency">
                 <ShieldAlert className="size-4" aria-hidden />
                 24/7 Neurosurgeon Availability
@@ -80,29 +81,29 @@ export default function HomePage() {
                 </Button>
               </div>
 
-              <dl className="grid grid-cols-3 gap-6 pt-4 border-t border-border">
-                <div>
+              <dl className="grid grid-cols-3 gap-3 sm:gap-4 pt-2">
+                <div className="glass lift rounded-2xl p-4">
                   <dt className="sr-only">Qualification</dt>
                   <dd>
                     <Stat value="MCh" label="Neurosurgery" />
                   </dd>
                 </div>
-                <div>
+                <div className="glass lift rounded-2xl p-4">
                   <dt className="sr-only">Emergency availability</dt>
                   <dd>
                     <Stat value="24/7" label="Trauma response" />
                   </dd>
                 </div>
-                <div>
+                <div className="glass lift rounded-2xl p-4">
                   <dt className="sr-only">Academic role</dt>
                   <dd>
                     <Stat value="Asst. Prof." label="Mamata Medical College" />
                   </dd>
                 </div>
               </dl>
-            </div>
+            </Reveal>
 
-            <div className="relative">
+            <div className="relative glow-halo">
               <TiltCard
                 src="/images/doctor/dr-reddy-consulting-wide.jpg"
                 alt={`${site.doctor.name}, ${site.doctor.title}, in consultation at ${site.hospital.name}, Khammam`}
@@ -125,19 +126,23 @@ export default function HomePage() {
 
       {/* ── THREE PILLARS (from the clinic's own banner) ─────────────────── */}
       <Section className="pt-20 sm:pt-24">
-        <ul className="grid sm:grid-cols-3 gap-5">
+        <RevealGroup as="ul" className="grid sm:grid-cols-3 gap-5">
           {site.pillars.map((pillar) => {
             const Icon = pillarIcons[pillar.icon as keyof typeof pillarIcons];
             return (
-              <li key={pillar.title} className="glass rounded-2xl p-6 flex gap-4">
-                <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground">
+              <RevealItem
+                key={pillar.title}
+                as="li"
+                className="group glass lift rounded-2xl p-6 flex gap-4"
+              >
+                <span className="icon-glass grid size-12 shrink-0 place-items-center rounded-xl text-primary dark:text-accent">
                   <Icon className="size-6" aria-hidden />
                 </span>
                 <p className="font-semibold self-center">{pillar.title}</p>
-              </li>
+              </RevealItem>
             );
           })}
-        </ul>
+        </RevealGroup>
       </Section>
 
       {/* ── CONDITIONS ───────────────────────────────────────────────────── */}
@@ -147,17 +152,23 @@ export default function HomePage() {
           title="Specialised brain and spine care"
           lead="From emergency trauma response to planned minimally invasive spine surgery — each condition explained in plain language."
         />
-        <ul className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <RevealGroup
+          as="ul"
+          className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
+        >
           {conditions.map((condition) => {
             const Icon = conditionIcons[condition.icon];
             return (
-              <li key={condition.slug}>
+              <RevealItem key={condition.slug} as="li">
                 <Link
                   href={`/conditions/${condition.slug}`}
-                  className="group glass rounded-2xl p-6 h-full flex flex-col gap-3 transition-transform duration-[var(--dur-base)] hover:-translate-y-1"
+                  className="group glass lift rounded-2xl p-6 h-full flex flex-col gap-3"
                 >
-                  <span className="grid size-12 place-items-center rounded-xl bg-accent/10 text-accent">
-                    <Icon className="size-6" aria-hidden />
+                  <span className="icon-glass grid size-12 place-items-center rounded-xl text-accent">
+                    <Icon
+                      className="size-6 transition-transform duration-[var(--dur-base)] group-hover:scale-110"
+                      aria-hidden
+                    />
                   </span>
                   <h3 className="type-h3">{condition.short}</h3>
                   <p className="text-sm text-muted-foreground flex-1">
@@ -171,16 +182,16 @@ export default function HomePage() {
                     />
                   </span>
                 </Link>
-              </li>
+              </RevealItem>
             );
           })}
-        </ul>
+        </RevealGroup>
       </Section>
 
       {/* ── WHY DR REDDY ─────────────────────────────────────────────────── */}
       <Section>
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="glass rounded-3xl p-3">
+        <Reveal className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="relative glow-halo glass rounded-3xl p-3">
             <Image
               src="/images/doctor/dr-reddy-scrubs.jpg"
               alt={`${site.doctor.name} in surgical scrubs at ${site.hospital.name}`}
@@ -214,8 +225,8 @@ export default function HomePage() {
                   body: "A neurosurgeon is available at any hour, supported by an advanced ICU on site.",
                 },
               ].map(({ icon: Icon, title, body }) => (
-                <li key={title} className="flex gap-4">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent">
+                <li key={title} className="group flex gap-4">
+                  <span className="icon-glass grid size-11 shrink-0 place-items-center rounded-xl text-accent">
                     <Icon className="size-5" aria-hidden />
                   </span>
                   <div>
@@ -225,12 +236,12 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-            <Button variant="outline" size="cta" render={<Link href="/about" />}>
+            <Button variant="glass" size="cta" render={<Link href="/about" />}>
               Read Dr. Reddy&apos;s full profile
               <ArrowRight aria-hidden />
             </Button>
           </div>
-        </div>
+        </Reveal>
       </Section>
 
       {/* ── EMERGENCY BANNER ─────────────────────────────────────────────── */}
@@ -320,7 +331,7 @@ export default function HomePage() {
                 Message on WhatsApp
               </Button>
               <Button
-                variant="secondary"
+                variant="glass"
                 size="cta"
                 render={
                   <a
@@ -337,36 +348,41 @@ export default function HomePage() {
           </div>
 
           {/* The hospital building — the landmark patients look for when they
-              arrive. Presented on a subtle 3D tilt plane. */}
-          <TiltCard
-            src={site.hospital.exteriorImage}
-            alt={`${site.hospital.name} building — ${site.hospital.addressFull}`}
-            width={1600}
-            height={1000}
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="elev-3"
-            caption={
-              <p className="text-sm text-muted-foreground">
-                Look for the{" "}
-                <span lang="te" className="font-medium text-foreground">
-                  {site.hospital.nameTelugu}
-                </span>{" "}
-                signboard on Nehru Nagar, near Karnataka Bank.
-              </p>
-            }
-          />
+              arrive. Presented on a subtle 3D tilt plane over a soft glow. */}
+          <div className="relative glow-halo">
+            <TiltCard
+              src={site.hospital.exteriorImage}
+              alt={`${site.hospital.name} building — ${site.hospital.addressFull}`}
+              width={1600}
+              height={1000}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="elev-3"
+              caption={
+                <p className="text-sm text-muted-foreground">
+                  Look for the{" "}
+                  <span lang="te" className="font-medium text-foreground">
+                    {site.hospital.nameTelugu}
+                  </span>{" "}
+                  signboard on Nehru Nagar, near Karnataka Bank.
+                </p>
+              }
+            />
+          </div>
         </div>
 
-        {/* Embedded Google Map — from the clinic's Business Profile pin. */}
-        <div className="mt-12 glass rounded-3xl p-3 elev-2">
-          <iframe
-            title={`Map to ${site.hospital.name}, ${site.hospital.city}`}
-            src={site.hospital.maps.embedUrl}
-            className="w-full h-[320px] sm:h-[420px] rounded-2xl border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
+        {/* Embedded Google Map — from the clinic's Business Profile pin,
+            in a rounded glass frame with a soft medical-blue glow. */}
+        <div className="mt-12 relative glow-halo">
+          <div className="glass elev-2 rounded-3xl p-3 overflow-hidden">
+            <iframe
+              title={`Map to ${site.hospital.name}, ${site.hospital.city}`}
+              src={site.hospital.maps.embedUrl}
+              className="w-full h-[320px] sm:h-[420px] rounded-2xl border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
         </div>
       </Section>
     </>

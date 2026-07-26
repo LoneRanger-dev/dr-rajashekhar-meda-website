@@ -131,18 +131,32 @@
 
   --radius: 0.75rem;
 
-  /* LAYER 3 — glass + elevation (light) */
+  /* LAYER 3 — liquid glass + elevation (light) */
   --glass-bg: oklch(1 0 0 / 62%);
+  --glass-bg-strong: oklch(1 0 0 / 82%);   /* nav + key panels */
   --glass-edge: oklch(1 0 0 / 70%);
   --glass-blur: 16px;
+  --glass-blur-strong: 24px;               /* floating navigation */
   --glass-shadow: 0 8px 32px oklch(0.2599 0.0604 251.32 / 10%);
+  /* top inner highlight — the bright rim that reads as a glass reflection */
+  --glass-highlight: inset 0 1px 0 0 oklch(1 0 0 / 75%);
+  /* faint top-down sheen layered over the translucent fill */
+  --glass-sheen: linear-gradient(180deg, oklch(1 0 0 / 22%), oklch(1 0 0 / 0%) 42%);
 
   --elev-1: 0 1px 2px oklch(0.2599 0.0604 251.32 / 6%);
   --elev-2: 0 4px 12px oklch(0.2599 0.0604 251.32 / 8%);
   --elev-3: 0 12px 32px oklch(0.2599 0.0604 251.32 / 12%);
 
-  /* single motion duration token — used by every hover/reveal transition */
-  --dur-base: 220ms;
+  /* Dynamic ambient glow — the medical-blue halo behind floating elements */
+  --glow-color: oklch(0.66 0.17 245 / 0.28);
+  --glow-soft: oklch(0.66 0.17 245 / 0.16);
+
+  /* Motion — one small vocabulary so every surface animates in the same voice */
+  --dur-fast: 150ms;
+  --dur-base: 220ms;                       /* legacy token — kept */
+  --dur-slow: 420ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);      /* expo-out, settles softly */
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.5, 1); /* gentle overshoot */
 }
 
 /* --------------------------------------------------------------------------
@@ -183,12 +197,18 @@
   --ring: var(--teal-400);
 
   --glass-bg: oklch(0.2599 0.0604 251.32 / 55%);
-  --glass-edge: oklch(1 0 0 / 12%);
+  --glass-bg-strong: oklch(0.2599 0.0604 251.32 / 72%);
+  --glass-edge: oklch(1 0 0 / 14%);
   --glass-shadow: 0 8px 32px oklch(0 0 0 / 40%);
+  --glass-highlight: inset 0 1px 0 0 oklch(1 0 0 / 14%);
+  --glass-sheen: linear-gradient(180deg, oklch(1 0 0 / 7%), oklch(1 0 0 / 0%) 42%);
 
   --elev-1: 0 1px 2px oklch(0 0 0 / 30%);
   --elev-2: 0 4px 12px oklch(0 0 0 / 38%);
   --elev-3: 0 12px 32px oklch(0 0 0 / 48%);
+
+  --glow-color: oklch(0.72 0.16 240 / 0.34);
+  --glow-soft: oklch(0.72 0.16 240 / 0.20);
 }
 
 /* --------------------------------------------------------------------------
@@ -303,24 +323,138 @@
    LAYER 3 — COMPONENT UTILITIES
    -------------------------------------------------------------------------- */
 @utility glass {
-  background: var(--glass-bg);
+  background-color: var(--glass-bg);
+  background-image: var(--glass-sheen);
   backdrop-filter: blur(var(--glass-blur)) saturate(160%);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
   border: 1px solid var(--glass-edge);
-  box-shadow: var(--glass-shadow);
+  box-shadow: var(--glass-shadow), var(--glass-highlight);
+}
+
+/* Stronger, less transparent glass — floating nav and hero-level panels. */
+@utility glass-strong {
+  background-color: var(--glass-bg-strong);
+  background-image: var(--glass-sheen);
+  backdrop-filter: blur(var(--glass-blur-strong)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(180%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--glass-shadow), var(--glass-highlight);
 }
 
 /* Opaque fallback wherever backdrop-filter is unsupported, so text never
    sits on an unreadable background. */
 @supports not (backdrop-filter: blur(1px)) {
-  .glass {
-    background: var(--card);
-  }
+  .glass { background-color: var(--card); }
+  .glass-strong { background-color: var(--card); }
 }
 
 @utility elev-1 { box-shadow: var(--elev-1); }
 @utility elev-2 { box-shadow: var(--elev-2); }
 @utility elev-3 { box-shadow: var(--elev-3); }
+
+/* --------------------------------------------------------------------------
+   LIQUID-GLASS INTERACTIONS
+   Hover/press behaviour shared across cards, buttons and icons. All animate
+   transform / box-shadow / opacity only (GPU-friendly); the reduced-motion
+   block at the foot of the file neutralises every transition below.
+   -------------------------------------------------------------------------- */
+
+/* Floating card — lifts and blooms a soft medical-blue glow on hover. */
+.lift {
+  transition:
+    transform var(--dur-slow) var(--ease-spring),
+    box-shadow var(--dur-slow) var(--ease-out);
+  will-change: transform;
+}
+.lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--elev-3), 0 14px 44px var(--glow-color), var(--glass-highlight);
+}
+
+/* Glass icon chip — sits inside cards; floats up when its card is hovered. */
+.icon-glass {
+  background-color: var(--glass-bg);
+  background-image: var(--glass-sheen);
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--elev-1), var(--glass-highlight);
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+.group:hover .icon-glass {
+  transform: translateY(-3px);
+  box-shadow: var(--elev-2), 0 0 22px var(--glow-color), var(--glass-highlight);
+}
+
+/* Premium motion layered onto EVERY button variant — a reflection sweep,
+   a lift + scale on hover, and a tactile compress on press. */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    box-shadow var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    filter var(--dur-base) var(--ease-out);
+  will-change: transform;
+}
+.btn-premium::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 32%,
+    oklch(1 0 0 / 32%) 48%,
+    transparent 62%
+  );
+  transform: translateX(-130%);
+  transition: transform var(--dur-slow) var(--ease-out);
+  pointer-events: none;
+}
+.btn-premium:hover {
+  transform: translateY(-1px) scale(1.04);
+}
+.btn-premium:hover::after {
+  transform: translateX(130%);
+}
+.btn-premium:active {
+  transform: scale(0.98);
+}
+
+/* Translucent glass fill — for the `glass` button variant. */
+.btn-glass {
+  background-color: var(--glass-bg-strong);
+  background-image: var(--glass-sheen);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid var(--glass-edge) !important;
+  color: var(--foreground);
+  box-shadow: var(--elev-2), var(--glass-highlight);
+}
+.btn-glass:hover {
+  box-shadow: var(--elev-3), 0 0 24px var(--glow-color), var(--glass-highlight);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .btn-glass { background-color: var(--card); }
+}
+
+/* A soft medical-blue halo placed behind a floating element. Apply to a
+   `position: relative` wrapper; the glow renders behind its content. */
+.glow-halo::before {
+  content: "";
+  position: absolute;
+  inset: -12% -8% -18% -8%;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(60% 60% at 50% 35%, var(--glow-color), transparent 72%);
+  filter: blur(36px);
+  pointer-events: none;
+}
 
 /* Clinical gradient lifted from the spine poster's background wash */
 @utility brand-wash {
@@ -346,6 +480,36 @@
 
 @utility animate-float {
   animation: float 3.2s ease-in-out infinite;
+}
+
+/* Ambient background blobs — large, slow, heavily blurred colour fields that
+   drift behind the whole site. Kept at low opacity so the page still reads as
+   clean and clinical. GPU-only (transform); frozen under reduced-motion. */
+@keyframes drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(6%, 4%, 0) scale(1.08); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); }
+  50%      { transform: translate3d(-5%, -6%, 0) scale(1); }
+}
+@keyframes drift-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(4%, -5%, 0) scale(1.1); }
+}
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+.ambient-bg > span {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  will-change: transform;
 }
 
 /* --------------------------------------------------------------------------
