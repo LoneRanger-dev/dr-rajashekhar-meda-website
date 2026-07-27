@@ -6,12 +6,14 @@ import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { Testimonials } from "@/components/site/testimonials";
 import { testimonials } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Patient Reviews — Dr. GRK Reddy, Khammam",
   description:
     "Patient experiences of brain and spine treatment with Dr. GRK Reddy at Suraksha Hospital, Khammam.",
-};
+  path: "/reviews",
+});
 
 export default function ReviewsPage() {
   /**

@@ -4,7 +4,7 @@ import { figtree, notoSans } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/site/json-ld";
 import { Analytics } from "@/components/site/analytics";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 const TITLE = `${site.doctor.name} — Brain & Spine Surgeon, Khammam`;
 const DESCRIPTION =
@@ -77,8 +77,11 @@ export const metadata: Metadata = {
     icon: "/icon.png",
     apple: "/apple-icon.png",
   },
+  manifest: "/manifest.webmanifest",
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
   formatDetection: { telephone: true, address: true, email: false },
-  // verification: { google: "..." }, // add the GSC token when the domain is verified
 };
 
 export default function RootLayout({
@@ -92,6 +95,7 @@ export default function RootLayout({
       className={`${figtree.variable} ${notoSans.variable} h-full antialiased`}
     >
       <GoogleTagManager gtmId="GTM-WCMMQRD6" />
+      <GoogleAnalytics gaId="G-YHMZWYWQVK" />
       <body className="min-h-full flex flex-col">
         <a
           href="#main"

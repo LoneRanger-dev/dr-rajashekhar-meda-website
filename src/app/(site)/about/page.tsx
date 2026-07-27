@@ -8,12 +8,13 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, awards } from "@/lib/site";
 import { doctorImages, creativeImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 import { notoSansTelugu } from "@/lib/fonts-telugu";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About Dr. GRK Reddy — MCh Neurosurgeon, Khammam",
-  description:
-    "Dr. GRK Reddy, MBBS, MS, MCh (Neurosurgery), Consultant Brain & Spine Surgeon at Suraksha Hospital, Khammam and Assistant Professor at Mamata Medical College.",
-};
+  description: "Dr. GRK Reddy, MBBS, MS, MCh (Neurosurgery), Consultant Brain & Spine Surgeon at Suraksha Hospital, Khammam and Assistant Professor at Mamata Medical College.",
+  path: "/about",
+});
 
 const qualifications = [
   { degree: "MBBS", detail: "Bachelor of Medicine, Bachelor of Surgery" },

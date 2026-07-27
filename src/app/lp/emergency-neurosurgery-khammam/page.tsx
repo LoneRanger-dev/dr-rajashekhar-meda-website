@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { LandingPage, type LandingConfig } from "@/components/site/landing-page";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "24/7 Emergency Neurosurgeon in Khammam — Head Injury & Trauma",
   description:
     "Head injury or neurological emergency in Khammam? A neurosurgeon is available 24/7 at Suraksha Hospital with advanced ICU support. Call 7075 447 449 now.",
   robots: { index: false, follow: false },
-};
+  path: "/lp/emergency-neurosurgery-khammam",
+});
 
 const config: LandingConfig = {
   eyebrow: "24/7 Emergency Neurosurgery",

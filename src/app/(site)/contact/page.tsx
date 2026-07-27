@@ -4,12 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { AppointmentForm } from "@/components/site/appointment-form";
 import { site, whatsappUrl } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact & Book an Appointment — Khammam",
-  description:
-    "Book an appointment with Dr. GRK Reddy at Suraksha Hospital, Nehru Nagar, Khammam. Call 7075 447 449 — a neurosurgeon is available 24/7 for emergencies.",
-};
+  description: "Book an appointment with Dr. GRK Reddy at Suraksha Hospital, Nehru Nagar, Khammam. Call 7075 447 449 — a neurosurgeon is available 24/7 for emergencies.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

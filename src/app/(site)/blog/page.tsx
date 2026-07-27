@@ -6,12 +6,13 @@ import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { articles } from "@/lib/articles";
 import { BLUR_DATA_URL } from "@/lib/siteAssets";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Health Education — Brain, Spine & Epilepsy Guides",
-  description:
-    "Plain-language patient education on brain, spine and epilepsy conditions from Dr. GRK Reddy, Consultant Brain & Spine Surgeon in Khammam.",
-};
+  description: "Plain-language patient education on brain, spine and epilepsy conditions from Dr. GRK Reddy, Consultant Brain & Spine Surgeon in Khammam.",
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (

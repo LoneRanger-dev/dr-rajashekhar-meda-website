@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { LandingPage, type LandingConfig } from "@/components/site/landing-page";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Epilepsy Treatment in Khammam — Seizure Specialist",
   description:
     "Epilepsy and seizure treatment in Khammam by Dr. GRK Reddy, MCh Neurosurgery. Diagnosis, medication management and surgical evaluation. Call 7075 447 449.",
   robots: { index: false, follow: false },
-};
+  path: "/lp/epilepsy-treatment-khammam",
+});
 
 const config: LandingConfig = {
   eyebrow: "Epilepsy & Seizure Care",

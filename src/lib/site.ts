@@ -12,7 +12,7 @@ import { facilityImages } from "./siteAssets";
 export const CONFIRM = "[CONFIRM WITH CLIENT]" as const;
 
 export const site = {
-  domain: "https://drramakrishnareddy.com", // CONFIRM_WITH_CLIENT — final domain
+  domain: "https://drgrkneuro.com",
   doctor: {
     name: "Dr. GRK Reddy",
     // Full formal name retained for structured data (alternateName) and SEO.

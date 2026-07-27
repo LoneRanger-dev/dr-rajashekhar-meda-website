@@ -31,6 +31,18 @@ export async function generateMetadata({
     title: `${condition.name} in Khammam — ${site.doctor.name}`,
     description: condition.summary,
     alternates: { canonical: `/conditions/${condition.slug}` },
+    openGraph: {
+      title: `${condition.name} in Khammam — ${site.doctor.name}`,
+      description: condition.summary,
+      url: `/conditions/${condition.slug}`,
+      images: ["/opengraph-image.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${condition.name} in Khammam — ${site.doctor.name}`,
+      description: condition.summary,
+      images: ["/opengraph-image.png"],
+    },
   };
 }
 

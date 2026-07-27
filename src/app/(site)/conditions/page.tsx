@@ -4,12 +4,13 @@ import { ArrowRight, Brain, Activity, Scan, Bone } from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { conditions } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Conditions & Treatments — Brain, Spine & Epilepsy Care in Khammam",
-  description:
-    "Brain and spine conditions treated by Dr. GRK Reddy in Khammam: herniated disc, spinal stenosis, spinal deformity, head injury, brain tumours, epilepsy and minimally invasive spine surgery.",
-};
+  description: "Brain and spine conditions treated by Dr. GRK Reddy in Khammam: herniated disc, spinal stenosis, spinal deformity, head injury, brain tumours, epilepsy and minimally invasive spine surgery.",
+  path: "/conditions",
+});
 
 const icons = { spine: Bone, brain: Brain, activity: Activity, scan: Scan } as const;
 

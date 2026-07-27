@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { LandingPage, type LandingConfig } from "@/components/site/landing-page";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Spine Surgeon in Khammam — Minimally Invasive Spine Surgery",
   description:
     "Suffering from back pain, herniated disc or spinal stenosis? Dr. GRK Reddy, MCh Neurosurgery, offers minimally invasive spine surgery in Khammam. Call 7075 447 449.",
   robots: { index: false, follow: false },
-};
+  path: "/lp/spine-surgery-khammam",
+});
 
 const config: LandingConfig = {
   eyebrow: "Minimally Invasive Spine Surgery",

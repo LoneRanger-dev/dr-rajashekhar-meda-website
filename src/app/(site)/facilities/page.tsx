@@ -8,13 +8,15 @@ import { FacilityHero } from "@/components/site/facility-hero";
 import { FloatingMedicalIcons } from "@/components/site/floating-medical-icons";
 import { Tilt3D } from "@/components/site/tilt-3d";
 import { site } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 import { facilityImages, BLUR_DATA_URL, type ImageAsset } from "@/lib/siteAssets";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Suraksha Hospital Khammam — Emergency, Trauma & Multi-Specialty",
   description:
     "Suraksha Hospital, Nehru Nagar, Khammam — emergency and trauma care, advanced ICU and 24/7 neurosurgeon availability. Consulting hours and location.",
-};
+  path: "/facilities",
+});
 
 const facilities = [
   {

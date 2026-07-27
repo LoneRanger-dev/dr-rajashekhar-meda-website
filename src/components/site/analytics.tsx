@@ -1,10 +1,9 @@
 /**
  * Analytics integration placeholder.
  *
- * Google Tag Manager is loaded once by the root layout using Next.js's
- * `GoogleTagManager` component. GA4 and other vendor tags remain configured
- * inside that container. Keeping this component prevents duplicate GTM
- * injection for deployments that still define NEXT_PUBLIC_GTM_ID.
+ * GTM and GA4 are loaded once by the root layout using Next.js's official
+ * components. Keeping this component prevents duplicate script injection for
+ * deployments that still define legacy analytics environment variables.
  */
 export function Analytics() {
   return null;
