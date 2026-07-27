@@ -71,8 +71,8 @@ export function FacilityHero() {
       >
         <motion.div style={reduce ? undefined : { x: sx, y: sy }} className="absolute inset-0">
           <Image
-            src={facilityImages.exterior.src}
-            alt={`${site.hospital.name} building exterior, Nehru Nagar, Khammam`}
+            src={facilityImages.wards.src}
+            alt={`Inside ${site.hospital.name} — ICU, operating theatre, wards and reception, Khammam`}
             fill
             priority
             sizes="100vw"
