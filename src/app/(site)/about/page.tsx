@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { GraduationCap, Award, Stethoscope, Building2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Section, SectionHeading, ConfirmWithClient } from "@/components/site/ui-bits";
+import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, awards } from "@/lib/site";
 import { doctorImages, creativeImages, BLUR_DATA_URL } from "@/lib/siteAssets";
@@ -157,23 +157,18 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <SectionHeading eyebrow="Recognition" title="Awards & publications" />
-            {awards.length > 0 ? (
-              <ul className="space-y-3">
-                {awards.map((a) => (
-                  <li key={a.title} className="glass lift rounded-2xl p-5 flex gap-4">
-                    <Award className="size-5 text-accent shrink-0 mt-0.5" aria-hidden />
-                    <span className="font-medium">{a.title}</span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <ConfirmWithClient>
-                No awards or publications were verifiable from the material
-                supplied. Send through any awards, published papers, conference
-                presentations or fellowships and they will be listed here.
-                Nothing has been invented to fill this space.
-              </ConfirmWithClient>
+            {awards.length > 0 && (
+              <>
+                <SectionHeading eyebrow="Recognition" title="Awards & publications" />
+                <ul className="space-y-3">
+                  {awards.map((a) => (
+                    <li key={a.title} className="glass lift rounded-2xl p-5 flex gap-4">
+                      <Award className="size-5 text-accent shrink-0 mt-0.5" aria-hidden />
+                      <span className="font-medium">{a.title}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
             )}
           </div>
         </div>

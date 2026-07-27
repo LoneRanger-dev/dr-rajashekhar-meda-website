@@ -50,7 +50,7 @@ export const site = {
     phone: "7075447449",
     phoneDisplay: "7075 447 449",
     phoneHref: "tel:+917075447449",
-    whatsapp: "917075447449", // CONFIRM_WITH_CLIENT — same number or separate Business line
+    whatsapp: "917075447449", // Confirmed — same as the clinic phone / WhatsApp Business line
     email: "", // CONFIRM_WITH_CLIENT
   },
   hours: {

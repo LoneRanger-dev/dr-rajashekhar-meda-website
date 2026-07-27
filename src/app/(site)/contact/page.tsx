@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Phone, MapPin, Clock, MessageCircle, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Section, SectionHeading, ConfirmWithClient } from "@/components/site/ui-bits";
+import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { AppointmentForm } from "@/components/site/appointment-form";
 import { site, whatsappUrl } from "@/lib/site";
 
@@ -141,13 +141,6 @@ export default function ContactPage() {
               <MapPin aria-hidden />
               Get directions
             </Button>
-
-            <ConfirmWithClient>
-              Confirm whether{" "}
-              <span className="tnum font-medium">{site.contact.phoneDisplay}</span>{" "}
-              is also the WhatsApp Business number, or whether a separate line
-              should be used.
-            </ConfirmWithClient>
           </div>
         </div>
       </Section>
