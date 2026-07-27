@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone, MapPin, Clock, MessageCircle, ShieldAlert } from "lucide-react";
+import { Phone, MapPin, Clock, MessageCircle, ShieldAlert, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { AppointmentForm } from "@/components/site/appointment-form";
@@ -72,6 +72,18 @@ export default function ContactPage() {
                       className="text-muted-foreground hover:text-accent transition-colors tnum"
                     >
                       {site.contact.phoneDisplay}
+                    </a>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <Mail className="size-5 text-accent shrink-0 mt-0.5" aria-hidden />
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-sm">Email</h3>
+                    <a
+                      href={site.contact.emailHref}
+                      className="text-muted-foreground hover:text-accent transition-colors break-all"
+                    >
+                      {site.contact.email}
                     </a>
                   </div>
                 </li>

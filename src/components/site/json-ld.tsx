@@ -45,6 +45,7 @@ export function JsonLd() {
         medicalSpecialty: "Neurologic",
         url: site.domain,
         telephone: `+91${site.contact.phone}`,
+        email: site.contact.email,
         image: `${site.domain}${doctorImages.portrait.src}`,
         address,
         geo: {
@@ -72,6 +73,7 @@ export function JsonLd() {
         description: `${site.hospital.descriptor}. ${site.hours.emergency}.`,
         url: site.domain,
         telephone: `+91${site.contact.phone}`,
+        email: site.contact.email,
         address,
         geo: {
           "@type": "GeoCoordinates",

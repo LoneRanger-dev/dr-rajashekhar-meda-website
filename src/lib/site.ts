@@ -51,7 +51,8 @@ export const site = {
     phoneDisplay: "7075 447 449",
     phoneHref: "tel:+917075447449",
     whatsapp: "917075447449", // Confirmed — same as the clinic phone / WhatsApp Business line
-    email: "", // CONFIRM_WITH_CLIENT
+    email: "dr.grkreddy88@gmail.com",
+    emailHref: "mailto:dr.grkreddy88@gmail.com",
   },
   hours: {
     weekday: "Monday – Saturday · 10:00 AM – 8:00 PM",
