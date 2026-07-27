@@ -4,6 +4,14 @@ import { figtree, notoSans } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/site/json-ld";
 import { Analytics } from "@/components/site/analytics";
+import { GoogleTagManager } from "@next/third-parties/google";
+<html lang="en">
+  <body>
+    {children}
+  </body>
+
+  <GoogleTagManager gtmId="GTM-WCMMQRD6" />
+</html>
 
 const TITLE = `${site.doctor.name} — Brain & Spine Surgeon, Khammam`;
 const DESCRIPTION =
