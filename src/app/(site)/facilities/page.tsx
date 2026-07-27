@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Ambulance, BedDouble, Brain, Clock, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { Ambulance, BedDouble, Brain, Clock, MapPin, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Section, SectionHeading, ConfirmWithClient } from "@/components/site/ui-bits";
+import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
+import { FacilityHero } from "@/components/site/facility-hero";
+import { FloatingMedicalIcons } from "@/components/site/floating-medical-icons";
+import { Tilt3D } from "@/components/site/tilt-3d";
 import { site } from "@/lib/site";
-import { facilityImages, BLUR_DATA_URL } from "@/lib/siteAssets";
-import { notoSansTelugu } from "@/lib/fonts-telugu";
+import { facilityImages, BLUR_DATA_URL, type ImageAsset } from "@/lib/siteAssets";
 
 export const metadata: Metadata = {
   title: "Suraksha Hospital Khammam — Emergency, Trauma & Multi-Specialty",
@@ -37,108 +39,136 @@ const facilities = [
   },
 ];
 
+/**
+ * Premium facility gallery — config-driven. To add a room photo: drop it in
+ * /public/images/facility/, register it in siteAssets.facilityImages, and add
+ * one line here. The responsive grid and effects apply automatically.
+ */
+const gallery: { image: ImageAsset; title: string; caption: string }[] = [
+  {
+    image: facilityImages.interior,
+    title: "Reception & patient areas",
+    caption: "Calm, modern interiors designed around patient comfort.",
+  },
+  {
+    image: facilityImages.exterior,
+    title: "The hospital",
+    caption: "Our building on Nehru Nagar, near Karnataka Bank.",
+  },
+];
+
 export default function FacilitiesPage() {
   return (
     <>
-      <section className="brand-wash">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
-          <Reveal className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-5">
-              <SectionHeading
-                as="h1"
-                eyebrow="Hospital facilities"
-                title={site.hospital.name}
-                lead={`${site.hospital.descriptor} — ${site.hospital.city}, ${site.hospital.state}`}
-              />
-              <p
-                lang="te"
-                className={`${notoSansTelugu.variable} text-xl text-muted-foreground`}
-              >
-                {site.hospital.nameTelugu}
-              </p>
-              <Button
-                variant="emergency"
-                size="cta"
-                render={<a href={site.contact.phoneHref} />}
-              >
-                <Phone aria-hidden />
-                <span className="tnum">{site.contact.phoneDisplay}</span>
-              </Button>
-            </div>
-            <div className="relative glow-halo glass rounded-3xl p-3 elev-3">
-              <div className="overflow-hidden rounded-2xl img-hover">
-                <Image
-                  src={facilityImages.exterior.src}
-                  alt={`${site.hospital.name} building exterior on Nehru Nagar, Khammam`}
-                  width={facilityImages.exterior.width}
-                  height={facilityImages.exterior.height}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  placeholder="blur"
-                  blurDataURL={BLUR_DATA_URL}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* ── CINEMATIC HERO ───────────────────────────────────────────────── */}
+      <FacilityHero />
 
+      {/* ── PREMIUM INTRODUCTION ─────────────────────────────────────────── */}
       <Section>
-        <SectionHeading
-          eyebrow="What's on site"
-          title="Facilities supporting neurosurgical care"
-        />
-        <RevealGroup as="ul" className="mt-12 grid sm:grid-cols-2 gap-5">
-          {facilities.map(({ icon: Icon, title, body }) => (
-            <RevealItem
-              key={title}
-              as="li"
-              className="group glass lift rounded-2xl p-7 flex gap-5"
-            >
-              <span className="icon-glass grid size-12 shrink-0 place-items-center rounded-xl text-accent">
-                <Icon
-                  className="size-6 transition-transform duration-[var(--dur-base)] group-hover:scale-110"
-                  aria-hidden
-                />
-              </span>
-              <div>
-                <h2 className="type-h3">{title}</h2>
-                <p className="text-sm text-muted-foreground mt-1.5">{body}</p>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-        <Reveal className="mt-10 relative glow-halo glass rounded-3xl p-3">
-          <div className="overflow-hidden rounded-2xl img-hover">
-            <Image
-              src={facilityImages.interior.src}
-              alt={`Inside ${site.hospital.name} — reception and patient areas, Khammam`}
-              width={facilityImages.interior.width}
-              height={facilityImages.interior.height}
-              sizes="(max-width: 1024px) 100vw, 1152px"
-              placeholder="blur"
-              blurDataURL={BLUR_DATA_URL}
-              className="w-full h-auto object-cover"
-            />
-          </div>
+        <Reveal className="mx-auto max-w-3xl text-center space-y-4">
+          <p className="type-label text-accent">A neuroscience institute</p>
+          <h2 className="type-h2">
+            Built for brain &amp; spine care, from emergency to recovery
+          </h2>
+          <p className="type-lead text-muted-foreground text-pretty">
+            {site.hospital.name} brings advanced neurosurgical infrastructure to
+            Khammam under one roof — an emergency-ready theatre, an on-site
+            intensive care unit and comfortable recovery spaces, so complex
+            cases are managed without moving patients between hospitals.
+          </p>
         </Reveal>
-        <div className="mt-6">
-          <ConfirmWithClient>
-            Further interior photographs — the ICU and operating theatre — would
-            strengthen this page. Please supply images cleared for publication
-            (no identifiable patients).
-          </ConfirmWithClient>
+      </Section>
+
+      {/* ── WHAT'S ON SITE — 3D tilt glass cards over ambient icons ───────── */}
+      <Section className="relative overflow-hidden">
+        <FloatingMedicalIcons />
+        <div className="relative">
+          <SectionHeading
+            eyebrow="What's on site"
+            title="Facilities supporting neurosurgical care"
+          />
+          <RevealGroup as="ul" className="mt-12 grid sm:grid-cols-2 gap-5 lg:gap-6">
+            {facilities.map(({ icon: Icon, title, body }) => (
+              <RevealItem key={title} as="li" className="h-full">
+                <Tilt3D className="h-full">
+                  <div className="group glass lift rounded-[28px] p-7 flex gap-5 h-full">
+                    <span
+                      className="icon-glass grid size-12 shrink-0 place-items-center rounded-xl text-accent"
+                      style={{ transform: "translateZ(40px)" }}
+                    >
+                      <Icon
+                        className="size-6 transition-transform duration-[var(--dur-base)] group-hover:scale-110"
+                        aria-hidden
+                      />
+                    </span>
+                    <div style={{ transform: "translateZ(24px)" }}>
+                      <h3 className="type-h3">{title}</h3>
+                      <p className="text-sm text-muted-foreground mt-1.5">{body}</p>
+                    </div>
+                  </div>
+                </Tilt3D>
+              </RevealItem>
+            ))}
+          </RevealGroup>
         </div>
       </Section>
 
-      <Section className="bg-muted/60">
+      {/* ── PREMIUM GALLERY ──────────────────────────────────────────────── */}
+      <Section className="bg-muted/40">
+        <SectionHeading
+          eyebrow="Inside the hospital"
+          title="A closer look"
+          lead="Clean, calm, and equipped for advanced neurosurgical care."
+        />
+        <RevealGroup
+          as="ul"
+          className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {gallery.map(({ image, title, caption }) => (
+            <RevealItem key={title} as="li" className="h-full">
+              <Tilt3D className="h-full">
+                <figure className="group relative h-full glass rounded-[28px] p-2 shadow-[0_30px_80px_oklch(0.26_0.06_251/0.18)]">
+                  <div className="card-shine relative aspect-[4/3] overflow-hidden rounded-[22px]">
+                    <Image
+                      src={image.src}
+                      alt={`${title} — ${site.hospital.name}, Khammam`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      placeholder="blur"
+                      blurDataURL={BLUR_DATA_URL}
+                      className="object-cover transition-transform duration-500 ease-[var(--ease-out)] group-hover:scale-105"
+                      style={{ transform: "translateZ(20px)" }}
+                    />
+                    {/* Legibility gradient + title (always visible for a11y) */}
+                    <div
+                      className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/65 via-black/25 to-transparent"
+                      style={{ transform: "translateZ(45px)" }}
+                    >
+                      <figcaption className="text-white font-semibold text-[clamp(0.95rem,0.9rem+0.4vw,1.1rem)]">
+                        {title}
+                      </figcaption>
+                      <p className="text-white/85 text-sm mt-0.5 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-[var(--ease-out)] group-hover:max-h-16 group-hover:opacity-100">
+                        {caption}
+                      </p>
+                    </div>
+                  </div>
+                </figure>
+              </Tilt3D>
+            </RevealItem>
+          ))}
+        </RevealGroup>
+      </Section>
+
+      {/* ── LOCATION & HOURS ─────────────────────────────────────────────── */}
+      <Section>
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="space-y-6">
             <SectionHeading eyebrow="Getting here" title="Location & hours" />
             <ul className="space-y-5">
-              <li className="flex gap-4">
-                <MapPin className="size-5 text-accent shrink-0 mt-1" aria-hidden />
+              <li className="group flex gap-4">
+                <span className="icon-glass grid size-11 shrink-0 place-items-center rounded-xl text-accent">
+                  <MapPin className="size-5" aria-hidden />
+                </span>
                 <div>
                   <h3 className="font-semibold">Address</h3>
                   <address className="not-italic text-sm text-muted-foreground mt-1">
@@ -146,8 +176,10 @@ export default function FacilitiesPage() {
                   </address>
                 </div>
               </li>
-              <li className="flex gap-4">
-                <Clock className="size-5 text-accent shrink-0 mt-1" aria-hidden />
+              <li className="group flex gap-4">
+                <span className="icon-glass grid size-11 shrink-0 place-items-center rounded-xl text-accent">
+                  <Clock className="size-5" aria-hidden />
+                </span>
                 <div>
                   <h3 className="font-semibold">Consulting hours</h3>
                   <p className="text-sm text-muted-foreground mt-1">

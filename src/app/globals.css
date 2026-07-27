@@ -447,6 +447,30 @@
   .btn-glass { background-color: var(--card); }
 }
 
+/* Diagonal glass-shine sweep — a light reflection travels across a card on
+   hover. Put on an `overflow-hidden` element; pair with `.group` on an
+   ancestor to trigger from a card-wide hover. GPU transform only. */
+.card-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    oklch(1 0 0 / 0.38) 46%,
+    transparent 62%
+  );
+  transform: translateX(-130%);
+  transition: transform 700ms var(--ease-out);
+  pointer-events: none;
+}
+.group:hover .card-shine::after,
+.card-shine:hover::after {
+  transform: translateX(130%);
+}
+
 /* A soft medical-blue halo placed behind a floating element. Apply to a
    `position: relative` wrapper; the glow renders behind its content. */
 .glow-halo::before {
