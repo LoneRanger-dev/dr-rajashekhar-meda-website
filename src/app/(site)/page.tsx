@@ -246,7 +246,7 @@ export default function HomePage() {
               ))}
             </ul>
             <Button variant="glass" size="cta" render={<Link href="/about" />}>
-              Read Dr. GRK Reddy&apos;s full profile
+              View full profile
               <ArrowRight aria-hidden />
             </Button>
           </div>

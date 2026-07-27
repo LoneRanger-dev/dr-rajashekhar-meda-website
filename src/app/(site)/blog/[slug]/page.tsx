@@ -113,7 +113,7 @@ export default async function ArticlePage({
                 ))}
               </ul>
             ) : (
-              <p key={i} className="text-muted-foreground text-[1.05rem]">
+              <p key={i} className="text-muted-foreground text-[clamp(1rem,0.97rem+0.18vw,1.05rem)]">
                 {block.text}
               </p>
             )

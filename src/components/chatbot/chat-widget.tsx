@@ -128,7 +128,7 @@ export function ChatWidget() {
         aria-controls="chat-panel"
         aria-label={open ? "Close the assistant" : "Chat with the clinic assistant"}
         className={cn(
-          "fixed z-50 right-4 bottom-20 lg:bottom-6 grid place-items-center rounded-full",
+          "fixed z-50 right-[max(1rem,env(safe-area-inset-right))] bottom-[calc(5rem+env(safe-area-inset-bottom))] lg:bottom-[max(1.5rem,env(safe-area-inset-bottom))] grid place-items-center rounded-full",
           "transition-transform duration-[var(--dur-base)] hover:scale-110 active:scale-95",
           "focus-visible:outline-3 focus-visible:outline-offset-4",
           open

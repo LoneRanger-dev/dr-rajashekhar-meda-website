@@ -17,7 +17,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-3">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-[max(0.75rem,env(safe-area-inset-top))]">
         <div className="glass-strong rounded-2xl px-3 sm:px-4 flex h-14 lg:h-16 items-center justify-between gap-4">
           {/* No aria-label here: the visible text is already a complete,
               accurate name. An aria-label that omits part of the visible
