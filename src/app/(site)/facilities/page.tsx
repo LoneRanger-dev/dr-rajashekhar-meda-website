@@ -44,7 +44,20 @@ const facilities = [
  * /public/images/facility/, register it in siteAssets.facilityImages, and add
  * one line here. The responsive grid and effects apply automatically.
  */
-const gallery: { image: ImageAsset; title: string; caption: string }[] = [
+const gallery: {
+  image: ImageAsset;
+  title: string;
+  caption: string;
+  /** Full-width panoramic tile — for montages / wide shots. */
+  wide?: boolean;
+}[] = [
+  {
+    image: facilityImages.wards,
+    title: "ICU, theatre, wards & recovery",
+    caption:
+      "Intensive care, a modern operating theatre, private rooms and calm recovery spaces — all under one roof.",
+    wide: true,
+  },
   {
     image: facilityImages.interior,
     title: "Reception & patient areas",
@@ -124,16 +137,24 @@ export default function FacilitiesPage() {
           as="ul"
           className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {gallery.map(({ image, title, caption }) => (
-            <RevealItem key={title} as="li" className="h-full">
-              <Tilt3D className="h-full">
+          {gallery.map(({ image, title, caption, wide }) => (
+            <RevealItem
+              key={title}
+              as="li"
+              className={`h-full ${wide ? "sm:col-span-2 lg:col-span-3" : ""}`}
+            >
+              <Tilt3D className="h-full" maxX={wide ? 3 : 6} maxY={wide ? 4 : 8}>
                 <figure className="group relative h-full glass rounded-[28px] p-2 shadow-[0_30px_80px_oklch(0.26_0.06_251/0.18)]">
-                  <div className="card-shine relative aspect-[4/3] overflow-hidden rounded-[22px]">
+                  <div
+                    className={`card-shine relative overflow-hidden rounded-[22px] ${
+                      wide ? "aspect-[3/2] sm:aspect-[16/7]" : "aspect-[4/3]"
+                    }`}
+                  >
                     <Image
                       src={image.src}
                       alt={`${title} — ${site.hospital.name}, Khammam`}
                       fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes={wide ? "100vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
                       placeholder="blur"
                       blurDataURL={BLUR_DATA_URL}
                       className="object-cover transition-transform duration-500 ease-[var(--ease-out)] group-hover:scale-105"

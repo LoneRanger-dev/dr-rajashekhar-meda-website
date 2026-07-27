@@ -56,6 +56,12 @@ export const facilityImages = {
     width: 1692,
     height: 930,
   },
+  /** Facility montage — ICU, patient room, theatre, reception, lounge, ward. */
+  wards: {
+    src: "/images/facility/facility-collage.png",
+    width: 1536,
+    height: 1024,
+  },
 } as const;
 
 /** Editorial creatives used on condition, blog and landing pages. */
