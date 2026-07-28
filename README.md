@@ -3,7 +3,7 @@
 Website for Dr. Gade Ramakrishna Reddy (MBBS, MS, MCh Neurosurgery), Consultant
 Brain & Spine Surgeon at Suraksha Hospital, Khammam, Telangana.
 
-**Live:** https://suraksha-neuro.vercel.app
+**Live:** https://drgrkneuro.com
 **Repo:** https://github.com/LoneRanger-dev/suraksha-neuro
 
 | Doc | For |
@@ -22,7 +22,7 @@ Brain & Spine Surgeon at Suraksha Hospital, Khammam, Telangana.
 | Framework | Next.js 16.2.10 (App Router, Turbopack) |
 | UI | React 19.2, Tailwind CSS v4, shadcn/ui on Base UI |
 | 3D | Three.js + React Three Fiber (lazy, capability-gated) |
-| AI | Anthropic SDK — `claude-opus-4-8` |
+| AI | OpenAI SDK — `gpt-4o-mini` (override with `OPENAI_MODEL`) |
 | Hosting | Vercel |
 | Icons | Lucide |
 | Fonts | Figtree (display), Noto Sans (body), Noto Sans Telugu (scoped) |
@@ -54,9 +54,16 @@ without them.
 
 | Variable | Required? | Notes |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | For the chatbot | **Server-side only.** Without it the bot still handles emergencies and symptom questions correctly, and replies "please call the clinic" to everything else. |
-| `NEXT_PUBLIC_GTM_ID` | For analytics | GTM container. When unset, no tag loads at all. |
+| `OPENAI_API_KEY` | For the chatbot | **Server-side only.** Without it the bot still handles emergencies and symptom questions correctly, and replies "please call the clinic" to everything else. |
+| `OPENAI_MODEL` | No | Defaults to `gpt-4o-mini`. |
+| `GOOGLE_SITE_VERIFICATION` | For Search Console | The token value only (after `google-site-verification=`), rendered as a `<meta>` tag by `src/app/layout.tsx`. |
 | `NEXT_PUBLIC_SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` | For appointment storage | Not yet wired — see Known gaps. |
+
+> **Note:** GTM (`GTM-WCMMQRD6`) and GA4 (`G-YHMZWYWQVK`) are hardcoded directly
+> in `src/app/layout.tsx` via `@next/third-parties/google` — they are **not**
+> environment-variable driven, and load on every environment (including
+> previews). Configure Google Ads conversions and Microsoft Clarity as tags
+> inside the GTM container rather than adding new hardcoded scripts.
 
 Set these in Vercel: `Project → Settings → Environment Variables`, then redeploy.
 

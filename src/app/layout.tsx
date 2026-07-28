@@ -78,9 +78,13 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   manifest: "/manifest.webmanifest",
-  verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION,
-  },
+  // Only emit the GSC verification meta tag when the env var is set.
+  // Next.js omits the tag entirely when the value is undefined, so
+  // this guard exists purely to prevent a future regression where
+  // someone passes an explicit undefined in a non-standard build.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
   formatDetection: { telephone: true, address: true, email: false },
 };
 

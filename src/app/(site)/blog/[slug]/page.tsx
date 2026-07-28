@@ -9,6 +9,7 @@ import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { articles } from "@/lib/articles";
 import { BLUR_DATA_URL } from "@/lib/siteAssets";
 import { site } from "@/lib/site";
+import { BreadcrumbJsonLd } from "@/components/site/json-ld";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -55,6 +56,13 @@ export default async function ArticlePage({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Health Education", path: "/blog" },
+          { name: article.title, path: `/blog/${article.slug}` },
+        ]}
+      />
       <section className="brand-wash">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 py-14 sm:py-20">
           <nav aria-label="Breadcrumb" className="mb-6">

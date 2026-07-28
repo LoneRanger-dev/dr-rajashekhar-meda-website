@@ -10,6 +10,7 @@ import { Tilt3D } from "@/components/site/tilt-3d";
 import { site } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 import { facilityImages, BLUR_DATA_URL, type ImageAsset } from "@/lib/siteAssets";
+import { BreadcrumbJsonLd } from "@/components/site/json-ld";
 
 export const metadata: Metadata = pageMetadata({
   title: "Suraksha Hospital Khammam — Emergency, Trauma & Multi-Specialty",
@@ -75,6 +76,7 @@ const gallery: {
 export default function FacilitiesPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Hospital Facilities", path: "/facilities" }]} />
       {/* ── CINEMATIC HERO ───────────────────────────────────────────────── */}
       <FacilityHero />
 

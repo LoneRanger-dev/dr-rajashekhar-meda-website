@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, conditions } from "@/lib/site";
+import { BreadcrumbJsonLd } from "@/components/site/json-ld";
 
 export function generateStaticParams() {
   return conditions.map((c) => ({ slug: c.slug }));
@@ -59,6 +60,13 @@ export default async function ConditionPage({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Conditions & Treatments", path: "/conditions" },
+          { name: condition.name, path: `/conditions/${condition.slug}` },
+        ]}
+      />
       <section className="brand-wash">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
           <nav aria-label="Breadcrumb" className="mb-6">

@@ -22,7 +22,7 @@ depends on the one before it.
 ## Before you post — five things to change
 
 1. **Swap the domain.** Every Final URL points at
-   `https://suraksha-neuro.vercel.app`. Once the real domain is connected,
+   `https://drgrkneuro.com`. Use this production domain for all campaigns.
    find-and-replace that string across all four files.
 2. **Set the call-only campaign properly.** `01` creates
    *Suraksha Emergency - Call Only* as a Search campaign because Ads Editor

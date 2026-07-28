@@ -9,6 +9,7 @@ import { site, awards } from "@/lib/site";
 import { doctorImages, creativeImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 import { notoSansTelugu } from "@/lib/fonts-telugu";
 import { pageMetadata } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/site/json-ld";
 
 export const metadata: Metadata = pageMetadata({
   title: "About Dr. GRK Reddy — MCh Neurosurgeon, Khammam",
@@ -48,6 +49,7 @@ const expertise = [
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "About Dr. GRK Reddy", path: "/about" }]} />
       <section className="brand-wash">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
           <Reveal className="grid lg:grid-cols-[1fr_1.1fr] gap-12 items-center">

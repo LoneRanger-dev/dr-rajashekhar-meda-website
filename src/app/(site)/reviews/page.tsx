@@ -7,6 +7,7 @@ import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { Testimonials } from "@/components/site/testimonials";
 import { testimonials } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/site/json-ld";
 
 export const metadata: Metadata = pageMetadata({
   title: "Patient Reviews — Dr. GRK Reddy, Khammam",
@@ -26,6 +27,7 @@ export default function ReviewsPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Patient Reviews", path: "/reviews" }]} />
       <section className="brand-wash">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
           <SectionHeading

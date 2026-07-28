@@ -7,6 +7,7 @@ import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { articles } from "@/lib/articles";
 import { BLUR_DATA_URL } from "@/lib/siteAssets";
 import { pageMetadata } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/site/json-ld";
 
 export const metadata: Metadata = pageMetadata({
   title: "Health Education — Brain, Spine & Epilepsy Guides",
@@ -17,6 +18,7 @@ export const metadata: Metadata = pageMetadata({
 export default function BlogPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Health Education", path: "/blog" }]} />
       <section className="brand-wash">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
           <SectionHeading

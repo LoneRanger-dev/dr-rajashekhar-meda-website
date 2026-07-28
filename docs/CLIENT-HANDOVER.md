@@ -1,7 +1,7 @@
 # Client Handover — Your New Website
 
 **For:** Dr. Gade Ramakrishna Reddy and the Suraksha Hospital team
-**Live site:** https://suraksha-neuro.vercel.app
+**Live site:** https://drgrkneuro.com
 
 This guide is written for clinic staff, not developers. No coding knowledge needed.
 
@@ -82,7 +82,7 @@ We need you to confirm or supply:
 | Awards / publications | **None listed.** We found none in the material you gave us and did not invent any. Send any awards, published papers or fellowships. |
 | Clinic email | Not on the site yet |
 | Hospital photos | We have none. Photos of the reception, ICU and operating theatre would help patients a lot. **No identifiable patients in any photo.** |
-| Final domain name | Site is on a temporary address — see §3 |
+| Final domain name | `drgrkneuro.com` |
 
 ### 🟡 Priority 5 — Buy your domain name
 
@@ -90,19 +90,13 @@ See the next section.
 
 ---
 
-## 3. Getting your own web address
+## 3. Production web address
 
-The site currently lives at `suraksha-neuro.vercel.app`. That works, but a proper
-address like `drramakrishnareddy.com` looks far more professional on a visiting
-card or prescription pad.
+The production site is `drgrkneuro.com`. Use this address on visiting cards,
+prescription pads, Google Business Profile, and all advertising materials.
 
-**What to do:**
-1. Buy the domain from GoDaddy, Namecheap or BigRock (roughly ₹800–1,500/year)
-2. Send us the login details, or add us as a user
-3. We connect it — takes about 15 minutes, plus a few hours for it to spread across the internet
-
-**Suggested names:** `drramakrishnareddy.com`, `surakshaneuro.com`,
-`khammamneurosurgeon.com`
+**Operational note:** Keep the domain set to auto-renew and ensure it remains
+connected to the Vercel project.
 
 ⚠️ **Set the domain to auto-renew.** A domain that expires takes the website and
 any email on it offline, and recovering a lapsed domain can be expensive.

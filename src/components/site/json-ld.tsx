@@ -1,6 +1,31 @@
 import { site, conditions } from "@/lib/site";
 import { doctorImages } from "@/lib/siteAssets";
 
+type BreadcrumbItem = {
+  name: string;
+  path: string;
+};
+
+export function BreadcrumbJsonLd({ items }: { items: BreadcrumbItem[] }) {
+  const graph = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${site.domain}${item.path}`,
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+    />
+  );
+}
+
 /**
  * Physician + MedicalClinic structured data (BUILD.md Phase 3 non-negotiable).
  * Feeds Google's rich results and reinforces the local-SEO NAP signal.
@@ -67,7 +92,7 @@ export function JsonLd() {
         },
       },
       {
-        "@type": "MedicalClinic",
+        "@type": ["MedicalClinic", "MedicalOrganization", "LocalBusiness"],
         "@id": `${site.domain}/#clinic`,
         name: site.hospital.name,
         description: `${site.hospital.descriptor}. ${site.hours.emergency}.`,

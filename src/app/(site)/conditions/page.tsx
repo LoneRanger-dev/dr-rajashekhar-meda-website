@@ -5,6 +5,7 @@ import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { conditions } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
+import { BreadcrumbJsonLd } from "@/components/site/json-ld";
 
 export const metadata: Metadata = pageMetadata({
   title: "Conditions & Treatments — Brain, Spine & Epilepsy Care in Khammam",
@@ -17,6 +18,7 @@ const icons = { spine: Bone, brain: Brain, activity: Activity, scan: Scan } as c
 export default function ConditionsPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Conditions & Treatments", path: "/conditions" }]} />
       <section className="brand-wash">
         <Reveal className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20" blur={false} y={16}>
           <SectionHeading
