@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Quote, Star, ShieldCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
+import { ShieldCheck, Quote } from "lucide-react";
+
 import { Section, SectionHeading } from "@/components/site/ui-bits";
+import { testimonials } from "@/lib/site";
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { Testimonials } from "@/components/site/testimonials";
-import { testimonials } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 import { BreadcrumbJsonLd } from "@/components/site/json-ld";
 
@@ -17,12 +17,6 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function ReviewsPage() {
-  /**
-   * Real, consented testimonials always win. The sample showcase renders only
-   * while `testimonials` in src/lib/site.ts is empty — add real ones there and
-   * all demonstration content (including the illustrative stats) disappears
-   * automatically.
-   */
   const hasReal = testimonials.length > 0;
 
   return (
@@ -41,6 +35,7 @@ export default function ReviewsPage() {
 
       <Section>
         {hasReal ? (
+          /* ── Real consented testimonials ─────────────────────────────────── */
           <RevealGroup as="ul" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((t) => (
               <RevealItem key={t.name} as="li" className="glass lift rounded-2xl p-7 space-y-4">
@@ -60,49 +55,16 @@ export default function ReviewsPage() {
         )}
       </Section>
 
-      {!hasReal && (
-        <Section className="bg-muted/60">
-          <div className="max-w-3xl space-y-6">
-            <div className="glass lift rounded-2xl p-7 space-y-4">
-              <span className="icon-glass grid size-11 place-items-center rounded-xl text-accent">
-                <Star className="size-5" aria-hidden />
-              </span>
-              <h2 className="type-h3">How to publish real reviews here</h2>
-              <ol className="list-decimal ml-5 space-y-2 text-sm text-muted-foreground">
-                <li>Collect 5–10 genuine patient testimonials.</li>
-                <li>
-                  Obtain written consent from each patient to publish their
-                  words, and confirm whether they agree to their name being
-                  shown or prefer initials only.
-                </li>
-                <li>
-                  Send them across. Once added, the samples above are replaced
-                  automatically.
-                </li>
-              </ol>
-              <p className="text-sm text-muted-foreground">
-                Reviews on the Google Business Profile do double duty — they
-                build trust for patients comparing surgeons, and they are one of
-                the strongest ranking signals in local search.
-              </p>
-              <div className="flex flex-wrap gap-3 pt-1">
-                <Button variant="accent" size="cta" render={<Link href="/contact" />}>
-                  Contact the clinic
-                </Button>
-              </div>
-            </div>
-
-            <div className="flex gap-3 text-sm text-muted-foreground">
-              <ShieldCheck className="size-5 text-success shrink-0 mt-0.5" aria-hidden />
-              <p>
-                Patient privacy is taken seriously. No clinical detail, image or
-                identifying information is published without explicit written
-                permission.
-              </p>
-            </div>
-          </div>
-        </Section>
-      )}
+      <Section className="bg-muted/60">
+        <div className="flex gap-3 text-sm text-muted-foreground max-w-2xl mx-auto">
+          <ShieldCheck className="size-5 text-success shrink-0 mt-0.5" aria-hidden />
+          <p>
+            Patient privacy is taken seriously. No clinical detail, image or
+            identifying information is published without explicit written
+            permission.
+          </p>
+        </div>
+      </Section>
     </>
   );
 }

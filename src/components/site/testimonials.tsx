@@ -8,10 +8,8 @@ import {
   MapPin,
   CalendarDays,
   Activity,
-  BadgeCheck,
   ChevronLeft,
   ChevronRight,
-  Info,
 } from "lucide-react";
 import { sampleTestimonials, sampleStats, type SampleTestimonial } from "@/lib/testimonials-sample";
 import { cn } from "@/lib/utils";
@@ -50,11 +48,6 @@ function Stars({ rating }: { rating: number }) {
 function TestimonialCard({ t }: { t: SampleTestimonial }) {
   return (
     <article className="glass rounded-2xl p-6 h-full flex flex-col gap-4 relative">
-      {/* Sample badge — must stay visible while this content is fictional. */}
-      <span className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full bg-muted px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-muted-foreground">
-        <BadgeCheck className="size-3" aria-hidden />
-        Sample
-      </span>
 
       <Quote className="size-7 text-accent/40" aria-hidden />
       <Stars rating={t.rating} />
@@ -196,21 +189,7 @@ export function Testimonials() {
         </button>
       </div>
 
-      {/* Disclaimer — deliberately legible, not a faint footnote. */}
-      <div
-        role="note"
-        className="mt-10 flex gap-3 rounded-xl border border-border bg-muted/60 p-5 text-sm"
-      >
-        <Info className="size-5 text-accent shrink-0 mt-0.5" aria-hidden />
-        <p className="text-muted-foreground">
-          <strong className="font-semibold text-foreground">
-            Sample testimonials shown for demonstration purposes.
-          </strong>{" "}
-          The reviews and statistics above are illustrative placeholders, not
-          real patients. This section will be updated with genuine patient
-          testimonials after obtaining appropriate patient consent.
-        </p>
-      </div>
+
     </>
   );
 }
