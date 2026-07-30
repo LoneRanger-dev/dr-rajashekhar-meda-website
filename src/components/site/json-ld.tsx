@@ -62,12 +62,30 @@ export function JsonLd() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        // ── Physician ───────────────────────────────────────────────────────
+        // name: canonical legal name matching Google Business Profile (§4.3).
+        // alternateName: every indexed name variant helps entity resolution.
+        // jobTitle + hospitalAffiliation: primary disambiguation signals for
+        //   Google's Knowledge Graph per audit §4.2 / §4.3.
+        // medicalSpecialty: expanded to array per audit §4.3.
+        // description: leads with current specialty, not the General Surgery
+        //   training stage — resolves the root-cause identified in §4.2.
         "@type": "Physician",
         "@id": `${site.domain}/#physician`,
-        name: site.doctor.name,
-        alternateName: site.doctor.nameAlt,
-        description: `${site.doctor.title} at ${site.hospital.name}, ${site.hospital.city}. ${site.doctor.credentials}.`,
-        medicalSpecialty: "Neurologic",
+        name: "Dr. Gade Ramakrishna Reddy",
+        alternateName: ["Dr. GRK Reddy", "Ramakrishna Reddy G"],
+        jobTitle: "Consultant Neurosurgeon",
+        description:
+          "Dr. Gade Ramakrishna Reddy is a Consultant Neurosurgeon" +
+          " (Brain & Spine Surgeon) at Suraksha Hospital, Khammam, holding" +
+          " MBBS, MS and MCh (Neurosurgery) qualifications, and" +
+          " Assistant Professor, Department of Neurosurgery, Mamata Medical College.",
+        medicalSpecialty: ["Neurologic", "Surgical"],
+        hospitalAffiliation: {
+          "@type": "Hospital",
+          name: site.hospital.name,
+          "@id": `${site.domain}/#clinic`,
+        },
         url: site.domain,
         telephone: `+91${site.contact.phone}`,
         email: site.contact.email,
@@ -88,7 +106,7 @@ export function JsonLd() {
         memberOf: {
           "@type": "MedicalOrganization",
           name: "Mamata Medical College",
-          description: site.doctor.academicRole,
+          description: "Assistant Professor, Department of Neurosurgery",
         },
       },
       {

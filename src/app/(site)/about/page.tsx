@@ -73,7 +73,7 @@ export default function AboutPage() {
                 as="h1"
                 eyebrow="About"
                 title={site.doctor.name}
-                lead={site.doctor.credentials}
+                lead="Consultant Neurosurgeon — MBBS, MS, MCh (Neurosurgery)"
               />
               <p className="type-lead text-muted-foreground">
                 {site.doctor.title} at {site.hospital.name}, {site.hospital.city},
