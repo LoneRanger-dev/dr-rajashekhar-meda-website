@@ -1,3 +1,6 @@
+"use client";
+
+import React, { use } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -14,16 +17,14 @@ import {
   Clock,
   Zap,
   Activity,
-  FileText,
   ChevronRight,
   MapPin,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Section, SectionHeading } from "@/components/site/ui-bits";
+import { Section } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { ConditionIllustration } from "@/components/illustrations/condition-illustrations";
 import { site, whatsappUrl } from "@/lib/site";
-import { detailedConditions, getConditionBySlug, ConditionDetail } from "@/lib/conditionsData";
+import { detailedConditions, getConditionBySlug } from "@/lib/conditionsData";
 import { trackCall, trackWhatsApp } from "@/lib/analytics";
 
 export function generateStaticParams() {
@@ -66,12 +67,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function ConditionDetailPage({
+export default function ConditionDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug } = use(params);
   const condition = getConditionBySlug(slug);
   if (!condition) notFound();
 

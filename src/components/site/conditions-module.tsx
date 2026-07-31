@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Sparkles, ShieldCheck, Stethoscope } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { ConditionIllustration } from "@/components/illustrations/condition-illustrations";
-import { detailedConditions, ConditionDetail } from "@/lib/conditionsData";
+import { detailedConditions } from "@/lib/conditionsData";
 
 const categories = [
   "All Conditions",

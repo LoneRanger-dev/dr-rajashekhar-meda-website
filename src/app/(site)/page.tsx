@@ -10,10 +10,8 @@ import {
   MapPin,
   ArrowRight,
   Activity,
-  Scan,
   Ambulance,
   BedDouble,
-  Scissors,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
@@ -24,15 +22,8 @@ import { HeroBackground } from "@/components/site/hero-background";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { PatientJourney } from "@/components/site/patient-journey";
 import { ConditionsModule } from "@/components/site/conditions-module";
-import { site, conditions, whatsappUrl } from "@/lib/site";
+import { site, whatsappUrl } from "@/lib/site";
 import { doctorImages, BLUR_DATA_URL } from "@/lib/siteAssets";
-
-const conditionIcons = {
-  spine: Scissors,
-  brain: Activity,
-  activity: Activity,
-  scan: Scan,
-} as const;
 
 const pillarIcons = { activity: Activity, ambulance: Ambulance, hospital: BedDouble } as const;
 
