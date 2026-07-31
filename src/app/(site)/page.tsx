@@ -23,6 +23,7 @@ import { HospitalShowcase } from "@/components/site/hospital-showcase";
 import { HeroBackground } from "@/components/site/hero-background";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { PatientJourney } from "@/components/site/patient-journey";
+import { ConditionsModule } from "@/components/site/conditions-module";
 import { site, conditions, whatsappUrl } from "@/lib/site";
 import { doctorImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 
@@ -139,48 +140,8 @@ export default function HomePage() {
         </RevealGroup>
       </Section>
 
-      {/* ── CONDITIONS / SERVICES ───────────────────────────────────────── */}
-      <Section className="bg-muted/60">
-        <SectionHeading
-          eyebrow="Surgeries & Clinical Services"
-          title="Advanced Laparoscopic & General Surgery"
-          lead="From routine keyhole surgeries to emergency abdominal trauma — compassionate, expert surgical care with rapid recovery."
-        />
-        <RevealGroup
-          as="ul"
-          className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
-        >
-          {conditions.map((condition) => {
-            const Icon = conditionIcons[condition.icon] || Activity;
-            return (
-              <RevealItem key={condition.slug} as="li">
-                <Link
-                  href={`/conditions/${condition.slug}`}
-                  className="group glass lift rounded-2xl p-6 h-full flex flex-col gap-3"
-                >
-                  <span className="icon-glass grid size-12 place-items-center rounded-xl text-accent">
-                    <Icon
-                      className="size-6 transition-transform duration-[var(--dur-base)] group-hover:scale-110"
-                      aria-hidden
-                    />
-                  </span>
-                  <h3 className="type-h3">{condition.short}</h3>
-                  <p className="text-sm text-muted-foreground flex-1">
-                    {condition.summary}
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
-                    Learn more
-                    <ArrowRight
-                      className="size-4 transition-transform duration-[var(--dur-base)] group-hover:translate-x-1"
-                      aria-hidden
-                    />
-                  </span>
-                </Link>
-              </RevealItem>
-            );
-          })}
-        </RevealGroup>
-      </Section>
+      {/* ── CONDITIONS / SERVICES MODULE ─────────────────────────────────── */}
+      <ConditionsModule />
 
       {/* ── PATIENT JOURNEY / PROCESS TIMELINE ──────────────────────────── */}
       <PatientJourney />

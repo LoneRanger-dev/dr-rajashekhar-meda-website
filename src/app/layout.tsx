@@ -107,7 +107,7 @@ export default function RootLayout({
     >
       {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
       {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-hidden w-full max-w-full">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-3 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-3 focus:text-primary-foreground"
