@@ -14,7 +14,7 @@ export function Footer() {
             <span className="inline-flex rounded-xl bg-white p-3">
               <Image
                 src={brandImages.logo.src}
-                alt={`${site.hospital.name} — Brain, Spine, Neuro`}
+                alt={`${site.hospital.name} — General & Laparoscopic Surgery`}
                 width={brandImages.logo.width}
                 height={brandImages.logo.height}
                 className="h-11 w-auto"

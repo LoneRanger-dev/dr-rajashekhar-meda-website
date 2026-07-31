@@ -1,31 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Brain, Activity, Scan, Bone } from "lucide-react";
+import { ArrowRight, Activity, Scan, Scissors } from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { conditions } from "@/lib/site";
-import { pageMetadata } from "@/lib/seo";
-import { BreadcrumbJsonLd } from "@/components/site/json-ld";
+import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/site/json-ld";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Conditions & Treatments — Brain, Spine & Epilepsy Care in Khammam",
-  description: "Brain and spine conditions treated by Dr. GRK Reddy in Khammam: herniated disc, spinal stenosis, spinal deformity, head injury, brain tumours, epilepsy and minimally invasive spine surgery.",
+export const metadata: Metadata = buildMetadata({
+  title: "Surgeries & Treatments — Laparoscopic & General Surgery in Khammam",
+  description: "Advanced laparoscopic and general surgery procedures treated by Dr. Rajashekhar Meda in Khammam: Hernia repair, Appendectomy, Cholecystectomy, Varicose veins laser treatment, and tumor removal.",
   path: "/conditions",
 });
 
-const icons = { spine: Bone, brain: Brain, activity: Activity, scan: Scan } as const;
+const icons = { spine: Scissors, brain: Activity, activity: Activity, scan: Scan } as const;
 
 export default function ConditionsPage() {
   return (
     <>
-      <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Conditions & Treatments", path: "/conditions" }]} />
+      <JsonLd />
       <section className="brand-wash">
         <Reveal className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20" blur={false} y={16}>
           <SectionHeading
             as="h1"
-            eyebrow="Conditions & Treatments"
-            title="Brain and spine care, explained clearly"
-            lead="Understanding your condition makes the conversation with your surgeon easier. These pages explain what each condition is, when to seek help, and how it is treated — in plain language, without jargon."
+            eyebrow="Surgeries & Clinical Services"
+            title="Laparoscopic and general surgical procedures"
+            lead="Explore comprehensive keyhole and laser surgical treatments offered by Dr. Rajashekhar Meda at Suraksha Hospital, Khammam."
           />
         </Reveal>
       </section>
@@ -33,7 +33,7 @@ export default function ConditionsPage() {
       <Section>
         <RevealGroup as="ul" className="grid sm:grid-cols-2 gap-6">
           {conditions.map((condition) => {
-            const Icon = icons[condition.icon];
+            const Icon = icons[condition.icon] || Activity;
             return (
               <RevealItem key={condition.slug} as="li">
                 <Link

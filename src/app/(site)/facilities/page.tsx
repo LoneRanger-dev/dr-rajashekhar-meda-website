@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Ambulance, BedDouble, Brain, Clock, MapPin, ShieldCheck } from "lucide-react";
+import { Ambulance, BedDouble, Scissors, Clock, MapPin, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
@@ -8,50 +8,44 @@ import { FacilityHero } from "@/components/site/facility-hero";
 import { FloatingMedicalIcons } from "@/components/site/floating-medical-icons";
 import { Tilt3D } from "@/components/site/tilt-3d";
 import { site } from "@/lib/site";
-import { pageMetadata } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
 import { facilityImages, BLUR_DATA_URL, type ImageAsset } from "@/lib/siteAssets";
-import { BreadcrumbJsonLd } from "@/components/site/json-ld";
+import { JsonLd } from "@/components/site/json-ld";
 
-export const metadata: Metadata = pageMetadata({
+export const metadata: Metadata = buildMetadata({
   title: "Suraksha Hospital Khammam — Emergency, Trauma & Multi-Specialty",
   description:
-    "Suraksha Hospital, Nehru Nagar, Khammam — emergency and trauma care, advanced ICU and 24/7 neurosurgeon availability. Consulting hours and location.",
+    "Suraksha Hospital, Nehru Nagar, Khammam — emergency and trauma surgical care, advanced ICU and 24/7 surgeon availability. Consulting hours and location.",
   path: "/facilities",
 });
 
 const facilities = [
   {
     icon: Ambulance,
-    title: "24/7 emergency & trauma",
-    body: "Round-the-clock intake for head injury, spinal trauma and acute neurological emergencies, with a neurosurgeon available at any hour.",
+    title: "24/7 Emergency & Surgical Trauma",
+    body: "Round-the-clock intake for abdominal trauma, acute appendicitis, and surgical emergencies, with a surgeon available at any hour.",
   },
   {
     icon: BedDouble,
     title: "Advanced ICU",
-    body: "Intensive care support on site for post-operative and critically ill neurosurgical patients.",
+    body: "Intensive care support on site for post-operative and critically ill surgical patients.",
   },
   {
-    icon: Brain,
-    title: "Neurosurgical theatre",
-    body: "Equipped for endoscopic and minimally invasive brain and spine procedures.",
+    icon: Scissors,
+    title: "Laparoscopic Operating Theatre",
+    body: "Equipped with HD endoscopic cameras and precision surgical instruments for keyhole procedures.",
   },
   {
     icon: ShieldCheck,
-    title: "Multi-specialty support",
+    title: "Multi-Specialty Support",
     body: "Access to allied specialties under one roof, so complex cases do not need to be moved between hospitals.",
   },
 ];
 
-/**
- * Premium facility gallery — config-driven. To add a room photo: drop it in
- * /public/images/facility/, register it in siteAssets.facilityImages, and add
- * one line here. The responsive grid and effects apply automatically.
- */
 const gallery: {
   image: ImageAsset;
   title: string;
   caption: string;
-  /** Full-width panoramic tile — for montages / wide shots. */
   wide?: boolean;
 }[] = [
   {
@@ -76,33 +70,29 @@ const gallery: {
 export default function FacilitiesPage() {
   return (
     <>
-      <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Hospital Facilities", path: "/facilities" }]} />
-      {/* ── CINEMATIC HERO ───────────────────────────────────────────────── */}
+      <JsonLd />
       <FacilityHero />
 
-      {/* ── PREMIUM INTRODUCTION ─────────────────────────────────────────── */}
       <Section>
         <Reveal className="mx-auto max-w-3xl text-center space-y-4">
-          <p className="type-label text-accent">A neuroscience institute</p>
+          <p className="type-label text-accent">Advanced Surgical Institute</p>
           <h2 className="type-h2">
-            Built for brain &amp; spine care, from emergency to recovery
+            Built for surgical care, from emergency to recovery
           </h2>
           <p className="type-lead text-muted-foreground text-pretty">
-            {site.hospital.name} brings advanced neurosurgical infrastructure to
+            {site.hospital.name} brings advanced laparoscopic and surgical infrastructure to
             Khammam under one roof — an emergency-ready theatre, an on-site
-            intensive care unit and comfortable recovery spaces, so complex
-            cases are managed without moving patients between hospitals.
+            intensive care unit and comfortable recovery spaces.
           </p>
         </Reveal>
       </Section>
 
-      {/* ── WHAT'S ON SITE — 3D tilt glass cards over ambient icons ───────── */}
       <Section className="relative overflow-hidden">
         <FloatingMedicalIcons />
         <div className="relative">
           <SectionHeading
             eyebrow="What's on site"
-            title="Facilities supporting neurosurgical care"
+            title="Facilities supporting surgical care"
           />
           <RevealGroup as="ul" className="mt-12 grid sm:grid-cols-2 gap-5 lg:gap-6">
             {facilities.map(({ icon: Icon, title, body }) => (
@@ -130,12 +120,11 @@ export default function FacilitiesPage() {
         </div>
       </Section>
 
-      {/* ── PREMIUM GALLERY ──────────────────────────────────────────────── */}
       <Section className="bg-muted/40">
         <SectionHeading
           eyebrow="Inside the hospital"
           title="A closer look"
-          lead="Clean, calm, and equipped for advanced neurosurgical care."
+          lead="Clean, calm, and equipped for advanced surgical care."
         />
         <RevealGroup
           as="ul"
@@ -164,7 +153,6 @@ export default function FacilitiesPage() {
                       className="object-cover transition-transform duration-500 ease-[var(--ease-out)] group-hover:scale-105"
                       style={{ transform: "translateZ(20px)" }}
                     />
-                    {/* Legibility gradient + title (always visible for a11y) */}
                     <div
                       className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/65 via-black/25 to-transparent"
                       style={{ transform: "translateZ(45px)" }}
@@ -184,7 +172,6 @@ export default function FacilitiesPage() {
         </RevealGroup>
       </Section>
 
-      {/* ── LOCATION & HOURS ─────────────────────────────────────────────── */}
       <Section>
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="space-y-6">

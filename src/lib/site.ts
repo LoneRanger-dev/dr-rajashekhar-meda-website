@@ -1,10 +1,9 @@
 /**
- * SINGLE SOURCE OF TRUTH for all clinic information.
+ * SINGLE SOURCE OF TRUTH for all clinic and doctor information.
  *
- * Every page reads from this file. To update the phone number, timings,
- * address or add a testimonial, edit here — nothing else needs to change.
- * Items marked CONFIRM_WITH_CLIENT are unverified placeholders and are
- * rendered with a visible marker until the clinic supplies real data.
+ * Dr. Rajashekhar Meda — M.S. General Surgery
+ * Consultant Laparoscopic, Endoscopic & Laser Surgeon
+ * Suraksha Hospital, Khammam
  */
 
 import { facilityImages } from "./siteAssets";
@@ -12,70 +11,67 @@ import { facilityImages } from "./siteAssets";
 export const CONFIRM = "[CONFIRM WITH CLIENT]" as const;
 
 export const site = {
-  domain: "https://drgrkneuro.com",
+  domain: "https://drrajashekharmeda.com",
   doctor: {
-    name: "Dr. GRK Reddy",
-    // Full formal name retained for structured data (alternateName) and SEO.
-    nameAlt: "Dr. Gade Ramakrishna Reddy",
-    nameTelugu: "డా. గాదె రామకృష్ణారెడ్డి",
-    credentials: "MBBS, MS (General Surgery), MCh (Neurosurgery)",
-    title: "Consultant Brain & Spine Surgeon",
-    titleTelugu: "న్యూరో సర్జన్",
+    name: "Dr. Rajashekhar Meda",
+    nameAlt: "Dr. Meda Rajashekhar",
+    nameTelugu: "డా॥ మేడ రాజశేఖర్",
+    credentials: "MBBS, M.S. (General Surgery)",
+    title: "Consultant Laparoscopic, Endoscopic & Laser Surgeon",
+    titleTelugu: "జనరల్, ఎండోస్కోపిక్, లాప్రోస్కోపిక్ లేజర్ సర్జన్",
     academicRole:
-      "Assistant Professor, Department of Neurosurgery, Mamata Medical College",
-    tagline: "Your Partner in Brain & Spine Health",
+      "10+ Years of Surgical Excellence | Consultant General & Laparoscopic Surgeon",
+    tagline: "Advanced Laparoscopic Surgery — Minimally Invasive, Maximum Relief!",
   },
   hospital: {
     name: "Suraksha Hospital",
     nameTelugu: "సురక్ష హాస్పిటల్",
     descriptor: "Emergency · Trauma · Multi-Specialty",
-    street: "Old Priyadarshini College Building, Nehru Nagar, near Karnataka Bank",
+    street: "Old Priyadarshini College Building, Nehru Nagar, near Karnataka Bank, Wyra Road",
     city: "Khammam",
     state: "Telangana",
     postalCode: "507002",
     country: "IN",
     addressFull:
-      "Old Priyadarshini College Building, Nehru Nagar, near Karnataka Bank, Khammam, Telangana 507002",
+      "Old Priyadarshini College Building, Nehru Nagar, near Karnataka Bank, Wyra Road, Khammam, Telangana 507002",
     exteriorImage: facilityImages.exterior.src,
-    // Google Maps — from the clinic's Google Business Profile pin.
     maps: {
       directionsUrl: "https://maps.app.goo.gl/Dnftg7odqrb4Epb79",
       embedUrl:
         "https://www.google.com/maps?q=Suraksha+Hospital%2C+Old+Priyadarshini+College%2C+Nehru+Nagar%2C+Khammam%2C+Telangana+507002&output=embed",
     },
-    // CONFIRM_WITH_CLIENT — approximate coordinates; verify exact pin against GBP.
     geo: { lat: 17.2473, lng: 80.1514 },
   },
   contact: {
     phone: "7075447449",
     phoneDisplay: "7075 447 449",
+    phoneSecondaryDisplay: "90590 33575",
     phoneHref: "tel:+917075447449",
-    whatsapp: "917075447449", // Confirmed — same as the clinic phone / WhatsApp Business line
-    email: "dr.grkreddy88@gmail.com",
-    emailHref: "mailto:dr.grkreddy88@gmail.com",
+    whatsapp: "918128126849",
+    email: "dr.rajashekharmeda@gmail.com",
+    emailHref: "mailto:dr.rajashekharmeda@gmail.com",
   },
   hours: {
     weekday: "Monday – Saturday · 10:00 AM – 8:00 PM",
     sunday: "Sunday · 10:00 AM – 2:00 PM",
-    emergency: "24/7 neurosurgeon availability for emergencies",
-    // machine-readable for schema.org
+    emergency: "24/7 Emergency & Surgical Critical Care Availability",
     spec: [
       { days: ["Mo", "Tu", "We", "Th", "Fr", "Sa"], opens: "10:00", closes: "20:00" },
       { days: ["Su"], opens: "10:00", closes: "14:00" },
     ],
   },
   pillars: [
-    { title: "Expert Brain & Spine Surgeries", icon: "brain" },
-    { title: "24/7 Trauma & Emergency Care", icon: "ambulance" },
-    { title: "Advanced ICU & State-of-the-Art Treatment", icon: "hospital" },
+    { title: "Advanced Keyhole Laparoscopic Surgery", icon: "activity" },
+    { title: "24/7 Surgical Emergency & Critical Care", icon: "ambulance" },
+    { title: "10+ Years Experience & State-of-the-Art Care", icon: "hospital" },
   ],
 } as const;
 
 export type ConditionSlug =
-  | "spine-surgery"
-  | "brain-trauma"
-  | "epilepsy"
-  | "minimally-invasive-spine-surgery";
+  | "laparoscopic-surgery"
+  | "hernia-repair"
+  | "gallbladder-appendix"
+  | "laser-varicose-veins";
 
 export interface Condition {
   slug: ConditionSlug;
@@ -88,142 +84,131 @@ export interface Condition {
   approach: string[];
 }
 
-/**
- * Condition content. Written from the expertise list in the clinic's own
- * notes and print creatives — deliberately educational, never diagnostic.
- */
 export const conditions: Condition[] = [
   {
-    slug: "spine-surgery",
-    name: "Spine Conditions & Surgery",
-    short: "Spine Surgery",
-    icon: "spine",
-    summary:
-      "Specialised care for herniated discs, spinal stenosis and spinal deformities — from conservative management through to corrective surgery.",
-    treats: [
-      "Herniated / slipped disc",
-      "Spinal stenosis",
-      "Spinal deformities (scoliosis, kyphosis)",
-      "Degenerative disc disease",
-      "Spinal trauma and fractures",
-      "Sciatica and nerve compression",
-    ],
-    whenToSeek: [
-      "Back or neck pain lasting more than a few weeks",
-      "Pain radiating into an arm or leg",
-      "Numbness, tingling or weakness in the limbs",
-      "Difficulty walking or loss of balance",
-    ],
-    approach: [
-      "Clinical assessment and imaging review",
-      "Conservative management considered first where appropriate",
-      "Minimally invasive techniques used wherever the condition allows",
-      "Post-operative rehabilitation guidance",
-    ],
-  },
-  {
-    slug: "brain-trauma",
-    name: "Brain Surgery & Trauma Care",
-    short: "Brain & Trauma",
-    icon: "brain",
-    summary:
-      "Round-the-clock neurosurgical response for head injury and brain conditions, supported by Suraksha Hospital's advanced ICU.",
-    treats: [
-      "Head injury and traumatic brain injury",
-      "Intracranial haemorrhage",
-      "Brain tumours",
-      "Hydrocephalus",
-      "Skull fractures",
-      "Endoscopic brain surgery",
-    ],
-    whenToSeek: [
-      "Any head injury with loss of consciousness",
-      "Persistent or worsening headache after a fall or accident",
-      "Repeated vomiting, confusion or drowsiness following injury",
-      "Sudden weakness, slurred speech or vision change",
-    ],
-    approach: [
-      "Immediate assessment — a neurosurgeon is available 24/7",
-      "Advanced ICU support on site",
-      "Endoscopic and microsurgical techniques",
-      "Family kept informed throughout treatment",
-    ],
-  },
-  {
-    slug: "epilepsy",
-    name: "Epilepsy & Seizure Management",
-    short: "Epilepsy Care",
-    icon: "activity",
-    summary:
-      "Diagnosis and long-term management of epilepsy and seizure disorders, with surgical evaluation where medication alone is not enough.",
-    treats: [
-      "Newly diagnosed epilepsy",
-      "Drug-resistant epilepsy",
-      "Seizure disorders in adults",
-      "Surgical evaluation for epilepsy",
-    ],
-    whenToSeek: [
-      "Brief confusion or disorientation",
-      "Sudden, involuntary jerks or spasms in the arms and legs",
-      "Fixed gaze or staring episodes",
-      "Loss of awareness or blackouts",
-      "Emotional changes such as unexplained fear or worry",
-    ],
-    approach: [
-      "Detailed history and seizure classification",
-      "Medication optimisation and monitoring",
-      "Surgical assessment for drug-resistant cases",
-      "Ongoing follow-up and lifestyle guidance",
-    ],
-  },
-  {
-    slug: "minimally-invasive-spine-surgery",
-    name: "Minimally Invasive Spine Surgery (MISS)",
-    short: "MISS",
+    slug: "laparoscopic-surgery",
+    name: "Advanced Laparoscopic & Keyhole Surgery",
+    short: "Laparoscopic Surgery",
     icon: "scan",
     summary:
-      "Spine surgery through smaller incisions — designed to reduce tissue damage, shorten hospital stay and speed up return to daily activity.",
+      "Minimally invasive keyhole surgical techniques providing smaller incisions, significantly less pain, minimal scarring, and rapid recovery.",
     treats: [
-      "Herniated disc (microdiscectomy)",
-      "Spinal stenosis decompression",
-      "Selected spinal fusions",
-      "Endoscopic spine procedures",
+      "Diagnostic Laparoscopy",
+      "Laparoscopic Colectomy & Intestinal Surgery",
+      "Laparoscopic Splenectomy",
+      "Laparoscopic Pancreatectomy",
+      "Abdominal Wall Reconstruction",
+      "Bariatric & Metabolic Surgeries",
     ],
     whenToSeek: [
-      "You have been advised spine surgery and want to understand your options",
-      "You are concerned about recovery time from open surgery",
-      "Conservative treatment has not relieved your symptoms",
+      "Unexplained acute or chronic abdominal pain",
+      "Recommendation for abdominal surgical evaluation",
+      "Preference for keyhole surgery with minimal downtime",
+      "Desire for reduced post-operative hospital stay",
     ],
     approach: [
-      "Smaller incisions and less muscle disruption",
-      "Typically reduced blood loss compared with open surgery",
-      "Often a shorter hospital stay",
-      "Suitability is assessed case by case — not every condition qualifies",
+      "Comprehensive pre-surgical clinical evaluation & imaging review",
+      "State-of-the-art HD laparoscopic visualization systems",
+      "Ultra-fine precision instruments ensuring minimal tissue trauma",
+      "Accelerated recovery protocol and personal post-op care",
+    ],
+  },
+  {
+    slug: "hernia-repair",
+    name: "Laparoscopic Hernia Repair",
+    short: "Hernia Repair",
+    icon: "activity",
+    summary:
+      "Advanced 3D mesh laparoscopic repair for Inguinal, Umbilical, Incisional, and Ventral hernias with minimal recurrence risk.",
+    treats: [
+      "Inguinal Hernia (Groin hernia)",
+      "Umbilical & Paraumbilical Hernia",
+      "Incisional Hernia (Post-surgical)",
+      "Ventral & Epigastric Hernia",
+      "Recurrent Hernia Repairs",
+      "Femoral Hernia",
+    ],
+    whenToSeek: [
+      "Visible bulge or lump in the groin or abdominal wall",
+      "Discomfort, dragging pain, or heaviness while standing or coughing",
+      "Pain or enlargement of an existing swelling",
+      "Sudden severe pain or inability to push bulge back in (Emergency)",
+    ],
+    approach: [
+      "Precision keyhole dissection under direct HD endoscopic view",
+      "Bio-compatible tension-free prosthetic mesh reinforcement",
+      "Substantially reduced postoperative pain compared to open repair",
+      "Rapid return to work and daily active lifestyle within days",
+    ],
+  },
+  {
+    slug: "gallbladder-appendix",
+    name: "Gallbladder & Appendix Surgery",
+    short: "Gallbladder & Appendix",
+    icon: "brain",
+    summary:
+      "Specialized emergency and elective keyhole surgeries: Laparoscopic Cholecystectomy for gallstones and Laparoscopic Appendectomy for acute appendicitis.",
+    treats: [
+      "Gallstones (Cholelithiasis)",
+      "Gallbladder Inflammation (Cholecystitis)",
+      "Acute & Chronic Appendicitis",
+      "Biliary Sludge & Polyps",
+      "Complicated Appendiceal Abscess",
+      "Emergency Abdominal Conditions",
+    ],
+    whenToSeek: [
+      "Sharp pain in upper right abdomen radiating to back or shoulder",
+      "Nausea, vomiting, or bloating after fatty meals",
+      "Sudden intense pain around belly button moving to lower right abdomen",
+      "Fever with severe abdominal tenderness",
+    ],
+    approach: [
+      "24/7 Emergency surgical admission and prompt diagnostic ultrasound/CT",
+      "Single or mini-port laparoscopic removal techniques",
+      "High-precision cystic duct and vessel clipping",
+      "Overnight or 24-hour hospital discharge for most patients",
+    ],
+  },
+  {
+    slug: "laser-varicose-veins",
+    name: "Laser Surgery, Varicose Veins & Tumors",
+    short: "Laser & Tumor Surgery",
+    icon: "spine",
+    summary:
+      "Modern painless laser treatments for varicose veins, laser proctology, and precise surgical excision of benign and malignant tumors.",
+    treats: [
+      "Varicose Veins (Endovenous Laser Ablation)",
+      "Benign & Malignant Tumor Excision",
+      "Soft Tissue Tumors & Cysts",
+      "Laser Treatment for Piles / Fissure / Fistula",
+      "Skin & Subcutaneous Swellings (Lipoma, Sebaceous Cyst)",
+      "Emergency Wound & Trauma Reconstruction",
+    ],
+    whenToSeek: [
+      "Swollen, twisted, or painful veins in legs with discoloration or ulcers",
+      "Newly noticed lump, tumor, or rapidly enlarging swelling",
+      "Persistent pain or bleeding during bowel movements",
+      "Surgical recommendation for tissue biopsy or excision",
+    ],
+    approach: [
+      "Targeted laser fiber therapy requiring no large surgical cuts",
+      "Day-care procedure with immediate patient mobility",
+      "Cosmetically superior outcomes with no scar formation",
+      "Complete histopathological evaluation of excised tumors",
     ],
   },
 ];
 
-/**
- * `label` is the full descriptive name (used in the footer and mobile menu).
- * `short` is used in the desktop header — the full labels are too wide to fit
- * alongside the logo and the phone button, and pushed the call CTA off-screen.
- */
 export const navigation = [
   { href: "/", label: "Home", short: "Home" },
-  { href: "/about", label: "About Dr. GRK Reddy", short: "About" },
-  { href: "/conditions", label: "Conditions & Treatments", short: "Conditions" },
+  { href: "/about", label: "About Dr. Rajashekhar Meda", short: "About" },
+  { href: "/conditions", label: "Surgeries & Services", short: "Services" },
   { href: "/facilities", label: "Hospital Facilities", short: "Facilities" },
   { href: "/reviews", label: "Patient Reviews", short: "Reviews" },
   { href: "/blog", label: "Health Education", short: "Education" },
   { href: "/contact", label: "Contact", short: "Contact" },
 ] as const;
 
-/**
- * Testimonials are intentionally EMPTY.
- * BUILD.md requires written patient consent before publishing any review,
- * and inventing them would be both unethical and a compliance risk.
- * Add entries here once the clinic supplies consented testimonials.
- */
 export const testimonials: {
   quote: string;
   name: string;
@@ -231,8 +216,8 @@ export const testimonials: {
   consentOnFile: boolean;
 }[] = [];
 
-/** Awards / publications — none verified in the source material yet. */
 export const awards: { title: string; year?: string }[] = [];
 
-export const whatsappUrl = (message = "Hello, I would like to book an appointment with Dr. GRK Reddy.") =>
-  `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(message)}`;
+export const whatsappUrl = (
+  message = "Hello Dr. Rajashekhar Meda, I would like to book a consultation for Laparoscopic / General Surgery."
+) => `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(message)}`;

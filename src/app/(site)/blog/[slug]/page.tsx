@@ -9,7 +9,7 @@ import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { articles } from "@/lib/articles";
 import { BLUR_DATA_URL } from "@/lib/siteAssets";
 import { site } from "@/lib/site";
-import { BreadcrumbJsonLd } from "@/components/site/json-ld";
+import { JsonLd } from "@/components/site/json-ld";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -32,13 +32,13 @@ export async function generateMetadata({
       title: article.title,
       description: article.description,
       url: `/blog/${article.slug}`,
-      images: ["/opengraph-image.png"],
+      images: ["/images/doctor/dr-rajashekhar-hero.jpg"],
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description: article.description,
-      images: ["/opengraph-image.png"],
+      images: ["/images/doctor/dr-rajashekhar-hero.jpg"],
     },
   };
 }
@@ -56,13 +56,7 @@ export default async function ArticlePage({
 
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Health Education", path: "/blog" },
-          { name: article.title, path: `/blog/${article.slug}` },
-        ]}
-      />
+      <JsonLd />
       <section className="brand-wash">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 py-14 sm:py-20">
           <nav aria-label="Breadcrumb" className="mb-6">
@@ -140,7 +134,6 @@ export default async function ArticlePage({
           )}
         </div>
 
-        {/* Safety block — every article ends by routing urgency to the phone. */}
         <aside className="mt-12 rounded-2xl border-2 border-emergency/40 bg-emergency/5 p-7 space-y-4">
           <div className="flex gap-3">
             <AlertTriangle className="size-6 text-emergency shrink-0" aria-hidden />
@@ -168,10 +161,7 @@ export default async function ArticlePage({
         </aside>
 
         <p className="mt-8 text-xs text-muted-foreground leading-relaxed">
-          This article is general health information, not medical advice. It cannot
-          account for your individual circumstances and is not a substitute for
-          assessment by a qualified doctor. Written and reviewed by the
-          neurosurgery team at {site.hospital.name}, {site.hospital.city}.
+          This article is general health information, not medical advice. Written and reviewed by the surgical team at {site.hospital.name}, {site.hospital.city}.
         </p>
       </article>
 

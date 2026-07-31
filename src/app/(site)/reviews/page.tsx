@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
-
 import { ShieldCheck, Quote } from "lucide-react";
-
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { testimonials } from "@/lib/site";
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { Testimonials } from "@/components/site/testimonials";
-import { pageMetadata } from "@/lib/seo";
-import { BreadcrumbJsonLd } from "@/components/site/json-ld";
+import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/site/json-ld";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Patient Reviews — Dr. GRK Reddy, Khammam",
+export const metadata: Metadata = buildMetadata({
+  title: "Patient Reviews — Dr. Rajashekhar Meda, Khammam",
   description:
-    "Patient experiences of brain and spine treatment with Dr. GRK Reddy at Suraksha Hospital, Khammam.",
+    "Patient experiences and recovery stories for laparoscopic and general surgery with Dr. Rajashekhar Meda at Suraksha Hospital, Khammam.",
   path: "/reviews",
 });
 
@@ -21,21 +19,20 @@ export default function ReviewsPage() {
 
   return (
     <>
-      <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Patient Reviews", path: "/reviews" }]} />
+      <JsonLd />
       <section className="brand-wash">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
           <SectionHeading
             as="h1"
-            eyebrow="Patient reviews"
+            eyebrow="Patient Reviews"
             title="What patients say"
-            lead="Recovery from brain or spine surgery is a significant experience. These are the words of patients who have been through it."
+            lead="Read genuine patient recovery experiences for keyhole laparoscopic and general surgical care with Dr. Rajashekhar Meda."
           />
         </div>
       </section>
 
       <Section>
         {hasReal ? (
-          /* ── Real consented testimonials ─────────────────────────────────── */
           <RevealGroup as="ul" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((t) => (
               <RevealItem key={t.name} as="li" className="glass lift rounded-2xl p-7 space-y-4">
@@ -60,8 +57,7 @@ export default function ReviewsPage() {
           <ShieldCheck className="size-5 text-success shrink-0 mt-0.5" aria-hidden />
           <p>
             Patient privacy is taken seriously. No clinical detail, image or
-            identifying information is published without explicit written
-            permission.
+            identifying information is published without explicit written permission.
           </p>
         </div>
       </Section>

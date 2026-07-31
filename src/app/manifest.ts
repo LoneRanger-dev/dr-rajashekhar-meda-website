@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Dr. GRK Reddy — Brain & Spine Surgeon",
-    short_name: "Dr. GRK Reddy",
+    name: "Dr. Rajashekhar Meda — Laparoscopic & General Surgeon",
+    short_name: "Dr. Rajashekhar",
     description:
-      "Brain and spine care at Suraksha Hospital, Khammam.",
+      "Advanced Laparoscopic & General Surgery at Suraksha Hospital, Khammam.",
     start_url: "/",
     display: "standalone",
     background_color: "#f6f9fc",

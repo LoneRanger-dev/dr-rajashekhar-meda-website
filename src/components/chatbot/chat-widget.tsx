@@ -16,7 +16,7 @@ interface Message {
 
 const GREETING: Message = {
   role: "assistant",
-  content: `Hello. I can help with clinic timings, directions, what Dr. GRK Reddy treats, and booking an appointment.\n\nIf this is an emergency, please call ${site.contact.phoneDisplay} straight away.`,
+  content: `Hello. I can help with clinic timings, directions, what Dr. Rajashekhar Meda treats, and booking an appointment.\n\nIf this is an emergency, please call ${site.contact.phoneDisplay} straight away.`,
 };
 
 const SUGGESTIONS = [

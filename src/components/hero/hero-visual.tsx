@@ -18,7 +18,7 @@ import { useEffect, useRef, useState } from "react";
  * fallback with zero JavaScript cost.
  */
 
-const NeuroScene = dynamic(() => import("./neuro-scene"), {
+const SurgicalScene = dynamic(() => import("./surgical-scene"), {
   ssr: false,
   loading: () => null,
 });
@@ -46,7 +46,7 @@ function deviceLooksCapable(): boolean {
   return true;
 }
 
-export function NeuroVisual({ className }: { className?: string }) {
+export function HeroVisual({ className }: { className?: string }) {
   const [enabled, setEnabled] = useState(false);
   const hostRef = useRef<HTMLDivElement>(null);
 
@@ -93,7 +93,7 @@ export function NeuroVisual({ className }: { className?: string }) {
 
   return (
     <div ref={hostRef} className={className} aria-hidden="true">
-      {enabled && <NeuroScene />}
+      {enabled && <SurgicalScene />}
     </div>
   );
 }

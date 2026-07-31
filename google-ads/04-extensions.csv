@@ -1,22 +1,5 @@
-Campaign,Asset type,Field 1,Field 2,Field 3,Field 4,Final URL
-Suraksha Neurosurgery - Search,Sitelink,About Dr. Reddy,MBBS MS MCh Neurosurgery,Assistant Professor Neurosurgery,,https://drgrkneuro.com/about
-Suraksha Neurosurgery - Search,Sitelink,Conditions Treated,Brain spine epilepsy and trauma,Explained in plain language,,https://drgrkneuro.com/conditions
-Suraksha Neurosurgery - Search,Sitelink,Book Appointment,Request a consultation,The clinic will call you back,,https://drgrkneuro.com/contact
-Suraksha Neurosurgery - Search,Sitelink,Hospital Facilities,Advanced ICU and trauma care,Nehru Nagar Khammam,,https://drgrkneuro.com/facilities
-Suraksha Neurosurgery - Search,Sitelink,Minimally Invasive Spine,Smaller incisions,Shorter hospital stay,,https://drgrkneuro.com/conditions/minimally-invasive-spine-surgery
-Suraksha Neurosurgery - Search,Sitelink,Health Education,Understand your condition,Free patient guides,,https://drgrkneuro.com/blog
-Suraksha Neurosurgery - Search,Callout,24/7 Trauma Care,,,,
-Suraksha Neurosurgery - Search,Callout,MCh Neurosurgery,,,,
-Suraksha Neurosurgery - Search,Callout,Advanced ICU,,,,
-Suraksha Neurosurgery - Search,Callout,Minimally Invasive Spine,,,,
-Suraksha Neurosurgery - Search,Callout,Assistant Professor,,,,
-Suraksha Neurosurgery - Search,Callout,Endoscopic Surgery,,,,
-Suraksha Neurosurgery - Search,Structured snippet,Services,Spine Surgery,Brain Surgery,Epilepsy Care,
-Suraksha Neurosurgery - Search,Structured snippet,Services,Trauma Care,Minimally Invasive Spine,Endoscopic Neurosurgery,
-Suraksha Neurosurgery - Search,Call,7075447449,India,,,
-Suraksha Neurosurgery - Search,Location,Suraksha Hospital Old Priyadarshini College Building Nehru Nagar Khammam Telangana,,,,
-Suraksha Emergency - Call Only,Call,7075447449,India,,,
-Suraksha Emergency - Call Only,Callout,Available 24/7,,,,
-Suraksha Emergency - Call Only,Callout,Neurosurgeon On Call,,,,
-Suraksha Emergency - Call Only,Callout,Advanced ICU,,,,
-Suraksha Emergency - Call Only,Location,Suraksha Hospital Old Priyadarshini College Building Nehru Nagar Khammam Telangana,,,,
+Campaign,Extension Type,Sitelink Text,Sitelink Line 1,Sitelink Line 2,Callout Text,Final URL
+Suraksha General Surgery - Search,Sitelink,About Dr. Rajashekhar,MBBS MS General Surgery,10+ Years Experience,,https://drrajashekharmeda.com/about
+Suraksha General Surgery - Search,Sitelink,Surgeries Offered,Laparoscopic hernia gallbladder appendix,Explained clearly,,https://drrajashekharmeda.com/conditions
+Suraksha General Surgery - Search,Sitelink,Book Appointment,Request a consultation,The clinic will call you back,,https://drrajashekharmeda.com/contact
+Suraksha General Surgery - Search,Sitelink,Hospital Facilities,Advanced ICU and trauma care,Nehru Nagar Khammam,,https://drrajashekharmeda.com/facilities

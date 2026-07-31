@@ -1,38 +1,50 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
+import { site } from "@/lib/site";
 
-type PageMetadata = {
-  title: string;
-  description: string;
-  path: string;
-  robots?: Metadata["robots"];
-  type?: "article" | "website";
-};
-
-/** Builds complete per-page metadata so canonical and social URLs never inherit the home URL. */
-export function pageMetadata({
+export function buildMetadata({
   title,
   description,
-  path,
-  robots,
-  type = "website",
-}: PageMetadata): Metadata {
+  path = "/",
+  noIndex = false,
+}: {
+  title: string;
+  description: string;
+  path?: string;
+  noIndex?: boolean;
+}): Metadata {
+  const url = `${site.domain}${path}`;
+  const fullTitle = `${title} | ${site.doctor.name} - Suraksha Hospital Khammam`;
+
   return {
-    title,
+    title: fullTitle,
     description,
-    alternates: { canonical: path },
+    metadataBase: new URL(site.domain),
+    alternates: {
+      canonical: url,
+    },
+    robots: noIndex
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
     openGraph: {
-      type,
-      title,
+      type: "website",
+      url,
+      title: fullTitle,
       description,
-      url: path,
-      images: ["/opengraph-image.png"],
+      siteName: `${site.doctor.name} - ${site.hospital.name}`,
+      images: [
+        {
+          url: "/images/doctor/dr-rajashekhar-hero.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${site.doctor.name} - Consultant Laparoscopic & General Surgeon`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: fullTitle,
       description,
-      images: ["/opengraph-image.png"],
+      images: ["/images/doctor/dr-rajashekhar-hero.jpg"],
     },
-    robots,
   };
 }

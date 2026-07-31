@@ -1,149 +1,159 @@
 import { site, conditions } from "@/lib/site";
-import { doctorImages } from "@/lib/siteAssets";
-
-type BreadcrumbItem = {
-  name: string;
-  path: string;
-};
-
-export function BreadcrumbJsonLd({ items }: { items: BreadcrumbItem[] }) {
-  const graph = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: `${site.domain}${item.path}`,
-    })),
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
-    />
-  );
-}
 
 /**
- * Physician + MedicalClinic structured data (BUILD.md Phase 3 non-negotiable).
- * Feeds Google's rich results and reinforces the local-SEO NAP signal.
+ * Structured Data (JSON-LD) for Dr. Rajashekhar Meda & Suraksha Hospital.
+ * Fully aligned with Schema.org Physician, MedicalClinic, and LocalBusiness specifications.
  */
 export function JsonLd() {
-  const address = {
-    "@type": "PostalAddress",
-    streetAddress: site.hospital.street,
-    addressLocality: site.hospital.city,
-    addressRegion: site.hospital.state,
-    postalCode: site.hospital.postalCode,
-    addressCountry: site.hospital.country,
-  };
+  const clinicUrl = site.domain;
 
-  const openingHours = site.hours.spec.map((s) => ({
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: s.days.map(
-      (d) =>
-        ({
-          Mo: "Monday",
-          Tu: "Tuesday",
-          We: "Wednesday",
-          Th: "Thursday",
-          Fr: "Friday",
-          Sa: "Saturday",
-          Su: "Sunday",
-        })[d]
-    ),
-    opens: s.opens,
-    closes: s.closes,
-  }));
-
-  const graph = {
+  const physicianSchema = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        // ── Physician ───────────────────────────────────────────────────────
-        // name: canonical legal name matching Google Business Profile (§4.3).
-        // alternateName: every indexed name variant helps entity resolution.
-        // jobTitle + hospitalAffiliation: primary disambiguation signals for
-        //   Google's Knowledge Graph per audit §4.2 / §4.3.
-        // medicalSpecialty: expanded to array per audit §4.3.
-        // description: leads with current specialty, not the General Surgery
-        //   training stage — resolves the root-cause identified in §4.2.
-        "@type": "Physician",
-        "@id": `${site.domain}/#physician`,
-        name: "Dr. Gade Ramakrishna Reddy",
-        alternateName: ["Dr. GRK Reddy", "Ramakrishna Reddy G"],
-        jobTitle: "Consultant Neurosurgeon",
-        description:
-          "Dr. Gade Ramakrishna Reddy is a Consultant Neurosurgeon" +
-          " (Brain & Spine Surgeon) at Suraksha Hospital, Khammam, holding" +
-          " MBBS, MS and MCh (Neurosurgery) qualifications, and" +
-          " Assistant Professor, Department of Neurosurgery, Mamata Medical College.",
-        medicalSpecialty: ["Neurologic", "Surgical"],
-        hospitalAffiliation: {
-          "@type": "Hospital",
-          name: site.hospital.name,
-          "@id": `${site.domain}/#clinic`,
-        },
-        url: site.domain,
-        telephone: `+91${site.contact.phone}`,
-        email: site.contact.email,
-        image: `${site.domain}${doctorImages.portrait.src}`,
-        address,
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: site.hospital.geo.lat,
-          longitude: site.hospital.geo.lng,
-        },
-        openingHoursSpecification: openingHours,
-        availableService: conditions.map((c) => ({
+    "@type": ["Physician", "MedicalBusiness"],
+    "@id": `${clinicUrl}/#physician`,
+    name: site.doctor.name,
+    alternateName: [site.doctor.nameAlt, site.doctor.nameTelugu],
+    description: `${site.doctor.name} is a leading ${site.doctor.title} at ${site.hospital.name}, Khammam with 10+ years of surgical expertise in laparoscopic, keyhole, and laser surgeries.`,
+    url: clinicUrl,
+    image: `${clinicUrl}/images/doctor/dr-rajashekhar-hero.jpg`,
+    telephone: site.contact.phone,
+    email: site.contact.email,
+    medicalSpecialty: [
+      "https://schema.org/Surgical",
+      "GeneralSurgery",
+      "LaparoscopicSurgery",
+    ],
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "Medical University",
+    },
+    worksFor: {
+      "@type": "MedicalClinic",
+      name: site.hospital.name,
+      alternateName: site.hospital.nameTelugu,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: site.hospital.street,
+        addressLocality: site.hospital.city,
+        addressRegion: site.hospital.state,
+        postalCode: site.hospital.postalCode,
+        addressCountry: site.hospital.country,
+      },
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: site.hospital.street,
+      addressLocality: site.hospital.city,
+      addressRegion: site.hospital.state,
+      postalCode: site.hospital.postalCode,
+      addressCountry: site.hospital.country,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: site.hospital.geo.lat,
+      longitude: site.hospital.geo.lng,
+    },
+    openingHoursSpecification: site.hours.spec.map((h) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: h.days.map((d) => `https://schema.org/${d}`),
+      opens: h.opens,
+      closes: h.closes,
+    })),
+    priceRange: "₹₹",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "General & Laparoscopic Surgical Services",
+      itemListElement: conditions.map((c, i) => ({
+        "@type": "Offer",
+        itemOffered: {
           "@type": "MedicalProcedure",
           name: c.name,
           description: c.summary,
-          url: `${site.domain}/conditions/${c.slug}`,
-        })),
-        memberOf: {
-          "@type": "MedicalOrganization",
-          name: "Mamata Medical College",
-          description: "Assistant Professor, Department of Neurosurgery",
+          url: `${clinicUrl}/conditions/${c.slug}`,
+        },
+        position: i + 1,
+      })),
+    },
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What surgeries does Dr. Rajashekhar Meda specialize in?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Dr. Rajashekhar Meda specializes in Advanced Laparoscopic Surgery (keyhole surgery), Laparoscopic Hernia Repair, Laparoscopic Cholecystectomy (gallbladder removal), Laparoscopic Appendectomy, Tumor Excision, and Endoscopic Laser Surgery for varicose veins.",
         },
       },
       {
-        "@type": ["MedicalClinic", "MedicalOrganization", "LocalBusiness"],
-        "@id": `${site.domain}/#clinic`,
-        name: site.hospital.name,
-        description: `${site.hospital.descriptor}. ${site.hours.emergency}.`,
-        url: site.domain,
-        telephone: `+91${site.contact.phone}`,
-        email: site.contact.email,
-        address,
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: site.hospital.geo.lat,
-          longitude: site.hospital.geo.lng,
-        },
-        openingHoursSpecification: openingHours,
-        availableService: {
-          "@type": "MedicalProcedure",
-          name: "Emergency Neurosurgery",
+        "@type": "Question",
+        name: "What are the benefits of laparoscopic keyhole surgery over open surgery?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Laparoscopic surgery uses tiny keyhole incisions, resulting in significantly less pain, reduced risk of infection, minimal scar formation, shorter hospital stays, and a fast return to daily activities within days.",
         },
       },
       {
-        "@type": "WebSite",
-        "@id": `${site.domain}/#website`,
-        url: site.domain,
-        name: `${site.doctor.name} — ${site.doctor.title}`,
-        inLanguage: ["en-IN", "te-IN"],
+        "@type": "Question",
+        name: "Where is Dr. Rajashekhar Meda's clinic located in Khammam?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Dr. Rajashekhar Meda consults at Suraksha Hospital, Old Priyadarshini College Building, Nehru Nagar, near Karnataka Bank, Wyra Road, Khammam, Telangana.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is emergency surgical care available at Suraksha Hospital?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, 24/7 emergency surgical care, critical care ICU support, and trauma services are available at Suraksha Hospital. You can reach the emergency helpline at 7075 447 449.",
+        },
+      },
+    ],
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: clinicUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "About Dr. Rajashekhar Meda",
+        item: `${clinicUrl}/about`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Surgeries & Treatments",
+        item: `${clinicUrl}/conditions`,
       },
     ],
   };
 
   return (
-    <script
-      type="application/ld+json"
-      // Content is fully static and authored in this repo — no user input.
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(physicianSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </>
   );
 }

@@ -6,26 +6,26 @@ import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { articles } from "@/lib/articles";
 import { BLUR_DATA_URL } from "@/lib/siteAssets";
-import { pageMetadata } from "@/lib/seo";
-import { BreadcrumbJsonLd } from "@/components/site/json-ld";
+import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/site/json-ld";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Health Education — Brain, Spine & Epilepsy Guides",
-  description: "Plain-language patient education on brain, spine and epilepsy conditions from Dr. GRK Reddy, Consultant Brain & Spine Surgeon in Khammam.",
+export const metadata: Metadata = buildMetadata({
+  title: "Health Education — General & Laparoscopic Surgery Guides",
+  description: "Patient education guides on laparoscopic surgery, gallbladder stones, hernia repair, appendix surgery, and laser treatments by Dr. Rajashekhar Meda in Khammam.",
   path: "/blog",
 });
 
 export default function BlogPage() {
   return (
     <>
-      <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Health Education", path: "/blog" }]} />
+      <JsonLd />
       <section className="brand-wash">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
           <SectionHeading
             as="h1"
-            eyebrow="Health education"
-            title="Understanding your condition"
-            lead="Clear, jargon-free guides to the brain and spine conditions patients ask about most — written to help you have a better conversation with your doctor, not to replace one."
+            eyebrow="Health Education"
+            title="Understanding your surgery & recovery"
+            lead="Clear, patient-friendly guides to laparoscopic, keyhole, and laser surgical procedures by Dr. Rajashekhar Meda at Suraksha Hospital, Khammam."
           />
         </div>
       </section>

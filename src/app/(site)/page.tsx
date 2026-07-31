@@ -9,16 +9,15 @@ import {
   Clock,
   MapPin,
   ArrowRight,
-  Brain,
   Activity,
   Scan,
-  Bone,
   Ambulance,
   BedDouble,
+  Scissors,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
-import { NeuroVisual } from "@/components/hero/neuro-visual";
+import { HeroVisual } from "@/components/hero/hero-visual";
 import { TiltCard } from "@/components/site/tilt-card";
 import { HospitalShowcase } from "@/components/site/hospital-showcase";
 import { HeroBackground } from "@/components/site/hero-background";
@@ -27,44 +26,38 @@ import { site, conditions, whatsappUrl } from "@/lib/site";
 import { doctorImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 
 const conditionIcons = {
-  spine: Bone,
-  brain: Brain,
+  spine: Scissors,
+  brain: Activity,
   activity: Activity,
   scan: Scan,
 } as const;
 
-const pillarIcons = { brain: Brain, ambulance: Ambulance, hospital: BedDouble } as const;
+const pillarIcons = { activity: Activity, ambulance: Ambulance, hospital: BedDouble } as const;
 
 export default function HomePage() {
   return (
     <>
-      {/* ── HERO ───────────────────────────────────────────────────────────
-          The 3D brain/spine visual replaces the portrait side in the next
-          step; this static composition is the reduced-motion fallback. */}
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
-        {/* Living hospital-interior background — slow zoom + scroll parallax
-            behind a light scrim that keeps the dark copy readable. */}
         <HeroBackground />
-        {/* Decorative particle layer. Loads only on capable devices, after idle,
-            and never carries meaning — the CSS gradient is the fallback. */}
-        <NeuroVisual className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-1/2 opacity-30 dark:opacity-50" />
+        <HeroVisual className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-1/2 opacity-40 dark:opacity-60" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <Reveal as="div" className="space-y-7" blur={false} y={16}>
               <span className="inline-flex items-center gap-2 rounded-full bg-emergency/10 px-4 py-2 text-sm font-semibold text-emergency">
                 <ShieldAlert className="size-4" aria-hidden />
-                24/7 Neurosurgeon Availability
+                24/7 Surgical & Trauma Emergency Care
               </span>
 
               <div className="space-y-4">
                 <h1 className="type-display">
                   Khammam&apos;s trusted{" "}
-                  <span className="text-accent">Brain &amp; Spine</span> specialist
+                  <span className="text-accent">Laparoscopic &amp; Laser</span> Surgeon
                 </h1>
                 <p className="type-lead text-muted-foreground max-w-xl">
                   {site.doctor.name} — {site.doctor.credentials}. Advanced
-                  minimally invasive spine surgery, endoscopic neurosurgery and
-                  round-the-clock trauma care at {site.hospital.name}.
+                  minimally invasive keyhole surgery, hernia repair, gallbladder,
+                  appendix, and 24/7 trauma emergency care at {site.hospital.name}.
                 </p>
               </div>
 
@@ -83,7 +76,7 @@ export default function HomePage() {
                   render={<Link href="/contact#appointment" />}
                 >
                   <CalendarCheck aria-hidden />
-                  Book an appointment
+                  Book consultation
                 </Button>
               </div>
 
@@ -91,19 +84,19 @@ export default function HomePage() {
                 <div className="glass lift rounded-2xl p-3 sm:p-4 min-w-0">
                   <dt className="sr-only">Qualification</dt>
                   <dd>
-                    <Stat value="MCh" label="Neurosurgery" />
+                    <Stat value="M.S." label="Gen. Surgeon" />
                   </dd>
                 </div>
                 <div className="glass lift rounded-2xl p-3 sm:p-4 min-w-0">
-                  <dt className="sr-only">Emergency availability</dt>
+                  <dt className="sr-only">Experience</dt>
                   <dd>
-                    <Stat value="24/7" label="Trauma response" />
+                    <Stat value="10+" label="Years Experience" />
                   </dd>
                 </div>
                 <div className="glass lift rounded-2xl p-3 sm:p-4 min-w-0">
-                  <dt className="sr-only">Academic role</dt>
+                  <dt className="sr-only">Specialty</dt>
                   <dd>
-                    <Stat value="Asst. Prof." label="Mamata Medical College" />
+                    <Stat value="Keyhole" label="Laparoscopic" />
                   </dd>
                 </div>
               </dl>
@@ -130,11 +123,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── THREE PILLARS (from the clinic's own banner) ─────────────────── */}
+      {/* ── THREE PILLARS ─────────────────────────────────────────────────── */}
       <Section className="pt-20 sm:pt-24">
         <RevealGroup as="ul" className="grid sm:grid-cols-3 gap-5">
           {site.pillars.map((pillar) => {
-            const Icon = pillarIcons[pillar.icon as keyof typeof pillarIcons];
+            const Icon = pillarIcons[pillar.icon as keyof typeof pillarIcons] || Activity;
             return (
               <RevealItem
                 key={pillar.title}
@@ -151,19 +144,19 @@ export default function HomePage() {
         </RevealGroup>
       </Section>
 
-      {/* ── CONDITIONS ───────────────────────────────────────────────────── */}
+      {/* ── CONDITIONS / SERVICES ───────────────────────────────────────── */}
       <Section className="bg-muted/60">
         <SectionHeading
-          eyebrow="Conditions & Treatments"
-          title="Specialised brain and spine care"
-          lead="From emergency trauma response to planned minimally invasive spine surgery — each condition explained in plain language."
+          eyebrow="Surgeries & Clinical Services"
+          title="Advanced Laparoscopic & General Surgery"
+          lead="From routine keyhole surgeries to emergency abdominal trauma — compassionate, expert surgical care with rapid recovery."
         />
         <RevealGroup
           as="ul"
           className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
         >
           {conditions.map((condition) => {
-            const Icon = conditionIcons[condition.icon];
+            const Icon = conditionIcons[condition.icon] || Activity;
             return (
               <RevealItem key={condition.slug} as="li">
                 <Link
@@ -194,7 +187,7 @@ export default function HomePage() {
         </RevealGroup>
       </Section>
 
-      {/* ── WHY DR REDDY ─────────────────────────────────────────────────── */}
+      {/* ── WHY DR. RAJASHEKHAR MEDA ───────────────────────────────────────── */}
       <Section>
         <Reveal className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="relative glow-halo glass rounded-3xl p-3">
@@ -212,26 +205,26 @@ export default function HomePage() {
           </div>
           <div className="space-y-7">
             <SectionHeading
-              eyebrow="Why patients choose Dr. GRK Reddy"
-              title="Advanced technique, backed by academic authority"
-              lead="Two things set this practice apart in Khammam: a neurosurgeon genuinely available around the clock, and routine use of minimally invasive techniques rather than defaulting to open surgery."
+              eyebrow="Why patients choose Dr. Rajashekhar Meda"
+              title="10+ Years of Surgical Precision & Patient Relief"
+              lead="Specialized keyhole laparoscopic surgery offers minimal pain, tiny scars, fast hospital discharge, and early return to daily work."
             />
             <ul className="space-y-5">
               {[
                 {
                   icon: GraduationCap,
-                  title: "MCh Neurosurgery + academic post",
-                  body: `${site.doctor.academicRole} — actively teaching the next generation of neurosurgeons.`,
+                  title: "M.S. General Surgery & 10 Years Experience",
+                  body: "Proven clinical leadership in laparoscopic, endoscopic, and laser procedures.",
                 },
                 {
                   icon: Stethoscope,
-                  title: "Minimally invasive spine surgery (MISS)",
-                  body: "Smaller incisions, less tissue disruption and typically a shorter hospital stay, wherever the condition allows it.",
+                  title: "Advanced Laparoscopic & Laser Techniques",
+                  body: "State-of-the-art keyhole hernia, gallbladder, appendix, and varicose vein laser treatments.",
                 },
                 {
                   icon: ShieldAlert,
-                  title: "24/7 trauma response",
-                  body: "A neurosurgeon is available at any hour, supported by an advanced ICU on site.",
+                  title: "24/7 Emergency Surgical Trauma Care",
+                  body: "Round-the-clock surgeon availability supported by advanced ICU and critical care facilities.",
                 },
               ].map(({ icon: Icon, title, body }) => (
                 <li key={title} className="group flex gap-4">
@@ -271,12 +264,11 @@ export default function HomePage() {
               <ShieldAlert className="size-10 shrink-0" aria-hidden />
               <div>
                 <h2 className="type-h2 text-emergency-foreground">
-                  Head injury or sudden neurological symptoms?
+                  Acute abdominal pain or surgical emergency?
                 </h2>
                 <p className="mt-2 max-w-2xl opacity-95">
-                  Do not wait. A neurosurgeon is available 24/7 at{" "}
-                  {site.hospital.name}. Call now, or go straight to the nearest
-                  emergency department.
+                  Do not delay. Surgical emergency and ICU trauma services are available 24/7 at{" "}
+                  {site.hospital.name}. Call now or reach the emergency department immediately.
                 </p>
               </div>
             </div>
@@ -292,7 +284,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── HOSPITAL SHOWCASE (cinematic exterior) ───────────────────────── */}
+      {/* ── HOSPITAL SHOWCASE ─────────────────────────────────────────────── */}
       <HospitalShowcase />
 
       {/* ── VISIT / LOCATION ─────────────────────────────────────────────── */}
@@ -369,9 +361,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Embedded Google Map — from the clinic's Business Profile pin,
-              in a rounded glass frame with a soft medical-blue glow. The
-              hospital itself is presented in the cinematic showcase above. */}
           <div className="relative glow-halo">
             <div className="glass elev-2 rounded-3xl p-3 overflow-hidden">
               <iframe

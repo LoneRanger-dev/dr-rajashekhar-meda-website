@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { AppointmentForm } from "@/components/site/appointment-form";
 import { site, whatsappUrl } from "@/lib/site";
-import { pageMetadata } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Contact & Book an Appointment — Khammam",
-  description: "Book an appointment with Dr. GRK Reddy at Suraksha Hospital, Nehru Nagar, Khammam. Call 7075 447 449 — a neurosurgeon is available 24/7 for emergencies.",
+export const metadata: Metadata = buildMetadata({
+  title: "Contact & Book an Appointment — Dr. Rajashekhar Meda, Khammam",
+  description: "Book an appointment with Dr. Rajashekhar Meda, Consultant Laparoscopic & General Surgeon at Suraksha Hospital, Khammam. Call 7075 447 449 for 24/7 surgical emergency response.",
   path: "/contact",
 });
 
@@ -19,26 +19,23 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
           <SectionHeading
             as="h1"
-            eyebrow="Contact"
+            eyebrow="Contact & Consultations"
             title="Book an appointment"
-            lead="Call the clinic directly, message on WhatsApp, or send a request and the team will call you back to confirm a time."
+            lead="Call the clinic directly, message on WhatsApp, or send a request and our team will confirm your consultation time."
           />
         </div>
       </section>
 
-      {/* Emergency routing sits above the form on purpose — anyone in an
-          urgent situation should never have to scroll past a form first. */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="rounded-2xl border-2 border-emergency/40 bg-emergency/5 p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5 justify-between">
           <div className="flex gap-4">
             <ShieldAlert className="size-7 text-emergency shrink-0" aria-hidden />
             <div>
               <h2 className="text-lg font-semibold text-emergency">
-                Is this an emergency?
+                Is this a surgical or trauma emergency?
               </h2>
               <p className="text-sm text-muted-foreground mt-1">
-                For head injury, sudden weakness, seizures or severe symptoms, call
-                now instead of using the form. A neurosurgeon is available 24/7.
+                For acute severe abdominal pain, appendicitis, or accident trauma, call immediately. Emergency surgical care is available 24/7.
               </p>
             </div>
           </div>
@@ -67,12 +64,12 @@ export default function ContactPage() {
                 <li className="flex gap-4">
                   <Phone className="size-5 text-accent shrink-0 mt-0.5" aria-hidden />
                   <div>
-                    <h3 className="font-semibold text-sm">Phone</h3>
+                    <h3 className="font-semibold text-sm">Phone Helpline</h3>
                     <a
                       href={site.contact.phoneHref}
                       className="text-muted-foreground hover:text-accent transition-colors tnum"
                     >
-                      {site.contact.phoneDisplay}
+                      {site.contact.phoneDisplay} / {site.contact.phoneSecondaryDisplay}
                     </a>
                   </div>
                 </li>

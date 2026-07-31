@@ -162,8 +162,8 @@ export function FacilityHero() {
           </p>
           <p className="mt-3 text-[clamp(0.95rem,0.9rem+0.3vw,1.1rem)] text-slate-700">
             {site.hospital.descriptor} — {site.hospital.city}, {site.hospital.state}.
-            A modern neuroscience facility with an advanced ICU and a
-            neurosurgeon available 24/7.
+            A modern surgical facility with an advanced ICU and a
+            general & laparoscopic surgeon available 24/7.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button

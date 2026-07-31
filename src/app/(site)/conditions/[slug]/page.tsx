@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, conditions } from "@/lib/site";
-import { BreadcrumbJsonLd } from "@/components/site/json-ld";
+import { JsonLd } from "@/components/site/json-ld";
 
 export function generateStaticParams() {
   return conditions.map((c) => ({ slug: c.slug }));
@@ -36,13 +36,13 @@ export async function generateMetadata({
       title: `${condition.name} in Khammam — ${site.doctor.name}`,
       description: condition.summary,
       url: `/conditions/${condition.slug}`,
-      images: ["/opengraph-image.png"],
+      images: ["/images/doctor/dr-rajashekhar-hero.jpg"],
     },
     twitter: {
       card: "summary_large_image",
       title: `${condition.name} in Khammam — ${site.doctor.name}`,
       description: condition.summary,
-      images: ["/opengraph-image.png"],
+      images: ["/images/doctor/dr-rajashekhar-hero.jpg"],
     },
   };
 }
@@ -60,13 +60,7 @@ export default async function ConditionPage({
 
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Conditions & Treatments", path: "/conditions" },
-          { name: condition.name, path: `/conditions/${condition.slug}` },
-        ]}
-      />
+      <JsonLd />
       <section className="brand-wash">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
           <nav aria-label="Breadcrumb" className="mb-6">
@@ -79,7 +73,7 @@ export default async function ConditionPage({
               <li aria-hidden>/</li>
               <li>
                 <Link href="/conditions" className="hover:text-foreground">
-                  Conditions
+                  Surgeries
                 </Link>
               </li>
               <li aria-hidden>/</li>
@@ -111,7 +105,7 @@ export default async function ConditionPage({
                 render={<Link href="/contact#appointment" />}
               >
                 <CalendarCheck aria-hidden />
-                Book an appointment
+                Book consultation
               </Button>
             </div>
           </div>
@@ -124,7 +118,7 @@ export default async function ConditionPage({
             <span className="icon-glass grid size-11 place-items-center rounded-xl text-accent">
               <Stethoscope className="size-5" aria-hidden />
             </span>
-            <h2 className="type-h3">Conditions treated</h2>
+            <h2 className="type-h3">Treatments & Procedures</h2>
             <ul className="space-y-2.5">
               {condition.treats.map((item) => (
                 <li key={item} className="flex gap-2.5 text-sm">
@@ -155,8 +149,7 @@ export default async function ConditionPage({
               ))}
             </ul>
             <p className="text-xs text-muted-foreground pt-2 border-t border-border">
-              This list is for general guidance only and is not a diagnosis. If
-              symptoms are sudden or severe, treat it as an emergency and call.
+              This list is for general guidance. In case of acute severe pain or emergency, please seek immediate hospital care.
             </p>
           </RevealItem>
 
@@ -164,7 +157,7 @@ export default async function ConditionPage({
             <span className="icon-glass grid size-11 place-items-center rounded-xl text-primary dark:text-accent">
               <CheckCircle2 className="size-5" aria-hidden />
             </span>
-            <h2 className="type-h3">Dr. GRK Reddy&apos;s approach</h2>
+            <h2 className="type-h3">Dr. Rajashekhar Meda&apos;s approach</h2>
             <ul className="space-y-2.5">
               {condition.approach.map((item) => (
                 <li key={item} className="flex gap-2.5 text-sm">
@@ -184,8 +177,7 @@ export default async function ConditionPage({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
             <p className="text-lg font-medium max-w-2xl">
-              Not sure whether your symptoms need a specialist? Call the clinic —
-              a neurosurgeon is available 24/7.
+              Need immediate surgical consultation or emergency assistance? Call Suraksha Hospital 24/7.
             </p>
             <Button
               size="cta"
@@ -200,7 +192,7 @@ export default async function ConditionPage({
       </section>
 
       <Section className="bg-muted/60">
-        <SectionHeading eyebrow="Related" title="Other treatments" />
+        <SectionHeading eyebrow="Related" title="Other surgeries" />
         <RevealGroup as="ul" className="mt-10 grid sm:grid-cols-3 gap-5">
           {others.map((c) => (
             <RevealItem key={c.slug} as="li">

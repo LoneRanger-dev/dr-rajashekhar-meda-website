@@ -83,7 +83,7 @@ export function LandingPage({ config }: { config: LandingConfig }) {
 
               <ul className="grid sm:grid-cols-3 gap-4 pt-4 border-t border-border">
                 {[
-                  { icon: GraduationCap, label: "MCh Neurosurgery" },
+                  { icon: GraduationCap, label: "M.S. General Surgery" },
                   { icon: ShieldAlert, label: "24/7 availability" },
                   { icon: MapPin, label: `${site.hospital.city}, ${site.hospital.state}` },
                 ].map(({ icon: Icon, label }) => (

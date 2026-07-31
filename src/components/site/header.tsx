@@ -26,7 +26,7 @@ export function Header() {
             <span className="inline-flex rounded-xl bg-white p-1.5 shrink-0 shadow-[var(--elev-1)]">
               <Image
                 src={brandImages.logo.src}
-                alt={`${site.hospital.name} — Brain, Spine, Neuro`}
+                alt={`${site.hospital.name} — Laparoscopic & General Surgery`}
                 width={brandImages.logo.width}
                 height={brandImages.logo.height}
                 priority

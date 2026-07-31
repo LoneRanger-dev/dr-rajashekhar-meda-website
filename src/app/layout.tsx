@@ -6,11 +6,14 @@ import { JsonLd } from "@/components/site/json-ld";
 import { Analytics } from "@/components/site/analytics";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
-const TITLE = `${site.doctor.name} — Brain & Spine Surgeon, Khammam`;
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "";
+
+const TITLE = `${site.doctor.name} — Laparoscopic & General Surgeon, Khammam`;
 const DESCRIPTION =
-  "Consultant Brain & Spine Surgeon at Suraksha Hospital, Khammam. MBBS, MS, MCh (Neurosurgery). Minimally invasive spine surgery, endoscopic neurosurgery, epilepsy care and 24/7 trauma response.";
+  "Consultant Laparoscopic, Endoscopic & Laser Surgeon at Suraksha Hospital, Khammam. MBBS, M.S. (General Surgery). Minimally invasive keyhole surgery, hernia repair, appendix, gallbladder, laser treatment, and 24/7 trauma emergency care.";
 const OG_DESCRIPTION =
-  "MCh Neurosurgeon at Suraksha Hospital, Khammam. 24/7 trauma care, minimally invasive spine surgery and epilepsy treatment. Call 7075 447 449.";
+  "Laparoscopic & General Surgeon at Suraksha Hospital, Khammam. 24/7 emergency surgical care, keyhole hernia & appendix surgery. Call 7075 447 449.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
@@ -25,20 +28,19 @@ export const metadata: Metadata = {
   publisher: site.hospital.name,
   category: "health",
   keywords: [
-    "neurosurgeon Khammam",
-    "brain surgeon Khammam",
-    "spine surgeon Khammam",
-    "best neurosurgeon in Khammam",
-    "minimally invasive spine surgery Khammam",
-    "herniated disc treatment Khammam",
-    "epilepsy treatment Khammam",
-    "24/7 emergency neurosurgeon Khammam",
+    "laparoscopic surgeon Khammam",
+    "general surgeon Khammam",
+    "hernia repair Khammam",
+    "appendix surgery Khammam",
+    "gallbladder surgery Khammam",
+    "laser surgeon Khammam",
+    "varicose veins laser treatment Khammam",
+    "best general surgeon in Khammam",
     "Suraksha Hospital Khammam",
-    "Dr. GRK Reddy",
-    "Dr. GRK Reddy neurosurgeon",
-    "Dr. Gade Ramakrishna Reddy",
-    "Consultant Neurosurgeon Khammam",
-    "Brain & Spine Specialist Khammam",
+    "Dr. Rajashekhar Meda",
+    "Dr. Meda Rajashekhar",
+    "Dr. Rajashekhar surgeon Khammam",
+    "24/7 emergency surgeon Khammam",
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
     description: OG_DESCRIPTION,
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "/images/doctor/dr-rajashekhar-hero.jpg",
         width: 1200,
         height: 630,
         alt: `${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}, Khammam`,
@@ -61,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: OG_DESCRIPTION,
-    images: ["/opengraph-image.png"],
+    images: ["/images/doctor/dr-rajashekhar-hero.jpg"],
   },
   robots: {
     index: true,
@@ -78,10 +80,6 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   manifest: "/manifest.webmanifest",
-  // Only emit the GSC verification meta tag when the env var is set.
-  // Next.js omits the tag entirely when the value is undefined, so
-  // this guard exists purely to prevent a future regression where
-  // someone passes an explicit undefined in a non-standard build.
   ...(process.env.GOOGLE_SITE_VERIFICATION
     ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
     : {}),
@@ -98,8 +96,8 @@ export default function RootLayout({
       lang="en"
       className={`${figtree.variable} ${notoSans.variable} h-full antialiased`}
     >
-      <GoogleTagManager gtmId="GTM-WCMMQRD6" />
-      <GoogleAnalytics gaId="G-YHMZWYWQVK" />
+      {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
+      {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       <body className="min-h-full flex flex-col">
         <a
           href="#main"
