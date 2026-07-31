@@ -112,12 +112,6 @@ export default function HomePage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="elev-3"
               />
-              <div className="glass rounded-2xl p-4 elev-2 absolute -bottom-5 left-4 right-4 sm:left-8 sm:right-auto sm:max-w-xs">
-                <p className="text-sm font-semibold">{site.doctor.tagline}</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  {site.hospital.name} · {site.hospital.descriptor}
-                </p>
-              </div>
             </div>
           </div>
         </div>
