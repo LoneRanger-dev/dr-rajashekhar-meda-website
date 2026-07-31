@@ -18,9 +18,9 @@ export const doctorImages = {
   },
   /** Surgical poster creative — advanced laparoscopic surgery. */
   about: {
-    src: "/images/doctor/dr-rajashekhar-poster.jpg",
+    src: "/images/doctor/dr-rajashekhar-scrubs.png",
     width: 1080,
-    height: 1080,
+    height: 1580,
   },
   /** Vertical portrait for cards and schemas. */
   portrait: {
@@ -30,7 +30,7 @@ export const doctorImages = {
   },
   /** Doctor in surgical scrubs — theatre & trauma context. */
   scrubs: {
-    src: "/images/doctor/dr-rajashekhar-scrubs.jpg",
+    src: "/images/doctor/dr-rajashekhar-scrubs.png",
     width: 1080,
     height: 1580,
   },
@@ -43,25 +43,25 @@ export const facilityImages = {
     height: 1500,
   },
   interior: {
-    src: "/images/doctor/dr-rajashekhar-poster.jpg",
-    width: 1080,
-    height: 1080,
+    src: "/images/doctor/dr-rajashekhar-consulting.jpg",
+    width: 720,
+    height: 1280,
   },
   wards: {
-    src: "/images/doctor/dr-rajashekhar-poster.jpg",
+    src: "/images/doctor/dr-rajashekhar-scrubs.png",
     width: 1080,
-    height: 1080,
+    height: 1580,
   },
 } as const;
 
 export const creativeImages = {
-  brainTrauma: { src: "/images/doctor/dr-rajashekhar-poster.jpg", width: 1080, height: 1080 },
-  epilepsy: { src: "/images/doctor/dr-rajashekhar-poster.jpg", width: 1080, height: 1080 },
-  spineConditions: { src: "/images/doctor/dr-rajashekhar-poster.jpg", width: 1080, height: 1080 },
+  brainTrauma: { src: "/images/doctor/dr-rajashekhar-scrubs.png", width: 1080, height: 1580 },
+  epilepsy: { src: "/images/doctor/dr-rajashekhar-consulting.jpg", width: 720, height: 1280 },
+  spineConditions: { src: "/images/doctor/dr-rajashekhar-scrubs.png", width: 1080, height: 1580 },
   hospitalBanner: {
-    src: "/images/doctor/dr-rajashekhar-poster.jpg",
-    width: 1080,
-    height: 1080,
+    src: "/images/doctor/dr-rajashekhar-consulting.jpg",
+    width: 720,
+    height: 1280,
   },
   doctorBanner: {
     src: "/images/doctor/dr-rajashekhar-hero.jpg",
