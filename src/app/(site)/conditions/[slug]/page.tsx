@@ -1,18 +1,11 @@
-"use client";
-
-import React, { use } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  Phone,
-  CalendarCheck,
   CheckCircle2,
   AlertTriangle,
   Stethoscope,
   ArrowRight,
-  ShieldAlert,
-  MessageSquare,
   HelpCircle,
   Clock,
   Zap,
@@ -23,12 +16,11 @@ import {
 import { Section } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { ConditionIllustration } from "@/components/illustrations/condition-illustrations";
+import { ConditionActions } from "@/components/site/condition-actions";
 import { site, whatsappUrl } from "@/lib/site";
 import { detailedConditions, getConditionBySlug } from "@/lib/conditionsData";
-import { trackCall, trackWhatsApp } from "@/lib/analytics";
 
 export function generateStaticParams() {
-  // Static params for all 14 main conditions plus 4 legacy alias slugs
   const allSlugs = [
     ...detailedConditions.map((c) => c.slug),
     "laparoscopic-surgery",
@@ -67,12 +59,12 @@ export async function generateMetadata({
   };
 }
 
-export default function ConditionDetailPage({
+export default async function ConditionDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = use(params);
+  const { slug } = await params;
   const condition = getConditionBySlug(slug);
   if (!condition) notFound();
 
@@ -137,6 +129,8 @@ export default function ConditionDetailPage({
     ],
   };
 
+  const currentWhatsappUrl = whatsappUrl(`Hello Dr. Meda, I would like to consult regarding ${condition.name}.`);
+
   return (
     <>
       {/* Inject Structured Data Schemas */}
@@ -192,36 +186,14 @@ export default function ConditionDetailPage({
                 {condition.summary}
               </p>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <a
-                  href={site.contact.phoneHref}
-                  onClick={trackCall}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-emergency text-emergency-foreground px-5 py-3.5 text-sm font-semibold shadow-md hover:bg-emergency-hover transition-all active:scale-95"
-                >
-                  <ShieldAlert className="size-4 animate-pulse" aria-hidden />
-                  <span className="tnum">Call 24/7 Emergency ({site.contact.phoneDisplay})</span>
-                </a>
-
-                <Link
-                  href="/contact#appointment"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent text-accent-foreground px-5 py-3.5 text-sm font-semibold shadow-md hover:bg-accent/90 transition-all active:scale-95"
-                >
-                  <CalendarCheck className="size-4" aria-hidden />
-                  <span>Book Appointment</span>
-                </Link>
-
-                <a
-                  href={whatsappUrl(`Hello Dr. Meda, I would like to consult regarding ${condition.name}.`)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={trackWhatsApp}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 text-white px-4 py-3.5 text-sm font-semibold shadow-md hover:bg-emerald-700 transition-all active:scale-95"
-                >
-                  <MessageSquare className="size-4" aria-hidden />
-                  <span>WhatsApp</span>
-                </a>
-              </div>
+              {/* Interactive CTAs */}
+              <ConditionActions
+                phoneHref={site.contact.phoneHref}
+                phoneDisplay={site.contact.phoneDisplay}
+                conditionName={condition.name}
+                whatsappUrl={currentWhatsappUrl}
+                variant="hero"
+              />
             </Reveal>
 
             {/* Right Vector Illustration Card */}
@@ -427,35 +399,13 @@ export default function ConditionDetailPage({
                 </div>
               </div>
 
-              <div className="space-y-2.5 pt-2">
-                <Link
-                  href="/contact#appointment"
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent text-accent-foreground px-4 py-3 text-sm font-semibold shadow-md hover:bg-accent/90 transition-all active:scale-95"
-                >
-                  <CalendarCheck className="size-4" />
-                  <span>Book Consultation</span>
-                </Link>
-
-                <a
-                  href={site.contact.phoneHref}
-                  onClick={trackCall}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emergency text-emergency-foreground px-4 py-3 text-sm font-semibold shadow-md hover:bg-emergency-hover transition-all active:scale-95"
-                >
-                  <Phone className="size-4" />
-                  <span className="tnum">Emergency: {site.contact.phoneDisplay}</span>
-                </a>
-
-                <a
-                  href={whatsappUrl(`Hello Dr. Meda, I have a question regarding ${condition.name}.`)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={trackWhatsApp}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 text-white px-4 py-3 text-sm font-semibold shadow-md hover:bg-emerald-700 transition-all active:scale-95"
-                >
-                  <MessageSquare className="size-4" />
-                  <span>WhatsApp Doctor</span>
-                </a>
-              </div>
+              <ConditionActions
+                phoneHref={site.contact.phoneHref}
+                phoneDisplay={site.contact.phoneDisplay}
+                conditionName={condition.name}
+                whatsappUrl={currentWhatsappUrl}
+                variant="sidebar"
+              />
             </Reveal>
           </aside>
         </div>
