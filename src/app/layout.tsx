@@ -1,73 +1,77 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Figtree, Noto_Sans } from "next/font/google";
 import "./globals.css";
-import { figtree, notoSans } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/site/json-ld";
 import { Analytics } from "@/components/site/analytics";
-import { Header } from "@/components/site/header";
-import { Footer } from "@/components/site/footer";
-import { ChatWidget } from "@/components/chatbot/chat-widget";
-import { FloatingBar } from "@/components/site/floating-bar";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "";
 
-const TITLE = `${site.doctor.name} — Laparoscopic & General Surgeon, Khammam`;
-const DESCRIPTION =
-  "Consultant Laparoscopic, Endoscopic & Laser Surgeon at Suraksha Hospital, Khammam. MBBS, M.S. (General Surgery). Minimally invasive keyhole surgery, hernia repair, appendix, gallbladder, laser treatment, and 24/7 trauma emergency care.";
-const OG_DESCRIPTION =
-  "Laparoscopic & General Surgeon at Suraksha Hospital, Khammam. 24/7 emergency surgical care, keyhole hernia & appendix surgery. Call 7075 447 449.";
+const figtree = Figtree({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const notoSans = Noto_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B192C" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
   title: {
-    default: TITLE,
+    default: `${site.doctor.name} | ${site.doctor.title} | Khammam`,
     template: `%s | ${site.doctor.name}`,
   },
-  description: DESCRIPTION,
-  applicationName: `${site.doctor.name} — ${site.hospital.name}`,
+  description: `${site.doctor.name} — ${site.doctor.credentials}. Advanced laparoscopic, endoscopic & laser surgery at ${site.hospital.name}, Khammam. Hernia repair, gallbladder, appendix, varicose veins & 24/7 trauma emergency.`,
+  keywords: [
+    "Dr Rajashekhar Meda",
+    "Laparoscopic Surgeon Khammam",
+    "Suraksha Hospital Khammam",
+    "General Surgeon Khammam",
+    "Hernia Surgery Khammam",
+    "Gallbladder Surgery Khammam",
+    "Laser Varicose Veins Khammam",
+    "Appendix Surgery Khammam",
+  ],
   authors: [{ name: site.doctor.name }],
   creator: site.doctor.name,
   publisher: site.hospital.name,
-  category: "health",
-  keywords: [
-    "laparoscopic surgeon Khammam",
-    "general surgeon Khammam",
-    "hernia repair Khammam",
-    "appendix surgery Khammam",
-    "gallbladder surgery Khammam",
-    "laser surgeon Khammam",
-    "varicose veins laser treatment Khammam",
-    "best general surgeon in Khammam",
-    "Suraksha Hospital Khammam",
-    "Dr. Rajashekhar Meda",
-    "Dr. Meda Rajashekhar",
-    "Dr. Rajashekhar surgeon Khammam",
-    "24/7 emergency surgeon Khammam",
-  ],
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: site.domain,
-    siteName: `${site.doctor.name} — ${site.doctor.title}`,
-    title: TITLE,
-    description: OG_DESCRIPTION,
+    siteName: site.doctor.name,
+    title: `${site.doctor.name} | ${site.doctor.title} | Khammam`,
+    description: `Consultant Laparoscopic & General Surgeon at ${site.hospital.name}, Khammam. Minimal incision, fast recovery, 24/7 emergency care.`,
     images: [
       {
-        url: "/images/doctor/dr-rajashekhar-hero.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: `${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}, Khammam`,
+        alt: `${site.doctor.name} — Suraksha Hospital Khammam`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: TITLE,
-    description: OG_DESCRIPTION,
-    images: ["/images/doctor/dr-rajashekhar-hero.jpg"],
+    title: `${site.doctor.name} | ${site.doctor.title}`,
+    description: `Advanced Laparoscopic & General Surgery at ${site.hospital.name}, Khammam.`,
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -75,6 +79,7 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
@@ -109,15 +114,9 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <Header />
-        <main id="main" className="flex-1 pb-24 lg:pb-0">
-          {children}
-        </main>
-        <Footer />
+        {children}
         <JsonLd />
         <Analytics />
-        <ChatWidget />
-        <FloatingBar />
       </body>
     </html>
   );
