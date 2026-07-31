@@ -4,6 +4,10 @@ import { figtree, notoSans } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/site/json-ld";
 import { Analytics } from "@/components/site/analytics";
+import { Header } from "@/components/site/header";
+import { Footer } from "@/components/site/footer";
+import { ChatWidget } from "@/components/chatbot/chat-widget";
+import { FloatingBar } from "@/components/site/floating-bar";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
@@ -105,9 +109,15 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        {children}
+        <Header />
+        <main id="main" className="flex-1 pb-24 lg:pb-0">
+          {children}
+        </main>
+        <Footer />
         <JsonLd />
         <Analytics />
+        <ChatWidget />
+        <FloatingBar />
       </body>
     </html>
   );

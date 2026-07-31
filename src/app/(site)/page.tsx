@@ -22,6 +22,7 @@ import { TiltCard } from "@/components/site/tilt-card";
 import { HospitalShowcase } from "@/components/site/hospital-showcase";
 import { HeroBackground } from "@/components/site/hero-background";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
+import { PatientJourney } from "@/components/site/patient-journey";
 import { site, conditions, whatsappUrl } from "@/lib/site";
 import { doctorImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 
@@ -180,6 +181,9 @@ export default function HomePage() {
           })}
         </RevealGroup>
       </Section>
+
+      {/* ── PATIENT JOURNEY / PROCESS TIMELINE ──────────────────────────── */}
+      <PatientJourney />
 
       {/* ── WHY DR. RAJASHEKHAR MEDA ───────────────────────────────────────── */}
       <Section>
