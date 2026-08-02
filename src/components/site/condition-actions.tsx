@@ -60,7 +60,7 @@ export function ConditionActions({
         className="inline-flex items-center justify-center gap-2.5 rounded-none bg-emergency text-white px-6 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emergency-hover hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
       >
         <ShieldAlert className="size-4 animate-pulse" aria-hidden />
-        <span className="tnum">Call 24/7 Emergency ({phoneDisplay})</span>
+        <span>Call 24/7 Emergency</span>
       </a>
 
       <Link

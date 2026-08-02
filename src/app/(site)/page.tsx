@@ -42,7 +42,7 @@ export default function HomePage() {
                   className="inline-flex items-center justify-center gap-2.5 rounded-none bg-emergency text-white px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emergency-hover hover:-translate-y-0.5 transition-all duration-300 active:scale-95 w-full sm:w-auto"
                 >
                   <Phone className="size-4" aria-hidden />
-                  <span className="tnum">Call {site.contact.phoneDisplay}</span>
+                  <span>Call Emergency</span>
                 </a>
                 <Link
                   href="/contact#appointment"
@@ -138,7 +138,7 @@ export default function HomePage() {
                 render={<a href={site.contact.phoneHref} />}
               >
                 <Phone aria-hidden />
-                <span className="tnum">Call the clinic</span>
+                <span>Call Emergency</span>
               </Button>
               <Button
                 variant="outline"

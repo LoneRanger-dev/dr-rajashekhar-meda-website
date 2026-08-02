@@ -156,7 +156,7 @@ export default async function ArticlePage({
             render={<a href={site.contact.phoneHref} />}
           >
             <Phone aria-hidden />
-            <span className="tnum">Call {site.contact.phoneDisplay}</span>
+            <span>Call Doctor</span>
           </Button>
         </aside>
 

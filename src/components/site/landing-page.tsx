@@ -72,7 +72,7 @@ export function LandingPage({ config }: { config: LandingConfig }) {
                   render={<a href={site.contact.phoneHref} />}
                 >
                   <Phone aria-hidden />
-                  <span className="tnum">Call {site.contact.phoneDisplay}</span>
+                  <span>Call Emergency</span>
                 </Button>
                 {!config.urgent && (
                   <Button variant="accent" size="cta-lg" render={<a href="#book" />}>

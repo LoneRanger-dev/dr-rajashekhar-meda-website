@@ -60,7 +60,7 @@ export function HospitalShowcase() {
               render={<a href={site.contact.phoneHref} />}
             >
               <Phone className="size-4" aria-hidden />
-              <span className="tnum">Call {site.contact.phoneDisplay}</span>
+              <span>Call Emergency</span>
             </Button>
 
             <Button

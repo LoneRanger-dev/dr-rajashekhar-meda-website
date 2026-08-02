@@ -361,7 +361,7 @@ export function ChatWidget() {
                       className="mt-3 flex items-center justify-center gap-2 rounded-none bg-emergency px-4 py-2.5 font-bold text-white tnum shadow-md hover:bg-emergency-hover"
                     >
                       <Phone className="size-4" aria-hidden />
-                      Call {site.contact.phoneDisplay}
+                      <span>Call Emergency</span>
                     </a>
                   )}
                 </div>

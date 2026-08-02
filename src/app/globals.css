@@ -271,6 +271,11 @@
      type-body     default body copy (16px floor for mobile legibility)
      type-label    eyebrows and small uppercase labels
    -------------------------------------------------------------------------- */
+@utility section-py {
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
 @utility type-display {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: clamp(2.5rem, 1.9rem + 3vw, 3.75rem);
