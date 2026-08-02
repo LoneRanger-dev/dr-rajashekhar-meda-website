@@ -13,7 +13,6 @@ import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
 import { Button } from "@/components/ui/button";
 import { HeroVisual } from "@/components/hero/hero-visual";
 import { TiltCard } from "@/components/site/tilt-card";
-import { HospitalShowcase } from "@/components/site/hospital-showcase";
 import { HeroBackground } from "@/components/site/hero-background";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { site, whatsappUrl } from "@/lib/site";
@@ -127,8 +126,7 @@ export default function HomePage() {
 
 
 
-      {/* ── HOSPITAL SHOWCASE ─────────────────────────────────────────────── */}
-      <HospitalShowcase />
+
 
       {/* ── VISIT / LOCATION ─────────────────────────────────────────────── */}
       <Section>
