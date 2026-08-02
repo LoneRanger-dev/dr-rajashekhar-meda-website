@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Clock, ShieldAlert } from "lucide-react";
 import { site, navigation, conditions } from "@/lib/site";
-import { brandImages } from "@/lib/siteAssets";
 
 export function Footer() {
   return (
@@ -10,22 +9,22 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10 sm:py-12">
         <div className="grid items-start gap-6 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-2.5">
-            <span className="inline-flex rounded-xl bg-white p-2 shrink-0">
+            <span className="inline-flex rounded-xl bg-white p-2.5 shrink-0 shadow-lg">
               <Image
-                src={brandImages.logo.src}
-                alt={`${site.doctor.name} — General & Laparoscopic Surgery`}
-                width={brandImages.logo.width}
-                height={brandImages.logo.height}
-                className="h-10 w-auto object-contain"
+                src="/brand/dr-rajashekhar-logo-footer.png"
+                alt={`${site.doctor.name} — Laparoscopic, Endoscopic & Laser Surgery`}
+                width={480}
+                height={320}
+                className="h-16 w-auto object-contain"
               />
             </span>
-            <p className="font-[family-name:var(--font-display)] text-base font-bold text-white">
+            <p className="font-[family-name:var(--font-display)] text-base font-bold text-white pt-1">
               {site.doctor.name}
             </p>
-            <p className="text-xs text-primary-foreground/80 font-medium">
+            <p className="text-xs text-sky-300 font-semibold">
               {site.doctor.credentials}
             </p>
-            <p className="text-xs text-primary-foreground/70 leading-relaxed">
+            <p className="text-xs text-primary-foreground/75 leading-relaxed">
               {site.doctor.title}
             </p>
           </div>
