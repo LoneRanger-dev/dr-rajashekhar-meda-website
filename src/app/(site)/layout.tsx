@@ -6,16 +6,15 @@ import { AmbientBackground } from "@/components/site/ambient-background";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden flex flex-col bg-background">
       <AmbientBackground />
       <Header />
-      {/* pb-24 on mobile keeps content clear of the fixed bottom CTA bar */}
-      <main id="main" className="flex-1 pb-24 lg:pb-0">
+      <main id="main" className="flex-1 w-full max-w-full overflow-x-hidden pb-16 lg:pb-0">
         {children}
       </main>
       <Footer />
       <ChatWidget />
       <FloatingBar />
-    </>
+    </div>
   );
 }

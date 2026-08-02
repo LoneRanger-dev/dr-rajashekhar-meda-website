@@ -21,22 +21,22 @@ export function HeroBackground() {
   return (
     <div
       ref={ref}
-      className="absolute inset-0 -z-10 overflow-hidden bg-gradient-to-br from-slate-50 via-sky-50/60 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-sky-950"
+      className="absolute inset-0 -z-10 w-full max-w-full overflow-hidden bg-gradient-to-br from-slate-50 via-sky-50/60 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-sky-950"
       aria-hidden
     >
       {/* Soft Ambient Clinical Lighting */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 max-w-full pointer-events-none"
         style={{
           background:
             "radial-gradient(70% 60% at 20% 20%, oklch(0.96 0.03 210 / 0.8), transparent 70%), radial-gradient(60% 60% at 80% 30%, oklch(0.93 0.04 220 / 0.6), transparent 60%)",
         }}
       />
 
-      {/* Official Doctor Surgical Logo Hero Backdrop Graphic */}
+      {/* Official Doctor Surgical Logo Hero Backdrop Graphic — Fluid Responsive */}
       <motion.div
         style={reduce ? undefined : { y }}
-        className="absolute right-0 lg:right-[3%] top-1/2 -translate-y-1/2 pointer-events-none opacity-20 sm:opacity-25 dark:opacity-30 size-[450px] sm:size-[620px] lg:size-[820px] select-none"
+        className="absolute right-0 lg:right-[3%] top-1/2 -translate-y-1/2 pointer-events-none opacity-20 sm:opacity-25 dark:opacity-30 w-[85vw] max-w-[680px] aspect-square select-none overflow-hidden"
       >
         <Image
           src="/brand/dr-rajashekhar-hero-bg-logo.png"
@@ -48,8 +48,8 @@ export function HeroBackground() {
         />
       </motion.div>
 
-      {/* Soft overlay gradient to ensure clean readability of hero typography */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent lg:from-background/95 lg:via-background/70 lg:to-transparent" />
+      {/* Subtle Grid Line Texture */}
+      <div className="absolute inset-0 max-w-full bg-[linear-gradient(to_right,#0284c70a_1px,transparent_1px),linear-gradient(to_bottom,#0284c70a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
     </div>
   );
 }

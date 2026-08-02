@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { GraduationCap, Award, Stethoscope, Building2, ArrowRight } from "lucide-react";
+import { GraduationCap, Stethoscope, ArrowRight, ShieldCheck, HeartPulse } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
-import { site, awards } from "@/lib/site";
-import { doctorImages, creativeImages, BLUR_DATA_URL } from "@/lib/siteAssets";
+import { site } from "@/lib/site";
 import { notoSansTelugu } from "@/lib/fonts-telugu";
 import { buildMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/site/json-ld";
@@ -38,7 +36,7 @@ const expertise = [
   },
   {
     title: "Laser Surgery & Varicose Veins",
-    body: "Endovenous laser ablation (EVLA) for varicose veins and minimally invasive laser proctology.",
+    body: "Endovenous laser ablation (EVLA) for varicose veins and minimally invasive laser proctology (Piles, Fissure, Fistula).",
   },
   {
     title: "Tumor & Cyst Excision",
@@ -54,146 +52,101 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd />
-      <section className="brand-wash">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
-          <Reveal className="grid lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
-            <div className="relative glow-halo glass rounded-3xl p-3">
-              <div className="overflow-hidden rounded-2xl img-hover">
-                <Image
-                  src={doctorImages.about.src}
-                  alt={`${site.doctor.name}, ${site.doctor.title}, in consultation at ${site.hospital.name}`}
-                  width={doctorImages.about.width}
-                  height={doctorImages.about.height}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  placeholder="blur"
-                  blurDataURL={BLUR_DATA_URL}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-            <div className="space-y-6">
-              <SectionHeading
-                as="h1"
-                eyebrow="About the Doctor"
-                title={site.doctor.name}
-                lead="Consultant Laparoscopic, Endoscopic & Laser Surgeon — MBBS, M.S. (General Surgery)"
-              />
-              <p className="type-lead text-muted-foreground">
-                {site.doctor.title} at {site.hospital.name}, {site.hospital.city}. Dr. Rajashekhar Meda brings 10+ years of dedicated surgical experience in minimally invasive laparoscopic surgery, routine general surgery, and 24/7 trauma emergency care.
-              </p>
-              <p
-                lang="te"
-                className={`${notoSansTelugu.variable} text-xl text-muted-foreground`}
+      {/* Centered Spacious Doctor Overview (No Image) */}
+      <section className="brand-wash py-16 sm:py-24 border-b border-border/50">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center space-y-6">
+          <Reveal blur={false} y={16} className="space-y-4">
+            <span className="type-label text-accent inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-4 py-1.5">
+              <Stethoscope className="size-4" aria-hidden />
+              10+ Years of Surgical Excellence
+            </span>
+            
+            <h1 className="type-h1 text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground">
+              {site.doctor.name}
+            </h1>
+            
+            <p className="type-lead text-lg sm:text-xl font-semibold text-accent max-w-2xl mx-auto">
+              Consultant Laparoscopic, Endoscopic &amp; Laser Surgeon — MBBS, M.S. (General Surgery)
+            </p>
+
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              {site.doctor.title} at {site.hospital.name}, {site.hospital.city}. Dr. Rajashekhar Meda brings over a decade of dedicated surgical experience in minimally invasive keyhole surgeries, laser proctology, routine general surgery, and 24/7 trauma emergency care.
+            </p>
+
+            <p
+              lang="te"
+              className={`${notoSansTelugu.variable} text-xl sm:text-2xl text-muted-foreground font-medium pt-2`}
+            >
+              {site.doctor.nameTelugu} — {site.doctor.titleTelugu}
+            </p>
+
+            <div className="pt-4 flex flex-wrap justify-center gap-4">
+              <Button
+                variant="emergency"
+                size="cta"
+                className="rounded-none shadow-md"
+                render={<a href={site.contact.phoneHref} />}
               >
-                {site.doctor.nameTelugu} — {site.doctor.titleTelugu}
-              </p>
+                <ShieldCheck className="size-4" aria-hidden />
+                <span>Call {site.contact.phoneDisplay}</span>
+              </Button>
               <Button
                 variant="accent"
                 size="cta"
+                className="rounded-none shadow-md"
                 render={<Link href="/contact#appointment" />}
               >
-                Book a consultation
-                <ArrowRight aria-hidden />
+                <span>Book a Consultation</span>
+                <ArrowRight className="size-4" aria-hidden />
               </Button>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <Section>
-        <Reveal className="relative glow-halo glass rounded-3xl p-3">
-          <div className="overflow-hidden rounded-2xl img-hover">
-            <Image
-              src={creativeImages.hospitalBanner.src}
-              alt={`${site.hospital.name} — laparoscopic surgery, 24/7 trauma and emergency care, advanced ICU`}
-              width={creativeImages.hospitalBanner.width}
-              height={creativeImages.hospitalBanner.height}
-              sizes="(max-width: 1024px) 100vw, 1152px"
-              placeholder="blur"
-              blurDataURL={BLUR_DATA_URL}
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </Reveal>
-      </Section>
-
-      <Section>
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="space-y-6">
-            <SectionHeading eyebrow="Qualifications" title="Training & credentials" />
-            <ul className="space-y-4">
-              {qualifications.map((q) => (
-                <li key={q.degree} className="group glass lift rounded-2xl p-5 flex gap-4">
-                  <span className="icon-glass grid size-11 shrink-0 place-items-center rounded-xl text-primary dark:text-accent">
-                    <GraduationCap className="size-5" aria-hidden />
-                  </span>
-                  <div>
-                    <h3 className="font-semibold">{q.degree}</h3>
-                    <p className="text-sm text-muted-foreground mt-0.5">{q.detail}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="space-y-6">
-            <SectionHeading eyebrow="Clinical Leadership" title="Surgical Excellence" />
-            <div className="group glass lift rounded-2xl p-6 space-y-4">
-              <div className="flex gap-4">
-                <span className="icon-glass grid size-11 shrink-0 place-items-center rounded-xl text-accent">
-                  <Building2 className="size-5" aria-hidden />
-                </span>
-                <div>
-                  <h3 className="font-semibold">Consultant General & Laparoscopic Surgeon</h3>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Suraksha Hospital, Wyra Road, Khammam
-                  </p>
-                </div>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                With over a decade of clinical experience, Dr. Rajashekhar Meda focuses on minimally invasive keyhole procedures that maximize patient comfort, minimize scar tissue, and ensure rapid, complication-free post-operative recovery.
-              </p>
-            </div>
-
-            {awards.length > 0 && (
-              <>
-                <SectionHeading eyebrow="Recognition" title="Awards & publications" />
-                <ul className="space-y-3">
-                  {awards.map((a) => (
-                    <li key={a.title} className="glass lift rounded-2xl p-5 flex gap-4">
-                      <Award className="size-5 text-accent shrink-0 mt-0.5" aria-hidden />
-                      <span className="font-medium">{a.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-          </div>
-        </div>
-      </Section>
-
-      <Section className="bg-muted/60">
+      {/* Qualifications & Medical Credentials */}
+      <Section className="py-16 sm:py-20 bg-background">
         <SectionHeading
-          eyebrow="Areas of expertise"
-          title="What Dr. Rajashekhar Meda treats"
-          lead="Comprehensive general, laparoscopic, laser, and emergency surgical care."
+          eyebrow="Academic Background"
+          title="Qualifications & Training"
+          lead="Rigorous surgical education and advanced minimally invasive certifications."
         />
-        <RevealGroup as="ul" className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <RevealGroup as="ul" className="mt-10 grid sm:grid-cols-3 gap-6">
+          {qualifications.map((q) => (
+            <RevealItem
+              key={q.degree}
+              as="li"
+              className="glass lift rounded-2xl p-6 border border-white/10 dark:border-white/5 space-y-3"
+            >
+              <span className="icon-glass grid size-12 place-items-center rounded-xl text-accent">
+                <GraduationCap className="size-6" aria-hidden />
+              </span>
+              <h3 className="type-h3 text-lg font-bold">{q.degree}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{q.detail}</p>
+            </RevealItem>
+          ))}
+        </RevealGroup>
+      </Section>
+
+      {/* Surgical Expertise Grid */}
+      <Section className="py-16 sm:py-20 bg-muted/30 border-t border-border/40">
+        <SectionHeading
+          eyebrow="Core Competencies"
+          title="Surgical Specialties"
+          lead="Providing advanced keyhole and laser procedures with faster healing and minimal discomfort."
+        />
+        <RevealGroup as="ul" className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {expertise.map((item) => (
             <RevealItem
               key={item.title}
               as="li"
-              className="group glass lift rounded-2xl p-6 space-y-3"
+              className="glass lift rounded-2xl p-6 border border-white/10 dark:border-white/5 space-y-3"
             >
-              <span className="icon-glass grid size-11 place-items-center rounded-xl text-accent">
-                <Stethoscope
-                  className="size-5 transition-transform duration-[var(--dur-base)] group-hover:scale-110"
-                  aria-hidden
-                />
+              <span className="icon-glass grid size-10 place-items-center rounded-xl text-accent">
+                <HeartPulse className="size-5" aria-hidden />
               </span>
-              <h3 className="type-h3">{item.title}</h3>
-              <p className="text-sm text-muted-foreground">{item.body}</p>
+              <h3 className="type-h3 text-base font-bold">{item.title}</h3>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{item.body}</p>
             </RevealItem>
           ))}
         </RevealGroup>

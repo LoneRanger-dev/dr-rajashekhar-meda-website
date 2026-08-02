@@ -1,24 +1,13 @@
 import Link from "next/link";
-import {
-  Phone,
-  CalendarCheck,
-  ShieldAlert,
-  Clock,
-  MapPin,
-  Activity,
-  Ambulance,
-  BedDouble,
-} from "lucide-react";
+import { Phone, CalendarCheck, ShieldAlert, Clock, MapPin } from "lucide-react";
 import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
 import { Button } from "@/components/ui/button";
 import { HeroVisual } from "@/components/hero/hero-visual";
 import { TiltCard } from "@/components/site/tilt-card";
 import { HeroBackground } from "@/components/site/hero-background";
-import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
+import { Reveal } from "@/components/site/reveal";
 import { site, whatsappUrl } from "@/lib/site";
 import { doctorImages } from "@/lib/siteAssets";
-
-const pillarIcons = { activity: Activity, ambulance: Ambulance, hospital: BedDouble } as const;
 
 export default function HomePage() {
   return (
@@ -100,27 +89,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* ── THREE PILLARS ─────────────────────────────────────────────────── */}
-      <Section className="pt-20 sm:pt-24">
-        <RevealGroup as="ul" className="grid sm:grid-cols-3 gap-5">
-          {site.pillars.map((pillar) => {
-            const Icon = pillarIcons[pillar.icon as keyof typeof pillarIcons] || Activity;
-            return (
-              <RevealItem
-                key={pillar.title}
-                as="li"
-                className="group glass lift rounded-2xl p-6 flex gap-4"
-              >
-                <span className="icon-glass grid size-12 shrink-0 place-items-center rounded-xl text-primary dark:text-accent">
-                  <Icon className="size-6" aria-hidden />
-                </span>
-                <p className="font-semibold self-center">{pillar.title}</p>
-              </RevealItem>
-            );
-          })}
-        </RevealGroup>
-      </Section>
 
 
 
