@@ -27,20 +27,20 @@ export default function ContactPage() {
       </section>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="rounded-2xl border-2 border-emergency/40 bg-emergency/5 p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5 justify-between">
+        <div className="rounded-xl border border-sky-500/30 bg-sky-500/5 p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5 justify-between">
           <div className="flex gap-4">
-            <ShieldAlert className="size-7 text-emergency shrink-0" aria-hidden />
+            <Phone className="size-6 text-accent shrink-0 mt-0.5" aria-hidden />
             <div>
-              <h2 className="text-lg font-semibold text-emergency">
-                Is this a surgical or trauma emergency?
+              <h2 className="text-base sm:text-lg font-bold text-foreground">
+                24/7 Urgent Surgical Consultation
               </h2>
-              <p className="text-sm text-muted-foreground mt-1">
-                For acute severe abdominal pain, appendicitis, or accident trauma, call immediately. Emergency surgical care is available 24/7.
+              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                For acute abdominal pain, trauma, or urgent surgical inquiries, call the hospital desk directly.
               </p>
             </div>
           </div>
           <Button
-            variant="emergency"
+            variant="accent"
             size="cta-lg"
             className="shrink-0"
             render={<a href={site.contact.phoneHref} />}

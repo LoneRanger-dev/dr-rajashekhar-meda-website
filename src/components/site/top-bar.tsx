@@ -31,7 +31,7 @@ export function TopBar() {
             className="inline-flex items-center gap-1.5 font-bold text-white hover:text-sky-300 transition-colors"
           >
             <Phone className="size-3.5 text-accent" />
-            <span>Emergency Helpline</span>
+            <span>Hospital Helpline ({site.contact.phoneDisplay})</span>
           </a>
         </div>
       </div>

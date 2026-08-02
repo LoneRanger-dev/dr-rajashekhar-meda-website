@@ -358,10 +358,10 @@ export function ChatWidget() {
                     <a
                       href={site.contact.phoneHref}
                       onClick={() => track("call_click", { source: "chatbot" })}
-                      className="mt-3 flex items-center justify-center gap-2 rounded-none bg-emergency px-4 py-2.5 font-bold text-white tnum shadow-md hover:bg-emergency-hover"
+                      className="mt-3 flex items-center justify-center gap-2 rounded-none bg-sky-500 text-slate-950 font-bold px-4 py-2.5 tnum shadow-md hover:bg-sky-400"
                     >
                       <Phone className="size-4" aria-hidden />
-                      <span>Call Emergency</span>
+                      <span>Call Clinic</span>
                     </a>
                   )}
                 </div>

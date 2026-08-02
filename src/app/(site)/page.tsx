@@ -50,37 +50,11 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-3 pt-1">
                 <Link
                   href="/contact#appointment"
-                  className="inline-flex items-center justify-center gap-2.5 rounded-none bg-accent text-accent-foreground px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-lg hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-none bg-accent text-accent-foreground px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-lg hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 w-full sm:w-auto"
                 >
                   <CalendarCheck className="size-4" aria-hidden />
                   <span>Book Appointment</span>
                 </Link>
-                <a
-                  href={site.contact.phoneHref}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-none bg-emergency text-white px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-lg hover:bg-emergency-hover hover:-translate-y-0.5 transition-all duration-300 active:scale-95 w-full sm:w-auto"
-                >
-                  <Phone className="size-4" aria-hidden />
-                  <span>Call Emergency</span>
-                </a>
-              </div>
-
-              {/* Emergency Hotline Box */}
-              <div className="p-4 sm:p-5 rounded-xl border border-sky-500/30 bg-slate-900/90 text-white shadow-xl flex items-center justify-between gap-4 max-w-lg">
-                <div className="flex items-center gap-3.5">
-                  <div className="grid size-11 shrink-0 place-items-center rounded-xl bg-emergency text-white shadow-md">
-                    <Phone className="size-5" aria-hidden />
-                  </div>
-                  <div>
-                    <small className="text-[11px] uppercase tracking-wider text-sky-300 font-bold">24/7 Emergency Hotline</small>
-                    <h5 className="text-base sm:text-lg font-extrabold text-white tracking-wide">{site.hospital.name}, Khammam</h5>
-                  </div>
-                </div>
-                <a
-                  href={site.contact.phoneHref}
-                  className="rounded-none bg-white/10 hover:bg-white/20 text-white px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-colors shrink-0"
-                >
-                  Call Now
-                </a>
               </div>
 
               {/* Counter Stats */}
@@ -106,7 +80,7 @@ export default function HomePage() {
               </dl>
             </Reveal>
 
-            {/* Right Column: Hero Doctor Photo Card with Floating Badges */}
+            {/* Right Column: Hero Doctor Photo Card */}
             <div className="relative mx-auto max-w-md lg:max-w-none w-full">
               <div className="relative glow-halo glass rounded-2xl p-3 border border-white/20 dark:border-white/10 shadow-2xl">
                 <div className="overflow-hidden rounded-xl">
@@ -121,28 +95,6 @@ export default function HomePage() {
                     blurDataURL={BLUR_DATA_URL}
                     className="w-full h-auto object-cover rounded-xl"
                   />
-                </div>
-
-                {/* Floating Top Badge */}
-                <div className="absolute top-6 left-6 rounded-none bg-slate-900/90 border border-slate-700/80 p-3 text-white shadow-2xl backdrop-blur-md flex items-center gap-3 hidden sm:flex">
-                  <div className="grid size-9 place-items-center rounded-none bg-accent text-slate-950 font-bold">
-                    <CalendarCheck className="size-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-white leading-tight">Consulting Hours Today</p>
-                    <p className="text-[11px] text-sky-300 font-semibold">{site.hours.weekday.split("·")[1] || "10 AM - 8 PM"}</p>
-                  </div>
-                </div>
-
-                {/* Floating Bottom Badge */}
-                <div className="absolute bottom-6 right-6 rounded-none bg-slate-900/90 border border-slate-700/80 p-3 text-white shadow-2xl backdrop-blur-md flex items-center gap-3 hidden sm:flex">
-                  <div className="grid size-9 place-items-center rounded-none bg-emergency text-white font-bold">
-                    <ShieldCheck className="size-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-white leading-tight">{site.hospital.name}</p>
-                    <p className="text-[11px] text-slate-300">Wyra Road, Khammam</p>
-                  </div>
                 </div>
               </div>
             </div>
@@ -230,13 +182,13 @@ export default function HomePage() {
               </address>
               <div className="pt-2">
                 <Button
-                  variant="emergency"
+                  variant="accent"
                   size="cta"
                   className="rounded-none w-full shadow-md"
                   render={<a href={site.contact.phoneHref} />}
                 >
                   <Phone className="size-4" />
-                  <span>Call Emergency</span>
+                  <span>Call Hospital</span>
                 </Button>
               </div>
             </div>

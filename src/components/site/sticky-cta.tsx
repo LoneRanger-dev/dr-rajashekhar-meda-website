@@ -18,9 +18,9 @@ export function StickyCta() {
     <div className="lg:hidden fixed bottom-0 inset-x-0 z-30 px-3 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))]">
       <div className="glass-strong rounded-2xl grid grid-cols-3 gap-2 p-2">
         <Button
-          variant="emergency"
+          variant="outline"
           size="cta"
-          className="w-full"
+          className="w-full text-foreground"
           render={<a href={site.contact.phoneHref} onClick={() => track("call_click", { source: "sticky_bar" })} />}
         >
           <Phone aria-hidden />

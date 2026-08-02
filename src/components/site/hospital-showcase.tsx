@@ -54,13 +54,13 @@ export function HospitalShowcase() {
           {/* Action Buttons */}
           <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
             <Button
-              variant="emergency"
+              variant="outline"
               size="cta"
-              className="rounded-none shadow-md"
+              className="rounded-none border-sky-400/40 text-sky-300 hover:bg-sky-500/20 shadow-md"
               render={<a href={site.contact.phoneHref} />}
             >
               <Phone className="size-4" aria-hidden />
-              <span>Call Emergency</span>
+              <span>Call Hospital</span>
             </Button>
 
             <Button

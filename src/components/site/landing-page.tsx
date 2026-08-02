@@ -39,7 +39,7 @@ export function LandingPage({ config }: { config: LandingConfig }) {
             </p>
           </div>
           <Button
-            variant="emergency"
+            variant="accent"
             size="cta"
             className="shrink-0"
             render={<a href={site.contact.phoneHref} />}
@@ -56,7 +56,7 @@ export function LandingPage({ config }: { config: LandingConfig }) {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <div className="space-y-6">
-              <span className="inline-flex items-center gap-2 rounded-full bg-emergency/10 px-4 py-2 text-sm font-semibold text-emergency">
+              <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-2 text-sm font-semibold text-accent">
                 <ShieldAlert className="size-4" aria-hidden />
                 {config.eyebrow}
               </span>
@@ -67,12 +67,12 @@ export function LandingPage({ config }: { config: LandingConfig }) {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button
-                  variant="emergency"
+                  variant="accent"
                   size="cta-lg"
                   render={<a href={site.contact.phoneHref} />}
                 >
                   <Phone aria-hidden />
-                  <span>Call Emergency</span>
+                  <span>Call Clinic</span>
                 </Button>
                 {!config.urgent && (
                   <Button variant="accent" size="cta-lg" render={<a href="#book" />}>
@@ -157,7 +157,7 @@ export function LandingPage({ config }: { config: LandingConfig }) {
                 </li>
               </ul>
               <Button
-                variant="emergency"
+                variant="accent"
                 size="cta"
                 className="w-full"
                 render={<a href={site.contact.phoneHref} />}

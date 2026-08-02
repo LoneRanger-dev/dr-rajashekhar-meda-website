@@ -167,7 +167,7 @@ export function FacilityHero() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button
-              variant="emergency"
+              variant="accent"
               size="cta"
               render={<a href={site.contact.phoneHref} />}
             >
