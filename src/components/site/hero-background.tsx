@@ -8,12 +8,7 @@ import { facilityImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 /**
  * Living hero background — the hospital interior, slow-zoomed and drifting on
  * scroll, sitting behind a light scrim so the dark hero copy stays readable.
- *
- * Contrast is guaranteed: an almost-opaque white wash on mobile, and a
- * left-heavy white gradient on desktop (strongest under the headline, fading
- * toward the portrait card). Two nested transforms compose — scroll parallax
- * (translate) over a continuous ambient zoom (scale) — for a subtle "alive"
- * depth. Fully collapses to a static wash under prefers-reduced-motion.
+ * Features a large stylized ambient R-emblem watermark on the right.
  */
 export function HeroBackground() {
   const reduce = useReducedMotion();
@@ -59,6 +54,17 @@ export function HeroBackground() {
             "radial-gradient(70% 60% at 12% 8%, oklch(0.945 0.04 208 / 0.55), transparent 55%), radial-gradient(60% 60% at 92% 6%, oklch(0.92 0.019 243 / 0.5), transparent 60%)",
         }}
       />
+
+      {/* Large stylized ambient R-emblem watermark graphic */}
+      <div className="absolute right-[5%] top-1/2 -translate-y-1/2 opacity-[0.08] dark:opacity-15 pointer-events-none size-[380px] sm:size-[500px] lg:size-[680px] select-none">
+        <Image
+          src="/brand/icon.png"
+          alt=""
+          width={680}
+          height={680}
+          className="size-full object-contain"
+        />
+      </div>
     </div>
   );
 }

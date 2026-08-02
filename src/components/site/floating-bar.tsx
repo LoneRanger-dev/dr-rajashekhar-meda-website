@@ -8,43 +8,43 @@ import { site, whatsappUrl } from "@/lib/site";
 export function FloatingBar() {
   return (
     <aside
-      aria-label="Quick contact toolbar"
-      className="fixed bottom-4 inset-x-4 z-50 mx-auto max-w-lg lg:bottom-6"
+      aria-label="Quick contact sidebar toolbar"
+      className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2 items-end group"
     >
-      <div className="glass-strong rounded-xl p-2 shadow-[0_10px_35px_rgba(0,0,0,0.35)] border border-white/20 dark:border-white/10 flex items-center justify-between gap-2 backdrop-blur-xl bg-background/95">
-        {/* Emergency Call */}
-        <a
-          href={site.contact.phoneHref}
-          onClick={trackCall}
-          className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-emergency text-white px-3.5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emergency-hover hover:-translate-y-0.5 transition-all duration-300 active:scale-[0.98]"
-        >
-          <ShieldAlert className="size-4 shrink-0 animate-pulse" aria-hidden />
-          <span className="hidden sm:inline">24/7 Emergency</span>
-          <span className="tnum font-bold">{site.contact.phoneDisplay}</span>
-        </a>
+      {/* 24/7 Emergency Call (No phone number printed, red button) */}
+      <a
+        href={site.contact.phoneHref}
+        onClick={trackCall}
+        className="inline-flex items-center gap-2 rounded-l-xl rounded-r-none bg-emergency text-white px-3.5 sm:px-4 py-3 text-xs font-bold uppercase tracking-wider shadow-2xl hover:bg-emergency-hover hover:-translate-x-1.5 transition-all duration-300 border-l border-t border-b border-white/20"
+        title="24/7 Emergency Call"
+      >
+        <ShieldAlert className="size-4 shrink-0 animate-pulse" aria-hidden />
+        <span className="whitespace-nowrap">24/7 Emergency</span>
+      </a>
 
-        {/* WhatsApp */}
-        <a
-          href={whatsappUrl()}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={trackWhatsApp}
-          className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-emerald-600 text-white px-3.5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emerald-700 hover:-translate-y-0.5 transition-all duration-300 active:scale-[0.98]"
-          aria-label="Chat on WhatsApp"
-        >
-          <MessageSquare className="size-4 shrink-0" aria-hidden />
-          <span className="hidden md:inline">WhatsApp</span>
-        </a>
+      {/* WhatsApp Chat */}
+      <a
+        href={whatsappUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={trackWhatsApp}
+        className="inline-flex items-center gap-2 rounded-l-xl rounded-r-none bg-emerald-600 text-white px-3.5 sm:px-4 py-3 text-xs font-bold uppercase tracking-wider shadow-2xl hover:bg-emerald-700 hover:-translate-x-1.5 transition-all duration-300 border-l border-t border-b border-white/20"
+        title="Chat on WhatsApp"
+        aria-label="Chat on WhatsApp"
+      >
+        <MessageSquare className="size-4 shrink-0" aria-hidden />
+        <span className="whitespace-nowrap">WhatsApp</span>
+      </a>
 
-        {/* Book Appointment */}
-        <Link
-          href="/contact#appointment"
-          className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-accent text-accent-foreground px-3.5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-[0.98]"
-        >
-          <CalendarCheck className="size-4 shrink-0" aria-hidden />
-          <span className="whitespace-nowrap">Book</span>
-        </Link>
-      </div>
+      {/* Book Appointment */}
+      <Link
+        href="/contact#appointment"
+        className="inline-flex items-center gap-2 rounded-l-xl rounded-r-none bg-accent text-accent-foreground px-3.5 sm:px-4 py-3 text-xs font-bold uppercase tracking-wider shadow-2xl hover:bg-accent/90 hover:-translate-x-1.5 transition-all duration-300 border-l border-t border-b border-white/20"
+        title="Book Appointment"
+      >
+        <CalendarCheck className="size-4 shrink-0" aria-hidden />
+        <span className="whitespace-nowrap">Book Appointment</span>
+      </Link>
     </aside>
   );
 }

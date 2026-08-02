@@ -13,8 +13,8 @@ import {
   Ambulance,
   BedDouble,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
+import { Button } from "@/components/ui/button";
 import { HeroVisual } from "@/components/hero/hero-visual";
 import { TiltCard } from "@/components/site/tilt-card";
 import { HospitalShowcase } from "@/components/site/hospital-showcase";
@@ -55,22 +55,20 @@ export default function HomePage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button
-                  variant="emergency"
-                  size="cta-lg"
-                  render={<a href={site.contact.phoneHref} />}
+                <a
+                  href={site.contact.phoneHref}
+                  className="inline-flex items-center justify-center gap-2.5 rounded-lg bg-emergency text-white px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emergency-hover hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
                 >
-                  <Phone aria-hidden />
+                  <Phone className="size-4" aria-hidden />
                   <span className="tnum">Call {site.contact.phoneDisplay}</span>
-                </Button>
-                <Button
-                  variant="accent"
-                  size="cta-lg"
-                  render={<Link href="/contact#appointment" />}
+                </a>
+                <Link
+                  href="/contact#appointment"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-lg bg-accent text-accent-foreground px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
                 >
-                  <CalendarCheck aria-hidden />
-                  Book consultation
-                </Button>
+                  <CalendarCheck className="size-4" aria-hidden />
+                  <span>Book Consultation</span>
+                </Link>
               </div>
 
               <dl className="grid grid-cols-3 gap-3 sm:gap-4 pt-2">
