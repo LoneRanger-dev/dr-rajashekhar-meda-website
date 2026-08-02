@@ -21,7 +21,6 @@ import { HospitalShowcase } from "@/components/site/hospital-showcase";
 import { HeroBackground } from "@/components/site/hero-background";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { PatientJourney } from "@/components/site/patient-journey";
-import { ConditionsModule } from "@/components/site/conditions-module";
 import { site, whatsappUrl } from "@/lib/site";
 import { doctorImages, BLUR_DATA_URL } from "@/lib/siteAssets";
 
@@ -129,9 +128,6 @@ export default function HomePage() {
         </RevealGroup>
       </Section>
 
-      {/* ── CONDITIONS / SERVICES MODULE ─────────────────────────────────── */}
-      <ConditionsModule />
-
       {/* ── PATIENT JOURNEY / PROCESS TIMELINE ──────────────────────────── */}
       <PatientJourney />
 
@@ -194,43 +190,7 @@ export default function HomePage() {
         </Reveal>
       </Section>
 
-      {/* ── EMERGENCY BANNER ─────────────────────────────────────────────── */}
-      <section className="bg-emergency text-emergency-foreground">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div className="flex gap-4 items-center">
-              <Image
-                src={doctorImages.scrubs.src}
-                alt={`${site.doctor.name} in surgical scrubs at ${site.hospital.name}`}
-                width={doctorImages.scrubs.width}
-                height={doctorImages.scrubs.height}
-                sizes="80px"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
-                className="hidden sm:block size-20 rounded-2xl object-cover ring-2 ring-white/40 shrink-0"
-              />
-              <ShieldAlert className="size-10 shrink-0" aria-hidden />
-              <div>
-                <h2 className="type-h2 text-emergency-foreground">
-                  Acute abdominal pain or surgical emergency?
-                </h2>
-                <p className="mt-2 max-w-2xl opacity-95">
-                  Do not delay. Surgical emergency and ICU trauma services are available 24/7 at{" "}
-                  {site.hospital.name}. Call now or reach the emergency department immediately.
-                </p>
-              </div>
-            </div>
-            <Button
-              size="cta-lg"
-              className="bg-white text-emergency hover:bg-white/90 shrink-0"
-              render={<a href={site.contact.phoneHref} />}
-            >
-              <Phone aria-hidden />
-              <span className="tnum">{site.contact.phoneDisplay}</span>
-            </Button>
-          </div>
-        </div>
-      </section>
+
 
       {/* ── HOSPITAL SHOWCASE ─────────────────────────────────────────────── */}
       <HospitalShowcase />

@@ -45,7 +45,7 @@ export function ConditionsModule() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`rounded-lg px-4.5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 border ${
+                className={`rounded-none px-4.5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 border ${
                   activeCategory === cat
                     ? "bg-accent text-accent-foreground border-accent shadow-md scale-105"
                     : "bg-muted/80 border-border/60 text-muted-foreground hover:bg-muted hover:text-foreground hover:border-accent/40"

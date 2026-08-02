@@ -41,7 +41,7 @@ export function Header() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "relative inline-flex h-11 items-center whitespace-nowrap rounded-lg px-3.5 xl:px-4 text-sm font-semibold transition-all duration-300",
+                      "relative inline-flex h-11 items-center whitespace-nowrap rounded-none px-3.5 xl:px-4 text-sm font-semibold transition-all duration-300",
                       active
                         ? "bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-[0_0_15px_rgba(56,189,248,0.3)]"
                         : "text-slate-200 hover:text-white hover:bg-white/10"
@@ -55,12 +55,12 @@ export function Header() {
           </ul>
         </nav>
 
-        {/* Right Call CTA & Mobile Toggle */}
+        {/* Right Call CTA & Mobile Toggle (Complete Rectangle Shape) */}
         <div className="flex items-center gap-2.5 shrink-0">
           <a
             href={site.contact.phoneHref}
             onClick={() => track("call_click", { source: "header" })}
-            className="hidden sm:inline-flex items-center justify-center gap-2.5 rounded-lg bg-emergency text-white px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emergency-hover hover:-translate-y-0.5 transition-all duration-300 active:scale-95 border border-white/20"
+            className="hidden sm:inline-flex items-center justify-center gap-2.5 rounded-none bg-emergency text-white px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emergency-hover hover:-translate-y-0.5 transition-all duration-300 active:scale-95 border border-white/20"
           >
             <ShieldAlert className="size-4 animate-pulse" aria-hidden />
             <span className="tnum">24/7 Call: {site.contact.phoneDisplay}</span>
@@ -72,7 +72,7 @@ export function Header() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="lg:hidden grid size-11 place-items-center rounded-lg bg-sky-500/20 border border-sky-400/30 text-white hover:bg-sky-500/30 transition-all"
+            className="lg:hidden grid size-11 place-items-center rounded-none bg-sky-500/20 border border-sky-400/30 text-white hover:bg-sky-500/30 transition-all"
           >
             {open ? <X className="size-6" /> : <Menu className="size-6" />}
           </button>
@@ -97,7 +97,7 @@ export function Header() {
                     onClick={() => setOpen(false)}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "flex h-12 items-center rounded-lg px-4 text-base font-semibold transition-colors",
+                      "flex h-12 items-center rounded-none px-4 text-base font-semibold transition-colors",
                       active
                         ? "bg-sky-500/25 text-sky-300 border border-sky-400/40"
                         : "text-slate-200 hover:bg-white/10"
