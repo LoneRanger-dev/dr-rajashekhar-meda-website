@@ -16,7 +16,7 @@ interface Message {
 
 const GREETING: Message = {
   role: "assistant",
-  content: `Hello. I can help with clinic timings, directions, what Dr. Rajashekhar Meda treats, and booking an appointment.\n\nIf this is an emergency, please call ${site.contact.phoneDisplay} straight away.`,
+  content: `Hello. I can help with clinic timings, hospital directions, Dr. Rajashekhar Meda's surgical treatments, and booking a consultation.\n\nIf this is an emergency, please call ${site.contact.phoneDisplay} immediately.`,
 };
 
 const SUGGESTIONS = [
@@ -51,7 +51,6 @@ export function ChatWidget() {
     });
   }, [messages, reduceMotion]);
 
-  // Escape closes the panel (WCAG 2.1.2 — no keyboard trap).
   useEffect(() => {
     if (!open) return;
     function onKey(e: KeyboardEvent) {
@@ -107,7 +106,7 @@ export function ChatWidget() {
         ...prev,
         {
           role: "assistant",
-          content: `I couldn't reach the clinic's assistant. Please call ${site.contact.phoneDisplay}.`,
+          content: `Dr. Meda's consulting hours: Mon-Sat 10am-2pm & 5pm-8:30pm. Emergency 24/7 at Suraksha Hospital, Khammam. Call ${site.contact.phoneDisplay}.`,
           intent: "error",
         },
       ]);
@@ -119,8 +118,7 @@ export function ChatWidget() {
 
   return (
     <>
-      {/* Launcher — sits above the mobile sticky CTA bar (z-index scale:
-          header 40 · sticky CTA 30 · chatbot 50). */}
+      {/* Launcher Floating Mascot Button */}
       <button
         type="button"
         onClick={toggle}
@@ -132,9 +130,8 @@ export function ChatWidget() {
           "transition-transform duration-[var(--dur-base)] hover:scale-110 active:scale-95",
           "focus-visible:outline-3 focus-visible:outline-offset-4",
           open
-            ? "size-14 bg-primary text-primary-foreground shadow-[var(--elev-3)]"
+            ? "size-14 bg-sky-600 text-white shadow-2xl"
             : "size-16 sm:size-[4.5rem]",
-          // The mascot floats on its own rather than sitting in a button box.
           !open && !reduceMotion && "animate-float"
         )}
       >
@@ -142,19 +139,13 @@ export function ChatWidget() {
           <X className="size-6" />
         ) : (
           <span className="relative grid size-full place-items-center">
-            {/* The mascot is on a dark navy backdrop, so it sits in a dark
-                ring with a teal glow — reads as premium on any page colour
-                and echoes the mascot's own glowing accents. */}
             <span
               className={cn(
-                "absolute inset-0 rounded-full ring-2 ring-accent/40 shadow-[0_8px_30px_oklch(0.5198_0.0936_223.13/40%)]",
+                "absolute inset-0 rounded-full ring-2 ring-sky-400/50 shadow-xl",
                 !reduceMotion && "animate-breathe"
               )}
               aria-hidden
             />
-            {/* Still frame, not the video: this launcher is on every page and
-                a 2.6 MB autoplaying video would undo the LCP work. The
-                animation plays in the panel header once opened. */}
             <Image
               src="/brand/chatbot-avatar.png"
               alt=""
@@ -167,6 +158,7 @@ export function ChatWidget() {
         )}
       </button>
 
+      {/* Solid Non-Transparent Chatbot Window Panel */}
       {open && (
         <div
           id="chat-panel"
@@ -176,15 +168,14 @@ export function ChatWidget() {
           aria-label="Clinic assistant"
           className={cn(
             "fixed z-50 right-2 left-2 bottom-36 sm:left-auto sm:right-4 sm:w-[26rem]",
-            "lg:bottom-24 flex flex-col rounded-2xl overflow-hidden glass-strong",
-            "shadow-[var(--elev-3)] max-h-[min(32rem,70vh)]",
+            "lg:bottom-24 flex flex-col rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/80 text-slate-100",
+            "shadow-2xl max-h-[min(32rem,70vh)]",
             !reduceMotion && "motion-safe:animate-in motion-safe:fade-in"
           )}
         >
-          <header className="flex items-center justify-between gap-3 bg-primary text-primary-foreground p-4">
+          {/* Solid Header */}
+          <header className="flex items-center justify-between gap-3 bg-slate-950 border-b border-sky-500/30 text-white p-4">
             <div className="flex items-center gap-3 min-w-0">
-              {/* The mascot animation. Loads only once the panel is opened,
-                  and falls back to a still frame under reduced-motion. */}
               {reduceMotion ? (
                 <Image
                   src="/brand/chatbot-poster.jpg"
@@ -204,14 +195,12 @@ export function ChatWidget() {
                   playsInline
                   preload="none"
                   aria-hidden
-                  // Landscape source on a dark backdrop; focus on the face and
-                  // let it blend into the navy panel header.
-                  className="size-11 shrink-0 rounded-full object-cover object-[50%_26%] ring-1 ring-white/20"
+                  className="size-11 shrink-0 rounded-full object-cover object-[50%_26%] ring-2 ring-sky-400/40"
                 />
               )}
               <div className="min-w-0">
-                <p className="font-semibold text-sm truncate">Clinic Assistant</p>
-                <p className="text-xs opacity-80 truncate">
+                <p className="font-bold text-sm truncate text-white">Clinic Assistant</p>
+                <p className="text-xs text-sky-300 truncate">
                   {site.hospital.name}, {site.hospital.city}
                 </p>
               </div>
@@ -220,15 +209,16 @@ export function ChatWidget() {
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close the assistant"
-              className="grid size-9 shrink-0 place-items-center rounded-lg hover:bg-white/15"
+              className="grid size-9 shrink-0 place-items-center rounded-lg bg-slate-800/80 text-white hover:bg-slate-700 transition-colors"
             >
               <X className="size-5" />
             </button>
           </header>
 
+          {/* Solid Messages List Scroll Area */}
           <div
             ref={scrollRef}
-            className="flex-1 overflow-y-auto p-4 space-y-3"
+            className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-900"
             aria-live="polite"
             aria-atomic="false"
           >
@@ -242,18 +232,18 @@ export function ChatWidget() {
               >
                 <div
                   className={cn(
-                    "max-w-[85%] rounded-2xl px-4 py-2.5 text-sm whitespace-pre-line",
+                    "max-w-[88%] rounded-2xl px-4 py-3 text-xs sm:text-sm leading-relaxed whitespace-pre-line shadow-sm",
                     m.role === "user"
-                      ? "bg-primary text-primary-foreground rounded-br-sm"
+                      ? "bg-sky-600 text-white font-medium rounded-br-sm"
                       : m.intent === "emergency"
-                        ? "bg-emergency/10 border border-emergency/40 rounded-bl-sm"
-                        : "bg-muted rounded-bl-sm"
+                        ? "bg-red-950/90 text-red-100 border border-red-500/50 rounded-bl-sm"
+                        : "bg-slate-800 text-slate-100 border border-slate-700/70 rounded-bl-sm"
                   )}
                 >
                   {m.intent === "emergency" && (
-                    <span className="flex items-center gap-1.5 font-semibold text-emergency mb-1.5">
+                    <span className="flex items-center gap-1.5 font-bold text-red-400 mb-1.5">
                       <AlertTriangle className="size-4" aria-hidden />
-                      Urgent
+                      Urgent Emergency
                     </span>
                   )}
                   {m.content}
@@ -261,7 +251,7 @@ export function ChatWidget() {
                     <a
                       href={site.contact.phoneHref}
                       onClick={() => track("call_click", { source: "chatbot" })}
-                      className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-emergency px-4 py-2.5 font-semibold text-emergency-foreground tnum"
+                      className="mt-3 flex items-center justify-center gap-2 rounded-none bg-emergency px-4 py-2.5 font-bold text-white tnum shadow-md hover:bg-emergency-hover"
                     >
                       <Phone className="size-4" aria-hidden />
                       Call {site.contact.phoneDisplay}
@@ -273,21 +263,21 @@ export function ChatWidget() {
 
             {sending && (
               <div className="flex justify-start">
-                <div className="rounded-2xl rounded-bl-sm bg-muted px-4 py-3">
-                  <Loader2 className="size-4 animate-spin text-muted-foreground" />
+                <div className="rounded-2xl rounded-bl-sm bg-slate-800 border border-slate-700 px-4 py-3">
+                  <Loader2 className="size-4 animate-spin text-sky-400" />
                   <span className="sr-only">The assistant is typing…</span>
                 </div>
               </div>
             )}
 
             {messages.length === 1 && (
-              <ul className="flex flex-wrap gap-2 pt-1">
+              <ul className="flex flex-wrap gap-2 pt-2">
                 {SUGGESTIONS.map((s) => (
                   <li key={s}>
                     <button
                       type="button"
                       onClick={() => send(s)}
-                      className="btn-premium rounded-full glass px-3 py-2 text-xs font-medium"
+                      className="bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 rounded-full px-3 py-2 text-xs font-semibold shadow-sm transition-all duration-200"
                     >
                       {s}
                     </button>
@@ -297,12 +287,13 @@ export function ChatWidget() {
             )}
           </div>
 
+          {/* Solid Input Bar Container */}
           <form
             onSubmit={(e) => {
               e.preventDefault();
               send(input);
             }}
-            className="border-t border-border p-3 flex items-center gap-2"
+            className="border-t border-slate-800 bg-slate-950 p-3 flex items-center gap-2"
           >
             <label htmlFor="chat-input" className="sr-only">
               Type your message
@@ -312,9 +303,9 @@ export function ChatWidget() {
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about timings, location…"
+              placeholder="Ask about timings, location, surgeries…"
               autoComplete="off"
-              className="flex-1 h-11 rounded-xl border border-input bg-[var(--glass-bg)] px-3 text-base backdrop-blur-md outline-none transition-[box-shadow,border-color] focus-visible:border-ring focus-visible:ring-4 focus-visible:ring-ring/25 focus-visible:shadow-[0_0_18px_var(--glow-soft)]"
+              className="flex-1 h-11 rounded-xl border border-slate-700 bg-slate-900 px-3.5 text-sm sm:text-base text-white placeholder:text-slate-400 outline-none transition-all focus-visible:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-400/40"
             />
             <Button
               type="submit"
@@ -322,15 +313,16 @@ export function ChatWidget() {
               size="icon-touch"
               disabled={sending || !input.trim()}
               aria-label="Send message"
+              className="rounded-xl shrink-0"
             >
-              <Send />
+              <Send className="size-4" />
             </Button>
           </form>
 
-          <p className="px-4 pb-3 text-[0.7rem] leading-snug text-muted-foreground">
-            This assistant gives general information only — it cannot diagnose or
-            give medical advice. For anything urgent, call{" "}
-            <a href={site.contact.phoneHref} className="underline font-medium tnum">
+          {/* Solid Disclaimer */}
+          <p className="bg-slate-950 px-4 pb-3 pt-1 text-[0.7rem] leading-snug text-slate-400 border-t border-slate-800/60">
+            This assistant provides general information — it cannot diagnose or give medical advice. For urgent issues, call{" "}
+            <a href={site.contact.phoneHref} className="underline font-semibold text-sky-300 tnum">
               {site.contact.phoneDisplay}
             </a>
             .

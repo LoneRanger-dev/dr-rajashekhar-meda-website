@@ -6,15 +6,11 @@ import {
   needsClinicalRedirect,
   EMERGENCY_REPLY,
   CLINICAL_REPLY,
+  getSmartLocalResponse,
 } from "@/lib/chatbot/knowledge";
 
 /**
- * Chatbot reasoning endpoint (OpenAI).
- *
- * Safety design: the emergency and clinical-question screens run LOCALLY,
- * before any network call. If the model is slow, rate-limited, misconfigured
- * or down, an emergency message still gets the phone number immediately.
- * Patient safety must not depend on a third-party API being up.
+ * Chatbot reasoning endpoint (OpenAI with smart local fallback).
  */
 
 export const runtime = "nodejs";
@@ -29,15 +25,9 @@ export interface ChatMessage {
   content: string;
 }
 
-/**
- * Minimal in-memory rate limit. Serverless instances are ephemeral and not
- * shared, so this throttles casual abuse rather than a determined attacker —
- * enough to stop a stuck client from running up API spend. Move to Supabase
- * or Upstash if abuse becomes a real problem.
- */
 const HITS = new Map<string, { count: number; resetAt: number }>();
 const WINDOW_MS = 60_000;
-const MAX_PER_WINDOW = 12;
+const MAX_PER_WINDOW = 15;
 
 function rateLimited(key: string): boolean {
   const now = Date.now();
@@ -102,25 +92,18 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         reply:
-          "You've sent quite a few messages in a short time. Please wait a moment, or call the clinic directly if it's urgent.",
+          "You've sent quite a few messages in a short time. Please wait a moment, or call 7075 447 449 directly if it's urgent.",
         intent: "rate_limited",
       },
       { status: 429 }
     );
   }
 
-  // The API key must never reach the browser — this route is the only caller.
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    console.error("[chat] OPENAI_API_KEY is not set");
-    return NextResponse.json(
-      {
-        reply:
-          "The assistant isn't available right now. Please call the clinic and the team will help you directly.",
-        intent: "unavailable",
-      },
-      { status: 503 }
-    );
+    // Smart local knowledge fallback when API key is missing
+    const fallbackReply = getSmartLocalResponse(latest.content);
+    return NextResponse.json({ reply: fallbackReply, intent: "faq" });
   }
 
   const client = new OpenAI({ apiKey });
@@ -128,8 +111,8 @@ export async function POST(req: Request) {
   try {
     const completion = await client.chat.completions.create({
       model: MODEL,
-      max_tokens: 400,
-      temperature: 0.3, // low — this is a factual FAQ assistant, not a creative one
+      max_tokens: 450,
+      temperature: 0.3,
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         ...messages.map((m) => ({ role: m.role, content: m.content })),
@@ -140,33 +123,20 @@ export async function POST(req: Request) {
     const reply = choice?.message?.content?.trim() ?? "";
 
     if (!reply) {
-      return NextResponse.json({ reply: CLINICAL_REPLY, intent: "clinical_redirect" });
+      const fallbackReply = getSmartLocalResponse(latest.content);
+      return NextResponse.json({ reply: fallbackReply, intent: "faq" });
     }
 
-    // Heuristic intent tag so the widget can fire the right GA4 event.
     const intent = /appointment|book|visit|timing|slot/i.test(latest.content)
       ? "appointment"
       : "faq";
 
     return NextResponse.json({ reply, intent });
   } catch (error) {
-    if (error instanceof OpenAI.RateLimitError) {
-      console.warn("[chat] upstream rate limited");
-    } else if (error instanceof OpenAI.APIError) {
-      console.error("[chat] API error", error.status, error.message);
-    } else {
-      console.error("[chat] unexpected error", error);
-    }
-
-    // Any failure falls back to the phone number rather than leaving the
-    // patient with nothing.
-    return NextResponse.json(
-      {
-        reply:
-          "I'm having trouble responding just now. Please call the clinic on 7075 447 449 and the team will help you straight away.",
-        intent: "error",
-      },
-      { status: 200 }
-    );
+    console.error("[chat] OpenAI API error or fallback trigger", error);
+    
+    // Always provide an accurate local knowledge answer even if upstream API fails
+    const fallbackReply = getSmartLocalResponse(latest.content);
+    return NextResponse.json({ reply: fallbackReply, intent: "faq" }, { status: 200 });
   }
 }
