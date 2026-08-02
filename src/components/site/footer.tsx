@@ -7,39 +7,36 @@ import { brandImages } from "@/lib/siteAssets";
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-white/10 bg-gradient-to-b from-[var(--navy-800)] to-[var(--navy-950)] text-primary-foreground shadow-[inset_0_1px_0_0_var(--glow-soft)]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-3">
-            {/* White-plated so the navy logo stays legible on the navy footer. */}
-            <span className="inline-flex rounded-xl bg-white p-3">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10 sm:py-12">
+        <div className="grid items-start gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-2.5">
+            <span className="inline-flex rounded-xl bg-white p-2 shrink-0">
               <Image
                 src={brandImages.logo.src}
-                alt={`${site.hospital.name} — General & Laparoscopic Surgery`}
+                alt={`${site.doctor.name} — General & Laparoscopic Surgery`}
                 width={brandImages.logo.width}
                 height={brandImages.logo.height}
-                className="h-11 w-auto"
+                className="h-10 w-auto object-contain"
               />
             </span>
-            <p className="font-[family-name:var(--font-display)] text-lg font-semibold">
+            <p className="font-[family-name:var(--font-display)] text-base font-bold text-white">
               {site.doctor.name}
             </p>
-            <p className="text-sm text-primary-foreground/75">
+            <p className="text-xs text-primary-foreground/80 font-medium">
               {site.doctor.credentials}
             </p>
-            <p className="text-sm text-primary-foreground/75">
+            <p className="text-xs text-primary-foreground/70 leading-relaxed">
               {site.doctor.title}
-              <br />
-              {site.doctor.academicRole}
             </p>
           </div>
 
-          <div className="space-y-3 rounded-2xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-md">
-            <h2 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground/60">
+          <div className="h-fit rounded-2xl border border-white/10 bg-white/[0.06] p-4.5 backdrop-blur-md space-y-2">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-accent">
               {site.hospital.name}
             </h2>
-            <address className="not-italic space-y-3 text-sm text-primary-foreground/85">
-              <span className="flex gap-2.5">
-                <MapPin className="size-4 mt-0.5 shrink-0" aria-hidden />
+            <address className="not-italic space-y-2 text-xs sm:text-sm text-primary-foreground/85">
+              <span className="flex gap-2">
+                <MapPin className="size-4 mt-0.5 shrink-0 text-accent" aria-hidden />
                 <span>
                   {site.hospital.addressFull}
                   <br />
@@ -47,7 +44,7 @@ export function Footer() {
                     href={site.hospital.maps.directionsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block mt-1 underline underline-offset-2 hover:text-white transition-colors"
+                    className="inline-block mt-1 font-semibold text-accent underline underline-offset-2 hover:text-white transition-colors"
                   >
                     Get directions
                   </a>
@@ -55,40 +52,40 @@ export function Footer() {
               </span>
               <a
                 href={site.contact.phoneHref}
-                className="flex gap-2.5 hover:text-white transition-colors"
+                className="flex gap-2 font-semibold hover:text-white transition-colors pt-0.5"
               >
-                <Phone className="size-4 mt-0.5 shrink-0" aria-hidden />
+                <Phone className="size-4 mt-0.5 shrink-0 text-accent" aria-hidden />
                 <span className="tnum">{site.contact.phoneDisplay}</span>
               </a>
             </address>
           </div>
 
-          <div className="space-y-3 rounded-2xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-md">
-            <h2 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground/60">
+          <div className="h-fit rounded-2xl border border-white/10 bg-white/[0.06] p-4.5 backdrop-blur-md space-y-2">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-accent">
               Consulting Hours
             </h2>
-            <ul className="space-y-2 text-sm text-primary-foreground/85">
-              <li className="flex gap-2.5">
-                <Clock className="size-4 mt-0.5 shrink-0" aria-hidden />
+            <ul className="space-y-2 text-xs sm:text-sm text-primary-foreground/85">
+              <li className="flex gap-2">
+                <Clock className="size-4 mt-0.5 shrink-0 text-accent" aria-hidden />
                 <span>
                   {site.hours.weekday}
                   <br />
                   {site.hours.sunday}
                 </span>
               </li>
-              <li className="flex gap-2.5 font-medium">
+              <li className="flex gap-2 font-semibold pt-0.5 text-emergency">
                 <ShieldAlert className="size-4 mt-0.5 shrink-0" aria-hidden />
                 <span>{site.hours.emergency}</span>
               </li>
             </ul>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 lg:grid-cols-1">
-            <div className="space-y-3">
-              <h2 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground/60">
+          <div className="grid grid-cols-2 gap-6 lg:grid-cols-1">
+            <div className="space-y-2">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-primary-foreground/60">
                 Explore
               </h2>
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-1.5 text-xs">
                 {navigation.slice(1).map((item) => (
                   <li key={item.href}>
                     <Link
@@ -101,11 +98,11 @@ export function Footer() {
                 ))}
               </ul>
             </div>
-            <div className="space-y-3">
-              <h2 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground/60">
+            <div className="space-y-2">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-primary-foreground/60">
                 Treatments
               </h2>
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-1.5 text-xs">
                 {conditions.map((c) => (
                   <li key={c.slug}>
                     <Link
@@ -121,8 +118,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/15 space-y-4">
-          <p className="text-xs leading-relaxed text-primary-foreground/70 max-w-4xl">
+        <div className="mt-8 pt-6 border-t border-white/15 space-y-3">
+          <p className="text-[11px] leading-relaxed text-primary-foreground/70 max-w-4xl">
             <strong className="font-semibold text-primary-foreground/90">
               Medical disclaimer:
             </strong>{" "}
@@ -134,7 +131,7 @@ export function Footer() {
             </a>{" "}
             or go to your nearest emergency department immediately.
           </p>
-          <p className="text-xs text-primary-foreground/60">
+          <p className="text-[11px] text-primary-foreground/60">
             © {new Date().getFullYear()} {site.doctor.name} · {site.hospital.name},{" "}
             {site.hospital.city}. All rights reserved.
           </p>

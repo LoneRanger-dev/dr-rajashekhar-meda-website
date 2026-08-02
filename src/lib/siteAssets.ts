@@ -71,8 +71,8 @@ export const creativeImages = {
 } as const;
 
 export const brandImages = {
-  logo: { src: "/brand/suraksha-logo.svg", width: 480, height: 120 },
-  mark: { src: "/brand/suraksha-circle.jpg", width: 667, height: 667 },
+  logo: { src: "/brand/suraksha-logo.png", width: 1024, height: 1024 },
+  mark: { src: "/brand/icon.png", width: 512, height: 512 },
   chatbotAvatar: { src: "/brand/chatbot-avatar.png", width: 256, height: 256 },
   chatbotPoster: { src: "/brand/chatbot-poster.jpg", width: 320, height: 320 },
 } as const;
