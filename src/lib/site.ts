@@ -202,10 +202,8 @@ export const conditions: Condition[] = [
 export const navigation = [
   { href: "/", label: "Home", short: "Home" },
   { href: "/about", label: "About Dr. Rajashekhar Meda", short: "About" },
-  { href: "/conditions", label: "Surgeries & Services", short: "Services" },
-  { href: "/facilities", label: "Hospital Facilities", short: "Facilities" },
+  { href: "/conditions", label: "Services, Facilities & Health Education", short: "Services" },
   { href: "/reviews", label: "Patient Reviews", short: "Reviews" },
-  { href: "/blog", label: "Health Education", short: "Education" },
   { href: "/contact", label: "Contact", short: "Contact" },
 ] as const;
 

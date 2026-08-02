@@ -8,7 +8,6 @@ import { trackCall, trackWhatsApp } from "@/lib/analytics";
 interface ConditionActionsProps {
   phoneHref: string;
   phoneDisplay: string;
-  conditionName: string;
   whatsappUrl: string;
   variant?: "hero" | "sidebar";
 }
@@ -16,7 +15,6 @@ interface ConditionActionsProps {
 export function ConditionActions({
   phoneHref,
   phoneDisplay,
-  conditionName,
   whatsappUrl,
   variant = "hero",
 }: ConditionActionsProps) {

@@ -1,0 +1,42 @@
+<svg width="480" height="120" viewBox="0 0 480 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Badge / Shield Glow -->
+  <rect x="2" y="2" width="476" height="116" rx="20" fill="white" stroke="#E2E8F0" stroke-width="3"/>
+  
+  <!-- Emblem Circle -->
+  <circle cx="60" cy="60" r="42" fill="url(#circle-grad)"/>
+  <circle cx="60" cy="60" r="39" stroke="#0284C7" stroke-width="2" stroke-dasharray="4 2"/>
+  
+  <!-- Tree of Life / Helping Hands Icon -->
+  <path d="M60 78C48 78 40 70 40 58C40 48 50 38 60 30C70 38 80 48 80 58C80 70 72 78 60 78Z" fill="#0284C7"/>
+  <!-- Open Hands Base -->
+  <path d="M42 66C42 66 52 74 60 74C68 74 78 66 78 66C78 66 70 82 60 82C50 82 42 66 42 66Z" fill="#0369A1"/>
+  <!-- Stars / Leaves -->
+  <circle cx="48" cy="46" r="3.5" fill="#38BDF8"/>
+  <circle cx="72" cy="46" r="3.5" fill="#38BDF8"/>
+  <circle cx="60" cy="38" r="4" fill="#7DD3FC"/>
+
+  <!-- Telugu Text Above -->
+  <text x="115" y="34" font-family="'Noto Sans', sans-serif" font-weight="700" font-size="15" fill="#0284C7">సురక్ష హాస్పిటల్</text>
+  <text x="210" y="34" font-family="'Noto Sans', sans-serif" font-weight="500" font-size="12" fill="#64748B">| మీ ఆరోగ్య రక్షణ మా కవచం</text>
+
+  <!-- Main Brand Title -->
+  <text x="115" y="68" font-family="'Figtree', sans-serif" font-weight="900" font-size="30" letter-spacing="1" fill="#0F172A">SURAKSHA</text>
+  <text x="278" y="68" font-family="'Figtree', sans-serif" font-weight="800" font-size="28" letter-spacing="3" fill="#0284C7">HOSPITAL</text>
+
+  <!-- Subtitle Tagline -->
+  <rect x="115" y="78" width="345" height="2" fill="url(#line-grad)"/>
+  <text x="115" y="98" font-family="'Figtree', sans-serif" font-weight="700" font-size="11.5" letter-spacing="1.5" fill="#475569">EMERGENCY • TRAUMA • LAPAROSCOPIC &amp; LASER SURGERY</text>
+
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="circle-grad" x1="18" y1="18" x2="102" y2="102" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0F9FF"/>
+      <stop offset="1" stop-color="#E0F2FE"/>
+    </linearGradient>
+    <linearGradient id="line-grad" x1="115" y1="0" x2="460" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0284C7"/>
+      <stop offset="0.5" stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#CBD5E1"/>
+    </linearGradient>
+  </defs>
+</svg>

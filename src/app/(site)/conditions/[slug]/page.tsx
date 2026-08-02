@@ -190,7 +190,6 @@ export default async function ConditionDetailPage({
               <ConditionActions
                 phoneHref={site.contact.phoneHref}
                 phoneDisplay={site.contact.phoneDisplay}
-                conditionName={condition.name}
                 whatsappUrl={currentWhatsappUrl}
                 variant="hero"
               />
@@ -402,7 +401,6 @@ export default async function ConditionDetailPage({
               <ConditionActions
                 phoneHref={site.contact.phoneHref}
                 phoneDisplay={site.contact.phoneDisplay}
-                conditionName={condition.name}
                 whatsappUrl={currentWhatsappUrl}
                 variant="sidebar"
               />

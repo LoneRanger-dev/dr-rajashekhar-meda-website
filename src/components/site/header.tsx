@@ -4,8 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, ShieldAlert } from "lucide-react";
 import { site, navigation } from "@/lib/site";
 import { brandImages } from "@/lib/siteAssets";
 import { cn } from "@/lib/utils";
@@ -17,37 +16,35 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-[max(0.75rem,env(safe-area-inset-top))]">
-        <div className="glass-strong rounded-2xl px-3 sm:px-4 flex h-14 lg:h-16 items-center justify-between gap-4">
-          {/* No aria-label here: the visible text is already a complete,
-              accurate name. An aria-label that omits part of the visible
-              text fails WCAG 2.5.3 (Label in Name). */}
-          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 shrink-0 min-w-0">
-            <span className="inline-flex rounded-xl bg-white p-1.5 shrink-0 shadow-[var(--elev-1)]">
+      <div className="mx-auto max-w-7xl px-3 sm:px-6 pt-2 sm:pt-3">
+        {/* Prominent Deep Clinical Blue Ribbon Navbar */}
+        <div className="relative rounded-2xl px-4 sm:px-6 flex h-16 lg:h-20 items-center justify-between gap-4 bg-gradient-to-r from-slate-950 via-sky-950 to-slate-950 border border-sky-500/40 shadow-[0_10px_35px_rgba(2,132,199,0.3)] backdrop-blur-xl text-white">
+          
+          {/* Logo & Doctor Title */}
+          <Link href="/" className="flex items-center gap-3 shrink-0 min-w-0">
+            <span className="inline-flex rounded-xl bg-white p-1.5 shrink-0 shadow-md">
               <Image
                 src={brandImages.logo.src}
                 alt={`${site.hospital.name} — Laparoscopic & General Surgery`}
                 width={brandImages.logo.width}
                 height={brandImages.logo.height}
                 priority
-                className="h-7 sm:h-8 lg:h-9 w-auto"
+                className="h-8 sm:h-10 lg:h-11 w-auto object-contain"
               />
             </span>
-            {/* Shown on small screens (no nav) and again from 2xl, where
-                there is room. In between it competes with the nav and pushes
-                the phone CTA off-screen. */}
-            <span className="leading-tight hidden sm:block lg:hidden 2xl:block border-l border-border/70 pl-2.5 sm:pl-3 min-w-0">
-              <span className="block font-[family-name:var(--font-display)] font-semibold text-[clamp(0.85rem,0.8rem+0.3vw,0.95rem)] truncate">
+            <span className="leading-tight hidden sm:block lg:hidden 2xl:block border-l border-sky-500/30 pl-3 min-w-0">
+              <span className="block font-[family-name:var(--font-display)] font-bold text-sm sm:text-base text-white truncate">
                 {site.doctor.name}
               </span>
-              <span className="block text-[0.7rem] text-muted-foreground truncate">
-                {site.doctor.title}
+              <span className="block text-xs text-sky-300 truncate font-medium">
+                {site.doctor.credentials}
               </span>
             </span>
           </Link>
 
-          <nav aria-label="Main" className="hidden lg:block">
-            <ul className="flex items-center gap-1">
+          {/* Navigation Links */}
+          <nav aria-label="Main Navigation" className="hidden lg:block">
+            <ul className="flex items-center gap-1 xl:gap-2">
               {navigation.map((item) => {
                 const active =
                   item.href === "/"
@@ -59,11 +56,10 @@ export function Header() {
                       href={item.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "relative inline-flex h-10 items-center whitespace-nowrap rounded-lg px-2.5 xl:px-3 text-[0.8rem] xl:text-sm font-medium transition-colors",
-                        "after:absolute after:bottom-1.5 after:left-3 after:right-3 after:h-[2px] after:rounded-full after:bg-accent after:shadow-[0_0_8px_var(--glow-color)] after:origin-left after:transition-transform after:duration-[var(--dur-base)] after:ease-[var(--ease-out)]",
+                        "relative inline-flex h-11 items-center whitespace-nowrap rounded-xl px-3.5 xl:px-4 text-sm font-semibold transition-all duration-300",
                         active
-                          ? "text-accent after:scale-x-100"
-                          : "text-foreground/80 hover:text-foreground after:scale-x-0 hover:after:scale-x-100"
+                          ? "bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-[0_0_15px_rgba(56,189,248,0.3)]"
+                          : "text-slate-200 hover:text-white hover:bg-white/10"
                       )}
                     >
                       {item.short}
@@ -74,16 +70,16 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2 shrink-0">
-            <Button
-              variant="emergency"
-              size="cta"
-              className="hidden sm:inline-flex shrink-0"
-              render={<a href={site.contact.phoneHref} onClick={() => track("call_click", { source: "header" })} />}
+          {/* Right Call CTA & Mobile Toggle */}
+          <div className="flex items-center gap-2.5 shrink-0">
+            <a
+              href={site.contact.phoneHref}
+              onClick={() => track("call_click", { source: "header" })}
+              className="hidden sm:inline-flex items-center justify-center gap-2 rounded-xl bg-emergency text-white px-4 py-2.5 text-xs sm:text-sm font-bold shadow-lg hover:bg-emergency-hover transition-all active:scale-95"
             >
-              <Phone aria-hidden />
-              <span className="tnum">{site.contact.phoneDisplay}</span>
-            </Button>
+              <ShieldAlert className="size-4 animate-pulse" aria-hidden />
+              <span className="tnum">24/7 Call: {site.contact.phoneDisplay}</span>
+            </a>
 
             <button
               type="button"
@@ -91,21 +87,22 @@ export function Header() {
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
-              className="btn-premium lg:hidden grid size-11 place-items-center rounded-xl glass"
+              className="lg:hidden grid size-11 place-items-center rounded-xl bg-sky-500/20 border border-sky-400/30 text-white hover:bg-sky-500/30 transition-all"
             >
-              {open ? <X className="size-5" /> : <Menu className="size-5" />}
+              {open ? <X className="size-6" /> : <Menu className="size-6" />}
             </button>
           </div>
         </div>
       </div>
 
+      {/* Mobile Drawer */}
       {open && (
         <nav
           id="mobile-nav"
-          aria-label="Mobile"
-          className="lg:hidden mx-auto max-w-7xl px-4 sm:px-6 mt-2"
+          aria-label="Mobile Navigation"
+          className="lg:hidden mx-auto max-w-7xl px-3 sm:px-6 mt-2"
         >
-          <ul className="glass-strong rounded-2xl p-2 space-y-1">
+          <ul className="rounded-2xl p-2.5 space-y-1.5 bg-slate-950/95 border border-sky-500/30 shadow-2xl backdrop-blur-xl text-white">
             {navigation.map((item) => {
               const active =
                 item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
@@ -116,10 +113,10 @@ export function Header() {
                     onClick={() => setOpen(false)}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "flex h-12 items-center rounded-xl px-4 text-[0.95rem] font-medium transition-colors",
+                      "flex h-12 items-center rounded-xl px-4 text-base font-semibold transition-colors",
                       active
-                        ? "bg-accent/10 text-accent"
-                        : "hover:bg-white/40 dark:hover:bg-white/10"
+                        ? "bg-sky-500/25 text-sky-300 border border-sky-400/40"
+                        : "text-slate-200 hover:bg-white/10"
                     )}
                   >
                     {item.label}
