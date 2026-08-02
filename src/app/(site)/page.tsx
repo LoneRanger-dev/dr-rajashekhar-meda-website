@@ -1,14 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import {
   Phone,
   CalendarCheck,
   ShieldAlert,
-  Stethoscope,
-  GraduationCap,
   Clock,
   MapPin,
-  ArrowRight,
   Activity,
   Ambulance,
   BedDouble,
@@ -22,7 +18,7 @@ import { HeroBackground } from "@/components/site/hero-background";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { PatientJourney } from "@/components/site/patient-journey";
 import { site, whatsappUrl } from "@/lib/site";
-import { doctorImages, BLUR_DATA_URL } from "@/lib/siteAssets";
+import { doctorImages } from "@/lib/siteAssets";
 
 const pillarIcons = { activity: Activity, ambulance: Ambulance, hospital: BedDouble } as const;
 
@@ -130,65 +126,6 @@ export default function HomePage() {
 
       {/* ── PATIENT JOURNEY / PROCESS TIMELINE ──────────────────────────── */}
       <PatientJourney />
-
-      {/* ── WHY DR. RAJASHEKHAR MEDA ───────────────────────────────────────── */}
-      <Section>
-        <Reveal className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="relative glow-halo glass rounded-3xl p-3">
-            <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-2xl img-hover">
-              <Image
-                src={doctorImages.consultation.src}
-                alt={`${site.doctor.name} in consultation at ${site.hospital.name}, Khammam`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
-                className="object-cover object-top"
-              />
-            </div>
-          </div>
-          <div className="space-y-7">
-            <SectionHeading
-              eyebrow="Why patients choose Dr. Rajashekhar Meda"
-              title="10+ Years of Surgical Precision & Patient Relief"
-              lead="Specialized keyhole laparoscopic surgery offers minimal pain, tiny scars, fast hospital discharge, and early return to daily work."
-            />
-            <ul className="space-y-5">
-              {[
-                {
-                  icon: GraduationCap,
-                  title: "M.S. General Surgery & 10 Years Experience",
-                  body: "Proven clinical leadership in laparoscopic, endoscopic, and laser procedures.",
-                },
-                {
-                  icon: Stethoscope,
-                  title: "Advanced Laparoscopic & Laser Techniques",
-                  body: "State-of-the-art keyhole hernia, gallbladder, appendix, and varicose vein laser treatments.",
-                },
-                {
-                  icon: ShieldAlert,
-                  title: "24/7 Emergency Surgical Trauma Care",
-                  body: "Round-the-clock surgeon availability supported by advanced ICU and critical care facilities.",
-                },
-              ].map(({ icon: Icon, title, body }) => (
-                <li key={title} className="group flex gap-4">
-                  <span className="icon-glass grid size-11 shrink-0 place-items-center rounded-xl text-accent">
-                    <Icon className="size-5" aria-hidden />
-                  </span>
-                  <div>
-                    <h3 className="font-semibold">{title}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">{body}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <Button variant="glass" size="cta" render={<Link href="/about" />}>
-              View full profile
-              <ArrowRight aria-hidden />
-            </Button>
-          </div>
-        </Reveal>
-      </Section>
 
 
 
