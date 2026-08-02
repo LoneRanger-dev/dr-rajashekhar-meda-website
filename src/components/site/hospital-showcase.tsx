@@ -83,9 +83,9 @@ export function HospitalShowcase() {
               variant="ghost"
               size="cta"
               className="rounded-none text-sky-300 hover:text-white hover:bg-white/10"
-              render={<Link href="/facilities" />}
+              render={<Link href="/conditions" />}
             >
-              <span>Explore Facilities</span>
+              <span>Explore Surgeries</span>
               <ArrowRight className="size-4" aria-hidden />
             </Button>
           </div>
