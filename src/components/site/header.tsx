@@ -3,10 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, ShieldAlert } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { site, navigation } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { track } from "@/lib/analytics";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -17,7 +16,7 @@ export function Header() {
       {/* Full-width Rectangle Ribbon Bar */}
       <div className="w-full px-4 sm:px-8 flex h-16 lg:h-20 items-center justify-between gap-4">
         
-        {/* Doctor Name & Credentials (NO image logo inside ribbon) */}
+        {/* Doctor Name & Credentials */}
         <Link href="/" className="flex flex-col shrink-0 justify-center group">
           <span className="font-[family-name:var(--font-display)] font-extrabold text-base sm:text-lg lg:text-xl text-white tracking-tight leading-tight group-hover:text-sky-300 transition-colors">
             {site.doctor.name}
@@ -55,24 +54,15 @@ export function Header() {
           </ul>
         </nav>
 
-        {/* Right Call CTA & Mobile Toggle (Complete Rectangle Shape) */}
-        <div className="flex items-center gap-2.5 shrink-0">
-          <a
-            href={site.contact.phoneHref}
-            onClick={() => track("call_click", { source: "header" })}
-            className="hidden sm:inline-flex items-center justify-center gap-2.5 rounded-none bg-emergency text-white px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emergency-hover hover:-translate-y-0.5 transition-all duration-300 active:scale-95 border border-white/20"
-          >
-            <ShieldAlert className="size-4 animate-pulse" aria-hidden />
-            <span className="tnum">24/7 Call: {site.contact.phoneDisplay}</span>
-          </a>
-
+        {/* Mobile Navigation Toggle */}
+        <div className="flex items-center gap-2.5 shrink-0 lg:hidden">
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="lg:hidden grid size-11 place-items-center rounded-none bg-sky-500/20 border border-sky-400/30 text-white hover:bg-sky-500/30 transition-all"
+            className="grid size-11 place-items-center rounded-none bg-sky-500/20 border border-sky-400/30 text-white hover:bg-sky-500/30 transition-all"
           >
             {open ? <X className="size-6" /> : <Menu className="size-6" />}
           </button>
