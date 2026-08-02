@@ -47,17 +47,17 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                 <a
                   href={site.contact.phoneHref}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-lg bg-emergency text-white px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emergency-hover hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-none bg-emergency text-white px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emergency-hover hover:-translate-y-0.5 transition-all duration-300 active:scale-95 w-full sm:w-auto"
                 >
                   <Phone className="size-4" aria-hidden />
                   <span className="tnum">Call {site.contact.phoneDisplay}</span>
                 </a>
                 <Link
                   href="/contact#appointment"
-                  className="inline-flex items-center justify-center gap-2.5 rounded-lg bg-accent text-accent-foreground px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-none bg-accent text-accent-foreground px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 w-full sm:w-auto"
                 >
                   <CalendarCheck className="size-4" aria-hidden />
                   <span>Book Consultation</span>

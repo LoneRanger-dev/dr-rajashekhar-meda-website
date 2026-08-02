@@ -13,20 +13,20 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-gradient-to-r from-slate-950 via-sky-950 to-slate-950 border-b border-sky-500/40 shadow-xl backdrop-blur-xl text-white">
-      {/* Full-width Rectangle Ribbon Bar */}
-      <div className="w-full px-4 sm:px-8 flex h-16 lg:h-20 items-center justify-between gap-4">
+      {/* Full-width Rectangle Ribbon Bar with Mobile Fluid Padding & Height */}
+      <div className="w-full px-3 sm:px-6 lg:px-8 flex h-14 sm:h-16 lg:h-20 items-center justify-between gap-2 sm:gap-4">
         
-        {/* Doctor Name & Credentials */}
-        <Link href="/" className="flex flex-col shrink-0 justify-center group">
-          <span className="font-[family-name:var(--font-display)] font-extrabold text-base sm:text-lg lg:text-xl text-white tracking-tight leading-tight group-hover:text-sky-300 transition-colors">
+        {/* Doctor Name & Credentials — Responsive Fluid Typography */}
+        <Link href="/" className="flex flex-col min-w-0 shrink justify-center group pr-2">
+          <span className="font-[family-name:var(--font-display)] font-extrabold text-sm sm:text-base lg:text-xl text-white tracking-tight leading-tight group-hover:text-sky-300 transition-colors truncate">
             {site.doctor.name}
           </span>
-          <span className="text-xs sm:text-sm text-sky-300 font-semibold tracking-wide">
+          <span className="text-[10px] sm:text-xs lg:text-sm text-sky-300 font-semibold tracking-wide truncate">
             {site.doctor.credentials} · {site.doctor.title}
           </span>
         </Link>
 
-        {/* Navigation Links */}
+        {/* Desktop Navigation Links */}
         <nav aria-label="Main Navigation" className="hidden lg:block">
           <ul className="flex items-center gap-1 xl:gap-2">
             {navigation.map((item) => {
@@ -54,29 +54,29 @@ export function Header() {
           </ul>
         </nav>
 
-        {/* Mobile Navigation Toggle */}
-        <div className="flex items-center gap-2.5 shrink-0 lg:hidden">
+        {/* Mobile Navigation Toggle Button */}
+        <div className="flex items-center gap-2 shrink-0 lg:hidden">
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="grid size-11 place-items-center rounded-none bg-sky-500/20 border border-sky-400/30 text-white hover:bg-sky-500/30 transition-all"
+            className="grid size-10 sm:size-11 place-items-center rounded-none bg-sky-500/20 border border-sky-400/30 text-white hover:bg-sky-500/30 transition-all active:scale-95"
           >
-            {open ? <X className="size-6" /> : <Menu className="size-6" />}
+            {open ? <X className="size-5 sm:size-6" /> : <Menu className="size-5 sm:size-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Menu Drawer */}
       {open && (
         <nav
           id="mobile-nav"
           aria-label="Mobile Navigation"
-          className="lg:hidden w-full border-t border-sky-500/30 bg-slate-950/95"
+          className="lg:hidden w-full border-t border-sky-500/30 bg-slate-950/98 shadow-2xl"
         >
-          <ul className="p-3 space-y-1.5 text-white">
+          <ul className="p-3 space-y-1 text-white">
             {navigation.map((item) => {
               const active =
                 item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
@@ -87,7 +87,7 @@ export function Header() {
                     onClick={() => setOpen(false)}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "flex h-12 items-center rounded-none px-4 text-base font-semibold transition-colors",
+                      "flex h-11 items-center rounded-none px-4 text-sm sm:text-base font-semibold transition-colors",
                       active
                         ? "bg-sky-500/25 text-sky-300 border border-sky-400/40"
                         : "text-slate-200 hover:bg-white/10"
