@@ -1,27 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { ArrowRight, Sparkles, ShieldCheck, Stethoscope } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/reveal";
 import { ConditionIllustration } from "@/components/illustrations/condition-illustrations";
 import { detailedConditions } from "@/lib/conditionsData";
 
-const categories = [
-  "All Conditions",
-  "Laparoscopic Surgery",
-  "Laser Proctology & Vascular",
-  "General & Trauma Surgery",
-] as const;
-
 export function ConditionsModule() {
-  const [activeCategory, setActiveCategory] = useState<string>("All Conditions");
-
-  const filteredConditions =
-    activeCategory === "All Conditions"
-      ? detailedConditions
-      : detailedConditions.filter((c) => c.category === activeCategory);
-
   return (
     <section className="section-py relative overflow-hidden bg-background">
       {/* Background ambient lighting */}
@@ -38,28 +24,11 @@ export function ConditionsModule() {
           <p className="type-lead text-muted-foreground">
             Explore comprehensive patient education guides for laparoscopic keyhole surgeries, laser proctology, vascular procedures, and 24/7 trauma emergency care by Dr. Rajashekhar Meda at Suraksha Hospital.
           </p>
-
-          {/* Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 pt-4">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`rounded-none px-4.5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 border ${
-                  activeCategory === cat
-                    ? "bg-accent text-accent-foreground border-accent shadow-md scale-105"
-                    : "bg-muted/80 border-border/60 text-muted-foreground hover:bg-muted hover:text-foreground hover:border-accent/40"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
         </Reveal>
 
-        {/* Condition Cards Grid */}
+        {/* Condition Cards Grid — All 14 Conditions */}
         <RevealGroup as="div" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredConditions.map((condition) => (
+          {detailedConditions.map((condition) => (
             <RevealItem key={condition.slug} as="div">
               <Link
                 href={`/conditions/${condition.slug}`}
@@ -74,47 +43,26 @@ export function ConditionsModule() {
                     </span>
                   </div>
 
-                  <h3 className="type-h3 text-base sm:text-lg mb-2 group-hover:text-accent transition-colors flex items-center justify-between">
-                    <span>{condition.name}</span>
+                  <h3 className="font-[family-name:var(--font-display)] font-bold text-base text-foreground group-hover:text-accent transition-colors line-clamp-2 mb-2">
+                    {condition.name}
                   </h3>
-                  <p className="text-xs sm:text-sm text-muted-foreground line-clamp-3 leading-relaxed mb-4">
+
+                  <p className="text-xs text-muted-foreground line-clamp-3 leading-relaxed mb-4">
                     {condition.summary}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-accent">
+                <div className="pt-3 border-t border-border/50 flex items-center justify-between text-xs font-bold text-accent group-hover:translate-x-0.5 transition-transform">
                   <span className="inline-flex items-center gap-1">
-                    <ShieldCheck className="size-3.5" aria-hidden />
-                    Learn More &amp; Book
+                    <ShieldCheck className="size-3.5 text-accent" />
+                    Learn Surgery Guide
                   </span>
-                  <span className="grid size-7 place-items-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 group-hover:translate-x-1">
-                    <ArrowRight className="size-3.5" aria-hidden />
-                  </span>
+                  <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
             </RevealItem>
           ))}
         </RevealGroup>
-
-        {/* Bottom Banner */}
-        <Reveal className="mt-14 glass rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 border border-accent/20 bg-gradient-to-r from-accent/5 to-primary/5" blur={false} y={16}>
-          <div className="flex items-center gap-4">
-            <span className="icon-glass grid size-12 shrink-0 place-items-center rounded-2xl text-accent">
-              <Stethoscope className="size-6" aria-hidden />
-            </span>
-            <div>
-              <h4 className="font-semibold text-foreground text-base sm:text-lg">Need Immediate Surgical Evaluation?</h4>
-              <p className="text-xs sm:text-sm text-muted-foreground">Dr. Rajashekhar Meda is available for OPD consultation &amp; 24/7 Emergency Trauma care at Suraksha Hospital, Khammam.</p>
-            </div>
-          </div>
-          <Link
-            href="/contact#appointment"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent text-accent-foreground px-6 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 shrink-0 active:scale-95"
-          >
-            <span>Book Consultation</span>
-            <ArrowRight className="size-4" aria-hidden />
-          </Link>
-        </Reveal>
       </div>
     </section>
   );
