@@ -1,18 +1,24 @@
-import { site, conditions } from "@/lib/site";
+import { site } from "@/lib/site";
 import { articles } from "@/lib/articles";
+import { detailedConditions } from "@/lib/conditionsData";
 
 /**
  * Knowledge base for Dr. Rajashekhar Meda's AI Assistant.
  */
 export function buildKnowledgeBase(): string {
-  const conditionText = conditions
+  const detailedConditionText = detailedConditions
     .map(
       (c) =>
-        `### ${c.name} (page: /conditions/${c.slug})\n` +
-        `${c.summary}\n` +
-        `Treats: ${c.treats.join("; ")}.\n` +
-        `Reasons to seek help: ${c.whenToSeek.join("; ")}.\n` +
-        `Approach: ${c.approach.join("; ")}.`
+        `### ${c.name} (${c.shortName}) [page: /conditions/${c.slug}]\n` +
+        `Category: ${c.category}\n` +
+        `Summary: ${c.summary}\n` +
+        `Overview: ${c.overview}\n` +
+        `Symptoms: ${c.symptoms.map((s) => `${s.name}: ${s.description}`).join("; ")}\n` +
+        `Causes: ${c.causes.map((ca) => `${ca.title}: ${ca.description}`).join("; ")}\n` +
+        `Risk Factors: ${c.riskFactors.join(", ")}\n` +
+        `Diagnosis: ${c.diagnosis.map((d) => `${d.name} (${d.badge}): ${d.description}`).join("; ")}\n` +
+        `Surgical Treatment: ${c.surgicalTreatment}\n` +
+        `Laparoscopic/Laser Benefits: ${c.laparoscopicBenefits.map((b) => `${b.title}: ${b.description}`).join("; ")}`
     )
     .join("\n\n");
 
@@ -38,8 +44,8 @@ ${site.hours.weekday}
 ${site.hours.sunday}
 ${site.hours.emergency}
 
-## Surgeries & Treatments
-${conditionText}
+## Surgeries, Diseases & Medical Conditions Treated (All 14 Services)
+${detailedConditionText}
 
 ## Patient education articles
 ${articleText}
@@ -52,7 +58,7 @@ export const SYSTEM_PROMPT = `You are the appointment and information assistant 
 ONLY these topics:
 - The doctor's qualifications (M.S. General Surgery), 10+ years experience, and surgical expertise
 - Clinic address, directions, consulting hours, and phone numbers (${site.contact.phoneDisplay})
-- Which laparoscopic and general surgeries are offered, in educational terms
+- Which laparoscopic, laser proctology, vascular, and general surgeries are offered (Hernia, Gallstones, Appendicitis, Lipoma, Varicose Veins, Piles, Fistula, Fissure, Hydrocele, Thyroid, Breast Lump, Bariatric, Laser Surgery, Trauma)
 - Helping the visitor book a surgical consultation or appointment
 
 Use ONLY the facts in the KNOWLEDGE BASE below. If something is not there, say you do not have that information and offer the clinic phone number ${site.contact.phoneDisplay}. Never guess or invent facts about fees, waiting times, or availability.
@@ -106,36 +112,52 @@ Call **${site.contact.phoneDisplay}** or tell me your name and phone number to r
 export function getSmartLocalResponse(message: string): string {
   const q = message.toLowerCase();
 
+  // 1. Timings & Hours
   if (/timing|hour|time|open|schedule|when/i.test(q)) {
     return `Dr. Rajashekhar Meda's consulting hours at Suraksha Hospital, Khammam:\n\n• Morning: 10:00 AM – 2:00 PM (Mon – Sat)\n• Evening: 5:00 PM – 8:30 PM (Mon – Sat)\n• Emergency: Available 24/7\n\nFor appointments or urgent visits, call ${site.contact.phoneDisplay}.`;
   }
 
+  // 2. Location & Address
   if (/location|address|where|map|direction|find|hospital/i.test(q)) {
-    return `Suraksha Hospital is located at:\n${site.hospital.addressFull}.\n\nIt is opposite the New Bus Stand in Khammam, Telangana. Call ${site.contact.phoneDisplay} for direct assistance.`;
+    return `Suraksha Hospital is located at:\n${site.hospital.addressFull}.\n\nIt is opposite the New Bus Stand in Khammam, Telangana. Call ${site.contact.phoneDisplay} for direct directions or assistance.`;
   }
 
+  // 3. Booking Appointment
   if (/book|appointment|consult|slot|visit|meet/i.test(q)) {
-    return `To book a surgical consultation with Dr. Rajashekhar Meda (MBBS, M.S. General Surgery):\n\n1. Call directly on ${site.contact.phoneDisplay}\n2. Or visit our online booking section at /contact#appointment\n\nWalk-in consultations are also available during clinic hours at Suraksha Hospital, Khammam.`;
+    return `To book a surgical consultation with Dr. Rajashekhar Meda (MBBS, M.S. General Surgery):\n\n1. Call directly on ${site.contact.phoneDisplay}\n2. Or visit our online booking page at /contact#appointment\n\nWalk-in consultations are also available during clinic hours at Suraksha Hospital, Khammam.`;
   }
 
-  if (/hernia/i.test(q)) {
-    return `Dr. Rajashekhar Meda performs advanced minimally invasive 3D Mesh Laparoscopic Hernia Repair (Inguinal, Umbilical, Incisional) at Suraksha Hospital, Khammam. It offers minimal post-op pain and 24-hour discharge. Visit /conditions/hernia or call ${site.contact.phoneDisplay} to schedule.`;
+  // 4. Match all 14 detailed conditions from Services page
+  const matchedCondition = detailedConditions.find((c) => {
+    const slugMatch = q.includes(c.slug.replace("-", " "));
+    const nameMatch = q.includes(c.shortName.toLowerCase());
+    const symptomMatch = c.symptoms.some((s) => q.includes(s.name.toLowerCase()));
+    return slugMatch || nameMatch || symptomMatch;
+  });
+
+  if (matchedCondition) {
+    return `**${matchedCondition.name}**\n\n${matchedCondition.summary}\n\n• **Symptoms:** ${matchedCondition.symptoms.map((s) => s.name).join(", ")}\n• **Surgical Approach:** ${matchedCondition.surgicalTreatment}\n\nTo learn more, visit /conditions/${matchedCondition.slug} or call ${site.contact.phoneDisplay} to schedule a consultation with Dr. Rajashekhar Meda.`;
+  }
+
+  // Specific condition keyword fallbacks
+  if (/hernia|inguinal|umbilical|incisional/i.test(q)) {
+    return `Dr. Rajashekhar Meda performs advanced 3D Mesh Laparoscopic Hernia Repair at Suraksha Hospital, Khammam. It offers minimal post-op pain, 24-hour discharge, and minimal recurrence. Visit /conditions/hernia or call ${site.contact.phoneDisplay}.`;
   }
 
   if (/gallbladder|gallstone|cholecystectomy/i.test(q)) {
-    return `Laparoscopic Cholecystectomy (Gallbladder Surgery) is performed by Dr. Meda using mini-port keyhole techniques for fast recovery and same-day discharge. Visit /conditions/gallbladder-stones or call ${site.contact.phoneDisplay}.`;
+    return `Laparoscopic Cholecystectomy (Gallbladder Removal) is performed using mini-port keyhole techniques for fast recovery and 24-hour discharge. Visit /conditions/gallbladder-stones or call ${site.contact.phoneDisplay}.`;
   }
 
   if (/appendix|appendicitis/i.test(q)) {
-    return `Dr. Meda provides 24/7 Emergency Laparoscopic Appendectomy at Suraksha Hospital to safely remove inflamed appendix via mini keyholes. Call ${site.contact.phoneDisplay} immediately for emergency appendicitis care.`;
+    return `24/7 Emergency Laparoscopic Appendectomy is available at Suraksha Hospital to safely remove inflamed appendix via keyholes. Call ${site.contact.phoneDisplay} immediately for emergency care.`;
   }
 
-  if (/piles|hemorrhoid|fissure|fistula|laser/i.test(q)) {
-    return `Dr. Meda specializes in German Diode Laser Surgery for Piles (LHP), Anal Fissures, and Anal Fistula (FiLaC). Laser treatment involves zero cutting, minimal pain, and same-day discharge. Visit /conditions/laser-surgery or call ${site.contact.phoneDisplay}.`;
+  if (/piles|hemorrhoid|fissure|fistula|laser|proctology/i.test(q)) {
+    return `Dr. Meda specializes in German Diode Laser Surgery for Piles (LHP), Anal Fissures, and Anal Fistula (FiLaC) with zero cutting, minimal pain, and same-day discharge. Visit /conditions/laser-surgery or call ${site.contact.phoneDisplay}.`;
   }
 
   if (/varicose|vein/i.test(q)) {
-    return `Endovenous Laser Ablation (EVLA) for Varicose Veins is available with Dr. Meda. No cuts, no stitches, and patients walk home within hours of procedure. Visit /conditions/varicose-veins or call ${site.contact.phoneDisplay}.`;
+    return `Endovenous Laser Ablation (EVLA) for Varicose Veins is available with Dr. Meda. No cuts, no stitches, and immediate walking post-op. Visit /conditions/varicose-veins or call ${site.contact.phoneDisplay}.`;
   }
 
   if (/doctor|qualification|experience|who/i.test(q)) {
