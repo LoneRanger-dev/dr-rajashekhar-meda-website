@@ -40,15 +40,15 @@ export function ConditionsModule() {
           </p>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 pt-4">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`rounded-full px-4 py-2 text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                className={`rounded-lg px-4.5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 border ${
                   activeCategory === cat
-                    ? "bg-accent text-accent-foreground shadow-md scale-105"
-                    : "bg-muted/80 text-muted-foreground hover:bg-muted hover:text-foreground"
+                    ? "bg-accent text-accent-foreground border-accent shadow-md scale-105"
+                    : "bg-muted/80 border-border/60 text-muted-foreground hover:bg-muted hover:text-foreground hover:border-accent/40"
                 }`}
               >
                 {cat}
@@ -109,7 +109,7 @@ export function ConditionsModule() {
           </div>
           <Link
             href="/contact#appointment"
-            className="inline-flex items-center gap-2 rounded-xl bg-accent text-accent-foreground px-5 py-3 text-sm font-semibold shadow-md hover:bg-accent/90 transition-all shrink-0 active:scale-95"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent text-accent-foreground px-6 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 shrink-0 active:scale-95"
           >
             <span>Book Consultation</span>
             <ArrowRight className="size-4" aria-hidden />

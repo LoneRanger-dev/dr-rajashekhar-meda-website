@@ -75,7 +75,7 @@ export function Header() {
             <a
               href={site.contact.phoneHref}
               onClick={() => track("call_click", { source: "header" })}
-              className="hidden sm:inline-flex items-center justify-center gap-2 rounded-xl bg-emergency text-white px-4 py-2.5 text-xs sm:text-sm font-bold shadow-lg hover:bg-emergency-hover transition-all active:scale-95"
+              className="hidden sm:inline-flex items-center justify-center gap-2.5 rounded-lg bg-emergency text-white px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emergency-hover hover:-translate-y-0.5 transition-all duration-300 active:scale-95 border border-white/20"
             >
               <ShieldAlert className="size-4 animate-pulse" aria-hidden />
               <span className="tnum">24/7 Call: {site.contact.phoneDisplay}</span>
