@@ -94,22 +94,26 @@ export default function HomePage() {
               </dl>
             </Reveal>
 
-            {/* Right Column: Hero Doctor Photo Card */}
-            <div className="relative mx-auto max-w-md lg:max-w-none w-full">
-              <div className="relative glow-halo glass rounded-2xl p-3 border border-white/20 dark:border-white/10 shadow-2xl">
-                <div className="overflow-hidden rounded-xl">
-                  <Image
-                    src={doctorImages.hero.src}
-                    alt={`${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}, Khammam`}
-                    width={doctorImages.hero.width}
-                    height={doctorImages.hero.height}
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    placeholder="blur"
-                    blurDataURL={BLUR_DATA_URL}
-                    className="w-full h-auto object-cover rounded-xl"
-                  />
-                </div>
+            {/* Right Column: Hero Doctor Photo — Seamlessly Merged into Theme */}
+            <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-lg w-full flex items-center justify-center">
+              {/* Ambient Soft Aura Glow */}
+              <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-sky-500/20 via-accent/20 to-sky-400/10 blur-3xl scale-95 opacity-80 pointer-events-none" />
+
+              {/* Seamless Blended Image Container */}
+              <div className="relative w-full overflow-hidden rounded-2xl border border-sky-500/20 bg-gradient-to-b from-slate-900/40 via-slate-900/60 to-slate-950/90 shadow-2xl backdrop-blur-md">
+                <Image
+                  src={doctorImages.hero.src}
+                  alt={`${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}, Khammam`}
+                  width={doctorImages.hero.width}
+                  height={doctorImages.hero.height}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
+                  className="w-full h-auto object-cover object-top filter contrast-[1.03]"
+                />
+                {/* Soft Bottom Vignette Merge */}
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent pointer-events-none" />
               </div>
             </div>
 

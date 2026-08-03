@@ -61,20 +61,26 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
             
-            {/* Left Column: Doctor Photo Poster */}
-            <div className="relative glow-halo glass rounded-2xl p-2.5 sm:p-3 border border-white/10 dark:border-white/5 shadow-2xl">
-              <div className="overflow-hidden rounded-xl">
+            {/* Left Column: Doctor Photo — Compact & Seamlessly Merged into Theme */}
+            <div className="relative mx-auto max-w-xs sm:max-w-sm w-full flex items-center justify-center">
+              {/* Ambient Soft Aura Glow */}
+              <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-sky-500/20 via-accent/20 to-sky-400/10 blur-3xl scale-95 opacity-75 pointer-events-none" />
+
+              {/* Seamless Blended Image Container */}
+              <div className="relative w-full overflow-hidden rounded-2xl border border-sky-500/20 bg-gradient-to-b from-slate-900/40 via-slate-900/60 to-slate-950/80 shadow-xl backdrop-blur-sm">
                 <Image
                   src={doctorImages.about.src}
                   alt={`${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}`}
                   width={doctorImages.about.width}
                   height={doctorImages.about.height}
                   priority
-                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  sizes="(max-width: 640px) 280px, 340px"
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}
-                  className="w-full h-auto object-cover rounded-xl"
+                  className="w-full h-auto object-cover object-top filter contrast-[1.02]"
                 />
+                {/* Soft Bottom Vignette Merge */}
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
               </div>
             </div>
 
