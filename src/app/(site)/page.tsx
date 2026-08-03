@@ -94,10 +94,10 @@ export default function HomePage() {
               </dl>
             </Reveal>
 
-            {/* Right Column: Hero Doctor Photo — Seamlessly Merged into Theme */}
-            <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-lg w-full flex items-center justify-center">
+            {/* Right Column: Hero Doctor Photo — Compact & Seamlessly Merged into Theme */}
+            <div className="relative mx-auto max-w-[280px] sm:max-w-[340px] lg:max-w-[380px] w-full flex items-center justify-center">
               {/* Ambient Soft Aura Glow */}
-              <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-sky-500/20 via-accent/20 to-sky-400/10 blur-3xl scale-95 opacity-80 pointer-events-none" />
+              <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-sky-500/20 via-accent/20 to-sky-400/10 blur-3xl scale-95 opacity-75 pointer-events-none" />
 
               {/* Seamless Blended Image Container */}
               <div className="relative w-full overflow-hidden rounded-2xl border border-sky-500/20 bg-gradient-to-b from-slate-900/40 via-slate-900/60 to-slate-950/90 shadow-2xl backdrop-blur-md">
@@ -107,13 +107,13 @@ export default function HomePage() {
                   width={doctorImages.hero.width}
                   height={doctorImages.hero.height}
                   priority
-                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 380px"
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}
                   className="w-full h-auto object-cover object-top filter contrast-[1.03]"
                 />
                 {/* Soft Bottom Vignette Merge */}
-                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent pointer-events-none" />
               </div>
             </div>
 
