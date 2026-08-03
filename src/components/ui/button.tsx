@@ -21,6 +21,8 @@ const buttonVariants = cva(
         glass: "btn-glass hover:text-foreground",
         accent:
           "bg-accent text-accent-foreground hover:bg-[color-mix(in_oklch,var(--accent),black_10%)]",
+        whatsapp:
+          "bg-[#25D366] text-white shadow-md hover:bg-[#20bd5a] focus-visible:ring-[#25D366]/40",
         emergency:
           "bg-emergency text-emergency-foreground shadow-[var(--elev-2)] hover:bg-emergency-hover focus-visible:ring-emergency/40",
       },

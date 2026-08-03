@@ -112,7 +112,7 @@ export default function ContactPage() {
                 </li>
               </ul>
               <Button
-                variant="accent"
+                variant="whatsapp"
                 size="cta"
                 className="w-full"
                 render={

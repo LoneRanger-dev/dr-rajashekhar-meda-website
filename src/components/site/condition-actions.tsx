@@ -34,7 +34,7 @@ export function ConditionActions({
           target="_blank"
           rel="noopener noreferrer"
           onClick={trackWhatsApp}
-          className="w-full inline-flex items-center justify-center gap-2 rounded-none bg-emerald-600 text-white px-5 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emerald-700 hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
+          className="w-full inline-flex items-center justify-center gap-2 rounded-none bg-[#25D366] text-white px-5 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-[#20bd5a] hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
         >
           <MessageSquare className="size-4" />
           <span>WhatsApp Doctor</span>
@@ -67,7 +67,7 @@ export function ConditionActions({
         target="_blank"
         rel="noopener noreferrer"
         onClick={trackWhatsApp}
-        className="inline-flex items-center justify-center gap-2 rounded-none bg-emerald-600 text-white px-6 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-emerald-700 hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
+        className="inline-flex items-center justify-center gap-2 rounded-none bg-[#25D366] text-white px-6 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-[#20bd5a] hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
       >
         <MessageSquare className="size-4" aria-hidden />
         <span>WhatsApp</span>

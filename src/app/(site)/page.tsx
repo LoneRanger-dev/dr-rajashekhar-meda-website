@@ -161,7 +161,7 @@ export default function HomePage() {
                 <span>Explore All Surgeries</span>
               </Button>
               <Button
-                variant="outline"
+                variant="whatsapp"
                 size="cta"
                 className="rounded-none shadow-md"
                 render={

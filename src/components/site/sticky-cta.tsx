@@ -27,7 +27,7 @@ export function StickyCta() {
           Call
         </Button>
         <Button
-          variant="accent"
+          variant="whatsapp"
           size="cta"
           className="w-full"
           render={

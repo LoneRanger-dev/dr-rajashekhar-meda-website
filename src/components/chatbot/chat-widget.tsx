@@ -306,7 +306,7 @@ export function ChatWidget() {
             <button
               type="button"
               onClick={() => handleQuickAction("whatsapp")}
-              className="flex flex-col items-center justify-center gap-1 rounded-lg bg-emerald-600/90 hover:bg-emerald-600 text-white p-2 text-[10px] font-bold uppercase tracking-wider transition-all active:scale-95 shadow-sm"
+              className="flex flex-col items-center justify-center gap-1 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-white p-2 text-[10px] font-bold uppercase tracking-wider transition-all active:scale-95 shadow-sm"
             >
               <MessageSquare className="size-3.5 shrink-0 text-white" />
               <span>WhatsApp</span>
