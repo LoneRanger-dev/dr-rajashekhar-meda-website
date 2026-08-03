@@ -132,7 +132,7 @@ export function AppointmentForm() {
       <div className="grid sm:grid-cols-2 gap-5">
         <div className="space-y-1.5">
           <label htmlFor="reason" className="block text-sm font-medium">
-            What do you need help with?
+            Select a concern
           </label>
           <select
             id="reason"
@@ -140,7 +140,7 @@ export function AppointmentForm() {
             defaultValue=""
             className="h-11 w-full rounded-xl border border-input bg-[var(--glass-bg)] px-3 text-base backdrop-blur-md outline-none transition-[box-shadow,border-color] focus-visible:border-ring focus-visible:ring-4 focus-visible:ring-ring/25 focus-visible:shadow-[0_0_18px_var(--glow-soft)]"
           >
-            <option value="">Select a concern (optional)</option>
+            <option value="">Select a concern</option>
             {conditions.map((c) => (
               <option key={c.slug} value={c.name}>
                 {c.name}
@@ -167,7 +167,7 @@ export function AppointmentForm() {
           name="notes"
           rows={3}
           className="w-full rounded-xl border border-input bg-[var(--glass-bg)] p-3 text-base backdrop-blur-md outline-none transition-[box-shadow,border-color] focus-visible:border-ring focus-visible:ring-4 focus-visible:ring-ring/25 focus-visible:shadow-[0_0_18px_var(--glow-soft)]"
-          placeholder="Optional — please do not share detailed medical history here."
+          placeholder="Please do not share detailed medical history here."
         />
         <p className="text-xs text-muted-foreground">
           This form is not a secure medical channel and is not monitored around the
@@ -193,11 +193,12 @@ export function AppointmentForm() {
         </div>
       )}
 
-      <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
+      <div className="flex justify-center pt-2">
         <Button
           type="submit"
           variant="accent"
           size="cta-lg"
+          className="w-full max-w-sm justify-center text-center"
           disabled={status === "submitting"}
         >
           {status === "submitting" && (
@@ -205,15 +206,6 @@ export function AppointmentForm() {
           )}
           {status === "submitting" ? "Sending…" : "Request appointment"}
         </Button>
-        <p className="text-sm text-muted-foreground">
-          Prefer to talk?{" "}
-          <a
-            href={site.contact.phoneHref}
-            className="font-semibold text-accent underline tnum"
-          >
-            {site.contact.phoneDisplay}
-          </a>
-        </p>
       </div>
     </form>
   );
