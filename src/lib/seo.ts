@@ -6,14 +6,19 @@ export function buildMetadata({
   description,
   path = "/",
   noIndex = false,
+  image = "/images/doctor/dr-rajashekhar-hero.jpg",
 }: {
   title: string;
   description: string;
   path?: string;
   noIndex?: boolean;
+  image?: string;
 }): Metadata {
   const url = `${site.domain}${path}`;
-  const fullTitle = `${title} | ${site.doctor.name} - Suraksha Hospital Khammam`;
+  // Keep title succinct and under 60 chars where possible
+  const fullTitle = title.includes("Dr. Rajashekhar Meda")
+    ? title
+    : `${title} | Dr. Rajashekhar Meda`;
 
   return {
     title: fullTitle,
@@ -22,21 +27,40 @@ export function buildMetadata({
     alternates: {
       canonical: url,
     },
+    authors: [{ name: site.doctor.name, url: site.domain }],
+    creator: site.doctor.name,
+    publisher: site.hospital.name,
+    formatDetection: {
+      telephone: true,
+      address: true,
+      email: true,
+    },
     robots: noIndex
       ? { index: false, follow: false }
-      : { index: true, follow: true },
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+          },
+        },
     openGraph: {
       type: "website",
       url,
       title: fullTitle,
       description,
-      siteName: `${site.doctor.name} - ${site.hospital.name}`,
+      siteName: `${site.doctor.name} — ${site.hospital.name}`,
+      locale: "en_IN",
       images: [
         {
-          url: "/images/doctor/dr-rajashekhar-hero.jpg",
+          url: image,
           width: 1200,
           height: 630,
-          alt: `${site.doctor.name} - Consultant Laparoscopic & General Surgeon`,
+          alt: `${site.doctor.name} - Consultant Laparoscopic & General Surgeon at Suraksha Hospital, Khammam`,
         },
       ],
     },
@@ -44,7 +68,8 @@ export function buildMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: ["/images/doctor/dr-rajashekhar-hero.jpg"],
+      images: [image],
+      creator: "@DrMedaSurgical",
     },
   };
 }

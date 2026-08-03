@@ -151,12 +151,12 @@ export default async function ArticlePage({
             ))}
           </ul>
           <Button
-            variant="emergency"
+            variant="accent"
             size="cta"
             render={<a href={site.contact.phoneHref} />}
           >
             <Phone aria-hidden />
-            <span>Call Doctor</span>
+            <span>Call Clinic</span>
           </Button>
         </aside>
 

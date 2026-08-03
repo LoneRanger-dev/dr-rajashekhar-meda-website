@@ -115,13 +115,13 @@ export default function AboutPage() {
               {/* CTAs */}
               <div className="pt-4 flex flex-wrap gap-3">
                 <Button
-                  variant="emergency"
+                  variant="accent"
                   size="cta"
                   className="rounded-none shadow-md"
                   render={<a href={site.contact.phoneHref} />}
                 >
                   <Phone className="size-4" aria-hidden />
-                  <span>Call Doctor</span>
+                  <span>Call Hospital</span>
                 </Button>
 
                 <Button

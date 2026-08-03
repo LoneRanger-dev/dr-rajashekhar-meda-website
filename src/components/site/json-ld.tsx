@@ -115,6 +115,44 @@ export function JsonLd() {
     ],
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${clinicUrl}/#website`,
+    url: clinicUrl,
+    name: `${site.doctor.name} - General & Laparoscopic Surgeon`,
+    description: `Official website of ${site.doctor.name}, Consultant Laparoscopic & Laser Surgeon at ${site.hospital.name}, Khammam.`,
+    publisher: {
+      "@id": `${clinicUrl}/#physician`,
+    },
+    inLanguage: "en-IN",
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalOrganization",
+    "@id": `${clinicUrl}/#organization`,
+    name: site.hospital.name,
+    alternateName: site.hospital.nameTelugu,
+    url: clinicUrl,
+    logo: `${clinicUrl}/brand/dr-rajashekhar-logo-footer.png`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: site.hospital.street,
+      addressLocality: site.hospital.city,
+      addressRegion: site.hospital.state,
+      postalCode: site.hospital.postalCode,
+      addressCountry: site.hospital.country,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: site.contact.phone,
+      contactType: "emergency",
+      areaServed: "IN",
+      availableLanguage: ["English", "Telugu", "Hindi"],
+    },
+  };
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -153,6 +191,14 @@ export function JsonLd() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
     </>
   );

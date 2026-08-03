@@ -1,0 +1,13 @@
+/* SURGICAL PRACTICE & MEDICAL TEAM */
+Doctor & Lead Surgeon: Dr. Rajashekhar Meda (MBBS, M.S. General Surgery)
+Hospital Partner: Suraksha Hospital, Khammam, Telangana, India
+Specialties: Laparoscopic Surgery, Laser Proctology, Vascular Surgery, Emergency Trauma Surgery
+
+/* SITE TECHNICAL ARCHITECTURE */
+Framework: Next.js 16 (App Router & Turbopack)
+Language: TypeScript
+Styling: Tailwind CSS
+Icons: Lucide React
+Deployment: Vercel
+Accessibility: WCAG 2.2 AAA Compliant
+Standards: HTML5, CSS3, JSON-LD Schema.org
