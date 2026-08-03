@@ -18,7 +18,7 @@ export const doctorImages = {
   },
   /** Surgical poster creative — advanced laparoscopic surgery. */
   about: {
-    src: "/images/doctor/dr-rajashekhar-about.jpg",
+    src: "/images/doctor/dr-rajashekhar-about-poster.jpg",
     width: 1000,
     height: 1500,
   },
