@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ShieldAlert, CalendarCheck, MessageSquare, Phone } from "lucide-react";
+import { CalendarCheck, MessageSquare, Phone } from "lucide-react";
 import { trackCall, trackWhatsApp } from "@/lib/analytics";
 
 interface ConditionActionsProps {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone, MapPin, Clock, MessageCircle, ShieldAlert, Mail } from "lucide-react";
+import { Phone, MapPin, Clock, MessageCircle, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { AppointmentForm } from "@/components/site/appointment-form";

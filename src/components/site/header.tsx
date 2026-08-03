@@ -21,13 +21,13 @@ export function Header() {
       <div className="w-full bg-gradient-to-r from-slate-950 via-sky-950 to-slate-950 border-b border-sky-500/40 backdrop-blur-xl text-white">
         <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 flex h-14 sm:h-16 lg:h-20 items-center justify-between gap-2 sm:gap-4">
           
-          {/* Doctor Name & Credentials — Responsive Fluid Typography */}
-          <Link href="/" className="flex flex-col min-w-0 shrink justify-center group pr-2">
-            <span className="font-[family-name:var(--font-display)] font-extrabold text-sm sm:text-base lg:text-xl text-white tracking-tight leading-tight group-hover:text-sky-300 transition-colors truncate">
+          {/* Doctor Name & Branding Section */}
+          <Link href="/" className="flex flex-col shrink-0 justify-center group pr-4 sm:pr-6">
+            <span className="font-[family-name:var(--font-display)] font-extrabold text-base sm:text-lg lg:text-xl text-white tracking-tight leading-tight group-hover:text-sky-300 transition-colors whitespace-nowrap">
               {site.doctor.name}
             </span>
-            <span className="text-[10px] sm:text-xs lg:text-sm text-sky-300 font-semibold tracking-wide truncate">
-              {site.doctor.credentials} · {site.doctor.title}
+            <span className="hidden lg:block text-[14px] lg:text-[15px] font-medium text-sky-300 tracking-tight leading-tight whitespace-nowrap">
+              {site.doctor.headerSubtitle}
             </span>
           </Link>
 

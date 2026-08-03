@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, CalendarCheck, ShieldCheck, Clock, Star, MapPin, Award, CheckCircle2 } from "lucide-react";
+import { Phone, CalendarCheck, Clock, Star, MapPin, Award, CheckCircle2 } from "lucide-react";
 import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
 import { Button } from "@/components/ui/button";
 import { HeroBackground } from "@/components/site/hero-background";
@@ -18,7 +18,7 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             
-            {/* Left Column: Headline, Badges, CTAs, Emergency Hotline Box */}
+            {/* Left Column: Headline, Doctor Designation, Badges, CTAs */}
             <Reveal as="div" className="space-y-6" blur={false} y={16}>
               {/* Tag Wrapper Badges */}
               <div className="flex flex-wrap items-center gap-2 sm:gap-3">
@@ -36,13 +36,27 @@ export default function HomePage() {
                 </span>
               </div>
 
-              {/* Title & Lead Paragraph */}
-              <div className="space-y-3">
+              {/* Title & Complete Designation */}
+              <div className="space-y-4">
                 <h1 className="type-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight leading-[1.1]">
                   Excellence in <span className="text-accent">Surgical Care</span> With Compassionate Precision
                 </h1>
+                
+                {/* Doctor Name & Complete Designation */}
+                <div className="space-y-1 py-2 border-l-2 border-accent/60 pl-4 bg-sky-500/5 rounded-r-xl max-w-xl">
+                  <p className="font-extrabold text-lg sm:text-xl text-foreground tracking-tight">
+                    {site.doctor.name}
+                  </p>
+                  <p className="text-sm sm:text-base font-semibold text-accent">
+                    MBBS, MS (General Surgery)
+                  </p>
+                  <p className="text-xs sm:text-sm font-medium text-muted-foreground">
+                    Consultant Laparoscopic, Endoscopic & Laser Surgeon
+                  </p>
+                </div>
+
                 <p className="type-lead text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                  {site.doctor.name} — {site.doctor.credentials}. Advanced minimally invasive keyhole surgery, hernia repair, gallbladder stones, laser proctology, and 24/7 trauma emergency care at {site.hospital.name}, Khammam.
+                  Advanced minimally invasive keyhole surgery, hernia repair, gallbladder stones, laser proctology, and 24/7 trauma emergency care at {site.hospital.name}, Khammam.
                 </p>
               </div>
 

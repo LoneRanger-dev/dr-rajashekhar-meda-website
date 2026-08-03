@@ -16,7 +16,8 @@ export const site = {
     name: "Dr. Rajashekhar Meda",
     nameAlt: "Dr. Meda Rajashekhar",
     nameTelugu: "డా॥ మేడ రాజశేఖర్",
-    credentials: "MBBS, M.S. (General Surgery)",
+    headerSubtitle: "MBBS, MS • General & Laparoscopic Surgeon",
+    credentials: "MBBS, MS (General Surgery)",
     title: "Consultant Laparoscopic, Endoscopic & Laser Surgeon",
     titleTelugu: "జనరల్, ఎండోస్కోపిక్, లాప్రోస్కోపిక్ లేజర్ సర్జన్",
     academicRole:
