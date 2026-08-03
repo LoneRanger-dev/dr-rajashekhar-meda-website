@@ -201,11 +201,11 @@ export const conditions: Condition[] = [
 ];
 
 export const navigation = [
-  { href: "/", label: "Home", short: "Home" },
-  { href: "/about", label: "About Dr. Rajashekhar Meda", short: "About" },
-  { href: "/conditions", label: "Services & Surgeries", short: "Services" },
-  { href: "/reviews", label: "Patient Reviews", short: "Reviews" },
-  { href: "/contact", label: "Contact", short: "Contact" },
+  { href: "/#hero", label: "Home", short: "Home" },
+  { href: "/#about", label: "About Dr. Rajashekhar Meda", short: "About" },
+  { href: "/#services", label: "Services & Surgeries", short: "Services" },
+  { href: "/#reviews", label: "Patient Reviews", short: "Reviews" },
+  { href: "/#contact", label: "Contact", short: "Contact" },
 ] as const;
 
 export const testimonials: {

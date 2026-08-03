@@ -12,6 +12,20 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.includes("#") && pathname === "/") {
+      const targetId = href.split("#")[1];
+      if (targetId) {
+        const element = document.getElementById(targetId);
+        if (element) {
+          e.preventDefault();
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+    setOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-40 w-full shadow-xl">
       {/* Top Bar (Email, Hours, Location, Helpline) */}
@@ -22,7 +36,7 @@ export function Header() {
         <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 flex h-14 sm:h-16 lg:h-20 items-center justify-between gap-2 sm:gap-4">
           
           {/* Doctor Name & Branding Section */}
-          <Link href="/" className="flex flex-col shrink-0 justify-center group pr-4 sm:pr-6">
+          <Link href="/#hero" onClick={(e) => handleNavClick(e, "/#hero")} className="flex flex-col shrink-0 justify-center group pr-4 sm:pr-6">
             <span className="font-[family-name:var(--font-display)] font-extrabold text-base sm:text-lg lg:text-xl text-white tracking-tight leading-tight group-hover:text-sky-300 transition-colors whitespace-nowrap">
               {site.doctor.name}
             </span>
@@ -37,13 +51,14 @@ export function Header() {
               <ul className="flex items-center gap-1 xl:gap-2">
                 {navigation.map((item) => {
                   const active =
-                    item.href === "/"
+                    item.href === "/#hero"
                       ? pathname === "/"
                       : pathname.startsWith(item.href);
                   return (
                     <li key={item.href}>
                       <Link
                         href={item.href}
+                        onClick={(e) => handleNavClick(e, item.href)}
                         aria-current={active ? "page" : undefined}
                         className={cn(
                           "relative inline-flex h-11 items-center whitespace-nowrap rounded-none px-3.5 xl:px-4 text-sm font-semibold transition-all duration-300",
@@ -61,7 +76,8 @@ export function Header() {
             </nav>
 
             <Link
-              href="/contact#appointment"
+              href="/#contact"
+              onClick={(e) => handleNavClick(e, "/#contact")}
               className="inline-flex h-11 items-center justify-center gap-2 rounded-none bg-accent text-accent-foreground px-5 text-xs font-bold uppercase tracking-wider shadow-md hover:bg-accent/90 transition-all duration-300 active:scale-95 whitespace-nowrap"
             >
               <CalendarCheck className="size-4" aria-hidden />
@@ -94,12 +110,12 @@ export function Header() {
             <ul className="p-3 space-y-1 text-white">
               {navigation.map((item) => {
                 const active =
-                  item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+                  item.href === "/#hero" ? pathname === "/" : pathname.startsWith(item.href);
                 return (
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => handleNavClick(e, item.href)}
                       aria-current={active ? "page" : undefined}
                       className={cn(
                         "flex h-11 items-center rounded-none px-4 text-sm sm:text-base font-semibold transition-colors",
@@ -115,8 +131,8 @@ export function Header() {
               })}
               <li className="pt-2">
                 <Link
-                  href="/contact#appointment"
-                  onClick={() => setOpen(false)}
+                  href="/#contact"
+                  onClick={(e) => handleNavClick(e, "/#contact")}
                   className="flex h-11 items-center justify-center gap-2 rounded-none bg-accent text-accent-foreground font-bold text-xs uppercase tracking-wider"
                 >
                   <CalendarCheck className="size-4" />

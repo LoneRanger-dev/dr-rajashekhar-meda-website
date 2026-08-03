@@ -1,18 +1,52 @@
-import Link from "next/link";
 import Image from "next/image";
-import { Phone, CalendarCheck, Clock, Star, MapPin, Award, CheckCircle2 } from "lucide-react";
-import { Section, SectionHeading, Stat } from "@/components/site/ui-bits";
+import { Phone, CalendarCheck, Clock, Star, MapPin, Award, CheckCircle2, Stethoscope, ShieldCheck } from "lucide-react";
+import { SectionHeading, Stat } from "@/components/site/ui-bits";
 import { Button } from "@/components/ui/button";
 import { HeroBackground } from "@/components/site/hero-background";
 import { Reveal } from "@/components/site/reveal";
 import { site, whatsappUrl } from "@/lib/site";
 import { doctorImages, BLUR_DATA_URL } from "@/lib/siteAssets";
+import { ConditionsModule } from "@/components/site/conditions-module";
+import { HospitalShowcase } from "@/components/site/hospital-showcase";
+import { Testimonials } from "@/components/site/testimonials";
+import { AppointmentForm } from "@/components/site/appointment-form";
+
+const doctorBulletDetails = [
+  {
+    title: "Full Name & Qualifications",
+    detail: "Dr. Rajashekhar Meda — MBBS, M.S. (General Surgery)",
+  },
+  {
+    title: "Consultant Designation",
+    detail: "Consultant Laparoscopic, Endoscopic & Laser Surgeon at Suraksha Hospital, Khammam.",
+  },
+  {
+    title: "Surgical Experience",
+    detail: "10+ Years of Surgical Excellence in advanced keyhole & minimally invasive laser procedures.",
+  },
+  {
+    title: "Laparoscopic Keyhole Specialties",
+    detail: "Advanced 3D Mesh Laparoscopic Hernia Repair (Inguinal, Umbilical, Incisional), Laparoscopic Cholecystectomy (Gallbladder Stones), and Emergency Laparoscopic Appendectomy.",
+  },
+  {
+    title: "German Diode Laser Surgery",
+    detail: "Incisionless Laser Hemorrhoidoplasty (LHP for Piles), FiLaC (Laser Fistula Closure), Laser Fissurectomy, and EVLA Laser for Varicose Veins with 100% sphincter preservation.",
+  },
+  {
+    title: "General & Trauma Surgery",
+    detail: "Excision of lipomas, cysts, abdominal masses, soft tissue tumors, and 24/7 round-the-clock abdominal trauma emergency response.",
+  },
+  {
+    title: "Hospital Location",
+    detail: "Suraksha Hospital, Old Priyadarshini College Building, Nehru Nagar, near Karnataka Bank, Wyra Road, Khammam, Telangana 507002.",
+  },
+];
 
 export default function HomePage() {
   return (
     <>
       {/* ── HERO SECTION ─────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden brand-wash py-12 sm:py-20 lg:py-24 border-b border-border/50">
+      <section id="hero" className="relative overflow-hidden brand-wash py-12 sm:py-20 lg:py-24 border-b border-border/50">
         <HeroBackground />
         
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -51,7 +85,7 @@ export default function HomePage() {
                     MBBS, MS (General Surgery)
                   </p>
                   <p className="text-xs sm:text-sm font-medium text-muted-foreground">
-                    Consultant Laparoscopic, Endoscopic & Laser Surgeon
+                    Consultant Laparoscopic, Endoscopic &amp; Laser Surgeon
                   </p>
                 </div>
 
@@ -62,13 +96,21 @@ export default function HomePage() {
 
               {/* Primary Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 pt-1">
-                <Link
-                  href="/contact#appointment"
+                <a
+                  href="#contact"
                   className="inline-flex items-center justify-center gap-2.5 rounded-none bg-accent text-accent-foreground px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-lg hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 w-full sm:w-auto"
                 >
                   <CalendarCheck className="size-4" aria-hidden />
                   <span>Book Appointment</span>
-                </Link>
+                </a>
+                <a
+                  href={whatsappUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-none bg-[#25D366] text-white px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-[#20bd5a] hover:-translate-y-0.5 transition-all duration-300 active:scale-95 w-full sm:w-auto"
+                >
+                  <span>WhatsApp Doctor</span>
+                </a>
               </div>
 
               {/* Counter Stats */}
@@ -94,12 +136,10 @@ export default function HomePage() {
               </dl>
             </Reveal>
 
-            {/* Right Column: Hero Doctor Photo — Compact & Seamlessly Merged into Theme */}
+            {/* Right Column: Hero Doctor Photo */}
             <div className="relative mx-auto max-w-[280px] sm:max-w-[340px] lg:max-w-[380px] w-full flex items-center justify-center">
-              {/* Ambient Soft Aura Glow */}
               <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-sky-500/20 via-accent/20 to-sky-400/10 blur-3xl scale-95 opacity-75 pointer-events-none" />
 
-              {/* Seamless Blended Image Container */}
               <div className="relative w-full overflow-hidden rounded-2xl border border-sky-500/20 bg-gradient-to-b from-slate-900/40 via-slate-900/60 to-slate-950/90 shadow-2xl backdrop-blur-md">
                 <Image
                   src={doctorImages.hero.src}
@@ -112,7 +152,6 @@ export default function HomePage() {
                   blurDataURL={BLUR_DATA_URL}
                   className="w-full h-auto object-cover object-top filter contrast-[1.03]"
                 />
-                {/* Soft Bottom Vignette Merge */}
                 <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent pointer-events-none" />
               </div>
             </div>
@@ -121,98 +160,191 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── VISIT & LOCATION SECTION ─────────────────────────────────────── */}
-      <Section className="py-12 sm:py-16 bg-background">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-          <div className="space-y-6">
-            <SectionHeading
-              eyebrow="Suraksha Hospital Practice"
-              title="State-of-the-Art Surgical Infrastructure"
-              lead="Equipped with advanced modular keyhole operating theatres, high-precision German Diode Laser systems, and 24/7 ICU critical care support."
-            />
-            <ul className="space-y-3.5 pt-2">
-              <li className="flex items-start gap-3 text-xs sm:text-sm">
-                <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
-                <span className="text-muted-foreground leading-relaxed">
-                  <strong className="text-foreground">Laparoscopic Keyhole Surgery:</strong> 3D Mesh Hernia Repair, Gallstones, and Appendix removal with 24-hour discharge.
-                </span>
-              </li>
-              <li className="flex items-start gap-3 text-xs sm:text-sm">
-                <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
-                <span className="text-muted-foreground leading-relaxed">
-                  <strong className="text-foreground">German Laser Proctology &amp; Vascular:</strong> Minimally invasive laser treatment for Piles, Fissure, Fistula, and Varicose Veins.
-                </span>
-              </li>
-              <li className="flex items-start gap-3 text-xs sm:text-sm">
-                <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
-                <span className="text-muted-foreground leading-relaxed">
-                  <strong className="text-foreground">24/7 Emergency Surgical Care:</strong> Round-the-clock emergency team for abdominal trauma, acute appendicitis, and surgical crises.
-                </span>
-              </li>
-            </ul>
+      {/* ── ABOUT DOCTOR SECTION ─────────────────────────────────────────── */}
+      <section id="about" className="py-14 sm:py-20 bg-background border-b border-border/50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
+            
+            {/* Left Column: Doctor Photo Container */}
+            <div className="relative mx-auto max-w-xs sm:max-w-sm w-full flex items-center justify-center">
+              <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-sky-500/20 via-accent/20 to-sky-400/10 blur-3xl scale-95 opacity-75 pointer-events-none" />
 
-            <div className="pt-2 flex flex-wrap gap-3">
-              <Button
-                variant="accent"
-                size="cta"
-                className="rounded-none shadow-md"
-                render={<Link href="/conditions" />}
-              >
-                <span>Explore All Surgeries</span>
-              </Button>
-              <Button
-                variant="whatsapp"
-                size="cta"
-                className="rounded-none shadow-md"
-                render={
-                  <a
-                    href={whatsappUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  />
-                }
-              >
-                <span>Message on WhatsApp</span>
-              </Button>
+              <div className="relative w-full overflow-hidden rounded-2xl border border-sky-500/20 bg-gradient-to-b from-slate-900/40 via-slate-900/60 to-slate-950/80 shadow-xl backdrop-blur-sm">
+                <Image
+                  src={doctorImages.about.src}
+                  alt={`${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}`}
+                  width={doctorImages.about.width}
+                  height={doctorImages.about.height}
+                  priority
+                  sizes="(max-width: 640px) 280px, 340px"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
+                  className="w-full h-auto object-cover object-top filter contrast-[1.02]"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
+              </div>
             </div>
-          </div>
 
-          <div className="space-y-4">
-            <div className="glass rounded-2xl p-6 sm:p-8 space-y-5 border border-border/60">
-              <h3 className="type-h3 text-xl font-bold text-foreground">Consultation Timings &amp; Address</h3>
-              <address className="not-italic space-y-3.5 text-xs sm:text-sm text-muted-foreground">
-                <div className="flex gap-3">
-                  <MapPin className="size-4 text-accent shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-foreground block">{site.hospital.name}</strong>
-                    <span>{site.hospital.addressFull}</span>
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <Clock className="size-4 text-accent shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-foreground block">OPD Hours</strong>
-                    <span>{site.hours.weekday}</span>
-                    <br />
-                    <span>{site.hours.sunday}</span>
-                  </div>
-                </div>
-              </address>
-              <div className="pt-2">
+            {/* Right Column: Doctor Details */}
+            <div className="space-y-6">
+              <div className="space-y-3">
+                <span className="type-label text-accent inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3.5 py-1 text-xs">
+                  <Stethoscope className="size-3.5" aria-hidden />
+                  About the Doctor
+                </span>
+                <h2 className="type-h2 text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+                  {site.doctor.name}
+                </h2>
+                <p className="text-sm sm:text-base font-semibold text-accent">
+                  {site.doctor.credentials} · {site.doctor.title}
+                </p>
+              </div>
+
+              <ul className="space-y-3 pt-2">
+                {doctorBulletDetails.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm">
+                    <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" aria-hidden />
+                    <div>
+                      <strong className="text-foreground font-bold">{item.title}: </strong>
+                      <span className="text-muted-foreground leading-relaxed">{item.detail}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="pt-4 flex flex-wrap gap-3">
                 <Button
                   variant="accent"
                   size="cta"
-                  className="rounded-none w-full shadow-md"
+                  className="rounded-none shadow-md"
                   render={<a href={site.contact.phoneHref} />}
                 >
-                  <Phone className="size-4" />
+                  <Phone className="size-4" aria-hidden />
                   <span>Call Hospital</span>
+                </Button>
+
+                <Button
+                  variant="whatsapp"
+                  size="cta"
+                  className="rounded-none shadow-md"
+                  render={<a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" />}
+                >
+                  <span>WhatsApp Doctor</span>
                 </Button>
               </div>
             </div>
+
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── SERVICES & SURGERIES SECTION ───────────────────────────────────── */}
+      <section id="services">
+        <ConditionsModule />
+      </section>
+
+      {/* ── HOSPITAL INFRASTRUCTURE SHOWCASE ─────────────────────────────── */}
+      <section id="hospital">
+        <HospitalShowcase />
+      </section>
+
+      {/* ── PATIENT REVIEWS & TESTIMONIALS SECTION ───────────────────────── */}
+      <section id="reviews" className="py-14 sm:py-20 brand-wash border-t border-border/50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
+          <SectionHeading
+            eyebrow="Patient Feedback"
+            title="Trusted Surgical Recovery Stories"
+            lead="Read genuine patient experiences and testimonials for laparoscopic hernia, gallbladder, appendix, and laser surgeries at Suraksha Hospital."
+          />
+          <Testimonials />
+        </div>
+      </section>
+
+      {/* ── CONTACT & APPOINTMENT SECTION ────────────────────────────────── */}
+      <section id="contact" className="py-14 sm:py-20 bg-background border-t border-border/50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
+          <SectionHeading
+            eyebrow="Appointment & Location"
+            title="Book a Consultation or Reach Us 24/7"
+            lead="Schedule an appointment with Dr. Rajashekhar Meda at Suraksha Hospital, Khammam, or call our 24/7 helpline for emergency surgical care."
+          />
+
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14">
+            {/* Left: Contact Info & OPD Hours */}
+            <div className="space-y-6">
+              <div className="glass rounded-2xl p-6 sm:p-8 space-y-5 border border-border/60">
+                <h3 className="type-h3 text-xl font-bold text-foreground">Suraksha Hospital Details</h3>
+                <address className="not-italic space-y-4 text-sm text-muted-foreground">
+                  <div className="flex gap-3.5">
+                    <MapPin className="size-5 text-accent shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-foreground block text-base font-bold">{site.hospital.name}</strong>
+                      <span>{site.hospital.addressFull}</span>
+                    </div>
+                  </div>
+                  <div className="flex gap-3.5">
+                    <Clock className="size-5 text-accent shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-foreground block font-bold">OPD Consulting Hours</strong>
+                      <span>{site.hours.weekday}</span>
+                      <br />
+                      <span>{site.hours.sunday}</span>
+                    </div>
+                  </div>
+                  <div className="flex gap-3.5">
+                    <ShieldCheck className="size-5 text-emergency shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-foreground block font-bold text-emergency">24/7 Emergency Care</strong>
+                      <span>Round-the-clock emergency surgical care and ICU critical care.</span>
+                    </div>
+                  </div>
+                </address>
+
+                <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                  <Button
+                    variant="accent"
+                    size="cta"
+                    className="rounded-none shadow-md w-full sm:w-auto"
+                    render={<a href={site.contact.phoneHref} />}
+                  >
+                    <Phone className="size-4" />
+                    <span>Call Hospital</span>
+                  </Button>
+                  <Button
+                    variant="whatsapp"
+                    size="cta"
+                    className="rounded-none shadow-md w-full sm:w-auto"
+                    render={<a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" />}
+                  >
+                    <span>Message WhatsApp</span>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Map Embed */}
+              <div className="glass rounded-2xl p-3 border border-border/60 overflow-hidden shadow-sm">
+                <iframe
+                  title={`Map to ${site.hospital.name}`}
+                  src={site.hospital.maps.embedUrl}
+                  className="w-full h-[260px] rounded-xl border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+
+            {/* Right: Interactive Appointment Booking Form */}
+            <div className="glass rounded-2xl p-6 sm:p-8 border border-border/60 shadow-lg space-y-4">
+              <h3 className="type-h3 text-xl font-bold text-foreground">Schedule Consultation</h3>
+              <p className="text-xs sm:text-sm text-muted-foreground">
+                Fill in your details below and our hospital team will reach out to confirm your slot immediately.
+              </p>
+              <AppointmentForm />
+            </div>
           </div>
         </div>
-      </Section>
+      </section>
     </>
   );
 }

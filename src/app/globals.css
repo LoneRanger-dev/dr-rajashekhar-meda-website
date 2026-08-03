@@ -4,6 +4,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* ==========================================================================
    SURAKSHA GENERAL & LAPAROSCOPIC SURGERY — DESIGN SYSTEM
    Dr. Rajashekhar Meda · Laparoscopic & General Surgeon · Khammam
