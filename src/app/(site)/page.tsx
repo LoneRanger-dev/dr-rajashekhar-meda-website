@@ -123,75 +123,23 @@ export default function HomePage() {
               </dl>
             </Reveal>
 
-            {/* Right Column: Hero Doctor Photo with Floating Glassmorphic Badges (HumbrixHub Style) */}
-            <div className="relative mx-auto max-w-[320px] sm:max-w-[420px] lg:max-w-[480px] w-full flex items-center justify-center py-6 sm:py-8">
+            {/* Right Column: Hero Section Image Showcase */}
+            <div className="relative mx-auto max-w-[340px] sm:max-w-[500px] lg:max-w-[580px] w-full flex items-center justify-center py-4 sm:py-6">
               {/* Glowing Ambient Background & Blur Ring */}
-              <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-sky-500/25 via-accent/25 to-sky-300/20 blur-3xl scale-105 opacity-85 pointer-events-none" />
+              <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-tr from-sky-500/25 via-accent/25 to-sky-300/20 blur-3xl scale-105 opacity-85 pointer-events-none" />
 
-              <div className="relative w-full flex items-center justify-center">
-                {/* Central Doctor Portrait Cutout */}
+              <div className="relative w-full overflow-hidden rounded-2xl border border-sky-500/30 shadow-2xl backdrop-blur-sm z-10 transition-transform duration-500 hover:scale-[1.01]">
                 <Image
                   src={doctorImages.hero.src}
                   alt={`${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}, Khammam`}
                   width={doctorImages.hero.width}
                   height={doctorImages.hero.height}
                   priority
-                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 420px"
+                  sizes="(max-width: 640px) 340px, (max-width: 1024px) 500px, 580px"
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}
-                  className="w-full h-auto max-h-[440px] sm:max-h-[500px] object-contain filter drop-shadow-[0_25px_40px_rgba(0,0,0,0.45)] z-10"
+                  className="w-full h-auto object-cover rounded-2xl shadow-xl"
                 />
-
-                {/* Floating Card 1: Top-Left Patient Reviews Card */}
-                <div className="absolute -top-3 -left-2 sm:-top-4 sm:-left-6 z-20 animate-float-slow bg-background/95 backdrop-blur-md border border-border/80 rounded-2xl p-2.5 sm:p-3.5 shadow-2xl flex items-center gap-3 scale-90 sm:scale-100">
-                  <div className="flex -space-x-2 overflow-hidden">
-                    <div className="inline-block size-7 sm:size-8 rounded-full bg-sky-500/20 border-2 border-background flex items-center justify-center text-[10px] font-bold text-accent">DR</div>
-                    <div className="inline-block size-7 sm:size-8 rounded-full bg-emerald-500/20 border-2 border-background flex items-center justify-center text-[10px] font-bold text-emerald-600">★5</div>
-                    <div className="inline-block size-7 sm:size-8 rounded-full bg-amber-500/20 border-2 border-background flex items-center justify-center text-[10px] font-bold text-amber-600">🏆</div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-foreground flex items-center gap-1">
-                      Reviews <span className="flex text-amber-400 text-[10px]">★★★★★</span>
-                    </div>
-                    <div className="text-[10px] font-medium text-muted-foreground">500+ Verified Patient Reviews</div>
-                  </div>
-                </div>
-
-                {/* Floating Card 2: Top-Right Surgeries Stats Badge */}
-                <div className="absolute top-6 -right-2 sm:top-8 sm:-right-8 z-20 animate-float-delayed bg-background/95 backdrop-blur-md border border-sky-500/30 rounded-2xl p-2.5 sm:p-3.5 shadow-2xl text-left scale-90 sm:scale-100">
-                  <div className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Surgeries Performed</div>
-                  <div className="flex items-center gap-1.5 mt-0.5">
-                    <span className="text-base sm:text-lg font-black text-accent">5,000+</span>
-                    <span className="inline-block size-5 rounded-md bg-accent/15 text-accent text-center text-xs leading-5 font-bold">✓</span>
-                  </div>
-                  <div className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400 flex items-center gap-1 mt-0.5">
-                    <span className="size-1.5 rounded-full bg-emerald-500 animate-ping" /> 99.8% Surgical Success
-                  </div>
-                </div>
-
-                {/* Floating Card 3: Bottom-Left Laser & Keyhole Specialist Badge */}
-                <div className="absolute bottom-6 -left-3 sm:bottom-8 sm:-left-8 z-20 animate-float-delayed bg-background/95 backdrop-blur-md border border-border/80 rounded-2xl p-2.5 sm:p-3 shadow-2xl flex items-center gap-2.5 scale-90 sm:scale-100">
-                  <div className="size-8 sm:size-9 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
-                    <Stethoscope className="size-4 sm:size-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-foreground">Laser & Keyhole Specialist</div>
-                    <div className="text-[10px] text-muted-foreground">10+ Years Senior Surgeon</div>
-                  </div>
-                </div>
-
-                {/* Floating Card 4: Bottom-Right 24/7 Emergency ICU Badge */}
-                <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 z-20 animate-float-slow bg-background/95 backdrop-blur-md border border-emergency/30 rounded-2xl p-2.5 sm:p-3 shadow-2xl flex items-center gap-2.5 scale-90 sm:scale-100">
-                  <div className="size-8 sm:size-9 rounded-xl bg-emergency/10 border border-emergency/20 flex items-center justify-center text-emergency shrink-0">
-                    <ShieldCheck className="size-4 sm:size-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-foreground flex items-center gap-1.5">
-                      <span className="size-2 rounded-full bg-emerald-500 animate-pulse" /> 24/7 ICU Care
-                    </div>
-                    <div className="text-[10px] text-muted-foreground">{site.hospital.name}</div>
-                  </div>
-                </div>
               </div>
             </div>
 
