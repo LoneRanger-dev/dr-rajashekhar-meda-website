@@ -583,13 +583,27 @@ html {
   box-shadow: var(--elev-3), 0 0 30px var(--glow-soft);
 }
 
-/* Gentle 6px vertical float for hero portraiture. */
 @keyframes img-float {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-6px); }
 }
 @utility animate-img-float {
   animation: img-float 5s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(8px); }
+}
+.animate-float-slow {
+  animation: float-slow 4s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float-delayed 4.5s ease-in-out infinite 0.75s;
 }
 
 .ambient-bg {
