@@ -7,8 +7,8 @@ export const doctorImages = {
   /** Homepage hero — confident portrait of Dr. Rajashekhar Meda. */
   hero: {
     src: "/images/doctor/dr-rajashekhar-hero-transparent.png",
-    width: 501,
-    height: 505,
+    width: 354,
+    height: 453,
   },
   /** Consultation — professional doctor portrait in lab coat. */
   consultation: {
