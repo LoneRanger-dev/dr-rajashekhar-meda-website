@@ -215,12 +215,11 @@ export default function HomePage() {
                   width={doctorImages.about.width}
                   height={doctorImages.about.height}
                   priority
-                  sizes="(max-width: 640px) 280px, 340px"
+                  sizes="(max-width: 640px) 300px, 380px"
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}
-                  className="w-full h-auto object-cover object-top filter contrast-[1.02]"
+                  className="w-full h-auto object-contain filter contrast-[1.02]"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
               </div>
             </div>
 
