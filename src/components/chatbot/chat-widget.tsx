@@ -215,20 +215,20 @@ export function ChatWidget() {
         {open ? (
           <X className="size-6" />
         ) : (
-          <span className="relative grid size-full place-items-center">
+          <span className="relative grid size-full place-items-center overflow-hidden rounded-full">
             <span
               className={cn(
-                "absolute inset-0 rounded-full ring-2 ring-sky-400/50 shadow-xl",
+                "absolute inset-0 rounded-full ring-2 ring-sky-400/60 shadow-2xl bg-gradient-to-tr from-slate-950 via-sky-950 to-slate-900",
                 !reduceMotion && "animate-breathe"
               )}
               aria-hidden
             />
             <Image
               src="/brand/chatbot-avatar.png"
-              alt="Dr. Meda AI Assistant"
+              alt="Suraksha AI Assistant"
               width={256}
               height={256}
-              className="relative size-full rounded-full object-cover"
+              className="relative size-full rounded-full object-contain p-1 filter drop-shadow-[0_4px_12px_rgba(2,132,199,0.5)] z-10 transition-transform duration-300 group-hover:scale-105"
               aria-hidden
             />
           </span>
@@ -253,32 +253,24 @@ export function ChatWidget() {
           {/* Header */}
           <header className="flex items-center justify-between gap-3 bg-slate-950 border-b border-sky-500/30 text-white p-3.5">
             <div className="flex items-center gap-3 min-w-0">
-              {reduceMotion ? (
-                <Image
-                  src="/brand/chatbot-poster.jpg"
-                  alt=""
-                  width={320}
-                  height={320}
-                  className="size-10 shrink-0 rounded-full object-cover"
-                  aria-hidden
-                />
-              ) : (
+              <div className="relative size-11 shrink-0 rounded-full overflow-hidden ring-2 ring-sky-400/60 shadow-lg bg-slate-900 flex items-center justify-center">
                 <video
                   src="/brand/chatbot.mp4"
-                  poster="/brand/chatbot-poster.jpg"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  preload="none"
                   aria-hidden
-                  className="size-10 shrink-0 rounded-full object-cover object-[50%_26%] ring-2 ring-sky-400/40"
+                  className="size-full object-cover scale-110"
                 />
-              )}
+              </div>
               <div className="min-w-0">
-                <p className="font-bold text-sm truncate text-white">Dr. Meda AI Assistant</p>
-                <p className="text-xs text-sky-300 truncate">
-                  Suraksha Hospital, Khammam
+                <p className="font-extrabold text-sm truncate text-white flex items-center gap-1.5">
+                  <Sparkles className="size-3.5 text-sky-300 animate-pulse" />
+                  Suraksha AI Assistant
+                </p>
+                <p className="text-[11px] text-sky-300 font-medium truncate">
+                  Dr. Meda · Suraksha Hospital, Khammam
                 </p>
               </div>
             </div>
