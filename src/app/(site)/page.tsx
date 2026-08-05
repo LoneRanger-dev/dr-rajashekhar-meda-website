@@ -105,22 +105,18 @@ export default function HomePage() {
           <Reveal className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
             
             {/* Left Column: Doctor Photo Container */}
-            <div className="relative mx-auto max-w-xs sm:max-w-sm w-full flex items-center justify-center">
-              <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-sky-500/20 via-accent/20 to-sky-400/10 blur-3xl scale-95 opacity-75 pointer-events-none" />
-
-              <div className="relative w-full overflow-hidden rounded-2xl border border-sky-500/20 bg-gradient-to-b from-slate-900/40 via-slate-900/60 to-slate-950/80 shadow-xl backdrop-blur-sm">
-                <Image
-                  src={doctorImages.about.src}
-                  alt={`${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}`}
-                  width={doctorImages.about.width}
-                  height={doctorImages.about.height}
-                  priority
-                  sizes="(max-width: 640px) 300px, 380px"
-                  placeholder="blur"
-                  blurDataURL={BLUR_DATA_URL}
-                  className="w-full h-auto object-contain filter contrast-[1.02]"
-                />
-              </div>
+            <div className="relative mx-auto max-w-sm sm:max-w-md w-full flex items-center justify-center">
+              <Image
+                src={doctorImages.about.src}
+                alt={`${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}`}
+                width={doctorImages.about.width}
+                height={doctorImages.about.height}
+                priority
+                sizes="(max-width: 640px) 340px, 420px"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
+                className="w-full h-auto object-contain drop-shadow-xl"
+              />
             </div>
 
             {/* Right Column: Doctor Details */}
