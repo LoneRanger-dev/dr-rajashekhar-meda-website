@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, CalendarCheck } from "lucide-react";
+import { Menu, X, CalendarCheck, Stethoscope } from "lucide-react";
 import { site, navigation } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { TopBar } from "./top-bar";
@@ -35,13 +35,13 @@ export function Header() {
       <div className="w-full bg-[#235394] border-b border-[#1c447b] shadow-md text-white">
         <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 flex h-14 sm:h-16 lg:h-20 items-center justify-between gap-2 sm:gap-4">
           
-          {/* Doctor Name & Branding Section */}
-          <Link href="/#hero" onClick={(e) => handleNavClick(e, "/#hero")} className="flex flex-col shrink-0 justify-center group pr-4 sm:pr-6">
+          {/* Doctor Name & Branding Section — Doctor Icon + Name ONLY */}
+          <Link href="/#hero" onClick={(e) => handleNavClick(e, "/#hero")} className="flex items-center gap-2 shrink-0 group pr-4 sm:pr-6">
+            <span className="p-1.5 rounded-full bg-white/15 text-white group-hover:bg-white/25 transition-colors">
+              <Stethoscope className="size-5 sm:size-6" />
+            </span>
             <span className="font-[family-name:var(--font-display)] font-extrabold text-base sm:text-lg lg:text-xl text-white tracking-tight leading-tight group-hover:text-sky-200 transition-colors whitespace-nowrap">
               {site.doctor.name}
-            </span>
-            <span className="hidden lg:block text-[13px] lg:text-[14px] font-medium text-sky-100/90 tracking-tight leading-tight whitespace-nowrap">
-              {site.doctor.headerSubtitle}
             </span>
           </Link>
 

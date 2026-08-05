@@ -55,43 +55,77 @@ export default function HomePage() {
             {/* Left Column: Headline, Subtitle, Description, CTA */}
             <Reveal as="div" className="space-y-6 text-left" blur={false} y={16}>
               <div className="space-y-2">
-                <p className="text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0B3B60] dark:text-sky-300">
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-normal text-[#235394] dark:text-sky-300">
                   Welcome to
                 </p>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B3B60] dark:text-white tracking-tight leading-[1.1]">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#134377] dark:text-white tracking-tight leading-[1.1]">
                   Dr. Rajashekhar Meda
                 </h1>
-                <p className="text-xl sm:text-2xl font-semibold text-[#4A749B] dark:text-sky-400 tracking-wide pt-1">
+                <p className="text-xl sm:text-2xl font-semibold text-[#235394] dark:text-sky-400 tracking-wide pt-1">
                   General &amp; Laparoscopic Surgeon
                 </p>
               </div>
 
-              <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-lg">
-                Providing advanced surgical care with precision, compassion, and modern medical expertise. Dedicated to delivering personalized treatment plans, faster recovery, and better outcomes for every patient
+              <p className="text-[#606060] dark:text-slate-300 text-sm sm:text-base leading-relaxed max-w-lg">
+                Providing advanced surgical care with precision, compassion, and modern medical expertise. Dedicated to delivering personalized treatment plans, faster recovery, and better outcomes for every patient at Suraksha Hospital, Khammam.
               </p>
 
               <div className="pt-2">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-full bg-[#1D538E] hover:bg-[#153E6B] text-white px-8 py-3.5 text-base font-semibold shadow-md hover:shadow-lg transition-all duration-300 active:scale-95"
+                  className="inline-flex items-center justify-center rounded-full bg-[#134377] hover:bg-[#0e3259] text-white px-8 py-3.5 text-base font-semibold shadow-md hover:shadow-lg transition-all duration-300 active:scale-95"
                 >
                   Book an Appointment
                 </a>
               </div>
             </Reveal>
 
-            {/* Right Column: Exact Composite Doctor Graphic Image */}
-            <div className="relative mx-auto max-w-[380px] sm:max-w-[480px] lg:max-w-[540px] w-full flex items-center justify-center py-4">
+            {/* Right Column: New Doctor Circle Graphic Image with Floating Icons */}
+            <div className="relative mx-auto max-w-[360px] sm:max-w-[460px] lg:max-w-[500px] w-full flex items-center justify-center py-6">
+              
+              {/* Hero Floating Chip 1: Top Left */}
+              <div className="absolute top-2 -left-2 sm:-left-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-slow">
+                <span className="p-1.5 rounded-xl bg-[#134377]/15 text-[#134377] dark:text-sky-300">
+                  <Award className="size-4" />
+                </span>
+                <span>10+ Yrs Excellence</span>
+              </div>
+
+              {/* Hero Floating Chip 2: Top Right */}
+              <div className="absolute top-8 -right-2 sm:-right-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-delayed">
+                <span className="p-1.5 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                  <CheckCircle2 className="size-4" />
+                </span>
+                <span>5000+ Recoveries</span>
+              </div>
+
+              {/* Hero Floating Chip 3: Bottom Left */}
+              <div className="absolute bottom-6 -left-2 sm:-left-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-delayed">
+                <span className="p-1.5 rounded-xl bg-teal-500/15 text-teal-600 dark:text-teal-400">
+                  <Sparkles className="size-4" />
+                </span>
+                <span>Laser &amp; Keyhole</span>
+              </div>
+
+              {/* Hero Floating Chip 4: Bottom Right */}
+              <div className="absolute bottom-2 -right-2 sm:-right-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-orange-500/30 text-xs font-bold text-emergency z-20 animate-float-slow">
+                <span className="p-1.5 rounded-xl bg-orange-500/15 text-emergency">
+                  <Clock className="size-4" />
+                </span>
+                <span>24/7 Hospital Care</span>
+              </div>
+
+              {/* Main Doctor Hero Graphic Image */}
               <Image
-                src="/images/doctor/dr-rajashekhar-hero-circle-graphic.png"
-                alt="Dr. Rajashekhar Meda - General & Laparoscopic Surgeon"
-                width={1080}
-                height={1080}
+                src={doctorImages.hero.src}
+                alt={`${site.doctor.name} - General & Laparoscopic Surgeon`}
+                width={doctorImages.hero.width}
+                height={doctorImages.hero.height}
                 priority
-                sizes="(max-width: 640px) 380px, (max-width: 1024px) 480px, 540px"
+                sizes="(max-width: 640px) 360px, (max-width: 1024px) 460px, 500px"
                 placeholder="blur"
                 blurDataURL={BLUR_DATA_URL}
-                className="w-full h-auto object-contain drop-shadow-xl"
+                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500 z-10"
               />
             </div>
 

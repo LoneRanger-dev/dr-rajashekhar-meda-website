@@ -6,9 +6,9 @@
 export const doctorImages = {
   /** Homepage hero — official graphic hero section image of Dr. Rajashekhar Meda. */
   hero: {
-    src: "/images/doctor/dr-rajashekhar-hero-transparent.png",
-    width: 1000,
-    height: 1200,
+    src: "/images/doctor/dr-rajashekhar-hero-circle-new.png",
+    width: 900,
+    height: 900,
   },
   /** Consultation — professional doctor portrait in lab coat. */
   consultation: {

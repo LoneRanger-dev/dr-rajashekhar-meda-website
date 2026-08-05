@@ -26,8 +26,8 @@ export function HospitalShowcase() {
 
       {/* ── Top Center Prominent Suraksha Hospital Card ── */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 flex flex-col items-center justify-center text-center">
-        <div className="max-w-2xl w-full rounded-none border border-slate-700/80 bg-slate-900/95 p-6 sm:p-10 backdrop-blur-2xl text-white shadow-2xl space-y-5">
-          <div className="inline-flex items-center gap-2 rounded-full bg-accent/20 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-accent border border-accent/30">
+        <div className="max-w-2xl w-full rounded-3xl border border-slate-700/80 bg-slate-900/95 p-6 sm:p-10 backdrop-blur-2xl text-white shadow-2xl space-y-5">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#134377]/40 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-sky-200 border border-sky-400/30">
             <Building2 className="size-3.5 shrink-0" aria-hidden />
             <span>Visit Us in Khammam</span>
           </div>
@@ -42,11 +42,11 @@ export function HospitalShowcase() {
 
           <div className="pt-1 flex flex-wrap items-center justify-center gap-4 text-xs text-sky-300 font-semibold">
             <span className="inline-flex items-center gap-1.5">
-              <Clock className="size-3.5 text-accent" />
+              <Clock className="size-3.5 text-sky-400" />
               {site.hours.weekday}
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <ShieldCheck className="size-3.5 text-emergency" />
+              <ShieldCheck className="size-3.5 text-emerald-400" />
               24/7 Surgical Emergency
             </span>
           </div>
@@ -55,17 +55,17 @@ export function HospitalShowcase() {
           <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
             <Button
               size="cta"
-              className="rounded-none bg-white text-slate-950 font-extrabold hover:bg-slate-100 hover:text-slate-950 shadow-xl transition-all duration-200"
+              className="rounded-full bg-white text-slate-950 font-extrabold hover:bg-slate-100 hover:text-slate-950 shadow-xl transition-all duration-200"
               render={<a href={site.contact.phoneHref} />}
             >
-              <Phone className="size-4 text-sky-600" aria-hidden />
+              <Phone className="size-4 text-[#134377]" aria-hidden />
               <span>Call Hospital</span>
             </Button>
 
             <Button
               variant="accent"
               size="cta"
-              className="rounded-none shadow-md"
+              className="rounded-full bg-[#134377] hover:bg-[#0e3259] text-white shadow-md"
               render={
                 <a
                   href={site.hospital.maps.directionsUrl}
@@ -81,7 +81,7 @@ export function HospitalShowcase() {
             <Button
               variant="ghost"
               size="cta"
-              className="rounded-none text-sky-300 hover:text-white hover:bg-white/10"
+              className="rounded-full text-white border border-white/30 bg-white/10 hover:bg-white/20"
               render={<Link href="/conditions" />}
             >
               <span>Explore Surgeries</span>
