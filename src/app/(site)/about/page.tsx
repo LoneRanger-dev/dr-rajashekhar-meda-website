@@ -195,7 +195,7 @@ export default function AboutPage() {
 
             <div className="glass rounded-xl p-5 space-y-2 border border-border/50">
               <h3 className="font-bold text-sm text-foreground flex items-center gap-2">
-                <ShieldCheck className="size-4 text-emergency" /> 24/7 Trauma Emergency
+                <ShieldCheck className="size-4 text-emergency" /> 24/7 Emergency Care
               </h3>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Suraksha Hospital offers 24/7 round-the-clock emergency surgical care for acute appendicitis, strangulated hernia, and abdominal trauma.

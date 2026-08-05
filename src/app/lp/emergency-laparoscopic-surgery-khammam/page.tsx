@@ -23,7 +23,7 @@ const config: LandingConfig = {
   urgent: true,
   image: {
     src: "/images/doctor/dr-rajashekhar-scrubs.jpg",
-    alt: "Suraksha Hospital Khammam — 24/7 trauma and emergency surgical care with advanced ICU",
+    alt: "Suraksha Hospital Khammam — 24/7 emergency surgical care with advanced ICU",
   },
   benefits: [
     {

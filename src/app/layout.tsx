@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     default: `${site.doctor.name} | ${site.doctor.title} | Khammam`,
     template: `%s | ${site.doctor.name}`,
   },
-  description: `${site.doctor.name} — ${site.doctor.credentials}. Advanced laparoscopic, endoscopic & laser surgery at ${site.hospital.name}, Khammam. Hernia repair, gallbladder, appendix, varicose veins & 24/7 trauma emergency.`,
+  description: `${site.doctor.name} — ${site.doctor.credentials}. Advanced laparoscopic, endoscopic & laser surgery at ${site.hospital.name}, Khammam. Hernia repair, gallbladder, appendix, varicose veins & 24/7 emergency care.`,
   keywords: [
     "Dr Rajashekhar Meda",
     "Laparoscopic Surgeon Khammam",
