@@ -27,7 +27,7 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full shadow-xl">
+    <header className="sticky top-0 z-50 w-full shadow-xl">
       {/* Top Bar (Email, Hours, Location, Helpline) */}
       <TopBar />
 
@@ -50,10 +50,12 @@ export function Header() {
             <nav aria-label="Main Navigation">
               <ul className="flex items-center gap-1 xl:gap-2">
                 {navigation.map((item) => {
+                  const hrefStr = item.href as string;
+                  const targetBase = hrefStr.split("#")[0] || "/";
                   const active =
-                    item.href === "/#hero"
+                    hrefStr === "/#hero" || hrefStr === "/"
                       ? pathname === "/"
-                      : pathname.startsWith(item.href);
+                      : targetBase !== "/" && pathname.startsWith(targetBase);
                   return (
                     <li key={item.href}>
                       <Link
@@ -109,8 +111,12 @@ export function Header() {
           >
             <ul className="p-3 space-y-1 text-white">
               {navigation.map((item) => {
+                const hrefStr = item.href as string;
+                const targetBase = hrefStr.split("#")[0] || "/";
                 const active =
-                  item.href === "/#hero" ? pathname === "/" : pathname.startsWith(item.href);
+                  hrefStr === "/#hero" || hrefStr === "/"
+                    ? pathname === "/"
+                    : targetBase !== "/" && pathname.startsWith(targetBase);
                 return (
                   <li key={item.href}>
                     <Link
