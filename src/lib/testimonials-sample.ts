@@ -63,6 +63,30 @@ export const sampleTestimonials: SampleTestimonial[] = [
     consultedOn: "April 2025",
     initials: "PA",
   },
+  {
+    id: "s5",
+    name: "M. Venkatesh",
+    location: "Suryapet, Telangana",
+    treatment: "Laser Piles & Fistula Care",
+    rating: 5,
+    quote:
+      "I suffered from chronic painful piles for years before consulting Dr. Rajashekhar Meda. His German laser procedure was completely incisionless and painless.",
+    recovery: "Recovered in 3 days",
+    consultedOn: "May 2025",
+    initials: "MV",
+  },
+  {
+    id: "s6",
+    name: "K. Bhavani",
+    location: "Khammam, Telangana",
+    treatment: "Laparoscopic Hernia Repair",
+    rating: 5,
+    quote:
+      "Dr. Rajashekhar Meda and the Suraksha Hospital staff provided wonderful care for my abdominal hernia. The 3D mesh keyhole repair left tiny scars and healed so fast.",
+    recovery: "Recovered in 5 days",
+    consultedOn: "June 2025",
+    initials: "KB",
+  },
 ];
 
 export const sampleStats = [
