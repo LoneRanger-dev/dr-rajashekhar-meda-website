@@ -93,7 +93,7 @@ export default function AboutPage() {
                 <span className="p-1.5 rounded-xl bg-orange-500/15 text-emergency">
                   <Clock className="size-4" />
                 </span>
-                <span>24/7 Trauma Care</span>
+                <span>24/7 Care</span>
               </div>
 
               {/* Main Doctor Circle Image */}
