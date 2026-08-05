@@ -46,101 +46,93 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO SECTION ─────────────────────────────────────────────────── */}
-      <section id="hero" className="relative overflow-hidden brand-wash py-12 sm:py-20 lg:py-24 border-b border-border/50">
+      <section id="hero" className="relative overflow-hidden bg-white dark:bg-slate-950 py-12 sm:py-16 lg:py-20 border-b border-border/40">
         <HeroBackground />
         
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
             
-            {/* Left Column: Headline, Doctor Designation, Badges, CTAs */}
-            <Reveal as="div" className="space-y-6" blur={false} y={16}>
-              {/* Tag Wrapper Badges */}
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 border border-sky-400/30 px-3.5 py-1 text-xs font-semibold text-accent">
-                  <Award className="size-3.5" aria-hidden />
-                  10+ Years Excellence
-                </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-emergency/10 border border-emergency/30 px-3.5 py-1 text-xs font-semibold text-emergency">
-                  <Clock className="size-3.5" aria-hidden />
-                  24/7 Emergency Care
-                </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-400/30 px-3.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                  <Star className="size-3.5 fill-current" aria-hidden />
-                  4.9/5 Patient Rating
-                </span>
-              </div>
-
-              {/* Title & Complete Designation */}
-              <div className="space-y-4">
-                <h1 className="type-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight leading-[1.1]">
-                  Excellence in <span className="text-accent">Surgical Care</span> With Compassionate Precision
+            {/* Left Column: Headline, Subtitle, Description, CTA */}
+            <Reveal as="div" className="space-y-6 text-left" blur={false} y={16}>
+              <div className="space-y-2">
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0B3B60] dark:text-sky-300">
+                  Welcome to
+                </p>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B3B60] dark:text-white tracking-tight leading-[1.1]">
+                  Dr. Rajashekhar Meda
                 </h1>
-
-                <p className="type-lead text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                  Advanced minimally invasive keyhole surgery, hernia repair, gallbladder stones, laser proctology, and 24/7 trauma emergency care at {site.hospital.name}, Khammam.
+                <p className="text-xl sm:text-2xl font-semibold text-[#4A749B] dark:text-sky-400 tracking-wide pt-1">
+                  General &amp; Laparoscopic Surgeon
                 </p>
               </div>
 
-              {/* Primary Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-1">
+              <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-lg">
+                Providing advanced surgical care with precision, compassion, and modern medical expertise. Dedicated to delivering personalized treatment plans, faster recovery, and better outcomes for every patient
+              </p>
+
+              <div className="pt-2">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2.5 rounded-none bg-accent text-accent-foreground px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-lg hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 w-full sm:w-auto"
+                  className="inline-flex items-center justify-center rounded-full bg-[#1D538E] hover:bg-[#153E6B] text-white px-8 py-3.5 text-base font-semibold shadow-md hover:shadow-lg transition-all duration-300 active:scale-95"
                 >
-                  <CalendarCheck className="size-4" aria-hidden />
-                  <span>Book Appointment</span>
-                </a>
-                <a
-                  href={whatsappUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 rounded-none bg-[#25D366] text-white px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:bg-[#20bd5a] hover:-translate-y-0.5 transition-all duration-300 active:scale-95 w-full sm:w-auto"
-                >
-                  <span>WhatsApp Doctor</span>
+                  Book an Appointment
                 </a>
               </div>
-
-              {/* Counter Stats */}
-              <dl className="grid grid-cols-3 gap-3 pt-2 max-w-lg">
-                <div className="glass rounded-xl p-3 text-center border border-border/60">
-                  <dt className="sr-only">Experience</dt>
-                  <dd>
-                    <Stat value="10+" label="Years Exp." />
-                  </dd>
-                </div>
-                <div className="glass rounded-xl p-3 text-center border border-border/60">
-                  <dt className="sr-only">Surgeries</dt>
-                  <dd>
-                    <Stat value="5000+" label="Surgeries" />
-                  </dd>
-                </div>
-                <div className="glass rounded-xl p-3 text-center border border-border/60">
-                  <dt className="sr-only">Emergency Care</dt>
-                  <dd>
-                    <Stat value="24/7" label="ICU Care" />
-                  </dd>
-                </div>
-              </dl>
             </Reveal>
 
-            {/* Right Column: Hero Section Image Showcase */}
-            <div className="relative mx-auto max-w-[340px] sm:max-w-[500px] lg:max-w-[580px] w-full flex items-center justify-center py-4 sm:py-6">
-              {/* Glowing Ambient Background & Blur Ring */}
-              <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-tr from-sky-500/25 via-accent/25 to-sky-300/20 blur-3xl scale-105 opacity-85 pointer-events-none" />
+            {/* Right Column: Circular Doctor Frame with Badges */}
+            <div className="relative mx-auto max-w-[360px] sm:max-w-[460px] lg:max-w-[520px] w-full flex items-center justify-center py-6 sm:py-8">
+              
+              {/* Outer Decorative Dots & Circuit Lines */}
+              <svg className="absolute inset-0 size-full pointer-events-none z-0" viewBox="0 0 500 500" fill="none">
+                {/* Top-Left Hollow Dot */}
+                <circle cx="100" cy="45" r="5" stroke="#1D538E" strokeWidth="2.5" fill="white" />
+                
+                {/* Top-Right Circuit Node */}
+                <path d="M420 100 L440 100 L450 110" stroke="#1D538E" strokeWidth="2" strokeLinecap="round" />
+                <circle cx="420" cy="100" r="4" stroke="#1D538E" strokeWidth="2" fill="white" />
+                <circle cx="450" cy="110" r="3" fill="#1D538E" />
 
-              <div className="relative w-full overflow-hidden rounded-2xl border border-sky-500/30 shadow-2xl backdrop-blur-sm z-10 transition-transform duration-500 hover:scale-[1.01]">
+                {/* Left Center Dot */}
+                <circle cx="20" cy="235" r="4.5" fill="#1D538E" />
+
+                {/* Bottom Right Dot */}
+                <circle cx="410" cy="435" r="5" fill="#1D538E" />
+              </svg>
+
+              {/* Main Doctor Circular Frame */}
+              <div className="relative z-10 w-[290px] h-[290px] sm:w-[380px] sm:h-[380px] lg:w-[430px] lg:h-[430px] rounded-full border-[7px] sm:border-[9px] border-[#1D538E] bg-gradient-to-b from-[#eaf2f8] via-[#e2edf6] to-[#d6e5f3] flex items-end justify-center shadow-xl overflow-hidden">
                 <Image
                   src={doctorImages.hero.src}
-                  alt={`${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}, Khammam`}
+                  alt={`${site.doctor.name}, ${site.doctor.title}`}
                   width={doctorImages.hero.width}
                   height={doctorImages.hero.height}
                   priority
-                  sizes="(max-width: 640px) 340px, (max-width: 1024px) 500px, 580px"
+                  sizes="(max-width: 640px) 290px, (max-width: 1024px) 380px, 430px"
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}
-                  className="w-full h-auto object-cover rounded-2xl shadow-xl"
+                  className="w-[95%] h-auto object-cover object-top translate-y-1 scale-105"
                 />
               </div>
+
+              {/* Floating Badge 1: Top Left - 24/7 Emergency Care */}
+              <div className="absolute top-2 left-0 sm:-left-2 bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-100 dark:border-slate-800 px-4 py-2.5 flex flex-col items-center min-w-[120px] z-20">
+                <span className="text-[#0B3B60] dark:text-sky-300 font-extrabold text-sm sm:text-base">24/7</span>
+                <span className="text-slate-500 dark:text-slate-400 text-[10px] sm:text-xs font-medium">Emergency Care</span>
+              </div>
+
+              {/* Floating Badge 2: Top Right - 10+ Years of Experience */}
+              <div className="absolute top-12 right-0 sm:-right-2 bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-100 dark:border-slate-800 px-4 py-2.5 flex flex-col items-center min-w-[120px] z-20">
+                <span className="text-[#0B3B60] dark:text-sky-300 font-extrabold text-sm sm:text-base">10+</span>
+                <span className="text-slate-500 dark:text-slate-400 text-[10px] sm:text-xs font-medium">Years of Experience</span>
+              </div>
+
+              {/* Floating Badge 3: Bottom Left - 5000+ Successful Patients */}
+              <div className="absolute bottom-4 left-0 sm:-left-2 bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-100 dark:border-slate-800 px-4 py-2.5 flex flex-col items-center min-w-[130px] z-20">
+                <span className="text-[#0B3B60] dark:text-sky-300 font-extrabold text-sm sm:text-base">5000+</span>
+                <span className="text-slate-500 dark:text-slate-400 text-[10px] sm:text-xs font-medium">Successful Patients</span>
+              </div>
+
             </div>
 
           </div>
