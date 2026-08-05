@@ -84,35 +84,30 @@ export default function HomePage() {
             <div className="relative mx-auto max-w-[360px] sm:max-w-[460px] lg:max-w-[500px] w-full flex items-center justify-center py-6">
               
               {/* Hero Floating Chip 1: Top Left */}
-              <div className="absolute top-2 -left-2 sm:-left-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-slow">
+              <div className="absolute top-4 -left-2 sm:-left-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-slow">
                 <span className="p-1.5 rounded-xl bg-[#134377]/15 text-[#134377] dark:text-sky-300">
                   <Award className="size-4" />
                 </span>
                 <span>10+ Yrs Excellence</span>
               </div>
 
-              {/* Hero Floating Chip 2: Top Right */}
-              <div className="absolute top-8 -right-2 sm:-right-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-delayed">
+              {/* Hero Floating Chip 2: Top Right - 4.9 Star Patient Reviews */}
+              <div className="absolute top-6 -right-2 sm:-right-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 shadow-xl border border-amber-400/40 text-xs font-bold text-foreground z-20 animate-float-delayed">
+                <span className="p-1.5 rounded-xl bg-amber-500/20 text-amber-500 flex items-center justify-center">
+                  <Star className="size-4 fill-amber-500 text-amber-500" />
+                </span>
+                <div className="flex flex-col">
+                  <span className="text-amber-600 dark:text-amber-400 font-extrabold text-[11px] leading-tight">4.9 ★ Rating</span>
+                  <span className="text-[10px] text-muted-foreground font-semibold">500+ Patient Reviews</span>
+                </div>
+              </div>
+
+              {/* Hero Floating Chip 3: Bottom Right */}
+              <div className="absolute bottom-6 -right-2 sm:-right-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-emerald-500/30 text-xs font-bold text-foreground z-20 animate-float-slow">
                 <span className="p-1.5 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
                   <CheckCircle2 className="size-4" />
                 </span>
                 <span>5000+ Recoveries</span>
-              </div>
-
-              {/* Hero Floating Chip 3: Bottom Left */}
-              <div className="absolute bottom-6 -left-2 sm:-left-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-delayed">
-                <span className="p-1.5 rounded-xl bg-teal-500/15 text-teal-600 dark:text-teal-400">
-                  <Sparkles className="size-4" />
-                </span>
-                <span>Laser &amp; Keyhole</span>
-              </div>
-
-              {/* Hero Floating Chip 4: Bottom Right */}
-              <div className="absolute bottom-2 -right-2 sm:-right-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-orange-500/30 text-xs font-bold text-emergency z-20 animate-float-slow">
-                <span className="p-1.5 rounded-xl bg-orange-500/15 text-emergency">
-                  <Clock className="size-4" />
-                </span>
-                <span>24/7 Hospital Care</span>
               </div>
 
               {/* Main Doctor Hero Graphic Image */}
