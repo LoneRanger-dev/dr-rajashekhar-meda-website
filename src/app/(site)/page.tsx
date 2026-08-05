@@ -81,18 +81,18 @@ export default function HomePage() {
             </Reveal>
 
             {/* Right Column: New Doctor Circle Graphic Image with Floating Icons */}
-            <div className="relative mx-auto max-w-[360px] sm:max-w-[460px] lg:max-w-[500px] w-full flex items-center justify-center py-6">
+            <div className="relative mx-auto max-w-[380px] sm:max-w-[520px] lg:max-w-[560px] w-full flex items-center justify-center py-6">
               
               {/* Hero Floating Chip 1: Top Left */}
-              <div className="absolute top-4 -left-2 sm:-left-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-slow">
+              <div className="absolute top-2 -left-2 sm:-left-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-slow">
                 <span className="p-1.5 rounded-xl bg-[#134377]/15 text-[#134377] dark:text-sky-300">
                   <Award className="size-4" />
                 </span>
                 <span>10+ Yrs Excellence</span>
               </div>
 
-              {/* Hero Floating Chip 2: Top Right - 4.9 Star Patient Reviews */}
-              <div className="absolute top-6 -right-2 sm:-right-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 shadow-xl border border-amber-400/40 text-xs font-bold text-foreground z-20 animate-float-delayed">
+              {/* Hero Floating Chip 2: Bottom Left - 4.9 Star Patient Reviews (Moved to balance free space) */}
+              <div className="absolute bottom-4 -left-2 sm:-left-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 shadow-xl border border-amber-400/40 text-xs font-bold text-foreground z-20 animate-float-delayed">
                 <span className="p-1.5 rounded-xl bg-amber-500/20 text-amber-500 flex items-center justify-center">
                   <Star className="size-4 fill-amber-500 text-amber-500" />
                 </span>
@@ -103,21 +103,21 @@ export default function HomePage() {
               </div>
 
               {/* Hero Floating Chip 3: Bottom Right */}
-              <div className="absolute bottom-6 -right-2 sm:-right-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-emerald-500/30 text-xs font-bold text-foreground z-20 animate-float-slow">
+              <div className="absolute bottom-4 -right-2 sm:-right-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-emerald-500/30 text-xs font-bold text-foreground z-20 animate-float-slow">
                 <span className="p-1.5 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
                   <CheckCircle2 className="size-4" />
                 </span>
                 <span>5000+ Recoveries</span>
               </div>
 
-              {/* Main Doctor Hero Graphic Image */}
+              {/* Main Doctor Hero Graphic Image (Enlarged) */}
               <Image
                 src={doctorImages.hero.src}
                 alt={`${site.doctor.name} - General & Laparoscopic Surgeon`}
                 width={doctorImages.hero.width}
                 height={doctorImages.hero.height}
                 priority
-                sizes="(max-width: 640px) 360px, (max-width: 1024px) 460px, 500px"
+                sizes="(max-width: 640px) 380px, (max-width: 1024px) 520px, 560px"
                 placeholder="blur"
                 blurDataURL={BLUR_DATA_URL}
                 className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500 z-10"
