@@ -283,6 +283,43 @@ export function EmergencyTraumaIllustration({ className = "w-full h-full", ...pr
   );
 }
 
+// 15. PILONIDAL SINUS ILLUSTRATION
+export function PilonidalSinusIllustration({ className = "w-full h-full", ...props }: IllustrationProps) {
+  return (
+    <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <rect width="400" height="300" rx="16" fill="#F8FAFC" />
+      {/* Gluteal cleft contour */}
+      <path d="M140 50C170 110 170 190 140 250" stroke="#cbd5e1" strokeWidth="6" strokeLinecap="round" />
+      <path d="M260 50C230 110 230 190 260 250" stroke="#cbd5e1" strokeWidth="6" strokeLinecap="round" />
+      {/* Pilonidal sinus tract */}
+      <ellipse cx="200" cy="150" rx="18" ry="30" fill="#fee2e2" stroke="#ef4444" strokeWidth="4" />
+      <circle cx="200" cy="135" r="5" fill="#dc2626" />
+      <circle cx="200" cy="165" r="5" fill="#dc2626" />
+      {/* SILaC Laser Fiber Radial Emission */}
+      <line x1="200" y1="50" x2="200" y2="150" stroke="#14b8a6" strokeWidth="4" strokeDasharray="4 4" />
+      <circle cx="200" cy="150" r="25" fill="#14b8a6" opacity="0.25" />
+      <circle cx="200" cy="150" r="8" fill="#14b8a6" />
+    </svg>
+  );
+}
+
+// 16. INTESTINAL & COLON SURGERY ILLUSTRATION
+export function IntestinalColonIllustration({ className = "w-full h-full", ...props }: IllustrationProps) {
+  return (
+    <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <rect width="400" height="300" rx="16" fill="#F8FAFC" />
+      <circle cx="200" cy="150" r="95" fill="#0284c7" opacity="0.06" />
+      {/* Colon Loop Contour */}
+      <path d="M120 220V120C120 85 150 65 200 65C250 65 280 85 280 120V220" stroke="#0284c7" strokeWidth="10" strokeLinecap="round" fill="none" />
+      <path d="M140 220V130C140 105 165 90 200 90C235 90 260 105 260 130V220" stroke="#bae6fd" strokeWidth="6" strokeLinecap="round" fill="none" />
+      {/* Laparoscopic resection / staple anastomosis line */}
+      <line x1="165" y1="90" x2="235" y2="90" stroke="#14b8a6" strokeWidth="4" strokeDasharray="4 3" />
+      <circle cx="200" cy="90" r="14" fill="#0d9488" opacity="0.8" />
+      <path d="M194 90L198 94L206 86" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 // MAPPER COMPONENT FOR EASY LOOKUP
 export function ConditionIllustration({ slug, className }: { slug: string; className?: string }) {
   switch (slug) {
@@ -315,6 +352,10 @@ export function ConditionIllustration({ slug, className }: { slug: string; class
       return <BariatricIllustration className={className} />;
     case "laser-surgery":
       return <LaserSurgeryIllustration className={className} />;
+    case "pilonidal-sinus":
+      return <PilonidalSinusIllustration className={className} />;
+    case "intestinal-colon-surgery":
+      return <IntestinalColonIllustration className={className} />;
     case "emergency-trauma-surgery":
     case "laparoscopic-surgery":
     default:

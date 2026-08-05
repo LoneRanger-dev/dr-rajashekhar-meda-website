@@ -656,6 +656,90 @@ export const detailedConditions: ConditionDetail[] = [
     ],
     relatedSlugs: ["appendicitis", "hernia", "gallbladder-stones"],
   },
+
+  // 15. PILONIDAL SINUS
+  {
+    slug: "pilonidal-sinus",
+    name: "Laser Pilonidal Sinus Surgery (SILaC)",
+    shortName: "Pilonidal Sinus",
+    category: "Laser Proctology & Vascular",
+    summary: "Painless Laser Sinus Obliteration (SILaC) for natal cleft pilonidal sinus with zero open wounds and minimal recurrence.",
+    overview: "Pilonidal sinus is a painful infected hair-containing cavity or channel under the skin in the cleft of the buttocks. Traditional open excision leaves large painful wounds requiring months of daily dressing. Dr. Meda performs SILaC (Sinus Laser Closure), cleaning and sealing the sinus tract with German laser energy.",
+    symptoms: [
+      { name: "Painful Natal Cleft Swelling", description: "Painful lump or swelling at the top of the buttock crease.", iconName: "swelling" },
+      { name: "Pus & Blood Discharge", description: "Foul-smelling pus or bloody fluid draining from skin pit openings.", iconName: "bleeding" },
+      { name: "Sitting Discomfort", description: "Sharp discomfort or ache when sitting down for extended periods.", iconName: "pain" },
+    ],
+    causes: [
+      { title: "Loose Hair Ingrowth", description: "Loose hair penetrating skin pits in natal cleft due to friction." },
+      { title: "Follicular Occlusion", description: "Blocked hair follicles forming an infected subcutaneous sinus tract." },
+    ],
+    riskFactors: ["Young males (ages 15-30)", "Prolonged sitting (drivers, desk workers)", "Excess body hair & obesity"],
+    diagnosis: [
+      { name: "Clinical Visual Inspection", description: "Direct identification of midline sinus pits and secondary tracks.", badge: "Primary" },
+      { name: "Probing Assessment", description: "Mapping sinus depth under sterile illumination.", badge: "Routine" },
+    ],
+    nonSurgicalTreatment: "Antibiotics temporarily control acute infection but cannot remove embedded hair or seal the sinus cavity.",
+    surgicalTreatment: "Sinus Laser Closure (SILaC) clears hair debris and delivers 360° laser thermal energy to collapse and seal the sinus internally.",
+    laparoscopicBenefits: [
+      { title: "Zero Large Open Wounds", description: "No painful open cutting or months of daily wound packing." },
+      { title: "Day-Care Discharge", description: "Procedure takes 20 minutes; go home the same day." },
+      { title: "Fast Work Return", description: "Resume comfortable sitting and desk work in 2-3 days." },
+    ],
+    recoveryTimeline: [
+      { timeframe: "Day 1", title: "SILaC Laser", details: "Sinus tract cleaned and laser sealed; same-day discharge." },
+      { timeframe: "Week 1", title: "Light Dressing", details: "Minimal pain; routine daily activities." },
+      { timeframe: "Week 2", title: "Complete Work Return", details: "Resume full active office duties." },
+      { timeframe: "Month 1", title: "Sinus Obliteration", details: "Sinus tract fully sealed and flat." },
+    ],
+    faqs: [
+      { question: "Is laser pilonidal sinus surgery painful?", answer: "No, SILaC laser surgery is performed under regional/local anesthesia and causes 90% less post-op pain than open excision." },
+      { question: "How long does recovery take after SILaC laser?", answer: "Patients return to work within 3 days, compared to 6-8 weeks of painful dressing for traditional open surgery." },
+    ],
+    relatedSlugs: ["fistula", "piles", "laser-surgery"],
+  },
+
+  // 16. INTESTINAL & COLON SURGERY
+  {
+    slug: "intestinal-colon-surgery",
+    name: "Laparoscopic Intestinal & Colon Surgery",
+    shortName: "Intestinal Surgery",
+    category: "Laparoscopic Surgery",
+    summary: "Advanced keyhole resection and anastomosis for intestinal obstruction, diverticulitis, polyps, and bowel tumors with fast recovery.",
+    overview: "Intestinal conditions such as bowel obstruction, diverticular disease, large benign polyps, or localized bowel tumors require precise surgical resection. Dr. Meda performs Advanced Laparoscopic Intestinal & Colorectal Resection, restoring normal bowel continuity through tiny keyhole incisions with fast recovery.",
+    symptoms: [
+      { name: "Severe Abdominal Cramping", description: "Recurrent severe abdominal pain and bloating.", iconName: "pain" },
+      { name: "Altered Bowel Habits", description: "Alternating diarrhea, severe constipation, or blood in stool.", iconName: "digestive" },
+      { name: "Unexplained Weight Loss", description: "Loss of appetite and progressive weight loss.", iconName: "fatigue" },
+    ],
+    causes: [
+      { title: "Intestinal Stricture / Tumors", description: "Narrowing of bowel lumen due to inflammation or polyps." },
+      { title: "Diverticulitis / Adhesions", description: "Infected pouches or post-surgical bands causing bowel twist." },
+    ],
+    riskFactors: ["Age > 50", "Low-fiber diet", "History of intestinal polyps", "Inflammatory bowel disease"],
+    diagnosis: [
+      { name: "Colonoscopy", description: "Endoscopic visualization and biopsy of bowel mucosa.", badge: "Primary" },
+      { name: "Contrast CT Abdomen", description: "3D imaging mapping bowel obstruction site and vascular supply.", badge: "Advanced" },
+    ],
+    nonSurgicalTreatment: "Medical management for early diverticulitis or inflammatory bowel disease. Obstructive lesions require surgical resection.",
+    surgicalTreatment: "Laparoscopic Resection and Stapled Anastomosis removes diseased intestine through keyholes and reconnects healthy bowel seamlessly.",
+    laparoscopicBenefits: [
+      { title: "Tiny Keyhole Access", description: "Avoids long painful mid-line laparotomy incisions." },
+      { title: "Faster Bowel Function Return", description: "Bowel movements resume days faster post-op." },
+      { title: "Lower Complication Rate", description: "Reduced wound infection and hernia risk." },
+    ],
+    recoveryTimeline: [
+      { timeframe: "Day 1", title: "Laparoscopic Resection", details: "Keyhole operation; IV hydration & early walking." },
+      { timeframe: "Week 1", title: "Bowel Recovery & Diet", details: "Oral liquids to soft diet transition; home discharge." },
+      { timeframe: "Week 2", title: "Home Recovery", details: "Walking comfortably and eating normal meals." },
+      { timeframe: "Month 1", title: "Full Vitality", details: "Complete functional bowel recovery." },
+    ],
+    faqs: [
+      { question: "What is laparoscopic intestinal resection?", answer: "It is keyhole surgery to remove diseased bowel segments and join healthy bowel ends together using specialized surgical staplers." },
+      { question: "How long is the hospital stay after laparoscopic colon surgery?", answer: "Most patients are safely discharged in 4 to 5 days." },
+    ],
+    relatedSlugs: ["gallbladder-stones", "appendicitis", "hernia"],
+  },
 ];
 
 // BACKWARD COMPATIBILITY SLUG ALIASES
