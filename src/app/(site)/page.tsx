@@ -80,59 +80,19 @@ export default function HomePage() {
               </div>
             </Reveal>
 
-            {/* Right Column: Circular Doctor Frame with Badges */}
-            <div className="relative mx-auto max-w-[360px] sm:max-w-[460px] lg:max-w-[520px] w-full flex items-center justify-center py-6 sm:py-8">
-              
-              {/* Outer Decorative Dots & Circuit Lines */}
-              <svg className="absolute inset-0 size-full pointer-events-none z-0" viewBox="0 0 500 500" fill="none">
-                {/* Top-Left Hollow Dot */}
-                <circle cx="100" cy="45" r="5" stroke="#1D538E" strokeWidth="2.5" fill="white" />
-                
-                {/* Top-Right Circuit Node */}
-                <path d="M420 100 L440 100 L450 110" stroke="#1D538E" strokeWidth="2" strokeLinecap="round" />
-                <circle cx="420" cy="100" r="4" stroke="#1D538E" strokeWidth="2" fill="white" />
-                <circle cx="450" cy="110" r="3" fill="#1D538E" />
-
-                {/* Left Center Dot */}
-                <circle cx="20" cy="235" r="4.5" fill="#1D538E" />
-
-                {/* Bottom Right Dot */}
-                <circle cx="410" cy="435" r="5" fill="#1D538E" />
-              </svg>
-
-              {/* Main Doctor Circular Frame */}
-              <div className="relative z-10 w-[290px] h-[290px] sm:w-[380px] sm:h-[380px] lg:w-[430px] lg:h-[430px] rounded-full border-[7px] sm:border-[9px] border-[#1D538E] bg-gradient-to-b from-[#eaf2f8] via-[#e2edf6] to-[#d6e5f3] flex items-end justify-center shadow-xl overflow-hidden">
-                <Image
-                  src={doctorImages.hero.src}
-                  alt={`${site.doctor.name}, ${site.doctor.title}`}
-                  width={doctorImages.hero.width}
-                  height={doctorImages.hero.height}
-                  priority
-                  sizes="(max-width: 640px) 290px, (max-width: 1024px) 380px, 430px"
-                  placeholder="blur"
-                  blurDataURL={BLUR_DATA_URL}
-                  className="w-[95%] h-auto object-cover object-top translate-y-1 scale-105"
-                />
-              </div>
-
-              {/* Floating Badge 1: Top Left - 24/7 Emergency Care */}
-              <div className="absolute top-2 left-0 sm:-left-2 bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-100 dark:border-slate-800 px-4 py-2.5 flex flex-col items-center min-w-[120px] z-20">
-                <span className="text-[#0B3B60] dark:text-sky-300 font-extrabold text-sm sm:text-base">24/7</span>
-                <span className="text-slate-500 dark:text-slate-400 text-[10px] sm:text-xs font-medium">Emergency Care</span>
-              </div>
-
-              {/* Floating Badge 2: Top Right - 10+ Years of Experience */}
-              <div className="absolute top-12 right-0 sm:-right-2 bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-100 dark:border-slate-800 px-4 py-2.5 flex flex-col items-center min-w-[120px] z-20">
-                <span className="text-[#0B3B60] dark:text-sky-300 font-extrabold text-sm sm:text-base">10+</span>
-                <span className="text-slate-500 dark:text-slate-400 text-[10px] sm:text-xs font-medium">Years of Experience</span>
-              </div>
-
-              {/* Floating Badge 3: Bottom Left - 5000+ Successful Patients */}
-              <div className="absolute bottom-4 left-0 sm:-left-2 bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-100 dark:border-slate-800 px-4 py-2.5 flex flex-col items-center min-w-[130px] z-20">
-                <span className="text-[#0B3B60] dark:text-sky-300 font-extrabold text-sm sm:text-base">5000+</span>
-                <span className="text-slate-500 dark:text-slate-400 text-[10px] sm:text-xs font-medium">Successful Patients</span>
-              </div>
-
+            {/* Right Column: Exact Composite Doctor Graphic Image */}
+            <div className="relative mx-auto max-w-[380px] sm:max-w-[480px] lg:max-w-[540px] w-full flex items-center justify-center py-4">
+              <Image
+                src="/images/doctor/dr-rajashekhar-hero-circle-graphic.png"
+                alt="Dr. Rajashekhar Meda - General & Laparoscopic Surgeon"
+                width={1080}
+                height={1080}
+                priority
+                sizes="(max-width: 640px) 380px, (max-width: 1024px) 480px, 540px"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
+                className="w-full h-auto object-contain drop-shadow-xl"
+              />
             </div>
 
           </div>
@@ -194,7 +154,7 @@ export default function HomePage() {
                 <Button
                   variant="accent"
                   size="cta"
-                  className="rounded-none shadow-md"
+                  className="rounded-full shadow-md"
                   render={<a href={site.contact.phoneHref} />}
                 >
                   <Phone className="size-4" aria-hidden />
@@ -204,7 +164,7 @@ export default function HomePage() {
                 <Button
                   variant="whatsapp"
                   size="cta"
-                  className="rounded-none shadow-md"
+                  className="rounded-full shadow-md"
                   render={<a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" />}
                 >
                   <span>WhatsApp Doctor</span>
@@ -282,7 +242,7 @@ export default function HomePage() {
                   <Button
                     variant="accent"
                     size="cta"
-                    className="rounded-none shadow-md w-full sm:w-auto"
+                    className="rounded-full shadow-md w-full sm:w-auto"
                     render={<a href={site.contact.phoneHref} />}
                   >
                     <Phone className="size-4" />
@@ -291,7 +251,7 @@ export default function HomePage() {
                   <Button
                     variant="whatsapp"
                     size="cta"
-                    className="rounded-none shadow-md w-full sm:w-auto"
+                    className="rounded-full shadow-md w-full sm:w-auto"
                     render={<a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" />}
                   >
                     <span>Message WhatsApp</span>

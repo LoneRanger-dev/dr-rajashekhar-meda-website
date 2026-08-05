@@ -31,16 +31,16 @@ export function Header() {
       {/* Top Bar (Email, Hours, Location, Helpline) */}
       <TopBar />
 
-      {/* Main Navbar */}
-      <div className="w-full bg-gradient-to-r from-slate-950 via-sky-950 to-slate-950 border-b border-sky-500/40 backdrop-blur-xl text-white">
+      {/* Main Navbar — Solid Royal Medical Blue #1D538E from reference image */}
+      <div className="w-full bg-[#1D538E] border-b border-[#164273] shadow-md text-white">
         <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 flex h-14 sm:h-16 lg:h-20 items-center justify-between gap-2 sm:gap-4">
           
           {/* Doctor Name & Branding Section */}
           <Link href="/#hero" onClick={(e) => handleNavClick(e, "/#hero")} className="flex flex-col shrink-0 justify-center group pr-4 sm:pr-6">
-            <span className="font-[family-name:var(--font-display)] font-extrabold text-base sm:text-lg lg:text-xl text-white tracking-tight leading-tight group-hover:text-sky-300 transition-colors whitespace-nowrap">
+            <span className="font-[family-name:var(--font-display)] font-extrabold text-base sm:text-lg lg:text-xl text-white tracking-tight leading-tight group-hover:text-sky-200 transition-colors whitespace-nowrap">
               {site.doctor.name}
             </span>
-            <span className="hidden lg:block text-[14px] lg:text-[15px] font-medium text-sky-300 tracking-tight leading-tight whitespace-nowrap">
+            <span className="hidden lg:block text-[13px] lg:text-[14px] font-medium text-sky-100/90 tracking-tight leading-tight whitespace-nowrap">
               {site.doctor.headerSubtitle}
             </span>
           </Link>
@@ -63,10 +63,10 @@ export function Header() {
                         onClick={(e) => handleNavClick(e, item.href)}
                         aria-current={active ? "page" : undefined}
                         className={cn(
-                          "relative inline-flex h-11 items-center whitespace-nowrap rounded-none px-3.5 xl:px-4 text-sm font-semibold transition-all duration-300",
+                          "relative inline-flex h-10 items-center whitespace-nowrap rounded-full px-4 text-sm font-semibold transition-all duration-200",
                           active
-                            ? "bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-[0_0_15px_rgba(56,189,248,0.3)]"
-                            : "text-slate-200 hover:text-white hover:bg-white/10"
+                            ? "bg-white/25 text-white shadow-inner"
+                            : "text-white/90 hover:text-white hover:bg-white/15"
                         )}
                       >
                         {item.short}
@@ -80,7 +80,7 @@ export function Header() {
             <Link
               href="/#contact"
               onClick={(e) => handleNavClick(e, "/#contact")}
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-none bg-accent text-accent-foreground px-5 text-xs font-bold uppercase tracking-wider shadow-md hover:bg-accent/90 transition-all duration-300 active:scale-95 whitespace-nowrap"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-white text-[#1D538E] hover:bg-slate-100 px-6 text-xs sm:text-sm font-bold shadow-md transition-all duration-200 active:scale-95 whitespace-nowrap"
             >
               <CalendarCheck className="size-4" aria-hidden />
               <span>Book Appointment</span>
@@ -95,7 +95,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
-              className="grid size-10 sm:size-11 place-items-center rounded-none bg-sky-500/20 border border-sky-400/30 text-white hover:bg-sky-500/30 transition-all active:scale-95"
+              className="grid size-10 sm:size-11 place-items-center rounded-full bg-white/15 border border-white/20 text-white hover:bg-white/25 transition-all active:scale-95"
             >
               {open ? <X className="size-5 sm:size-6" /> : <Menu className="size-5 sm:size-6" />}
             </button>
@@ -107,7 +107,7 @@ export function Header() {
           <nav
             id="mobile-nav"
             aria-label="Mobile Navigation"
-            className="lg:hidden w-full border-t border-sky-500/30 bg-slate-950/98 shadow-2xl"
+            className="lg:hidden w-full border-t border-white/20 bg-[#1D538E] shadow-2xl"
           >
             <ul className="p-3 space-y-1 text-white">
               {navigation.map((item) => {
@@ -124,10 +124,10 @@ export function Header() {
                       onClick={(e) => handleNavClick(e, item.href)}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "flex h-11 items-center rounded-none px-4 text-sm sm:text-base font-semibold transition-colors",
+                        "flex h-11 items-center rounded-full px-4 text-sm sm:text-base font-semibold transition-colors",
                         active
-                          ? "bg-sky-500/25 text-sky-300 border border-sky-400/40"
-                          : "text-slate-200 hover:bg-white/10"
+                          ? "bg-white/25 text-white"
+                          : "text-white/90 hover:bg-white/15"
                       )}
                     >
                       {item.label}
@@ -139,7 +139,7 @@ export function Header() {
                 <Link
                   href="/#contact"
                   onClick={(e) => handleNavClick(e, "/#contact")}
-                  className="flex h-11 items-center justify-center gap-2 rounded-none bg-accent text-accent-foreground font-bold text-xs uppercase tracking-wider"
+                  className="flex h-11 items-center justify-center gap-2 rounded-full bg-white text-[#1D538E] font-bold text-xs uppercase tracking-wider shadow-md"
                 >
                   <CalendarCheck className="size-4" />
                   <span>Book Appointment</span>
