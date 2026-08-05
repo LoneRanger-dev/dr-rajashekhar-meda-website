@@ -19,7 +19,7 @@ export const metadata: Metadata = buildMetadata({
 const doctorBulletDetails = [
   {
     title: "Full Name & Qualifications",
-    detail: "Dr. Rajashekhar Meda — MBBS, M.S. (General Surgery)",
+    detail: "Dr. Rajashekhar Meda - MBBS, M.S. (General Surgery)",
   },
   {
     title: "Consultant Designation",
@@ -127,7 +127,7 @@ export default function AboutPage() {
                   lang="te"
                   className={`${notoSansTelugu.variable} text-lg text-muted-foreground font-medium pt-1`}
                 >
-                  {site.doctor.nameTelugu} — {site.doctor.titleTelugu}
+                  {site.doctor.nameTelugu} - {site.doctor.titleTelugu}
                 </p>
               </div>
 

@@ -22,7 +22,7 @@ export const site = {
     titleTelugu: "జనరల్, ఎండోస్కోపిక్, లాప్రోస్కోపిక్ లేజర్ సర్జన్",
     academicRole:
       "10+ Years of Surgical Excellence | Consultant General & Laparoscopic Surgeon",
-    tagline: "Advanced Laparoscopic Surgery — Minimally Invasive, Maximum Relief!",
+    tagline: "Advanced Laparoscopic Surgery - Minimally Invasive, Maximum Relief!",
   },
   hospital: {
     name: "Suraksha Hospital",

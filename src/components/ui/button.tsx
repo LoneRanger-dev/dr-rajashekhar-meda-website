@@ -8,23 +8,23 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-[#1D538E] text-white hover:bg-[#153E6B] shadow-md",
+        default: "bg-[#134377] text-white hover:bg-[#0e3259] shadow-md",
         outline:
-          "border-[#1D538E] text-[#1D538E] bg-background hover:bg-[#1D538E]/10 aria-expanded:bg-[#1D538E]/10",
+          "border-[#134377] text-[#134377] bg-background hover:bg-[#134377]/10 aria-expanded:bg-[#134377]/10",
         secondary:
-          "bg-[#1D538E] text-white hover:bg-[#153E6B] shadow-md",
+          "bg-[#134377] text-white hover:bg-[#0e3259] shadow-md",
         ghost:
           "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "text-[#134377] underline-offset-4 hover:underline",
         glass: "btn-glass hover:text-foreground",
         accent:
-          "bg-[#1D538E] text-white font-semibold hover:bg-[#153E6B] shadow-md focus-visible:ring-[#1D538E]/40",
+          "bg-[#134377] text-white font-semibold hover:bg-[#0e3259] shadow-md focus-visible:ring-[#134377]/40",
         whatsapp:
-          "bg-[#25D366] text-white shadow-md hover:bg-[#20bd5a] focus-visible:ring-[#25D366]/40",
+          "bg-[#5CA548] text-white shadow-md hover:bg-[#4a883a] focus-visible:ring-[#5CA548]/40",
         emergency:
-          "bg-[#1D538E] text-white shadow-md hover:bg-[#153E6B] focus-visible:ring-[#1D538E]/40",
+          "bg-[#134377] text-white shadow-md hover:bg-[#0e3259] focus-visible:ring-[#134377]/40",
       },
       size: {
         default:

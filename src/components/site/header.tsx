@@ -31,8 +31,8 @@ export function Header() {
       {/* Top Bar (Email, Hours, Location, Helpline) */}
       <TopBar />
 
-      {/* Main Navbar — Solid Royal Medical Blue #1D538E from reference image */}
-      <div className="w-full bg-[#1D538E] border-b border-[#164273] shadow-md text-white">
+      {/* Main Navbar — Secondary Brand Color #235394 */}
+      <div className="w-full bg-[#235394] border-b border-[#1c447b] shadow-md text-white">
         <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 flex h-14 sm:h-16 lg:h-20 items-center justify-between gap-2 sm:gap-4">
           
           {/* Doctor Name & Branding Section */}
@@ -46,9 +46,9 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation Links + Book Appointment CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-6">
             <nav aria-label="Main Navigation">
-              <ul className="flex items-center gap-1 xl:gap-2">
+              <ul className="flex items-center gap-1 xl:gap-2 h-16 lg:h-20">
                 {navigation.map((item) => {
                   const hrefStr = item.href as string;
                   const targetBase = hrefStr.split("#")[0] || "/";
@@ -57,16 +57,16 @@ export function Header() {
                       ? pathname === "/"
                       : targetBase !== "/" && pathname.startsWith(targetBase);
                   return (
-                    <li key={item.href}>
+                    <li key={item.href} className="h-full flex items-center">
                       <Link
                         href={item.href}
                         onClick={(e) => handleNavClick(e, item.href)}
                         aria-current={active ? "page" : undefined}
                         className={cn(
-                          "relative inline-flex h-10 items-center whitespace-nowrap rounded-full px-4 text-sm font-semibold transition-all duration-200",
+                          "relative inline-flex h-full items-center whitespace-nowrap px-3 text-sm font-semibold text-white/90 hover:text-white transition-colors border-b-2",
                           active
-                            ? "bg-white/25 text-white shadow-inner"
-                            : "text-white/90 hover:text-white hover:bg-white/15"
+                            ? "border-white text-white font-bold"
+                            : "border-transparent hover:border-white/80"
                         )}
                       >
                         {item.short}
@@ -80,7 +80,7 @@ export function Header() {
             <Link
               href="/#contact"
               onClick={(e) => handleNavClick(e, "/#contact")}
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-white text-[#1D538E] hover:bg-slate-100 px-6 text-xs sm:text-sm font-bold shadow-md transition-all duration-200 active:scale-95 whitespace-nowrap"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[#134377] hover:bg-[#0e3259] text-white px-6 text-xs sm:text-sm font-bold shadow-md transition-all duration-200 active:scale-95 whitespace-nowrap border border-white/20"
             >
               <CalendarCheck className="size-4" aria-hidden />
               <span>Book Appointment</span>
@@ -107,7 +107,7 @@ export function Header() {
           <nav
             id="mobile-nav"
             aria-label="Mobile Navigation"
-            className="lg:hidden w-full border-t border-white/20 bg-[#1D538E] shadow-2xl"
+            className="lg:hidden w-full border-t border-white/20 bg-[#235394] shadow-2xl"
           >
             <ul className="p-3 space-y-1 text-white">
               {navigation.map((item) => {
@@ -124,10 +124,10 @@ export function Header() {
                       onClick={(e) => handleNavClick(e, item.href)}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "flex h-11 items-center rounded-full px-4 text-sm sm:text-base font-semibold transition-colors",
+                        "flex h-11 items-center px-4 text-sm sm:text-base font-semibold transition-colors border-l-4",
                         active
-                          ? "bg-white/25 text-white"
-                          : "text-white/90 hover:bg-white/15"
+                          ? "border-white bg-white/15 text-white font-bold"
+                          : "border-transparent text-white/90 hover:bg-white/10"
                       )}
                     >
                       {item.label}
@@ -139,7 +139,7 @@ export function Header() {
                 <Link
                   href="/#contact"
                   onClick={(e) => handleNavClick(e, "/#contact")}
-                  className="flex h-11 items-center justify-center gap-2 rounded-full bg-white text-[#1D538E] font-bold text-xs uppercase tracking-wider shadow-md"
+                  className="flex h-11 items-center justify-center gap-2 rounded-full bg-[#134377] text-white font-bold text-xs uppercase tracking-wider shadow-md border border-white/20"
                 >
                   <CalendarCheck className="size-4" />
                   <span>Book Appointment</span>
