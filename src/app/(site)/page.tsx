@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone, CalendarCheck, Clock, Star, MapPin, Award, CheckCircle2, Stethoscope, ShieldCheck } from "lucide-react";
+import { Phone, CalendarCheck, Clock, Star, MapPin, Award, CheckCircle2, Stethoscope, ShieldCheck, Activity, Sparkles } from "lucide-react";
 import { SectionHeading, Stat } from "@/components/site/ui-bits";
 import { Button } from "@/components/ui/button";
 import { HeroBackground } from "@/components/site/hero-background";
@@ -104,8 +104,42 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
             
-            {/* Left Column: Doctor Photo Container */}
-            <div className="relative mx-auto max-w-sm sm:max-w-md w-full flex items-center justify-center">
+            {/* Left Column: Doctor Photo Container with Moving Animated Icons */}
+            <div className="relative mx-auto max-w-[340px] sm:max-w-[420px] lg:max-w-[460px] w-full flex items-center justify-center py-6">
+              
+              {/* Floating Animated Icon 1: Top Left */}
+              <div className="absolute top-2 -left-2 sm:-left-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-slow">
+                <span className="p-1.5 rounded-xl bg-sky-500/15 text-accent">
+                  <Stethoscope className="size-4" />
+                </span>
+                <span>Laparoscopic Expert</span>
+              </div>
+
+              {/* Floating Animated Icon 2: Top Right */}
+              <div className="absolute top-8 -right-2 sm:-right-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-delayed">
+                <span className="p-1.5 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                  <Award className="size-4" />
+                </span>
+                <span>10+ Yrs Exp.</span>
+              </div>
+
+              {/* Floating Animated Icon 3: Bottom Left */}
+              <div className="absolute bottom-6 -left-2 sm:-left-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-sky-400/30 text-xs font-bold text-foreground z-20 animate-float-delayed">
+                <span className="p-1.5 rounded-xl bg-teal-500/15 text-teal-600 dark:text-teal-400">
+                  <Sparkles className="size-4" />
+                </span>
+                <span>German Laser Surgery</span>
+              </div>
+
+              {/* Floating Animated Icon 4: Bottom Right */}
+              <div className="absolute bottom-2 -right-2 sm:-right-6 glass rounded-2xl p-2.5 sm:p-3 flex items-center gap-2 shadow-xl border border-orange-500/30 text-xs font-bold text-emergency z-20 animate-float-slow">
+                <span className="p-1.5 rounded-xl bg-orange-500/15 text-emergency">
+                  <Clock className="size-4" />
+                </span>
+                <span>24/7 Trauma Care</span>
+              </div>
+
+              {/* Main Doctor Circle Image */}
               <Image
                 src={doctorImages.about.src}
                 alt={`${site.doctor.name}, ${site.doctor.title} at ${site.hospital.name}`}
@@ -115,7 +149,7 @@ export default function HomePage() {
                 sizes="(max-width: 640px) 340px, 420px"
                 placeholder="blur"
                 blurDataURL={BLUR_DATA_URL}
-                className="w-full h-auto object-contain drop-shadow-xl"
+                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500 z-10"
               />
             </div>
 
