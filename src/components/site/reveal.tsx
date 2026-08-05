@@ -4,13 +4,11 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 
 /**
- * Scroll-reveal wrapper — fades content up with a soft blur-in as it enters
- * the viewport, in the same easing voice as the rest of the site.
+ * Scroll-reveal wrapper — UI-UX-Pro-Max motion.csv #4 Standard
+ * Scroll Reveal Standard: power2.out, y:24, duration:0.5s, stagger:0.08s
  *
- * Runs once per element (no re-trigger on scroll-back), animates only
- * transform/opacity/filter (GPU-friendly), and collapses to a plain static
- * container when the visitor prefers reduced motion — so nothing moves and
- * there is no layout shift.
+ * Fades + slides content up with a soft blur-in as it enters the viewport.
+ * Collapses to static when prefers-reduced-motion is set — no layout shift.
  */
 export function Reveal({
   children,
@@ -18,6 +16,7 @@ export function Reveal({
   delay = 0,
   y = 24,
   blur = true,
+  duration = 0.5,
   className,
 }: {
   children: ReactNode;
@@ -25,6 +24,7 @@ export function Reveal({
   delay?: number;
   y?: number;
   blur?: boolean;
+  duration?: number;
   className?: string;
 }) {
   const reduce = useReducedMotion();
@@ -41,11 +41,12 @@ export function Reveal({
       initial={{
         opacity: 0,
         y,
-        filter: blur ? "blur(10px)" : "blur(0px)",
+        filter: blur ? "blur(8px)" : "blur(0px)",
       }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
+      /* power2.out: cubic-bezier(0.16, 1, 0.3, 1) — UI-UX-Pro-Max spec */
+      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </MotionTag>
@@ -53,21 +54,30 @@ export function Reveal({
 }
 
 /**
- * Staggered container — children wrapped in <RevealItem> reveal in sequence
- * as the group scrolls into view. Use for card grids and lists.
+ * Staggered container — UI-UX-Pro-Max motion.csv #8 Standard
+ * Stagger List Standard: scale(0.92) y:16 stagger:0.06s back.out(1.4)
+ *
+ * Children wrapped in <RevealItem> reveal in sequence as the group scrolls
+ * into view. Use for card grids, feature lists, and service grids.
  */
 const containerVariants: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+  /* staggerChildren: 0.08s per UI-UX-Pro-Max motion spec stagger 0.06-0.08 */
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.04 } },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 22, filter: "blur(8px)" },
+  /* back.out(1.4) card pop — cubic-bezier(0.34, 1.56, 0.64, 1) */
+  hidden: { opacity: 0, y: 16, scale: 0.94, filter: "blur(6px)" },
   show: {
     opacity: 1,
     y: 0,
+    scale: 1,
     filter: "blur(0px)",
-    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+    transition: {
+      duration: 0.48,
+      ease: [0.34, 1.56, 0.64, 1], /* back.out(1.4) — card entrance pop */
+    },
   },
 };
 
@@ -124,3 +134,4 @@ export function RevealItem({
     </MotionTag>
   );
 }
+

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Figtree, Noto_Sans } from "next/font/google";
+import { Lora, Raleway } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/site/json-ld";
@@ -9,15 +9,21 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "";
 
-const figtree = Figtree({
+/* UI-UX-Pro-Max: Typography #8 — "Wellness Calm" (Serif + Sans)
+   Best For: Health apps, wellness, spa, meditation, organic brands
+   Lora: organic curves → conveys medical trust + warmth (headings)
+   Raleway: elegant simplicity → approachable, professional (body) */
+const lora = Lora({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
 
-const notoSans = Noto_Sans({
+const raleway = Raleway({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -103,7 +109,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${notoSans.variable} h-full antialiased`}
+      className={`${lora.variable} ${raleway.variable} h-full antialiased`}
     >
       {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
       {GA_ID && <GoogleAnalytics gaId={GA_ID} />}

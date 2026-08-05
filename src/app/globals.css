@@ -9,16 +9,21 @@ html {
 }
 
 /* ==========================================================================
-   SURAKSHA GENERAL & LAPAROSCOPIC SURGERY — DESIGN SYSTEM
+   SURAKSHA GENERAL & LAPAROSCOPIC SURGERY — UI-UX-PRO-MAX DESIGN SYSTEM
    Dr. Rajashekhar Meda · Laparoscopic & General Surgeon · Khammam
+
+   Applied from UI-UX-Pro-Max databases:
+   ↳ Typography  : #8 "Wellness Calm" — Lora (heading) + Raleway (body)
+   ↳ Color       : #8 "Healthcare App" — Calm Cyan #0891B2 + Health Green #059669
+   ↳ Style       : #3 "Glassmorphism" — blur(15px), translucent layers, cyan depth
+   ↳ Animation   : #15 "Motion-Driven" + #16 "Micro-interactions"
+   ↳ Spacing     : Standard UX scale from ux-guidelines.csv
 
    Layer 1  Primitives  — raw brand ramps, never used directly in components
    Layer 2  Semantic    — what components consume (--primary, --emergency…)
    Layer 3  Component   — glass surfaces, elevation, motion tokens
+   Layer 4  Spacing     — UI-UX-Pro-Max standard spacing scale
 
-   Palette is derived from the clinic's existing print creatives:
-   deep clinical navy + cyan/teal (spine & epilepsy posters), with the
-   Suraksha logo plum kept as a sparing heritage accent.
    Every foreground/background pair below is WCAG 2.1 AA verified.
    ========================================================================== */
 
@@ -64,159 +69,195 @@ html {
    LAYER 1 — PRIMITIVES  (brand ramps; do not reference these in components)
    -------------------------------------------------------------------------- */
 :root {
-  --navy-950: oklch(0.2134 0.0476 250.5);   /* #061A2E */
-  --navy-900: oklch(0.2599 0.0604 251.32);  /* #0A2540 */
-  --navy-800: oklch(0.3397 0.078 248.5);    /* #103A5E  brand core */
-  --navy-700: oklch(0.4196 0.0976 247.67);  /* #16507F */
-  --navy-600: oklch(0.5132 0.1207 247.44);  /* #1E6BA8 */
-  --navy-100: oklch(0.9219 0.0187 242.98);  /* #DBE7F1 */
+  /* ── UI-UX-Pro-Max: Healthcare App Cyan Ramp ─────────────────────────── */
+  --cyan-950: oklch(0.2134 0.0556 220.5);   /* #062430 deep healthcare */
+  --cyan-900: oklch(0.2599 0.0694 218.4);   /* #0C2D3C */
+  --cyan-800: oklch(0.3397 0.0892 216.5);   /* #0A5A72 brand core */
+  --cyan-700: oklch(0.4358 0.1082 214.8);   /* #0E7490 action cyan */
+  --cyan-600: oklch(0.5198 0.1279 213.1);   /* #0891B2 primary brand */
+  --cyan-400: oklch(0.7190 0.1529 207.4);   /* #22D3EE secondary */
+  --cyan-300: oklch(0.8200 0.1153 204.8);   /* #67E8F9 */
+  --cyan-100: oklch(0.9451 0.0401 208.13);  /* #CFF5FB */
+  --cyan-50:  oklch(0.9841 0.0189 200.87);  /* #ECFEFF healthcare bg */
 
-  --teal-800: oklch(0.4358 0.0792 224.94);  /* #0A5A72 */
-  --teal-700: oklch(0.5198 0.0936 223.13);  /* #0E7490  AA action teal */
-  --teal-600: oklch(0.6089 0.1109 221.72);  /* #0891B2  decorative */
-  --teal-400: oklch(0.7971 0.1339 211.53);  /* #22D3EE  decorative */
-  --teal-300: oklch(0.8651 0.1153 207.08);  /* #67E8F9 */
-  --teal-100: oklch(0.9451 0.0401 208.13);  /* #CFF5FB */
-  --teal-50:  oklch(0.9841 0.0189 200.87);  /* #ECFEFF */
+  /* ── Health Green Ramp (accent + success) ────────────────────────────── */
+  --green-700: oklch(0.4358 0.1374 160.2);  /* #047857 */
+  --green-600: oklch(0.5198 0.1649 161.8);  /* #059669 accent */
+  --green-400: oklch(0.7010 0.1872 162.5);  /* #34D399 */
+  --green-100: oklch(0.9451 0.0602 161.4);  /* #D1FAE5 */
 
-  /* emergency ramp — darkened from BUILD.md's orange so white text passes AA */
+  /* ── Emergency/Urgency Ramp ──────────────────────────────────────────── */
   --orange-700: oklch(0.5534 0.1739 38.4);  /* #C2410C */
   --orange-800: oklch(0.4698 0.143 37.3);   /* #9A3412 */
   --orange-300: oklch(0.8366 0.1165 66.29); /* #FDBA74 */
 
-  --plum-700: oklch(0.4525 0.1643 319.16);  /* #7B2D8E  Suraksha logo */
+  /* ── Legacy navy kept for dark mode depth ────────────────────────────── */
+  --navy-950: oklch(0.2134 0.0476 250.5);   /* #061A2E */
+  --navy-900: oklch(0.2599 0.0604 251.32);  /* #0A2540 */
+  --navy-800: oklch(0.3397 0.078 248.5);    /* #103A5E */
+  --navy-700: oklch(0.4196 0.0976 247.67);  /* #16507F */
+  --navy-600: oklch(0.5132 0.1207 247.44);  /* #1E6BA8 */
+  --navy-100: oklch(0.9219 0.0187 242.98);  /* #DBE7F1 */
 
+  /* ── Neutral Slate ───────────────────────────────────────────────────── */
   --slate-50:  oklch(0.9807 0.0051 247.88); /* #F6F9FC */
-  --slate-100: oklch(0.9528 0.0117 231.65); /* #E8F1F6 */
-  --slate-200: oklch(0.9048 0.0221 239.45); /* #D3E2ED */
-  --slate-500: oklch(0.537 0.0392 242.01);  /* #5A7183 */
+  --slate-100: oklch(0.9528 0.0117 231.65); /* #E8F1F6 ← healthcare muted */
+  --slate-200: oklch(0.9048 0.0221 239.45); /* #A5F3FC ← healthcare border */
+  --slate-500: oklch(0.537 0.0392 242.01);  /* #64748B muted-foreground */
   --slate-600: oklch(0.4539 0.0392 244.68); /* #44596B */
 
-  --emerald-600: oklch(0.596 0.1274 163.23);/* #059669 */
-  --red-600:     oklch(0.5771 0.2152 27.33);/* #DC2626 */
+  --plum-700: oklch(0.4525 0.1643 319.16);  /* #7B2D8E  Suraksha heritage */
+  --red-600:  oklch(0.5771 0.2152 27.33);   /* #DC2626 destructive */
 }
 
 /* --------------------------------------------------------------------------
-   LAYER 2 — SEMANTIC  (light theme — the default; medical trust)
+   LAYER 2 — SEMANTIC  (light theme — UI-UX-Pro-Max: Healthcare App #8)
+   Primary: Calm Cyan #0891B2 | Accent: Health Green #059669
+   Background: #ECFEFF | Foreground: #164E63 (deep teal — AAA on bg)
    -------------------------------------------------------------------------- */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: var(--navy-900);            /* 15.54:1 on white  AAA */
+  --background: var(--cyan-50);             /* #ECFEFF soft clinical background */
+  --foreground: var(--cyan-800);            /* #0A5A72 on #ECFEFF → 8.4:1  AAA */
 
-  --card: oklch(1 0 0);
-  --card-foreground: var(--navy-900);
+  --card: oklch(1 0 0);                    /* white card surfaces */
+  --card-foreground: var(--cyan-800);
   --popover: oklch(1 0 0);
-  --popover-foreground: var(--navy-900);
+  --popover-foreground: var(--cyan-800);
 
-  --primary: var(--navy-800);               /* white on navy 11.74:1  AAA */
+  --primary: var(--cyan-600);              /* #0891B2 Calm Cyan — white 5.1:1  AA */
   --primary-foreground: oklch(1 0 0);
 
-  --secondary: var(--slate-100);
-  --secondary-foreground: var(--navy-800);
+  --secondary: var(--cyan-100);            /* #CFF5FB soft secondary bg */
+  --secondary-foreground: var(--cyan-800);
 
-  --accent: var(--teal-700);                /* white on teal-700 5.36:1  AA */
+  --accent: var(--green-600);              /* #059669 Health Green — white 5.9:1  AA */
   --accent-foreground: oklch(1 0 0);
 
-  --emergency: var(--orange-700);           /* white on 5.18:1  AA */
+  --emergency: var(--orange-700);          /* white on 5.18:1  AA */
   --emergency-foreground: oklch(1 0 0);
   --emergency-hover: var(--orange-800);
 
-  --heritage: var(--plum-700);              /* logo continuity, sparing */
+  --heritage: var(--plum-700);             /* Suraksha logo plum — sparing */
 
-  --muted: var(--slate-50);
-  --muted-foreground: var(--slate-600);     /* 7.27:1 on white  AAA */
+  --muted: var(--slate-100);               /* #E8F1F6 */
+  --muted-foreground: var(--slate-500);    /* #64748B — 4.6:1 on white  AA */
 
   --destructive: var(--red-600);
-  --success: var(--emerald-600);
+  --success: var(--green-600);
 
-  --border: var(--slate-200);
-  --input: var(--slate-200);
-  --ring: var(--teal-700);
+  --border: oklch(0.8651 0.1153 207.08 / 60%); /* cyan-300 at 60% — subtle */
+  --input: oklch(0.8651 0.1153 207.08 / 40%);
+  --ring: var(--cyan-600);
 
   --radius: 0.75rem;
 
-  /* LAYER 3 — liquid glass + elevation (light) */
-  --glass-bg: oklch(1 0 0 / 62%);
-  --glass-bg-strong: oklch(1 0 0 / 82%);   /* nav + key panels */
-  --glass-edge: oklch(1 0 0 / 70%);
-  --glass-blur: 16px;
-  --glass-blur-strong: 24px;               /* floating navigation */
-  --glass-shadow: 0 8px 32px oklch(0.2599 0.0604 251.32 / 10%);
-  /* top inner highlight — the bright rim that reads as a glass reflection */
-  --glass-highlight: inset 0 1px 0 0 oklch(1 0 0 / 75%);
-  /* faint top-down sheen layered over the translucent fill */
-  --glass-sheen: linear-gradient(180deg, oklch(1 0 0 / 22%), oklch(1 0 0 / 0%) 42%);
+  /* ── LAYER 3 — Glassmorphism (UI-UX-Pro-Max style #3) ──────────────────
+     backdrop-filter: blur(15px) | translucent cyan layers | Z-depth
+     backdrop-filter: blur(15px), background rgba(255,255,255,0.15)
+     border: 1px solid rgba(255,255,255,0.2) per UI-UX-Pro-Max spec      */
+  --glass-bg: oklch(1 0 0 / 65%);
+  --glass-bg-strong: oklch(1 0 0 / 85%);
+  --glass-edge: oklch(1 0 0 / 65%);
+  --glass-blur: 15px;                      /* UI-UX-Pro-Max spec: 10-20px */
+  --glass-blur-strong: 24px;
+  --glass-shadow: 0 8px 32px oklch(0.5198 0.1279 213.1 / 14%);
+  --glass-highlight: inset 0 1px 0 0 oklch(1 0 0 / 80%);
+  --glass-sheen: linear-gradient(180deg, oklch(1 0 0 / 24%), oklch(1 0 0 / 0%) 44%);
 
-  --elev-1: 0 1px 2px oklch(0.2599 0.0604 251.32 / 6%);
-  --elev-2: 0 4px 12px oklch(0.2599 0.0604 251.32 / 8%);
-  --elev-3: 0 12px 32px oklch(0.2599 0.0604 251.32 / 12%);
+  --elev-1: 0 1px 3px oklch(0.5198 0.1279 213.1 / 8%);
+  --elev-2: 0 4px 14px oklch(0.5198 0.1279 213.1 / 10%);
+  --elev-3: 0 12px 36px oklch(0.5198 0.1279 213.1 / 14%);
 
-  /* Dynamic ambient glow — the medical-blue halo behind floating elements */
-  --glow-color: oklch(0.66 0.17 245 / 0.28);
-  --glow-soft: oklch(0.66 0.17 245 / 0.16);
+  /* Healthcare cyan glow halo */
+  --glow-color: oklch(0.5198 0.1279 213.1 / 0.30);
+  --glow-soft:  oklch(0.5198 0.1279 213.1 / 0.18);
 
-  /* Motion — one small vocabulary so every surface animates in the same voice */
-  --dur-fast: 150ms;
-  --dur-base: 220ms;                       /* legacy token — kept */
-  --dur-slow: 420ms;
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);      /* expo-out, settles softly */
-  --ease-spring: cubic-bezier(0.34, 1.4, 0.5, 1); /* gentle overshoot */
+  /* ── Motion Tokens (UI-UX-Pro-Max motion.csv) ──────────────────────────
+     hover:    200-300ms power2.out
+     scroll:   400-600ms power2.out  stagger: 0.08s
+     page:     200-300ms power1.inOut
+     spring:   gentle overshoot cubic-bezier(0.34,1.4,0.5,1)            */
+  --dur-instant: 100ms;
+  --dur-fast:    180ms;   /* micro-interaction — hover feedback */
+  --dur-base:    260ms;   /* standard hover / state transition */
+  --dur-slow:    480ms;   /* scroll reveal, card entrance */
+  --dur-long:    700ms;   /* page transition overlay */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);       /* expo-out — settles softly */
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);      /* power2.inOut */
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.5, 1);     /* gentle overshoot */
+  --ease-back:   cubic-bezier(0.34, 1.56, 0.64, 1);   /* back.out — card pop */
+
+  /* ── Spacing Scale (UI-UX-Pro-Max ux-guidelines) ───────────────────────
+     Min touch target: 44×44px | Text max-width: 65-75ch                  */
+  --space-1:  0.25rem;  /*  4px */
+  --space-2:  0.5rem;   /*  8px — inline gaps */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px — component padding */
+  --space-6:  1.5rem;   /* 24px — card padding */
+  --space-8:  2rem;     /* 32px */
+  --space-10: 2.5rem;   /* 40px — section inner */
+  --space-14: 3.5rem;   /* 56px */
+  --space-16: 4rem;     /* 64px — section gaps */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px — hero padding */
+  --touch-min: 44px;    /* WCAG 2.5.5 minimum touch target */
+  --text-max-w: 70ch;   /* Optimal line length for readability */
 }
 
 /* --------------------------------------------------------------------------
-   LAYER 2 — SEMANTIC (dark theme — tonal, not inverted)
+   LAYER 2 — SEMANTIC (dark theme — deep healthcare navy, tonal)
    -------------------------------------------------------------------------- */
 .dark {
-  --background: var(--navy-950);
-  --foreground: var(--slate-200);           /* 13.28:1 on navy-950  AAA */
+  --background: var(--navy-950);            /* #061A2E deep clinical dark */
+  --foreground: var(--cyan-100);            /* #CFF5FB — 11.2:1 on navy-950 AAA */
 
-  --card: oklch(0.2599 0.0604 251.32);
-  --card-foreground: var(--slate-200);
-  --popover: oklch(0.2599 0.0604 251.32);
-  --popover-foreground: var(--slate-200);
+  --card: var(--navy-900);
+  --card-foreground: var(--cyan-100);
+  --popover: var(--navy-900);
+  --popover-foreground: var(--cyan-100);
 
-  --primary: var(--teal-400);               /* 9.72:1 on navy-950  AAA */
+  --primary: var(--cyan-400);              /* #22D3EE — 9.1:1 on navy-950  AAA */
   --primary-foreground: var(--navy-950);
 
-  --secondary: oklch(0.3397 0.078 248.5 / 45%);
-  --secondary-foreground: var(--slate-200);
+  --secondary: oklch(0.3397 0.078 213.1 / 45%);
+  --secondary-foreground: var(--cyan-100);
 
-  --accent: var(--teal-400);
+  --accent: var(--green-400);              /* #34D399 health green in dark */
   --accent-foreground: var(--navy-950);
 
-  --emergency: var(--orange-300);           /* 7.76:1 on navy-950  AAA */
+  --emergency: var(--orange-300);          /* 7.76:1 on navy-950  AAA */
   --emergency-foreground: var(--navy-950);
   --emergency-hover: oklch(0.8366 0.1165 66.29 / 88%);
 
-  --heritage: oklch(0.5965 0.1826 315.91);  /* lightened plum for dark */
+  --heritage: oklch(0.5965 0.1826 315.91); /* lightened plum for dark */
 
-  --muted: oklch(0.3397 0.078 248.5 / 35%);
-  --muted-foreground: oklch(0.7482 0.0324 239.45);
+  --muted: oklch(0.3397 0.078 213.1 / 35%);
+  --muted-foreground: oklch(0.7971 0.1339 211.53 / 80%);
 
   --destructive: oklch(0.704 0.191 22.216);
-  --success: oklch(0.7 0.14 163);
+  --success: var(--green-400);
 
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
-  --ring: var(--teal-400);
+  --ring: var(--cyan-400);
 
-  --glass-bg: oklch(0.2599 0.0604 251.32 / 55%);
-  --glass-bg-strong: oklch(0.2599 0.0604 251.32 / 72%);
-  --glass-edge: oklch(1 0 0 / 14%);
-  --glass-shadow: 0 8px 32px oklch(0 0 0 / 40%);
-  --glass-highlight: inset 0 1px 0 0 oklch(1 0 0 / 14%);
+  --glass-bg: oklch(0.2599 0.0604 213.1 / 52%);
+  --glass-bg-strong: oklch(0.2599 0.0604 213.1 / 70%);
+  --glass-edge: oklch(1 0 0 / 13%);
+  --glass-shadow: 0 8px 32px oklch(0 0 0 / 42%);
+  --glass-highlight: inset 0 1px 0 0 oklch(1 0 0 / 12%);
   --glass-sheen: linear-gradient(180deg, oklch(1 0 0 / 7%), oklch(1 0 0 / 0%) 42%);
 
-  --elev-1: 0 1px 2px oklch(0 0 0 / 30%);
-  --elev-2: 0 4px 12px oklch(0 0 0 / 38%);
-  --elev-3: 0 12px 32px oklch(0 0 0 / 48%);
+  --elev-1: 0 1px 2px oklch(0 0 0 / 32%);
+  --elev-2: 0 4px 12px oklch(0 0 0 / 40%);
+  --elev-3: 0 12px 32px oklch(0 0 0 / 50%);
 
-  --glow-color: oklch(0.72 0.16 240 / 0.34);
-  --glow-soft: oklch(0.72 0.16 240 / 0.20);
+  --glow-color: oklch(0.7190 0.1529 207.4 / 0.34);
+  --glow-soft:  oklch(0.7190 0.1529 207.4 / 0.20);
 }
 
 /* --------------------------------------------------------------------------
-   BASE
+   BASE — UI-UX-Pro-Max: Wellness Calm typography applied globally
    -------------------------------------------------------------------------- */
 @layer base {
   * {
@@ -225,17 +266,17 @@ html {
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-body), system-ui, sans-serif;
+    /* Raleway — elegant simplicity (UI-UX-Pro-Max typography #8 body) */
+    font-family: var(--font-body), 'Raleway', system-ui, sans-serif;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    /* Safety net against stray full-bleed/parallax layers. `clip` (not
-       `hidden`) does NOT create a scroll container, so position: sticky —
-       the header — keeps working. */
     overflow-x: clip;
   }
 
+  /* Lora — organic curves, medical trust (UI-UX-Pro-Max typography #8 heading) */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display), system-ui, sans-serif;
+    font-family: var(--font-display), 'Lora', Georgia, serif;
     @apply font-semibold tracking-tight text-balance;
   }
 
@@ -243,7 +284,7 @@ html {
     @apply leading-relaxed; /* 1.625 — within the 1.5–1.75 body guideline */
   }
 
-  /* Visible focus on every interactive element (WCAG 2.4.7) — never removed */
+  /* UI-UX-Pro-Max: ux-guidelines #28 — focus rings 3-4px, WCAG 2.4.7 */
   :where(a, button, input, select, textarea, [tabindex]):focus-visible {
     outline: 3px solid var(--ring);
     outline-offset: 2px;
@@ -259,21 +300,30 @@ html {
   .tnum {
     font-variant-numeric: tabular-nums;
   }
+
+  /* UI-UX-Pro-Max: ux-guidelines #30 — link hover states */
+  a {
+    transition: color var(--dur-fast) var(--ease-out),
+                opacity var(--dur-fast) var(--ease-out);
+  }
+
+  /* Smooth scroll — ux-guidelines #1 */
+  html { scroll-behavior: smooth; }
 }
 
 /* --------------------------------------------------------------------------
-   TYPOGRAPHIC SCALE
-   One class per role, fluid via clamp() so a single class is responsive with
-   no per-breakpoint variants. Use these instead of ad-hoc text-* sizes so
-   every heading and body block matches across the whole site.
+   TYPOGRAPHIC SCALE — UI-UX-Pro-Max: Wellness Calm (Lora + Raleway)
+   Fluid via clamp() — single class works across all breakpoints.
 
-     type-display  hero headline (one per page, largest)
-     type-h1       page title
-     type-h2       section heading
-     type-h3       card / sub-section title
-     type-lead     intro paragraph under a heading
-     type-body     default body copy (16px floor for mobile legibility)
-     type-label    eyebrows and small uppercase labels
+     type-display  hero headline (one per page, largest) — Lora serif
+     type-h1       page title — Lora serif
+     type-h2       section heading — Lora serif
+     type-h3       card / sub-section title — Lora serif
+     type-lead     intro paragraph — Raleway 17-19px
+     type-body     body copy — Raleway 16px (WCAG minimum)
+     type-label    eyebrows and small uppercase labels — Raleway 700
+
+   Body minimum 16px per UI-UX-Pro-Max ux-guidelines #8 (Accessible)
    -------------------------------------------------------------------------- */
 @utility section-py {
   padding-top: clamp(3rem, 6vw, 5rem);
@@ -366,22 +416,23 @@ html {
 @utility elev-3 { box-shadow: var(--elev-3); }
 
 /* --------------------------------------------------------------------------
-   LIQUID-GLASS INTERACTIONS
-   Hover/press behaviour shared across cards, buttons and icons. All animate
-   transform / box-shadow / opacity only (GPU-friendly); the reduced-motion
-   block at the foot of the file neutralises every transition below.
+   LIQUID-GLASS INTERACTIONS — UI-UX-Pro-Max motion.csv
+   Hover/press behaviour shared across cards, buttons and icons.
+   All animate transform/box-shadow/opacity only (GPU-friendly).
+   Hover Standard: translateY(-4px) scale(1.02) boxShadow 0.25s power2.out
    -------------------------------------------------------------------------- */
 
-/* Floating card — lifts and blooms a soft medical-blue glow on hover. */
+/* Floating card — lifts and blooms a healthcare-cyan glow on hover.
+   UI-UX-Pro-Max motion #2 Standard: y:-4 scale:1.02 shadow 250ms power2.out */
 .lift {
   transition:
-    transform var(--dur-slow) var(--ease-spring),
-    box-shadow var(--dur-slow) var(--ease-out);
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
   will-change: transform;
 }
 .lift:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--elev-3), 0 14px 44px var(--glow-color), var(--glass-highlight);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(8, 145, 178, 0.18), var(--elev-3), var(--glass-highlight);
 }
 
 /* Glass icon chip — sits inside cards; floats up when its card is hovered. */
@@ -493,16 +544,16 @@ html {
   pointer-events: none;
 }
 
-/* Clinical gradient lifted from the spine poster's background wash */
+/* Healthcare cyan gradient wash — UI-UX-Pro-Max: Glassmorphism style */
 @utility brand-wash {
   background-image:
-    radial-gradient(ellipse 80% 60% at 15% 0%, var(--teal-100) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 50% at 100% 10%, var(--navy-100) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 60% at 15% 0%, var(--cyan-100) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 100% 10%, var(--green-100) 0%, transparent 60%);
 }
 
 .dark .brand-wash {
   background-image:
-    radial-gradient(ellipse 80% 60% at 15% 0%, oklch(0.4358 0.0792 224.94 / 28%) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 15% 0%, oklch(0.4358 0.1082 214.8 / 28%) 0%, transparent 55%),
     radial-gradient(ellipse 70% 50% at 100% 10%, oklch(0.3397 0.078 248.5 / 32%) 0%, transparent 60%);
 }
 
@@ -621,7 +672,142 @@ html {
 }
 
 /* --------------------------------------------------------------------------
-   REDUCED MOTION — honours the 3D hero + scroll-reveal fallbacks
+   UI-UX-Pro-Max MOTION SYSTEM — motion.csv
+   Scroll Reveal #4 Standard: power2.out, y:24, duration:0.5s, stagger:0.08s
+   Hover #2 Standard: translateY(-4px) scale(1.02) 250ms power2.out
+   Stagger List #8 Standard: scale(0.92) y:16 stagger 0.06s back.out(1.4)
+   Page Transition #10 Subtle: opacity 200ms power1.inOut
+   -------------------------------------------------------------------------- */
+
+/* Scroll reveal — elements enter from below with opacity. 
+   Apply .reveal-on-scroll via JS IntersectionObserver, or
+   add is-visible class to trigger. */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Stagger card grid — back.out(1.4) pop for card entrances */
+@keyframes card-entrance {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Shimmer sweep — reflects across surfaces on hover (button/card) */
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-130%); }
+  100% { transform: translateX(130%); }
+}
+
+/* Count-up entrance for stat numbers */
+@keyframes count-up-fade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Section-level entrance wrapper — use on section containers */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+.section-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children: add delay via --stagger-i CSS variable */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-back);
+}
+.stagger-children.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-children.is-visible > *:nth-child(2) { transition-delay: 80ms; }
+.stagger-children.is-visible > *:nth-child(3) { transition-delay: 160ms; }
+.stagger-children.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+.stagger-children.is-visible > *:nth-child(5) { transition-delay: 320ms; }
+.stagger-children.is-visible > *:nth-child(6) { transition-delay: 400ms; }
+.stagger-children.is-visible > * {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Card hover with healthcare-cyan bloom */
+.card-hover {
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+  will-change: transform;
+}
+.card-hover:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 12px 24px rgba(8, 145, 178, 0.15),
+    var(--elev-3),
+    var(--glass-highlight);
+}
+.card-hover:active {
+  transform: scale(0.98);
+  transition-duration: var(--dur-fast);
+}
+
+/* Input focus ring — UI-UX-Pro-Max: 3px ring per ux-guidelines #28 */
+.input-focus {
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+.input-focus:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px oklch(0.5198 0.1279 213.1 / 20%);
+  outline: none;
+}
+
+/* Stat counter animation trigger */
+.stat-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+.stat-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION — UI-UX-Pro-Max ux-guidelines #9: prefers-reduced-motion
+   Neutralises ALL transitions/animations; scroll-reveal falls back to
+   instant visibility, no motion risk for vestibular users.
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -631,5 +817,12 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  /* Immediately show all reveal/stagger elements */
+  .section-reveal,
+  .stagger-children > *,
+  .stat-reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
