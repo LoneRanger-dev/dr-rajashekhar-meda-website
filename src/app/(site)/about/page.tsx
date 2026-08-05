@@ -113,9 +113,9 @@ export default function AboutPage() {
             {/* Right Column: Point-by-Point Details */}
             <div className="space-y-6">
               <div className="space-y-3">
-                <span className="type-label text-accent inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3.5 py-1 text-xs">
+                <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
                   <Stethoscope className="size-3.5" aria-hidden />
-                  About the Doctor
+                  <span>About the Doctor</span>
                 </span>
                 <h1 className="type-h1 text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
                   {site.doctor.name}
@@ -176,9 +176,9 @@ export default function AboutPage() {
       <section className="py-12 sm:py-16 bg-muted/20 border-t border-border/40">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="type-label text-accent inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3.5 py-1 text-xs">
+            <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
               <Award className="size-3.5" aria-hidden />
-              Surgical Standards &amp; Care
+              <span>Surgical Standards &amp; Care</span>
             </span>
             <h2 className="type-h2 text-xl sm:text-3xl font-bold">Comprehensive Patient Care</h2>
           </div>

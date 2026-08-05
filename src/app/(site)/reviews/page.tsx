@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ShieldCheck, Quote } from "lucide-react";
+import { ShieldCheck, Quote, MessageSquare } from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { testimonials } from "@/lib/site";
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/site/json-ld";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Patient Reviews — Dr. Rajashekhar Meda, Khammam",
+  title: "Patient Reviews - Dr. Rajashekhar Meda, Khammam",
   description:
     "Patient experiences and recovery stories for laparoscopic and general surgery with Dr. Rajashekhar Meda at Suraksha Hospital, Khammam.",
   path: "/reviews",
@@ -25,6 +25,7 @@ export default function ReviewsPage() {
           <SectionHeading
             as="h1"
             eyebrow="Patient Reviews"
+            icon={MessageSquare}
             title="What patients say"
             lead="Read genuine patient recovery experiences for keyhole laparoscopic and general surgical care with Dr. Rajashekhar Meda."
           />

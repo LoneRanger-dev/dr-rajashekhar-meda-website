@@ -1,4 +1,4 @@
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, Sparkles, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Section({
@@ -15,12 +15,14 @@ export function Section({
 
 export function SectionHeading({
   eyebrow,
+  icon: Icon = Sparkles,
   title,
   lead,
   align = "left",
   as: Tag = "h2",
 }: {
   eyebrow?: string;
+  icon?: LucideIcon;
   title: string;
   lead?: string;
   align?: "left" | "center";
@@ -33,7 +35,14 @@ export function SectionHeading({
         align === "center" && "mx-auto text-center"
       )}
     >
-      {eyebrow && <p className="type-label text-accent">{eyebrow}</p>}
+      {eyebrow && (
+        <div className={cn("flex", align === "center" ? "justify-center" : "justify-start")}>
+          <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+            {Icon && <Icon className="size-3.5 shrink-0 text-[#134377] dark:text-sky-300" aria-hidden />}
+            <span>{eyebrow}</span>
+          </span>
+        </div>
+      )}
       <Tag className={Tag === "h1" ? "type-h1" : "type-h2"}>{title}</Tag>
       {lead && <p className="type-lead text-muted-foreground">{lead}</p>}
     </div>

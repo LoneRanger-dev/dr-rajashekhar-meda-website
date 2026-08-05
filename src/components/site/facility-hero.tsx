@@ -10,7 +10,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import { Phone, MapPin } from "lucide-react";
+import { Phone, MapPin, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
 import { facilityImages, BLUR_DATA_URL } from "@/lib/siteAssets";
@@ -150,9 +150,10 @@ export function FacilityHero() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-xl rounded-3xl border border-white/60 bg-white/85 p-7 sm:p-9 text-slate-900 shadow-[var(--elev-3)] backdrop-blur-xl"
         >
-          <p className="type-label text-[clamp(0.75rem,2.5vw,0.875rem)] text-accent">
-            Hospital facilities
-          </p>
+          <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+            <Building2 className="size-3.5 text-[#134377] dark:text-sky-300" aria-hidden />
+            <span>Hospital facilities</span>
+          </span>
           <h1 className="mt-3 type-h1 text-slate-900">{site.hospital.name}</h1>
           <p
             lang="te"

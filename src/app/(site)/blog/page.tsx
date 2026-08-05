@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Clock } from "lucide-react";
+import { ArrowRight, Clock, BookOpen } from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/ui-bits";
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { articles } from "@/lib/articles";
@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/site/json-ld";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Health Education — General & Laparoscopic Surgery Guides",
+  title: "Health Education - General & Laparoscopic Surgery Guides",
   description: "Patient education guides on laparoscopic surgery, gallbladder stones, hernia repair, appendix surgery, and laser treatments by Dr. Rajashekhar Meda in Khammam.",
   path: "/blog",
 });
@@ -24,6 +24,7 @@ export default function BlogPage() {
           <SectionHeading
             as="h1"
             eyebrow="Health Education"
+            icon={BookOpen}
             title="Understanding your surgery & recovery"
             lead="Clear, patient-friendly guides to laparoscopic, keyhole, and laser surgical procedures by Dr. Rajashekhar Meda at Suraksha Hospital, Khammam."
           />

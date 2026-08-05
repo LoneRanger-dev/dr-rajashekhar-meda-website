@@ -16,9 +16,9 @@ export function ConditionsModule() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal className="text-center space-y-4 max-w-3xl mx-auto mb-10 sm:mb-12" blur={false} y={16}>
-          <span className="type-label text-accent inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-4 py-1.5">
+          <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
             <Sparkles className="size-3.5" aria-hidden />
-            International Hospital Standard Patient Education
+            <span>International Hospital Standard Patient Education</span>
           </span>
           <h2 className="type-h2">Surgeries &amp; Medical Conditions Treated</h2>
           <p className="type-lead text-muted-foreground">

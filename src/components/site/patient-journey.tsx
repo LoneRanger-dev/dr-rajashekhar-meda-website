@@ -39,7 +39,10 @@ export function PatientJourney() {
     <section className="section-py relative overflow-hidden bg-muted/30">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal className="space-y-4 max-w-3xl mb-12" blur={false} y={16}>
-          <span className="type-label text-accent">Surgical Care Roadmap</span>
+          <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+            <Stethoscope className="size-3.5" />
+            <span>Surgical Care Roadmap</span>
+          </span>
           <h2 className="type-h2">Your Path to Safe & Rapid Surgical Recovery</h2>
           <p className="type-lead text-muted-foreground">
             From your initial consultation at Suraksha Hospital to same-day post-operative discharge — structured for your complete comfort and safety.

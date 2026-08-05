@@ -20,6 +20,7 @@ export default function ContactPage() {
           <SectionHeading
             as="h1"
             eyebrow="Contact & Consultations"
+            icon={Phone}
             title="Book an appointment"
             lead="Call the clinic directly, message on WhatsApp, or send a request and our team will confirm your consultation time."
           />

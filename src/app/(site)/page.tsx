@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone, CalendarCheck, Clock, Star, MapPin, Award, CheckCircle2, Stethoscope, ShieldCheck, Activity, Sparkles } from "lucide-react";
+import { Phone, CalendarCheck, Clock, Star, MapPin, Award, CheckCircle2, Stethoscope, ShieldCheck, Activity, Sparkles, MessageSquare } from "lucide-react";
 import { SectionHeading, Stat } from "@/components/site/ui-bits";
 import { Button } from "@/components/ui/button";
 import { HeroBackground } from "@/components/site/hero-background";
@@ -190,9 +190,9 @@ export default function HomePage() {
             {/* Right Column: Doctor Details */}
             <div className="space-y-6">
               <div className="space-y-3">
-                <span className="type-label text-accent inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3.5 py-1 text-xs">
+                <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
                   <Stethoscope className="size-3.5" aria-hidden />
-                  About the Doctor
+                  <span>About the Doctor</span>
                 </span>
                 <h2 className="type-h2 text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
                   {site.doctor.name}
@@ -255,8 +255,10 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
           <SectionHeading
             eyebrow="Patient Feedback"
+            icon={MessageSquare}
             title="Trusted Surgical Recovery Stories"
             lead="Read genuine patient experiences and testimonials for laparoscopic hernia, gallbladder, appendix, and laser surgeries at Suraksha Hospital."
+            align="center"
           />
           <Testimonials />
         </div>
@@ -267,8 +269,10 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
           <SectionHeading
             eyebrow="Appointment & Location"
+            icon={MapPin}
             title="Book a Consultation or Reach Us 24/7"
             lead="Schedule an appointment with Dr. Rajashekhar Meda at Suraksha Hospital, Khammam, or call our 24/7 helpline for emergency surgical care."
+            align="center"
           />
 
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14">

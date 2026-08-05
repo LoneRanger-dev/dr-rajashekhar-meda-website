@@ -219,7 +219,10 @@ export default async function ConditionDetailPage({
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-8 space-y-6">
             <Reveal className="space-y-4" blur={false} y={16}>
-              <span className="type-label text-accent">Understanding Your Health</span>
+              <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+                <Stethoscope className="size-3.5" />
+                <span>Understanding Your Health</span>
+              </span>
               <h2 className="type-h2">What is {condition.shortName}?</h2>
               <div className="glass rounded-2xl p-6 sm:p-8 space-y-4 border border-white/10 text-muted-foreground leading-relaxed">
                 <p className="text-base sm:text-lg text-foreground font-medium">
@@ -233,7 +236,10 @@ export default async function ConditionDetailPage({
 
             {/* ── SYMPTOMS INFOGRAPHIC GRID ─────────────────────────────────── */}
             <Reveal className="space-y-4 pt-6" blur={false} y={16}>
-              <span className="type-label text-accent">Recognizing Key Warnings</span>
+              <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+                <AlertTriangle className="size-3.5" />
+                <span>Recognizing Key Warnings</span>
+              </span>
               <h2 className="type-h2">Common Symptoms of {condition.shortName}</h2>
               <div className="grid sm:grid-cols-2 gap-4 pt-2">
                 {condition.symptoms.map((symptom) => (
@@ -255,7 +261,10 @@ export default async function ConditionDetailPage({
 
             {/* ── CAUSES & RISK FACTORS ──────────────────────────────────────── */}
             <Reveal className="space-y-4 pt-6" blur={false} y={16}>
-              <span className="type-label text-accent">Underlying Etiology</span>
+              <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+                <Activity className="size-3.5" />
+                <span>Underlying Etiology</span>
+              </span>
               <h2 className="type-h2">Causes &amp; Risk Factors</h2>
               <div className="grid sm:grid-cols-2 gap-4 pt-2">
                 {/* Causes */}
@@ -293,7 +302,10 @@ export default async function ConditionDetailPage({
 
             {/* ── DIAGNOSIS PROTOCOLS ────────────────────────────────────────── */}
             <Reveal className="space-y-4 pt-6" blur={false} y={16}>
-              <span className="type-label text-accent">Accurate Clinical Evaluation</span>
+              <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+                <HelpCircle className="size-3.5" />
+                <span>Accurate Clinical Evaluation</span>
+              </span>
               <h2 className="type-h2">How {condition.shortName} is Diagnosed</h2>
               <div className="grid sm:grid-cols-3 gap-4 pt-2">
                 {condition.diagnosis.map((diag) => (
@@ -310,7 +322,10 @@ export default async function ConditionDetailPage({
 
             {/* ── LAPAROSCOPIC VS OPEN SURGERY ADVANTAGES ─────────────────────── */}
             <Reveal className="space-y-4 pt-6" blur={false} y={16}>
-              <span className="type-label text-accent">Surgical Excellence</span>
+              <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+                <Zap className="size-3.5" />
+                <span>Surgical Excellence</span>
+              </span>
               <h2 className="type-h2">Benefits of Minimally Invasive Keyhole Surgery</h2>
               <div className="grid sm:grid-cols-2 gap-4 pt-2">
                 {condition.laparoscopicBenefits.map((benefit) => (
@@ -329,7 +344,10 @@ export default async function ConditionDetailPage({
 
             {/* ── RECOVERY TIMELINE ──────────────────────────────────────────── */}
             <Reveal className="space-y-4 pt-6" blur={false} y={16}>
-              <span className="type-label text-accent">Patient Recovery Roadmap</span>
+              <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+                <Clock className="size-3.5" />
+                <span>Patient Recovery Roadmap</span>
+              </span>
               <h2 className="type-h2">Post-Operative Recovery Timeline</h2>
               <div className="space-y-3 pt-2">
                 {condition.recoveryTimeline.map((stage) => (
@@ -348,7 +366,10 @@ export default async function ConditionDetailPage({
 
             {/* ── FREQUENTLY ASKED QUESTIONS (FAQS) ───────────────────────────── */}
             <Reveal className="space-y-4 pt-8" blur={false} y={16}>
-              <span className="type-label text-accent">Patient Questions Answered</span>
+              <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+                <HelpCircle className="size-3.5" />
+                <span>Patient Questions Answered</span>
+              </span>
               <h2 className="type-h2">Frequently Asked Questions</h2>
               <div className="space-y-4 pt-2">
                 {condition.faqs.map((faq, idx) => (
@@ -413,7 +434,10 @@ export default async function ConditionDetailPage({
       {related.length > 0 && (
         <Section className="bg-muted/30">
           <Reveal className="space-y-4 mb-8" blur={false} y={16}>
-            <span className="type-label text-accent">Related Surgical Guides</span>
+            <span className="type-label text-[#134377] dark:text-sky-300 inline-flex items-center gap-2 rounded-full bg-[#134377]/10 dark:bg-sky-500/15 border border-[#134377]/20 dark:border-sky-400/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+              <Stethoscope className="size-3.5" />
+              <span>Related Surgical Guides</span>
+            </span>
             <h2 className="type-h2">Explore Other Conditions Treated</h2>
           </Reveal>
           <RevealGroup as="div" className="grid sm:grid-cols-3 gap-6">
