@@ -22,7 +22,7 @@ export function ConditionsModule() {
           </span>
           <h2 className="type-h2">Surgeries &amp; Medical Conditions Treated</h2>
           <p className="type-lead text-muted-foreground">
-            Explore comprehensive patient education guides for laparoscopic keyhole surgeries, laser proctology, vascular procedures, and 24/7 trauma emergency care by Dr. Rajashekhar Meda at Suraksha Hospital.
+            Explore comprehensive patient education guides for laparoscopic keyhole surgeries, laser surgery, vascular procedures, and 24/7 trauma emergency care by Dr. Rajashekhar Meda at Suraksha Hospital.
           </p>
         </Reveal>
 

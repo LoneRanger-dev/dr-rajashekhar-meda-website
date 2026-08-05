@@ -21,18 +21,7 @@ import { site, whatsappUrl } from "@/lib/site";
 import { detailedConditions, getConditionBySlug } from "@/lib/conditionsData";
 
 export function generateStaticParams() {
-  const allSlugs = [
-    ...detailedConditions.map((c) => c.slug),
-    "laparoscopic-surgery",
-    "hernia-repair",
-    "gallbladder-appendix",
-    "laser-varicose-veins",
-    "breast-surgery",
-    "hydrocele",
-    "bariatric-surgery",
-    "laser-surgery",
-  ];
-  return allSlugs.map((slug) => ({ slug }));
+  return detailedConditions.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({

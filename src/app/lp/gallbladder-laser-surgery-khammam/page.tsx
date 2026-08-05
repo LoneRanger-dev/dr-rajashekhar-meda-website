@@ -18,7 +18,7 @@ const config: LandingConfig = {
     </>
   ),
   subhead:
-    "Suraksha Hospital, Khammam provides high-precision laparoscopic cholecystectomy and endovenous laser ablation by Dr. Rajashekhar Meda (M.S. General Surgery).",
+    "Suraksha Hospital, Khammam provides high-precision laparoscopic cholecystectomy and endovenous laser ablation by Dr. Rajashekhar Meda (MBBS, DNB).",
   image: {
     src: "/images/doctor/dr-rajashekhar-hero.jpg",
     alt: "Laparoscopic Gallbladder & Laser Surgery by Dr. Rajashekhar Meda",

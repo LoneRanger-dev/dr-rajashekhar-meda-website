@@ -5,7 +5,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Laparoscopic Hernia & Appendix Surgery in Khammam — Dr. Rajashekhar Meda",
   description:
-    "Advanced keyhole hernia repair and appendix removal by Dr. Rajashekhar Meda (M.S. General Surgery) at Suraksha Hospital, Khammam. Minimal pain and rapid recovery.",
+    "Advanced keyhole hernia repair and appendix removal by Dr. Rajashekhar Meda (MBBS, DNB) at Suraksha Hospital, Khammam. Minimal pain and rapid recovery.",
   noIndex: true,
   path: "/lp/hernia-appendix-surgery-khammam",
 });

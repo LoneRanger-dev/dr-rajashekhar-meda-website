@@ -151,7 +151,7 @@ export const articles: Article[] = [
     slug: "laser-surgery-varicose-veins-and-hemo",
     title: "Minimally Invasive Laser Surgery: Varicose Veins, Tumors & Painless Care",
     description:
-      "Explore modern laser therapy for varicose veins, laser proctology, and precise tumor removal by Dr. Rajashekhar Meda.",
+      "Explore modern laser therapy for varicose veins, laser treatment, and precise tumor removal by Dr. Rajashekhar Meda.",
     category: "Laser Surgery",
     readingMinutes: 4,
     image: {

@@ -7,6 +7,7 @@
  */
 
 import { facilityImages } from "./siteAssets";
+import { detailedConditions } from "./conditionsData";
 
 export const CONFIRM = "[CONFIRM WITH CLIENT]" as const;
 
@@ -68,136 +69,19 @@ export const site = {
   ],
 } as const;
 
-export type ConditionSlug =
-  | "laparoscopic-surgery"
-  | "hernia-repair"
-  | "gallbladder-appendix"
-  | "laser-varicose-veins";
-
-export interface Condition {
-  slug: ConditionSlug;
+export interface ConditionItem {
+  slug: string;
   name: string;
   short: string;
-  icon: "spine" | "brain" | "activity" | "scan";
   summary: string;
-  treats: string[];
-  whenToSeek: string[];
-  approach: string[];
 }
 
-export const conditions: Condition[] = [
-  {
-    slug: "laparoscopic-surgery",
-    name: "Advanced Laparoscopic & Keyhole Surgery",
-    short: "Laparoscopic Surgery",
-    icon: "scan",
-    summary:
-      "Minimally invasive keyhole surgical techniques providing smaller incisions, significantly less pain, minimal scarring, and rapid recovery.",
-    treats: [
-      "Diagnostic Laparoscopy",
-      "Laparoscopic Abdominal Cancer Surgery",
-      "Laparoscopic Colectomy & Intestinal Surgery",
-      "Laparoscopic Splenectomy",
-      "Abdominal Wall Reconstruction",
-    ],
-    whenToSeek: [
-      "Unexplained acute or chronic abdominal pain",
-      "Recommendation for abdominal surgical evaluation",
-      "Preference for keyhole surgery with minimal downtime",
-      "Desire for reduced post-operative hospital stay",
-    ],
-    approach: [
-      "Comprehensive pre-surgical clinical evaluation & imaging review",
-      "State-of-the-art HD laparoscopic visualization systems",
-      "Ultra-fine precision instruments ensuring minimal tissue trauma",
-      "Accelerated recovery protocol and personal post-op care",
-    ],
-  },
-  {
-    slug: "hernia-repair",
-    name: "Laparoscopic Hernia Repair",
-    short: "Hernia Repair",
-    icon: "activity",
-    summary:
-      "Advanced 3D mesh laparoscopic repair for Inguinal, Umbilical, Incisional, and Ventral hernias with minimal recurrence risk.",
-    treats: [
-      "Inguinal Hernia (Groin hernia)",
-      "Umbilical & Paraumbilical Hernia",
-      "Incisional Hernia (Post-surgical)",
-      "Ventral & Epigastric Hernia",
-      "Recurrent Hernia Repairs",
-      "Femoral Hernia",
-    ],
-    whenToSeek: [
-      "Visible bulge or lump in the groin or abdominal wall",
-      "Discomfort, dragging pain, or heaviness while standing or coughing",
-      "Pain or enlargement of an existing swelling",
-      "Sudden severe pain or inability to push bulge back in (Emergency)",
-    ],
-    approach: [
-      "Precision keyhole dissection under direct HD endoscopic view",
-      "Bio-compatible tension-free prosthetic mesh reinforcement",
-      "Substantially reduced postoperative pain compared to open repair",
-      "Rapid return to work and daily active lifestyle within days",
-    ],
-  },
-  {
-    slug: "gallbladder-appendix",
-    name: "Gallbladder & Appendix Surgery",
-    short: "Gallbladder & Appendix",
-    icon: "brain",
-    summary:
-      "Specialized emergency and elective keyhole surgeries: Laparoscopic Cholecystectomy for gallstones and Laparoscopic Appendectomy for acute appendicitis.",
-    treats: [
-      "Gallstones (Cholelithiasis)",
-      "Gallbladder Inflammation (Cholecystitis)",
-      "Acute & Chronic Appendicitis",
-      "Biliary Sludge & Polyps",
-      "Complicated Appendiceal Abscess",
-      "Emergency Abdominal Conditions",
-    ],
-    whenToSeek: [
-      "Sharp pain in upper right abdomen radiating to back or shoulder",
-      "Nausea, vomiting, or bloating after fatty meals",
-      "Sudden intense pain around belly button moving to lower right abdomen",
-      "Fever with severe abdominal tenderness",
-    ],
-    approach: [
-      "24/7 Emergency surgical admission and prompt diagnostic ultrasound/CT",
-      "Single or mini-port laparoscopic removal techniques",
-      "High-precision cystic duct and vessel clipping",
-      "Overnight or 24-hour hospital discharge for most patients",
-    ],
-  },
-  {
-    slug: "laser-varicose-veins",
-    name: "Laser Varicose Veins & Surgical Oncology",
-    short: "Laser & Tumor Surgery",
-    icon: "spine",
-    summary:
-      "Modern painless laser treatment for varicose veins, diabetic foot care, thyroid, breast surgery, and precise abdominal cancer surgical excision.",
-    treats: [
-      "Laser Varicose Veins Treatment (EVLA)",
-      "Diabetic Foot Management & Salvage",
-      "Cellulitis & Soft Tissue Infection Care",
-      "Thyroid Surgery (Thyroidectomy)",
-      "Breast Surgery (Benign & Malignant)",
-      "Laparoscopic Abdominal Cancer Surgery",
-    ],
-    whenToSeek: [
-      "Swollen, twisted, or painful leg veins with skin discoloration",
-      "Non-healing diabetic foot ulcer, numbness, or wound infection",
-      "Redness, heat, swelling, or spreading skin infection (Cellulitis)",
-      "Newly noticed neck swelling, breast lump, or abdominal tumor",
-    ],
-    approach: [
-      "Targeted laser fiber therapy requiring no large surgical cuts",
-      "Day-care procedure with immediate patient mobility",
-      "Cosmetically superior outcomes with minimal scar formation",
-      "Complete histopathological evaluation of excised tissues",
-    ],
-  },
-];
+export const conditions: ConditionItem[] = detailedConditions.map((c) => ({
+  slug: c.slug,
+  name: c.name,
+  short: c.shortName,
+  summary: c.summary,
+}));
 
 export const navigation = [
   { href: "/#hero", label: "Home", short: "Home" },

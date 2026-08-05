@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Phone, CalendarCheck, Clock, Star, MapPin, Award, CheckCircle2, Stethoscope, ShieldCheck, Activity, Sparkles, MessageSquare } from "lucide-react";
-import { SectionHeading, Stat } from "@/components/site/ui-bits";
+import { Phone, Clock, Star, MapPin, Award, CheckCircle2, Stethoscope, ShieldCheck, Sparkles, MessageSquare } from "lucide-react";
+import { SectionHeading } from "@/components/site/ui-bits";
 import { Button } from "@/components/ui/button";
 import { HeroBackground } from "@/components/site/hero-background";
 import { Reveal } from "@/components/site/reveal";
