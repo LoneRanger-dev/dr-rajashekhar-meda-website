@@ -14,7 +14,7 @@ import { AppointmentForm } from "@/components/site/appointment-form";
 const doctorBulletDetails = [
   {
     title: "Full Name & Qualifications",
-    detail: "Dr. Rajashekhar Meda - MBBS, M.S. (General Surgery)",
+    detail: "Dr. Rajashekhar Meda - MBBS, DNB",
   },
   {
     title: "Consultant Designation",

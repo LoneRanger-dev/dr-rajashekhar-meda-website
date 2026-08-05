@@ -171,20 +171,19 @@ export function FissureIllustration({ className = "w-full h-full", ...props }: I
   );
 }
 
-// 9. HYDROCELE ILLUSTRATION
-export function HydroceleIllustration({ className = "w-full h-full", ...props }: IllustrationProps) {
+// 9. DIABETIC FOOT ILLUSTRATION
+export function DiabeticFootIllustration({ className = "w-full h-full", ...props }: IllustrationProps) {
   return (
     <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
       <rect width="400" height="300" rx="16" fill="#F8FAFC" />
-      {/* Sac contour */}
-      <ellipse cx="200" cy="160" rx="80" ry="90" fill="#e0f2fe" stroke="#0284c7" strokeWidth="6" />
-      {/* Inner fluid area */}
-      <ellipse cx="200" cy="160" rx="65" ry="75" fill="#bae6fd" opacity="0.6" />
-      {/* Testis core */}
-      <ellipse cx="200" cy="150" rx="30" ry="35" fill="#0284c7" opacity="0.8" />
-      {/* Aspiration / minimal access indicator */}
-      <line x1="200" y1="40" x2="200" y2="100" stroke="#0d9488" strokeWidth="4" strokeDasharray="4 4" />
-      <circle cx="200" cy="100" r="8" fill="#0d9488" />
+      <circle cx="200" cy="150" r="95" fill="#0284c7" opacity="0.06" />
+      {/* Foot & ankle contour */}
+      <path d="M150 60V180C150 210 170 240 220 240H270C280 240 285 230 280 220C270 200 240 190 230 190V60" stroke="#0284c7" strokeWidth="6" strokeLinecap="round" fill="#e0f2fe" />
+      {/* Ulcer wound site */}
+      <circle cx="230" cy="215" r="16" fill="#ef4444" opacity="0.8" stroke="#b91c1c" strokeWidth="2" />
+      {/* Laser / Healing VAC therapy beam */}
+      <circle cx="230" cy="215" r="26" fill="#14b8a6" opacity="0.2" stroke="#14b8a6" strokeWidth="2" strokeDasharray="3 3" />
+      <circle cx="230" cy="215" r="6" fill="#0d9488" />
     </svg>
   );
 }
@@ -216,7 +215,7 @@ export function ThyroidIllustration({ className = "w-full h-full", ...props }: I
   );
 }
 
-// 11. BREAST LUMP ILLUSTRATION
+// 11. BREAST LUMP / SURGERY ILLUSTRATION
 export function BreastLumpIllustration({ className = "w-full h-full", ...props }: IllustrationProps) {
   return (
     <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
@@ -233,37 +232,37 @@ export function BreastLumpIllustration({ className = "w-full h-full", ...props }
   );
 }
 
-// 12. BARIATRIC SURGERY ILLUSTRATION
-export function BariatricIllustration({ className = "w-full h-full", ...props }: IllustrationProps) {
+// 12. CELLULITIS ILLUSTRATION
+export function CellulitisIllustration({ className = "w-full h-full", ...props }: IllustrationProps) {
   return (
     <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
-      <rect width="400" height="300" rx="16" fill="#F8FAFC" />
-      {/* Stomach Outline */}
-      <path d="M150 70C150 60 170 50 190 50C200 70 230 80 250 110C270 140 260 210 210 230C170 240 140 200 150 160Z" fill="#e0f2fe" stroke="#0284c7" strokeWidth="6" />
-      {/* Sleeve resection line */}
-      <path d="M185 60C185 110 195 170 185 220" stroke="#ef4444" strokeWidth="4" strokeDasharray="6 4" />
-      {/* Laparoscopic stapler line */}
-      <circle cx="185" cy="140" r="12" fill="#14b8a6" opacity="0.3" />
-      <path d="M179 140L183 144L191 136" stroke="#0d9488" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <rect width="400" height="300" rx="16" fill="#FEF2F2" />
+      <circle cx="200" cy="150" r="95" fill="#ef4444" opacity="0.08" />
+      {/* Leg contour */}
+      <path d="M150 50C150 120 140 180 130 250H270C260 180 250 120 250 50" stroke="#94a3b8" strokeWidth="4" fill="#f8fafc" />
+      {/* Inflamed cellulitis skin region */}
+      <path d="M142 120C170 115 230 115 258 120C263 170 255 210 230 240H170C145 210 137 170 142 120Z" fill="#fca5a5" opacity="0.6" stroke="#ef4444" strokeWidth="3" strokeDasharray="4 4" />
+      {/* Drainage / Treatment point */}
+      <circle cx="200" cy="170" r="14" fill="#14b8a6" opacity="0.9" />
+      <path d="M194 170L198 174L206 166" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-// 13. LASER SURGERY ILLUSTRATION
-export function LaserSurgeryIllustration({ className = "w-full h-full", ...props }: IllustrationProps) {
+// 13. ABDOMINAL CANCER SURGERY ILLUSTRATION
+export function AbdominalCancerIllustration({ className = "w-full h-full", ...props }: IllustrationProps) {
   return (
     <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
       <rect width="400" height="300" rx="16" fill="#F8FAFC" />
-      <circle cx="200" cy="150" r="100" fill="#14b8a6" opacity="0.08" />
-      {/* Laser Handpiece */}
-      <rect x="70" y="135" width="120" height="30" rx="6" fill="#0f172a" />
-      <polygon points="190,140 220,150 190,160" fill="#0284c7" />
-      {/* Laser Beam Emission */}
-      <line x1="220" y1="150" x2="330" y2="150" stroke="#14b8a6" strokeWidth="6" strokeLinecap="round" />
-      <line x1="220" y1="150" x2="330" y2="150" stroke="#67e8f9" strokeWidth="2" strokeLinecap="round" />
-      {/* Target tissue interaction sparkles */}
-      <circle cx="330" cy="150" r="16" fill="#38bdf8" opacity="0.4" />
-      <circle cx="330" cy="150" r="6" fill="#0284c7" />
+      <circle cx="200" cy="150" r="100" fill="#0284c7" opacity="0.08" />
+      {/* Abdominal Organ / Stomach & Intestinal schematic */}
+      <path d="M140 90C140 70 170 60 200 60C230 60 260 70 260 90C260 130 240 180 200 180C160 180 140 130 140 90Z" fill="#e0f2fe" stroke="#0284c7" strokeWidth="6" />
+      {/* Tumor lesion */}
+      <circle cx="200" cy="115" r="16" fill="#f59e0b" stroke="#d97706" strokeWidth="3" />
+      {/* Laparoscopic 4K HD keyhole target vision ring */}
+      <circle cx="200" cy="115" r="32" fill="#14b8a6" opacity="0.2" stroke="#14b8a6" strokeWidth="3" strokeDasharray="4 4" />
+      <line x1="200" y1="75" x2="200" y2="155" stroke="#14b8a6" strokeWidth="2" />
+      <line x1="160" y1="115" x2="240" y2="115" stroke="#14b8a6" strokeWidth="2" />
     </svg>
   );
 }
@@ -342,16 +341,17 @@ export function ConditionIllustration({ slug, className }: { slug: string; class
       return <FistulaIllustration className={className} />;
     case "fissure":
       return <FissureIllustration className={className} />;
-    case "hydrocele":
-      return <HydroceleIllustration className={className} />;
     case "thyroid":
       return <ThyroidIllustration className={className} />;
     case "breast-lump":
+    case "breast-surgery":
       return <BreastLumpIllustration className={className} />;
-    case "bariatric-surgery":
-      return <BariatricIllustration className={className} />;
-    case "laser-surgery":
-      return <LaserSurgeryIllustration className={className} />;
+    case "diabetic-foot":
+      return <DiabeticFootIllustration className={className} />;
+    case "cellulitis":
+      return <CellulitisIllustration className={className} />;
+    case "abdominal-cancer-surgery":
+      return <AbdominalCancerIllustration className={className} />;
     case "pilonidal-sinus":
       return <PilonidalSinusIllustration className={className} />;
     case "intestinal-colon-surgery":

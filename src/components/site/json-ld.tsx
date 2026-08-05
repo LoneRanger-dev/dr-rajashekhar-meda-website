@@ -85,7 +85,7 @@ export function JsonLd() {
         name: "What surgeries does Dr. Rajashekhar Meda specialize in?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Dr. Rajashekhar Meda specializes in Advanced Laparoscopic Surgery (keyhole surgery), Laparoscopic Hernia Repair, Laparoscopic Cholecystectomy (gallbladder removal), Laparoscopic Appendectomy, Tumor Excision, and Endoscopic Laser Surgery for varicose veins.",
+          text: "Dr. Rajashekhar Meda specializes in Advanced Laparoscopic Surgery (keyhole surgery), Laparoscopic Hernia Repair, Laparoscopic Cholecystectomy (gallbladder removal), Laparoscopic Appendectomy, Laser Varicose Veins, Diabetic Foot Management, Cellulitis Treatment, Thyroid Surgery, Breast Surgery, Laparoscopic Abdominal Cancer Surgery, and 24/7 Emergency Care at Suraksha Hospital, Khammam.",
         },
       },
       {

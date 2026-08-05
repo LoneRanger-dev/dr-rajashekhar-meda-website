@@ -56,9 +56,9 @@ export const SYSTEM_PROMPT = `You are the appointment and information assistant 
 
 # What you may talk about
 ONLY these topics:
-- The doctor's qualifications (M.S. General Surgery), 10+ years experience, and surgical expertise
-- Clinic address, directions, consulting hours, and phone numbers (${site.contact.phoneDisplay})
-- Which laparoscopic, laser proctology, vascular, and general surgeries are offered (Hernia, Gallstones, Appendicitis, Lipoma, Varicose Veins, Piles, Fistula, Fissure, Hydrocele, Thyroid, Breast Lump, Bariatric, Laser Surgery, Trauma)
+- The doctor's qualifications (${site.doctor.credentials}), 10+ years experience, and surgical expertise
+- Clinic address, directions, consulting hours, email (${site.contact.email}), and phone numbers (${site.contact.phoneDisplay})
+- Which laparoscopic, laser proctology, vascular, and general surgeries are offered (Hernia, Gallstones, Appendicitis, Lipoma, Laser Varicose Veins, Piles, Fistula, Fissure, Thyroid, Breast Surgery, Diabetic Foot, Cellulitis, Laparoscopic Abdominal Cancer Surgery, Emergency Trauma)
 - Helping the visitor book a surgical consultation or appointment
 
 Use ONLY the facts in the KNOWLEDGE BASE below. If something is not there, say you do not have that information and offer the clinic phone number ${site.contact.phoneDisplay}. Never guess or invent facts about fees, waiting times, or availability.
@@ -124,10 +124,10 @@ export function getSmartLocalResponse(message: string): string {
 
   // 3. Booking Appointment
   if (/book|appointment|consult|slot|visit|meet/i.test(q)) {
-    return `To book a surgical consultation with Dr. Rajashekhar Meda (MBBS, M.S. General Surgery):\n\n1. Call directly on ${site.contact.phoneDisplay}\n2. Or visit our online booking page at /contact#appointment\n\nWalk-in consultations are also available during clinic hours at Suraksha Hospital, Khammam.`;
+    return `To book a surgical consultation with Dr. Rajashekhar Meda (${site.doctor.credentials}):\n\n1. Call directly on ${site.contact.phoneDisplay}\n2. Email: ${site.contact.email}\n3. Or visit our online booking page at /contact#appointment\n\nWalk-in consultations are also available during clinic hours at Suraksha Hospital, Khammam.`;
   }
 
-  // 4. Match all 14 detailed conditions from Services page
+  // 4. Match all detailed conditions from Services page
   const matchedCondition = detailedConditions.find((c) => {
     const slugMatch = q.includes(c.slug.replace("-", " "));
     const nameMatch = q.includes(c.shortName.toLowerCase());
@@ -153,16 +153,36 @@ export function getSmartLocalResponse(message: string): string {
   }
 
   if (/piles|hemorrhoid|fissure|fistula|laser|proctology/i.test(q)) {
-    return `Dr. Meda specializes in German Diode Laser Surgery for Piles (LHP), Anal Fissures, and Anal Fistula (FiLaC) with zero cutting, minimal pain, and same-day discharge. Visit /conditions/laser-surgery or call ${site.contact.phoneDisplay}.`;
+    return `Dr. Meda specializes in German Diode Laser Surgery for Piles (LHP), Anal Fissures, and Anal Fistula (FiLaC) with zero cutting, minimal pain, and same-day discharge. Call ${site.contact.phoneDisplay} for a consultation.`;
   }
 
   if (/varicose|vein/i.test(q)) {
-    return `Endovenous Laser Ablation (EVLA) for Varicose Veins is available with Dr. Meda. No cuts, no stitches, and immediate walking post-op. Visit /conditions/varicose-veins or call ${site.contact.phoneDisplay}.`;
+    return `Endovenous Laser Ablation (EVLA) for Laser Varicose Veins is available with Dr. Meda. No cuts, no stitches, and immediate walking post-op. Visit /conditions/varicose-veins or call ${site.contact.phoneDisplay}.`;
+  }
+
+  if (/diabetic foot|ulcer|gangrene|limb salvage/i.test(q)) {
+    return `Dr. Meda provides expert Diabetic Foot Management & Limb Salvage at Suraksha Hospital, Khammam, including surgical debridement and advanced wound care. Visit /conditions/diabetic-foot or call ${site.contact.phoneDisplay}.`;
+  }
+
+  if (/cellulitis|skin infection|abscess/i.test(q)) {
+    return `Comprehensive Cellulitis Treatment and surgical decompression are available at Suraksha Hospital. Visit /conditions/cellulitis or call ${site.contact.phoneDisplay}.`;
+  }
+
+  if (/thyroid|goiter/i.test(q)) {
+    return `Dr. Meda performs precision nerve-monitored Thyroidectomy for goiter and nodules. Visit /conditions/thyroid or call ${site.contact.phoneDisplay}.`;
+  }
+
+  if (/breast|lumpectomy|fibroadenoma/i.test(q)) {
+    return `Cosmetic circumareolar Breast Surgery and lump excision are offered with invisible scarring. Visit /conditions/breast-lump or call ${site.contact.phoneDisplay}.`;
+  }
+
+  if (/cancer|tumor|oncology|abdominal cancer/i.test(q)) {
+    return `Dr. Meda performs Laparoscopic Abdominal Cancer Surgery (stomach, colon, rectal, abdominal tumors) with 4K keyhole precision and R0 tumor clearance. Visit /conditions/abdominal-cancer-surgery or call ${site.contact.phoneDisplay}.`;
   }
 
   if (/doctor|qualification|experience|who/i.test(q)) {
     return `${site.doctor.name} (${site.doctor.credentials}) is a Consultant Laparoscopic, Endoscopic & Laser Surgeon with over 10+ years of surgical experience at Suraksha Hospital, Khammam.`;
   }
 
-  return `Dr. Rajashekhar Meda (MBBS, M.S. General Surgery) offers expert Laparoscopic Keyhole Surgeries, Laser Proctology, Vascular Surgery, and 24/7 Emergency Care at Suraksha Hospital, Khammam.\n\nFor consultations or inquiries, please call ${site.contact.phoneDisplay} or visit our Contact page.`;
+  return `Dr. Rajashekhar Meda (${site.doctor.credentials}) offers expert Laparoscopic Keyhole Surgeries, Laser Varicose Veins & Proctology, Surgical Oncology, and 24/7 Emergency Care at Suraksha Hospital, Khammam.\n\nFor consultations or inquiries, please call ${site.contact.phoneDisplay} or email ${site.contact.email}.`;
 }

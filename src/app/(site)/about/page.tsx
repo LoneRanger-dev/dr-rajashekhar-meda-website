@@ -12,14 +12,14 @@ import { JsonLd } from "@/components/site/json-ld";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Dr. Rajashekhar Meda — Laparoscopic & General Surgeon Khammam",
-  description: "Dr. Rajashekhar Meda, MBBS, M.S. (General Surgery), Consultant Laparoscopic, Endoscopic & Laser Surgeon at Suraksha Hospital, Khammam with 10+ years surgical experience.",
+  description: "Dr. Rajashekhar Meda, MBBS, DNB, Consultant Laparoscopic, Endoscopic & Laser Surgeon at Suraksha Hospital, Khammam with 10+ years surgical experience.",
   path: "/about",
 });
 
 const doctorBulletDetails = [
   {
     title: "Full Name & Qualifications",
-    detail: "Dr. Rajashekhar Meda - MBBS, M.S. (General Surgery)",
+    detail: "Dr. Rajashekhar Meda - MBBS, DNB",
   },
   {
     title: "Consultant Designation",

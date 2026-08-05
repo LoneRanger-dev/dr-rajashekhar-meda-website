@@ -23,6 +23,20 @@ export function buildMetadata({
   return {
     title: fullTitle,
     description,
+    keywords: [
+      "Dr Rajasekhar Meda",
+      "Dr Rajashekhar Meda",
+      "General Surgeon Khammam",
+      "Laparoscopic Surgeon Khammam",
+      "Laser Varicose Veins Khammam",
+      "Breast Surgeon Khammam",
+      "Thyroid Surgeon Khammam",
+      "Diabetic Foot Specialist Khammam",
+      "Cellulitis Treatment Khammam",
+      "Abdominal Cancer Surgery Khammam",
+      "Raja Khammam Surgeon",
+      "Suraksha Hospital Khammam",
+    ],
     metadataBase: new URL(site.domain),
     alternates: {
       canonical: url,

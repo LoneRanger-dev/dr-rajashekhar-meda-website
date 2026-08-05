@@ -27,6 +27,10 @@ export function generateStaticParams() {
     "hernia-repair",
     "gallbladder-appendix",
     "laser-varicose-veins",
+    "breast-surgery",
+    "hydrocele",
+    "bariatric-surgery",
+    "laser-surgery",
   ];
   return allSlugs.map((slug) => ({ slug }));
 }
