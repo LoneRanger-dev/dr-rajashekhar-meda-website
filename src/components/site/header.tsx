@@ -27,7 +27,7 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full shadow-xl">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full shadow-xl">
       {/* Top Bar (Email, Hours, Location, Helpline) */}
       <TopBar />
 

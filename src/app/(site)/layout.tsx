@@ -6,10 +6,10 @@ import { AmbientBackground } from "@/components/site/ambient-background";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden flex flex-col bg-background">
+    <div className="relative min-h-screen w-full max-w-full flex flex-col bg-background">
       <AmbientBackground />
       <Header />
-      <main id="main" className="flex-1 w-full max-w-full overflow-x-hidden pb-16 lg:pb-0">
+      <main id="main" className="flex-1 w-full max-w-full pt-[56px] sm:pt-[97px] lg:pt-[113px] pb-16 lg:pb-0">
         {children}
       </main>
       <Footer />

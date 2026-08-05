@@ -21,7 +21,7 @@ export function LandingPage({ config }: { config: LandingConfig }) {
   return (
     <div className="relative min-h-screen flex flex-col bg-background">
       <Header />
-      <main id="main" className="flex-1">
+      <main id="main" className="flex-1 pt-[56px] sm:pt-[97px] lg:pt-[113px]">
         <section className="brand-wash">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
